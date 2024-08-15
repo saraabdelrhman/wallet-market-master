@@ -1,0 +1,25 @@
+/* About.css */
+body{
+    background-color: #FCFBF3;
+}
+.card {
+    border: 1px solid #eaeaea;
+    
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  /* .card:hover {
+    transform: translateY(-5px);
+  } */
+  
+  .card-title {
+    font-weight: bold;
+  }
+  
+  .list-group-item {
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  

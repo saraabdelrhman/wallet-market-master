@@ -1,0 +1,18 @@
+.bigger-card {
+    padding: 40px;
+  }
+  
+  @media (min-width: 1200px) {
+    .col-xl-10 {
+      max-width: 80%;
+    }
+  }
+  
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    .col-lg-12 {
+      max-width: 90%;
+    }
+  }
+  .card:hover {
+    transform: translateY(0); /* Set translation to 0 */
+  }
