@@ -34,12 +34,12 @@ export default function Smartphones() {
   }
 
   return (
-    <div className="container-fluid" style={{ backgroundColor: '#F7EFE5' }}>
-      <div className="container" style={{ backgroundColor: '#F7EFE5' }}>
+    <div className="container-fluid" style={{  background: 'linear-gradient(135deg, #f3ebdf, #f3aa5796, #431d03)' }}>
+      <div className="container" style={{ backgroundColor: 'transparent' }}>
         <h2 className="fw-bold pb-3">Smartphones</h2>
-        <div className="row" style={{ backgroundColor: '#F7EFE5' }}>
+        <div className="row" style={{ backgroundColor: 'transparent' }}>
           {smartphones.map((phone) => (
-            <div className="col-md-4 mb-4" key={phone.id} style={{ backgroundColor: '#F7EFE5' }}>
+            <div className="col-md-4 mb-4" key={phone.id} style={{ backgroundColor: 'transparent' }}>
               <div className="card h-100 rounded-4">
                 <div className="card-img-top" style={{ backgroundColor: 'transparent' }}>
                   <img src={phone.thumbnail} className="img-fluid p-3" alt={phone.title} style={{ width: '100%', height: '200px', objectFit: 'contain' }} />

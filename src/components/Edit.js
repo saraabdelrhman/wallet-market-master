@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import defaultImg from './images/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png';
 import { Link } from "react-router-dom";
-import Profile from "./Profile";
+import style from '../App.css'
 const EditProfile = () => {
   const [user, setUser] = useState({
     name: '',
@@ -36,12 +36,13 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="container mt-5 mb-5">
-      <h2 className="text-center mb-5 mt-5 text-primary fw-bold">Edit Profile</h2>
+  <div className="container mt-5 mb-5 background" style={style.background}>
+
+      <h2 className="text-center mb-5 mt-5 text-primary text-dark fw-bold">Edit Profile</h2>
       <div className="row">
         <div className="col-md-6 mb-3">
           <div className="input-group mt-4">
-            <input type="file" className="form-control" id="inputGroupFile01" onChange={handleImageUpload} />
+            <input type="file" className="form-control files" id="inputGroupFile01" onChange={handleImageUpload} />
           </div>
           <label className="form-label fw-bold">User Name</label>
           <div className="input-group flex-nowrap">
@@ -91,9 +92,12 @@ const EditProfile = () => {
       </div>
 
       <div className="mt-5 text-end">
-        <button className="btn btn-warning me-2 fw-bold">Save Changes</button>
-       <Link to={'/profile'}> <button className="btn btn-secondary fw-bold">Cancel</button></Link>
-      </div>
+  <button className="btn btn-warning me-2 fw-bold">Save Changes</button>
+  <Link to="/profile">
+    <button className="btn btn-outline-dark fw-bold">Cancel</button>
+  </Link>
+</div>
+
     </div>
   );
 };

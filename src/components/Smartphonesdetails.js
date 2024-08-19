@@ -35,10 +35,10 @@ export default function SmartphonesDetails() {
   }
 
   return (
-    <div className="container-fluid" style={{ backgroundColor: '#F7EFE5' }}>
-      <div className="container" style={{ backgroundColor: '#F7EFE5' }}>
+    <div className="container-fluid" style={{background: 'linear-gradient(135deg, #f3ebdf, #f3aa5796, #431d03)' }}>
+      <div className="container" style={{ backgroundColor: 'transparent' }}>
         <h2 className="fw-bold pb-3">{smartphone.title}</h2>
-        <div className="row" style={{ backgroundColor: '#F7EFE5' }}>
+        <div className="row" style={{ backgroundColor: 'transparent' }}>
           <div className="col-md-6">
             <img src={smartphone.thumbnail} className="img-fluid p-3" alt={smartphone.title} style={{ width: '100%', height: '400px', objectFit: 'contain' }} />
           </div>
