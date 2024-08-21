@@ -8,7 +8,7 @@ const Header = () => {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2">
         <div className="container-fluid">
-          <Link className="navbar-brand fw-bold s-1" to="/">Wallyt</Link>
+          <Link className="navbar-brand fw-bold s-1" to="/" style={{color:'#f15921',fontSize:'30px'}}>Wallyt</Link>
           <button
             className="navbar-toggler"
             type="button"

@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap is imported
 import img from './images/0ab2a47a-0b9f-45af-b31f-0fa492e123ca-removebg-preview.png';
+import './Contact.css'
 export default function About() {
   return (
     <div className='container mt-5 mb-5'>
@@ -20,7 +21,8 @@ export default function About() {
               <label htmlFor="message" className="form-label">Send us a message</label>
               <textarea className="form-control" id="message" rows="3"></textarea>
             </div><div class="text-box">
-    <button className="btn btn-warning btn-animate" >Sumbit</button>
+
+            <button class="button" >Submit</button>
 </div>
           </form>
         </div>

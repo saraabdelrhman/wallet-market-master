@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap is imported
-import img from './images/hands.jpg';
+import img from './images/istockphoto-1346944001-612x612.jpg';
 
 const About = () => {
   return (
@@ -21,7 +21,7 @@ const About = () => {
           </p>
         </div>
         <div className="col-md-6">
-          <img src={img} alt='who-are-we' className='w-100' />
+          <img src={img} alt='who-are-we' className='w-100 h-100' />
         </div>
       </div>
     </div>
