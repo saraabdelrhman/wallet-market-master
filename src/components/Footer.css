@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+.footer {
+  background: linear-gradient(135deg, #f5af1993, #f1271177); /* Gradient background matching your provided design */
+  color: #333;
+  padding-top: 60px;
+  padding-bottom: 40px;
+  font-family: 'Poppins', sans-serif; 
+  position: relative;
+}
+
+.footer-wave {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 100%;
+  height: auto; /* Ensure it maintains the aspect ratio */
+  overflow: hidden;
+  line-height: 0;
+}
+
+.footer-wave svg {
+  position: relative;
+  display: block;
+  width: 100%; /* Ensure it fills the container's width */
+  height: auto; /* Maintain aspect ratio */
+  transform: scaleY(-1); /* Flip the wave vertically */
+}
+
+.footer h5 {
+  margin-top: 110px;
+  font-weight: 700;
+  margin-bottom:5px;
+  color: #000;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer ul li {
+  margin-bottom: 7px;
+}
+
+.footer ul li a {
+  color: #000;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer ul li a:hover {
+  color: #555;
+}
+
+.footer .social-icons a {
+  font-size: 1.5rem;
+  margin-right: 10px;
+  color: #000;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.footer .social-icons a:hover {
+  color: #555;
+}
+
+.footer .newsletter-signup {
+  display: flex;
+  margin-top: 10px;
+}
+
+.footer .newsletter-signup input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+}
+
+.footer .newsletter-signup button {
+  border-radius: 0 5px 5px 0;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  background-color: #000;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+.footer .newsletter-signup button:hover {
+  background-color: #333;
+}
+
+.footer .legal-links {
+  margin-top: 20px;
+}
+
+.footer .legal-links a {
+  margin: 0 10px;
+  color: #000;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer .legal-links a:hover {
+  color: #555;
+}
+
+.footer p {
+  color: #333;
+}
+
+@media (max-width: 767px) {
+  .footer-wave {
+    display: none; /* Hide the wave on screens smaller than 767px */
+  }
+  
+.footer h5 {
+    margin-top: 10px;
+}
+}

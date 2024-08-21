@@ -1,0 +1,116 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e8ecee;
+    color: #343a40;
+  }
+  
+  h3 {
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #212529;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  h3 .icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: #ff4500; /* Color to match the buttons or another accent color */
+  }
+  
+  
+  .card-title {
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    color: #495057;
+  }
+  
+  .list-group-item {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #6c757d;
+    border: none;
+    padding-left: 0;
+  }
+  
+  .btn-outline-primary {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  .card {
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+  
+  .card:hover {
+    box-shadow: 0 10px 30px rgba(130, 129, 129, 0.473), /* Top shadow */
+                0 20px 40px rgb(185, 184, 184); /* Bottom shadow */
+    transform: translateY(-4px); /* Lift the card slightly to enhance the 3D effect */
+    cursor: pointer;
+  }
+  
+  
+  .btn-custom {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    background-color: #ff4400c7; /* Bold, standout color */
+    color: #fff;
+    border: 2px solid #ff4500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px; /* Slightly rounded edges */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-custom:hover {
+    background-color: #fff;
+    color: #ff4500;
+    border: 2px solid #ff4500;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px); /* Slightly lift on hover */
+  }
+  
+  .btn-custom:active {
+    background-color: #c03c00;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(1px); /* Press down effect */
+  }
+
+
+  h3.text-center {
+    position: relative;
+    display: flex; /* Use flexbox to center content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+  
+  h3.text-center::before,
+  h3.text-center::after {
+    content: "";
+    flex-grow: 1; /* Allow the lines to grow and fill available space */
+    height: 2px; /* Thickness of the line */
+    background-color: #000; /* Color of the line */
+    margin: 0 15px; /* Space between the text and lines */
+  }
+  
+  .icon {
+    margin-right: 10px; /* Optional: Add some space between the icon and the text */
+  }
+  

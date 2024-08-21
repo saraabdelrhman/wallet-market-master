@@ -1,0 +1,22 @@
+h3.text-center {
+    position: relative;
+    display: flex; /* Use flexbox to center content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+  
+  h3.text-center::before,
+  h3.text-center::after {
+    content: "";
+    flex-grow: 1; /* Allow the lines to grow and fill available space */
+    height: 2px; /* Thickness of the line */
+    background-color: #000; /* Color of the line */
+    margin: 0 15px; /* Space between the text and lines */
+  }
+  
+  .icon {
+    margin-right: 10px; /* Optional: Add some space between the icon and the text */
+  }
+  

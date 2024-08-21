@@ -1,45 +1,52 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+import './Content.css';  // Import the custom CSS file
 
 const categories = [
   {
     title: "Smartphones",
     icon: "fas fa-mobile-alt",
     subcategories: ["Samsung", "Apple", "OnePlus"],
-    link: "/smartphones"  // This should match the route in App.js
+    link: "/smartphones"
   },
   {
     title: "Kitchen Appliances",
     icon: "fas fa-blender",
     subcategories: ["Refrigerators", "Ovens", "Blenders"],
-    link: "/kitchen"  // This should match the route in App.js
+    link: "/kitchen"
   },
 ];
 
 const Content = () => {
   return (
-    <div className='container mt-5 mb-5' style={{ cursor: 'pointer' }}>
-      <h3 className='fw-bold text-center mb-5 mt-5 '>Explore Categories</h3>
-      <div className='row'>
+    <div className="container mt-5 mb-5">
+     <h3 className="fw-bold text-center mb-5 mt-5">
+  <i className="fas fa-th icon"></i> {/* Using grid icon */}
+  Explore Categories
+</h3>
+
+      <div className="row">
         {categories.map((category, index) => (
-          <div key={index} className="col-md-4 mb-4">
-            <div className="card h-100 rounded-4">
-              <div className="card-body">
-                <h5 className="card-title">
-                  <i className={category.icon + " me-2 text-warning"}></i>
-                  {category.title}
-                </h5>
-                <ul className="list-group list-group-flush">
+          <div key={index} className="col-md-6 col-lg-4 mb-1">
+            <div className="card h-100 shadow-sm border-0 rounded-4 hover-shadow">
+              <div className="card-body d-flex flex-column">
+                <div className="d-flex align-items-center mb-3">
+                  <i className={`${category.icon} me-3 text-primary fs-2`}></i>
+                  <h5 className="card-title mb-0 text-uppercase">{category.title}</h5>
+                </div>
+                <ul className="list-group list-group-flush mb-3">
                   {category.subcategories.map((subcategory, subindex) => (
-                    <li key={subindex} className="list-group-item">
-                      <p className="text-dark mb-0">{subcategory}</p>
+                    <li key={subindex} className="list-group-item border-0 px-0 py-1">
+                      <span className="text-muted">{subcategory}</span>
                     </li>
                   ))}
                 </ul>
-                <Link to={category.link} className="btn btn-danger mt-3">
-                  Explore {category.title}
-                </Link>
+                <div className="mt-auto">
+                  <Link to={category.link} className="btn btn-custom w-100">
+                    Explore {category.title}
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

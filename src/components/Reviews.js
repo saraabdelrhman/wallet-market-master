@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
+import './Reviews.css';  // Import the custom CSS file
+
 const reviews = [
   {
     initial: 'L',
@@ -49,15 +51,16 @@ const reviews = [
 const Reviews = () => {
   return (
     <div className="container mt-5 mb-5">
-      <div className="text-center mb-4 mt-5">
-        <h3 className="fw-bold mb-5">Recent reviews</h3>
-      </div>
+      <h3 className="fw-bold text-center mb-5 mt-5">
+  <i className="fas fa-th icon"></i> {/* Using grid icon */}
+  Recent Reviews
+</h3>
       <div className="row">
         {reviews.map((review, index) => (
-          <div key={index} className="col-md-4 mb-4">
+          <div key={index} className="col-md-4 mb-3">
             <div className="card h-100 rounded-4">
               <div className="card-body">
-                <div className="d-flex align-items-center mb-3">
+                <div className="d-flex align-items-center mb-1">
                   <div className={`${review.color} text-white me-3`} style={{
                     width: '40px',
                     height: '40px',
