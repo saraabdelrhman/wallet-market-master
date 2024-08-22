@@ -35,7 +35,7 @@ const Content = () => {
                   <i className={`${category.icon} me-3 text-primary fs-2`}></i>
                   <h5 className="card-title mb-0 text-uppercase">{category.title}</h5>
                 </div>
-                <ul className="list-group list-group-flush mb-3">
+                <ul className="list-group list-group-flush  ms-3 mb-3">
                   {category.subcategories.map((subcategory, subindex) => (
                     <li key={subindex} className="list-group-item border-0 px-0 py-1">
                       <span className="text-muted">{subcategory}</span>
