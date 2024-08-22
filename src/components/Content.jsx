@@ -42,7 +42,7 @@ const Content = () => {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-auto">
+                <div className="mt-auto ms-3 ms-2">
                   <Link to={category.link} className="btn btn-custom w-100">
                     Explore {category.title}
                   </Link>
