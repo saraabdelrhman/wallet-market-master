@@ -52,7 +52,7 @@ export default function SmartphonesDetails() {
            
   <button className="button mt-2" > Add to Cart 🛒</button>
 
-            <Link to="/phonereview" className='buttone link-underline link-underline-opacity-0 ms-4'>Add Review ⭐</Link> {/* Fixed the Link */}
+            <Link to="/phonereview" className='buttone link-underline link-underline-opacity-0 '>Add Review ⭐</Link> {/* Fixed the Link */}
           </div>
         </div>
       </div>
