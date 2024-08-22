@@ -22,7 +22,7 @@ export default function About() {
               <textarea className="form-control" id="message" rows="3"></textarea>
             </div><div class="text-box">
 
-            <button class="button" >Submit</button>
+            <button class="buttons" >Submit</button>
 </div>
           </form>
         </div>

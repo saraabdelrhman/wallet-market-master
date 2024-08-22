@@ -7,7 +7,7 @@ const About = () => {
 <div className="container mt-0 mb-5" >
       <div className="row justify-content-center">
         <div className="col-lg-12 col-xl-10"> 
-          <div className="card p-5 bigger-card " style={{ background: 'linear-gradient(135deg, #f5af1993, #f1271175)' }}> 
+          <div className="carde p-5 bigger-card " style={{ background: 'linear-gradient(135deg, #f5af1993, #f1271175)' }}> 
             <h3 className="mb-4 text-center" style={{ fontWeight: '900' }}>Register</h3>
             <div className="mb-3 " >
               <label htmlFor="email" className="form-label">Email address</label>

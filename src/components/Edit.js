@@ -38,9 +38,11 @@ const EditProfile = () => {
   return (
   <div className="container mt-5 mb-5 background" style={style.background}>
 
-      <h2 className="text-center mb-5 mt-5 text-primary text-dark fw-bold">Edit Profile</h2>
-      <div className="row">
+
+      <div className="row p-5" style={{  background: 'linear-gradient(135deg, #f5af1993, #f1271177)'}}>
+      <h3 className="text-center mb-5 mt-5 text-primary text-dark fw-bold" >Edit Profile</h3>
         <div className="col-md-6 mb-3">
+          
           <div className="input-group mt-4">
             <input type="file" className="form-control files" id="inputGroupFile01" onChange={handleImageUpload} />
           </div>
@@ -89,14 +91,15 @@ const EditProfile = () => {
             ></textarea>
           </div>
         </div>
-      </div>
-
-      <div className="mt-5 text-end">
-  <button className="btn btn-warning me-2 fw-bold">Save Changes</button>
+        <div className="mt-5 text-end">
+  <button className="btn btn-dark me-2 fw-bold me-2 fw-bold">Save Changes</button>
   <Link to="/profile">
     <button className="btn btn-outline-dark fw-bold">Cancel</button>
   </Link>
 </div>
+      </div>
+
+   
 
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import '../Smartphones.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function SmartphonesDetails() {
@@ -48,8 +49,10 @@ export default function SmartphonesDetails() {
             <p className="card-text"><strong>Price:</strong> <span className="text-danger">${smartphone.price}</span></p>
             <p className="card-text"><strong className="fw-bold">Rating:</strong> <span className="text-danger fw-bold">{smartphone.rating} ⭐</span></p>
             <p className="card-text"><strong>Stock:</strong> {smartphone.stock} units available</p>
-            <button className='btn btn-danger mt-2'>Add to Cart</button>
-            <Link to="/phonereview" className='btn btn-warning mt-2 ms-3'>Add Review</Link> {/* Fixed the Link */}
+           
+  <button className="button mt-2" > Add to Cart 🛒</button>
+
+            <Link to="/phonereview" className='buttone link-underline link-underline-opacity-0 ms-4'>Add Review ⭐</Link> {/* Fixed the Link */}
           </div>
         </div>
       </div>

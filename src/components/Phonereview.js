@@ -32,7 +32,7 @@ export default function PhoneReview() {
     <div className="container mt-5">
      
 
-      <h3 className="fw-bold mt-5">User Reviews</h3>
+      <h3 className="fw-bold mt-5">User Reviews ⭐</h3>
       {reviews.length === 0 ? (
         <p>No reviews yet. Be the first to leave a review!</p>
       ) : (
@@ -73,7 +73,7 @@ export default function PhoneReview() {
             <option value="1">1 - Terrible</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-warning">Submit Review</button>
+        <button type="submit" className="btn btn-warning mb-5">Submit Review</button>
       </form>
     </div>
   );

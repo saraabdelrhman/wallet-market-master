@@ -1,4 +1,4 @@
-.button {
+.buttons {
     display: inline-block;
     padding: .75rem 1.25rem;
     border-radius: 10rem;
@@ -12,7 +12,7 @@
     z-index: 1;
   }
   
-  .button::after {
+  .buttons::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -24,7 +24,7 @@
     z-index: -2;
   }
   
-  .button::before {
+  .buttons::before {
     content: '';
     position: absolute;
     bottom: 0;
@@ -37,11 +37,11 @@
     z-index: -1;
   }
   
-  .button:hover {
+  .buttons:hover {
     color: #fff;
   }
   
-  .button:hover::before {
+  .buttons:hover::before {
     width: 100%;
   }
   
