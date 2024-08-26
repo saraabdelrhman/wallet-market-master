@@ -12,7 +12,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-wave">
         <svg viewBox="0 0 1440 320" transform="scale(1, -1)">
-          <path fill="#e8ecee" fillOpacity="1"
+          <path fill="#E8ECEE" fillOpacity="1"
           d="M0,256L48,240C96,224,192,192,288,160C384,128,480,96,576,101.3C672,107,768,149,864,176C960,203,1056,213,
           1152,192C1248,171,1344,117,1392,90.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320
           ,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
