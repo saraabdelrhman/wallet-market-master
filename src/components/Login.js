@@ -1,7 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Register.css'; // Import the custom CSS file
-
+import { Link } from 'react-router-dom';
+import Forgotpass from './Forgotpass';
 const About = () => {
   return (
     <div className="container mt-0 mb-5">
@@ -19,7 +20,8 @@ const About = () => {
             </div>
             <button className="btn btn-dark w-100 mb-3">Continue with Email</button>
             <button className="btn btn-dark w-100">Continue with Facebook</button>
-            <button className="btn btn-dark w-100 mt-3">Continue with Google</button>
+            <button className="btn btn-dark w-100 mt-3 mb-2">Continue with Google</button>
+            <Link className='mt-5 pt-2 link-underline link-underline-opacity-0 text-danger fw-bold' to={'/Forgotpass'}> Forgot your password?</Link>
           </div>
         </div>
       </div>

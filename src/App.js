@@ -19,6 +19,7 @@ import NotFound from './components/Notfound';
 import Comments from './components/Comments';
 import Reports from './components/Reports';
 import Helpful from './components/Helpful';
+import Forgotpass from './components/Forgotpass';
 function App() {
   return (
     <Router>
@@ -44,6 +45,7 @@ function App() {
              <Route path="/Comments" element={<Comments/>} />
              <Route path="/Reports" element={<Reports/>} />
              <Route path="/Helpful" element={<Helpful/>} />
+             <Route path="/Forgotpass" element={<Forgotpass/>} />
 
 
              <Route path='*' element={<NotFound/>}/>
