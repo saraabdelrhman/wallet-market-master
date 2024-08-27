@@ -12,7 +12,13 @@ import Smartphones from './components/Smartphones';
 import Kitchen from './components/Kitchen'; 
 import Edit from './components/Edit';
 import SmartphonesDetails from './components/Smartphonesdetails';
-import PhoneReview from './components/Phonereview'; // Updated import
+import PhoneReview from './components/Phonereview';
+import Categories from './components/Categories';
+import Products from './components/Products';
+import NotFound from './components/Notfound';
+import Comments from './components/Comments';
+import Reports from './components/Reports';
+import Helpful from './components/Helpful';
 function App() {
   return (
     <Router>
@@ -32,6 +38,15 @@ function App() {
 
             <Route path="/smartphones/:id" element={<SmartphonesDetails />} />
              <Route path="/phonereview" element={<PhoneReview />} />
+             <Route path="/reviews" element={<PhoneReview />} />
+             <Route path="/categories" element={<Categories/>} />
+             <Route path="/Products" element={<Products/>} />
+             <Route path="/Comments" element={<Comments/>} />
+             <Route path="/Reports" element={<Reports/>} />
+             <Route path="/Helpful" element={<Helpful/>} />
+
+
+             <Route path='*' element={<NotFound/>}/>
 
           </Routes>
         </main>

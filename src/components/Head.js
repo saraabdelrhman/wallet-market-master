@@ -72,6 +72,7 @@ const Head = () => {
               </div>
             </form>
             <div className="search-suggestions">
+              
               {SearchData.map((data, index) => (
                 <div
                   key={index}
