@@ -2,10 +2,10 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Register.css';
 import * as Yup from 'yup';
-import { useFormik } from 'formik';
+import { Formik, useFormik } from 'formik';
+import { Link } from 'react-router-dom';
 
 const About = () => {
-  // Formik setup
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -22,7 +22,7 @@ const About = () => {
     onSubmit: (values) => {
       console.log('Form values:', values);
       handleRegister(values);
-    },
+    }, 
   });
 
   const handleRegister = (data) => {
@@ -32,7 +32,7 @@ const About = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*' // This is not effective for CORS issues
+        'Access-Control-Allow-Origin': '*' 
       },
       body: JSON.stringify(data),
     })
@@ -67,7 +67,8 @@ const About = () => {
                   className="form-control"
                   id="email"
                   placeholder="Enter your email"
-                  {...formik.getFieldProps('email')}
+                  {...formik.getFieldProps('email')}  //function call returns an object that contains properties (name, value, onChange, onBlur, etc.)
+                  // necessary to make the input field work seamlessly with Formik's state management.]
                 />
                 {formik.touched.email && formik.errors.email ? (
                   <div className="text-danger">{formik.errors.email}</div>
@@ -89,6 +90,9 @@ const About = () => {
               <button type="submit" className="btn btn-dark w-100 mb-3">Continue with Email</button>
               <button className="btn btn-dark w-100 mb-3">Continue with Google</button>
               <button className="btn btn-dark w-100 mb-3">Continue with Facebook</button>
+              <Link className="mt-5 pt-2 link-underline link-underline-opacity-0  text-dark" to={'/Login'}>
+              Already have an account?   <span className='text-danger fw-bold' > Login</span>
+            </Link>
             </form>
           </div>
         </div>

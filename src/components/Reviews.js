@@ -5,6 +5,10 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 import './Reviews.css';  // Import the custom CSS file
 
+
+// const handlereview(data)=>{
+//   fetch('')
+// }
 const reviews = [
   {
     initial: 'L',
