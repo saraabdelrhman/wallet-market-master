@@ -20,6 +20,7 @@ import Comments from './components/Comments';
 import Reports from './components/Reports';
 import Helpful from './components/Helpful';
 import Forgotpass from './components/Forgotpass';
+import Notifications from './components/Notifications';
 function App() {
   return (
     <Router>
@@ -46,6 +47,7 @@ function App() {
              <Route path="/Reports" element={<Reports/>} />
              <Route path="/Helpful" element={<Helpful/>} />
              <Route path="/Forgotpass" element={<Forgotpass/>} />
+             <Route path="/Notifications" element={<Notifications/>} />
 
 
              <Route path='*' element={<NotFound/>}/>

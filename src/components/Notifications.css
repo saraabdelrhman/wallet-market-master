@@ -1,0 +1,32 @@
+.notifications-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .notifications-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .notifications-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .notifications-list li.read {
+    color: gray;
+  }
+  
+  .notifications-list li.unread {
+    font-weight: bold;
+  }
+  
+  .notifications-list li a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .notifications-list li a:hover {
+    text-decoration: underline;
+  }
+  
