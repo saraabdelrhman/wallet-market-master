@@ -36,7 +36,7 @@ const Notifications = () => {
   };
 
   return (
-    <div className="notifications">
+    <div className="notifications container">
       <h2 className="mb-5 mt-2 fw-bold">Notifications 🔔</h2>
       <ul className="notifications-list mb-5">
         {notifications.map(notification => (
@@ -46,7 +46,7 @@ const Notifications = () => {
             </Link>
             {!notification.read && (
               <button
-                className="text-danger mb-4 "
+                className="bg-danger text-light border-0 mb-4 "
                 onClick={() => markAsRead(notification.id)}
               >
                 Mark as read

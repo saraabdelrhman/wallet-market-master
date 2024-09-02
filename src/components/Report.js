@@ -1,105 +1,137 @@
 import React, { useState } from 'react';
-import { Bounce, ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap CSS import
+import img from './images/0ab2a47a-0b9f-45af-b31f-0fa492e123ca-removebg-preview.png';
+import './Contact.css';
+import { ToastContainer, toast, Bounce } from 'react-toastify'; // Import Toast components
+import 'react-toastify/dist/ReactToastify.css'; // Toastify CSS import
 
-export default function PhoneReport() {
-  const [report, setReport] = useState('');
+export default function About() {
+  // State variables for form input
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleReportChange = (e) => setReport(e.target.value);
+  // Success notification function
+  const notifySuccess = () =>
+    toast.success('Thank you for your review! Your feedback has been submitted successfully!', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+
+  // Error notification function
+  const notifyError = (msg) =>
+    toast.error(msg, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent form from submitting the default way
 
-    if (!report.trim()) {
-      toast.error('Report content cannot be empty.', {
-        position: 'top-center',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-        transition: Bounce,
-      });
-      return;
+    // Validate inputs
+    if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+      notifyError('All fields are required!');
+      return; // Exit the function if validation fails
     }
 
-    const newReport = {
-      report: report,
-      Created_at:  new Date().toISOString(),
+    const newdata = {
+      name: name,
+      email: email,
+      message: message,
     };
 
-    fetch('http://localhost:3000/api/report', {
-      method: 'post',
+    console.log(newdata);
+
+    fetch('http://localhost:3000/api/contact', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
       },
-      body: JSON.stringify(newReport),
+      body: JSON.stringify(newdata),
     })
-      .then((res) => {
-        console.log('Status:', res.status);
-        console.log('Headers:', res.headers);
-        if (!res.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log('Response data:', data);
-        
-        // Notify the user of successful submission
-        toast.success('Report submitted successfully!', {
-          position: 'top-center',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-          transition: Bounce,
-        });
-
-        // Clear the input field after successful submission
-        setReport('');
-      })
-      .catch((err) => {
-        console.error('Error:', err.message);
-
-        toast.error('An error occurred while submitting your report.', {
-          position: 'top-center',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light',
-          transition: Bounce,
-        });
-      });
+    .then((res) => {
+      console.log(res.headers);
+      console.log(res.status);
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return res.json();
+    })
+    .then((data) => {
+      console.log('data', data);
+      notifySuccess();  // Show success notification
+      setName(''); // Reset form fields
+      setEmail('');
+      setMessage('');
+    })
+    .catch((err) => {
+      console.error('Error:', err.message);
+      notifyError('An error occurred while submitting your message. Please try again later.');
+    });
   };
 
   return (
-    <div className="container mt-5">
-      <h2 className="fw-bold mb-4">Submit a New Report</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="report" className="form-label fw-bold">Report Content</label>
-          <textarea
-            id="report"
-            className="form-control"
-            rows="4"
-            placeholder="Write your report here..."
-            value={report}
-            onChange={handleReportChange}
-          ></textarea>
+    <div className='container mt-5 mb-5'>
+      <div className='row'>
+        <div className='col-md-6'>
+          <form onSubmit={handleSubmit}>
+            <h2 className='mb-4' style={{ fontWeight: '900' }}>Contact Us</h2>
+            <div className="mb-3">
+              <label htmlFor="name" className="form-label">Name</label>
+              <input 
+                type="text" 
+                className="form-control" 
+                id="name" 
+                value={name}
+                onChange={(e) => setName(e.target.value)} // Update state on change
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+              <input 
+                type="email" 
+                className="form-control" 
+                id="exampleInputEmail1" 
+                aria-describedby="emailHelp" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)} // Update state on change
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="message" className="form-label">Send us a message</label>
+              <textarea 
+                className="form-control" 
+                id="message" 
+                rows="3" 
+                value={message}
+                onChange={(e) => setMessage(e.target.value)} // Update state on change
+              ></textarea>
+            </div>
+            <div className="text-box">
+              <button type="submit" className="btn btn-primary buttons">Submit</button>
+            </div>
+          </form>
         </div>
-        <button type="submit" className="btn btn-warning mb-5">Submit Report</button>
-        <ToastContainer />
-      </form>
+        <div className='col-md-6'>
+          <img src={img} alt='contact-us' className='w-100' />
+        </div>
+      </div>
+      <ToastContainer /> {/* Ensure ToastContainer is rendered here */}
     </div>
   );
 }
