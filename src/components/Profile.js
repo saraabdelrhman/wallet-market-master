@@ -11,6 +11,8 @@ const Profile = () => {
     bio: 'Experienced Frontend Developer with a passion for creating interactive and user-friendly web applications. Proficient in HTML, CSS, JavaScript, and React.',
     avatar: defaultImg,
     role: 'Frontend Developer',
+  currentYear :new Date().getFullYear()
+    
   });
 
   return (
@@ -21,6 +23,7 @@ const Profile = () => {
           <h3 className="fw-bold mt-3 text-dark">{user.name}</h3>
           <p className="text-muted mb-1">{user.email}</p>
           <h5 className="text-light fw-semibold">{user.role}</h5>
+          <p className="text-light fw-semibold">{user.currentYear}</p>
           <p className="mt-3 text-muted">{user.bio}</p>
           
           <div className="mt-4">

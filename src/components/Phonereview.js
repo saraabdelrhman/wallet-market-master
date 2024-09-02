@@ -1,7 +1,7 @@
-import { error } from 'ajv/dist/vocabularies/applicator/dependencies';
 import React, { useState } from 'react';
 import { Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 export default function PhoneReview() {
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState('5');
@@ -10,67 +10,69 @@ export default function PhoneReview() {
   const handleCommentChange = (e) => {
     setComment(e.target.value);
   };
+
   const handleRatingChange = (e) => {
     setRating(e.target.value);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const newReview = {
       id: reviews.length + 1,
+      user_id:'anonynous',
       comment: comment,
       rating: rating,
+      createdAt: new Date().toISOString(), // Get current time in ISO format
     };
-    console.log('Data to be sent:',newReview)
-    fetch('http://localhost:3000/api/register',{
-      method:'post',
-      headers:{
-         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+    
+    console.log('Data to be sent:', newReview);
+    
+    fetch('http://localhost:3000/api/register', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify(newReview),
-
-    }).then(res=>{
-      console.log(res.status)
-      console.log(res.headers)
-      if(!res.ok)
-       {
-        throw new error('Network response was not ok')
-       }
-       return res.json()
     })
-    .then(newReview=>{
-      console.log('Response data:',newReview)
+    .then(res => {
+      console.log(res.status);
+      console.log(res.headers);
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return res.json();
     })
-    .catch(err=>{
-      console.error('Error:', err.message)
-    }
-
-    )
+    .then(data => {
+      console.log('Response data:', data);
+    })
+    .catch(err => {
+      console.error('Error:', err.message);
+    });
 
     setReviews([...reviews, newReview]);
 
     setComment('');
     setRating('5');
+    notify(); // Show the toast notification
   };
-    const notify = () =>
-      toast.success('Thank you for your review! Your feedback has been submitted successfully!', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-        });
 
+  const notify = () =>
+    toast.success('Thank you for your review! Your feedback has been submitted successfully!', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
 
   return (
     <div className="container mt-5">
-     
-
       <h3 className="fw-bold mt-5">User Reviews ⭐</h3>
       {reviews.length === 0 ? (
         <p>No reviews yet. Be the first to leave a review!</p>
@@ -78,13 +80,15 @@ export default function PhoneReview() {
         reviews.map((review) => (
           <div key={review.id} className="card mb-3 rounded-3">
             <div className="card-body">
+              <p className="card-text">{review.user_id}</p>
               <p className="card-text">{review.comment}</p>
               <p className="card-text"><strong>Rating:</strong> {review.rating} ⭐</p>
+              <p className="card-text"><strong>Reviewed At:</strong> {new Date(review.createdAt).toLocaleString()}</p>
             </div>
           </div>
         ))
       )}
-       <h2 className="fw-bold mb-4">Add a Comment & Review</h2>
+      <h2 className="fw-bold mb-4">Add a Comment & Review</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="comment" className="form-label fw-bold">Comment</label>
@@ -112,10 +116,9 @@ export default function PhoneReview() {
             <option value="1">1 - Terrible</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-warning mb-5" onClick={notify}>Submit Review</button>
+        <button type="submit" className="btn btn-warning mb-5">Submit Review</button>
         <ToastContainer />
       </form>
     </div>
   );
 }
-

@@ -21,6 +21,7 @@ import Reports from './components/Reports';
 import Helpful from './components/Helpful';
 import Forgotpass from './components/Forgotpass';
 import Notifications from './components/Notifications';
+import Report from './components/Report';
 function App() {
   return (
     <Router>
@@ -48,6 +49,7 @@ function App() {
              <Route path="/Helpful" element={<Helpful/>} />
              <Route path="/Forgotpass" element={<Forgotpass/>} />
              <Route path="/Notifications" element={<Notifications/>} />
+             <Route path="/Report" element={<Report/>} />
 
 
              <Route path='*' element={<NotFound/>}/>
