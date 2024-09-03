@@ -28,7 +28,7 @@ const About = () => {
   const handleRegister = (data) => {
     console.log('Data to be sent:', data);
 
-    fetch('https://wallyt.com/api/register', {
+    fetch('https://wallyt.com/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
