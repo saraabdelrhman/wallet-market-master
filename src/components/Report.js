@@ -56,7 +56,7 @@ export default function About() {
 
     console.log(newdata);
 
-    fetch('http://localhost:3000/api/contact', {
+    fetch('https://wallyt.com/api/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

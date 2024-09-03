@@ -62,7 +62,7 @@ const EditProfile = () => {
     });
 
   const handleSaveChanges = () => {
-    fetch('http://localhost:3000/api/editprofile', {
+    fetch('https://wallyt.com/api/editprofile', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

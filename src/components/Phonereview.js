@@ -28,7 +28,7 @@ export default function PhoneReview() {
     
     console.log('Data to be sent:', newReview);
     
-    fetch('http://localhost:3000/api/register', {
+    fetch('https://wallyt.com/api/register', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
