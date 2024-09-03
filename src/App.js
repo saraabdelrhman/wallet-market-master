@@ -10,7 +10,7 @@ import Profile from './components/Profile';
 import Head from './components/Head'; 
 import Smartphones from './components/Products';
 import Kitchen from './components/Kitchen'; 
-import Edit from './components/Editprofile';
+import Editprofile from './components/Editprofile';
 import SmartphonesDetails from './components/Smartphonesdetails';
 import PhoneReview from './components/Reviews';
 import Categories from './components/Categories';
@@ -35,7 +35,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/smartphones" element={<Smartphones />} />
             <Route path="/kitchen" element={<Kitchen />} /> 
-            <Route path="/edit" element={<Edit/>} />
+            <Route path="/editprofile" element={<Editprofile/>} />
 
             <Route path="/smartphones/:id" element={<SmartphonesDetails />} />
              <Route path="/phonereview" element={<PhoneReview />} />
