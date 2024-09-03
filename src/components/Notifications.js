@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './Notifications.css';
 import { Link } from 'react-router-dom';
+import './Notifications.css';
 
 const Notifications = () => {
   const fakeData = [
@@ -36,17 +36,26 @@ const Notifications = () => {
   };
 
   return (
-    <div className="notifications container">
-      <h2 className="mb-5 mt-2 fw-bold">Notifications 🔔</h2>
-      <ul className="notifications-list mb-5">
+    <div className="notifications container mt-5">
+      <h2 className="mb-4 fw-bold text-center">Notifications 🔔</h2>
+      <ul className="notifications-list list-group">
         {notifications.map(notification => (
-          <li key={notification.id} className={notification.read ? 'read' : 'unread'}>
-            <Link to="#" onClick={() => markAsRead(notification.id)}>
+          <li
+            key={notification.id}
+            className={`list-group-item d-flex justify-content-between align-items-center ${
+              notification.read ? 'read' : 'unread'
+            }`}
+          >
+            <Link
+              to="#"
+              onClick={() => markAsRead(notification.id)}
+              className={`notification-message ${notification.read ? 'text-muted' : 'text-dark'}`}
+            >
               {notification.message}
             </Link>
             {!notification.read && (
               <button
-                className="bg-danger text-light border-0 mb-4 "
+                className="btn btn-sm btn-outline-secondary ms-3"
                 onClick={() => markAsRead(notification.id)}
               >
                 Mark as read
