@@ -1,103 +1,208 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import React, { useState, useEffect } from 'react';
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import './Reviews.css';  // Import the custom CSS file
+export default function PhoneReview() {
+  const [comment, setComment] = useState('');
+  const [rating, setRating] = useState('5');
+  const [reviews, setReviews] = useState([]);
+  const [commentText, setCommentText] = useState('');
+  const [comments, setComments] = useState({}); 
 
+  // Replace with your actual product ID
+  const productId = '1';
 
-// const handlereview(data)=>{
-//   fetch('')
-// }
-const reviews = [
-  {
-    initial: 'L',
-    name: 'Lauren Tuttle',
-    company: 'ANEWAL',
-    review: 'Great service, easy to order, fast response. Very happy.',
-    rating: 5,
-    color: 'bg-warning'
-  },
-  {
-    initial: 'A',
-    name: 'Alan Daly',
-    company: 'Roborock',
-    review: 'Vacuum Dock has broken twice in 9 months. Having to return it to be repaired is inconvenient and should not happen on an item this expensive. Second time they...',
-    rating: 2,
-    color: 'bg-secondary'
-  },
-  {
-    initial: 'V',
-    name: 'Vinayak Sharma',
-    company: 'Rentickle',
-    review: 'Worst renting app ever. They are just thief, they kept all of my security deposit and even charged more when I applied for return. Then even if I paid the rent ...',
-    rating: 1,
-    color: 'bg-danger'
-  },
-  {
-    initial: 'M',
-    name: 'michael moat',
-    company: 'Prestige Flowers',
-    review: 'Good service, delivered on time, recipient delighted with the flowers.',
-    rating: 5,
-    color: 'bg-success'
-  },
-  {
-    initial: 'D',
-    name: 'David Lye',
-    company: 'Britannia Parking',
-    review: 'Paid for a parking ticket in March 2020 in Bexleyheath but received a parking ticket. I appealed this and sent proof and appeal was accepted. 4 and a half years...',
-    rating: 2,
-    color: 'bg-warning'
-  }
-];
+  // Fetch reviews when the component mounts
+  useEffect(() => {
+    fetch(`https://wallyt.com/reviews/${productId}`)
+      .then(res => res.json())
+      .then(data => setReviews(data))
+      .catch(err => console.error('Error fetching reviews:', err));
+  }, []);
 
-const Reviews = () => {
+  // Function to fetch comments for a specific review
+  const fetchComments = (reviewId) => {
+    fetch(`https://wallyt.com/comments/${reviewId}`)
+      .then(res => res.json())
+      .then(data => {
+        setComments(prev => ({ ...prev, [reviewId]: data }));
+      })
+      .catch(err => console.error('Error fetching comments:', err));
+  };
+
+  const handleCommentChange = (e) => {
+    setComment(e.target.value);
+  };
+
+  const handleRatingChange = (e) => {
+    setRating(e.target.value);
+  };
+
+  const handleSubmitReview = (e) => {
+    e.preventDefault();
+
+    const newReview = {
+      user_id: 'anonymous',
+      comment: comment,
+      rating: rating,
+      createdAt: new Date().toISOString(),
+    };
+
+    // Submit the new review
+    fetch('https://wallyt.com/reviews', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify(newReview),
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return res.json();
+    })
+    .then(data => {
+      setReviews([...reviews, data]); 
+      notify('Review submitted successfully!');
+    })
+    .catch(err => {
+      console.error('Error:', err.message);
+    });
+
+    setComment(''); 
+    setRating('5'); 
+  };
+
+  const handleSubmitComment = (e, reviewId) => {
+    e.preventDefault();
+
+    const newComment = {
+      user_id: 'anonymous',
+      text: commentText,
+      review_id: reviewId,
+      createdAt: new Date().toISOString(),
+    };
+
+    fetch('https://wallyt.com/comments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify(newComment),
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return res.json();
+    })
+    .then(data => {
+      const updatedComments = comments[reviewId] ? [...comments[reviewId], data] : [data];
+      setComments({ ...comments, [reviewId]: updatedComments });
+      setCommentText('');
+      notify('Comment submitted successfully!');
+    })
+    .catch(err => {
+      console.error('Error:', err.message);
+    });
+  };
+
+  const notify = (message) =>
+    toast.success(message, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+
   return (
-    <div className="container mt-5 mb-5">
-      <h3 className="fw-bold text-center mb-5 mt-5">
-  <i className="fas fa-th icon"></i> {/* Using grid icon */}
-  Recent Reviews
-</h3>
-      <div className="row">
-        {reviews.map((review, index) => (
-          <div key={index} className="col-md-4 mb-3">
-            <div className="card h-100 rounded-4">
-              <div className="card-body">
-                <div className="d-flex align-items-center mb-1">
-                  <div className={`${review.color} text-white me-3`} style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '1.2rem',
-                    fontWeight: 'bold'
-                  }}>
-                    {review.initial}
-                  </div>
-                  <div>
-                    <h6 className="mb-0">{review.name}</h6>
-                    <small className="text-muted">reviewed {review.company}</small>
+    <div className="container mt-5">
+      <h3 className="fw-bold mt-5">User Reviews ⭐</h3>
+      {reviews.length === 0 ? (
+        <p>No reviews yet. Be the first to leave a review!</p>
+      ) : (
+        reviews.map((review) => (
+          <div key={review.id} className="card mb-3 rounded-3">
+            <div className="card-body">
+              <p className="card-text"><strong>User:</strong> {review.user_id}</p>
+              <p className="card-text"><strong>Comment:</strong> {review.comment}</p>
+              <p className="card-text"><strong>Rating:</strong> {review.rating} ⭐</p>
+              <p className="card-text"><strong>Reviewed At:</strong> {new Date(review.createdAt).toLocaleString()}</p>
+
+              {/* Display Comments */}
+              <button
+                onClick={() => fetchComments(review.id)}
+                className="btn btn-link"
+              >
+                {comments[review.id] ? 'Hide Comments' : 'Show Comments'}
+              </button>
+
+              {comments[review.id] && comments[review.id].map((comment) => (
+                <div key={comment.id} className="card mt-2">
+                  <div className="card-body">
+                    <p className="card-text"><strong>User:</strong> {comment.user_id}</p>
+                    <p className="card-text"><strong>Comment:</strong> {comment.text}</p>
+                    <p className="card-text"><strong>Commented At:</strong> {new Date(comment.createdAt).toLocaleString()}</p>
                   </div>
                 </div>
-                <p>{review.review}</p>
-                <div className="d-flex">
-                  {Array.from({ length: review.rating }).map((_, i) => (
-                    <FontAwesomeIcon key={i} icon={faStar} className="text-warning me-1" />
-                  ))}
-                  {Array.from({ length: 5 - review.rating }).map((_, i) => (
-                    <FontAwesomeIcon key={i} icon={faStar} className="text-muted me-1" />
-                  ))}
+              ))}
+
+              {/* Add Comment */}
+              <form onSubmit={(e) => handleSubmitComment(e, review.id)}>
+                <div className="mb-3 mt-3">
+                  <textarea 
+                    className="form-control" 
+                    rows="2" 
+                    placeholder="Write your comment here..."
+                    value={commentText}
+                    onChange={(e) => setCommentText(e.target.value)}
+                  ></textarea>
                 </div>
-              </div>
+                <button type="submit" className="btn btn-warning">Submit Comment</button>
+              </form>
             </div>
           </div>
-        ))}
-      </div>
+        ))
+      )}
+      <h2 className="fw-bold mb-4">Add a Comment & Review</h2>
+      <form onSubmit={handleSubmitReview}>
+        <div className="mb-3">
+          <label htmlFor="comment" className="form-label fw-bold">Comment</label>
+          <textarea 
+            id="comment" 
+            className="form-control" 
+            rows="4" 
+            placeholder="Write your comment here..."
+            value={comment}
+            onChange={handleCommentChange}
+          ></textarea>
+        </div>
+        <div className="mb-3 mt-3">
+          <label htmlFor="rating" className="form-label fw-bold">Rating</label>
+          <select 
+            id="rating" 
+            className="form-select"
+            value={rating}
+            onChange={handleRatingChange}
+          >
+            <option value="5">5 - Excellent</option>
+            <option value="4">4 - Good</option>
+            <option value="3">3 - Average</option>
+            <option value="2">2 - Poor</option>
+            <option value="1">1 - Terrible</option>
+          </select>
+        </div>
+        <button type="submit" className="btn btn-warning mb-5">Submit Review</button>
+        <ToastContainer />
+      </form>
     </div>
   );
-};
-
-export default Reviews;
+}

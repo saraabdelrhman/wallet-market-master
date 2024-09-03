@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import img from './images/technology-emotions-gadgets-concept-cheerful-goodlooking-redhead-woman-dancing-with-hands-up-clo.jpg';
-import Reviews from './Reviews';
+import Mainreviews from './Mainreviews';
 import Content from './Content';
 import './Head.css';
 
@@ -17,7 +17,7 @@ const Head = () => {
 
   useEffect(() => {
     if (Search !== "") {
-      fetch(`https://dummyjson.com/products/search?q=${Search}`)
+      fetch(`https://wallyt.com/Products${Search}`)
         .then((res) => {
           if (!res.ok) {
             throw new Error('Product not found');
@@ -29,7 +29,7 @@ const Head = () => {
     }
   }, [Search]);
   const handleProductClick = (id) => {
-    navigate(`/smartphones/${id}`); // Navigate to the product details page
+    navigate(`/Products/${id}`); // Navigate to the product details page
   };
 
   const handleSubmit = (e) => {
@@ -87,7 +87,7 @@ const Head = () => {
         </div>
       </div>
       <Content />
-      <Reviews />
+      <Mainreviews />
     </div>
   );
 };

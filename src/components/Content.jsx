@@ -8,7 +8,7 @@ const categories = [
     title: "Smartphones",
     icon: "fas fa-mobile-alt",
     subcategories: ["Samsung", "Apple", "OnePlus"],
-    link: "/smartphones"
+    link: "/Products"
   },
   {
     title: "Kitchen Appliances",
