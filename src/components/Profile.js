@@ -5,15 +5,39 @@ import { Link } from 'react-router-dom';
 import defaultImg from './images/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png';
 
 const Profile = () => {
-  const [user] = useState({
+  const [user, setUser] = useState({
     name: 'Abdelrhman Shehata',
     email: 'abdelrhman.Shehata@gmail.com',
     bio: 'Experienced Frontend Developer with a passion for creating interactive and user-friendly web applications. Proficient in HTML, CSS, JavaScript, and React.',
     avatar: defaultImg,
     role: 'Frontend Developer',
-  currentYear :new Date().getFullYear()
-    
+    currentYear: new Date().getFullYear(),
   });
+
+  const handleProfileUpdate = () => {
+    const updatedProfile = { ...user };
+
+    fetch('https://wallyt.com/profile', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedProfile),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to update profile');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setUser(data); // Update state with the new profile data
+        alert('Profile updated successfully!');
+      })
+      .catch(error => {
+        console.error('Error updating profile:', error);
+      });
+  };
 
   return (
     <div className="container d-flex justify-content-center align-items-center vh-100 ">
@@ -30,7 +54,12 @@ const Profile = () => {
             <Link to="/edit">
               <button className="btn btn-light me-2 fw-bold">Edit Profile</button>
             </Link>
-            <button className="btn btn-outline-dark fw-bold">Delete Profile</button>
+            <button
+              className="btn btn-outline-dark fw-bold"
+              onClick={handleProfileUpdate}
+            >
+              Delete Profile
+            </button>
           </div>
         </div>
       </div>
