@@ -9,14 +9,12 @@ import Footer from './components/Footer';
 import Profile from './components/Profile';
 import Head from './components/Head'; 
 import Smartphones from './components/Products';
-import Kitchen from './components/Kitchen'; 
 import Editprofile from './components/Editprofile';
 import SmartphonesDetails from './components/Smartphonesdetails';
 import PhoneReview from './components/Reviews';
 import Categories from './components/Categories';
 import Products from './components/Products';
 import NotFound from './components/Notfound';
-import Comments from './components/Comments';
 import Reports from './components/Reports';
 import Forgotpass from './components/Forgotpass';
 import Notifications from './components/Notifications';
@@ -34,7 +32,6 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/smartphones" element={<Smartphones />} />
-            <Route path="/kitchen" element={<Kitchen />} /> 
             <Route path="/editprofile" element={<Editprofile/>} />
 
             <Route path="/smartphones/:id" element={<SmartphonesDetails />} />
@@ -42,7 +39,6 @@ function App() {
              <Route path="/reviews" element={<PhoneReview />} />
              <Route path="/categories" element={<Categories/>} />
              <Route path="/Products" element={<Products/>} />
-             <Route path="/Comments" element={<Comments/>} />
              <Route path="/Reports" element={<Reports/>} />
              <Route path="/Forgotpass" element={<Forgotpass/>} />
              <Route path="/Notifications" element={<Notifications/>} />

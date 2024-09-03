@@ -17,7 +17,7 @@ const Head = () => {
 
   useEffect(() => {
     if (Search !== "") {
-      fetch(`https://wallyt.com/Products${Search}`)
+      fetch(``)
         .then((res) => {
           if (!res.ok) {
             throw new Error('Product not found');
