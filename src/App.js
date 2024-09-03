@@ -10,7 +10,7 @@ import Profile from './components/Profile';
 import Head from './components/Head'; 
 import Smartphones from './components/Products';
 import Kitchen from './components/Kitchen'; 
-import Edit from './components/Edit';
+import Edit from './components/Editprofile';
 import SmartphonesDetails from './components/Smartphonesdetails';
 import PhoneReview from './components/Reviews';
 import Categories from './components/Categories';

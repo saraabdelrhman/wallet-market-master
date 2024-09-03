@@ -51,7 +51,7 @@ const Profile = () => {
           <p className="mt-3 text-muted">{user.bio}</p>
           
           <div className="mt-4">
-            <Link to="/edit">
+            <Link to="/editprofile">
               <button className="btn btn-light me-2 fw-bold">Edit Profile</button>
             </Link>
             <button
