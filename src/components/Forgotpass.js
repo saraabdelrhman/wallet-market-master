@@ -23,7 +23,7 @@ export default function Forgotpass() {
       email: email
     };
 
-    fetch('https://wallyt.com/api/forgotpass', {
+    fetch('https://wallyt.com/forgotpass', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
