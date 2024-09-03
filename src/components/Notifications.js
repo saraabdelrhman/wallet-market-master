@@ -14,7 +14,7 @@ const Notifications = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      fetch('/notifications/user/{userId}')  // Replace with your actual API endpoint
+      fetch('/notifications/user/{userId}')  
         .then(response => response.json())
         .then(data => setNotifications(data))
         .catch(error => console.error('Error fetching notifications:', error));
@@ -22,7 +22,7 @@ const Notifications = () => {
   }, []);
 
   const markAsRead = (id) => {
-    fetch(`/notifications/mark-as-read/${id}`, { method: 'POST' })  // Replace with your actual API endpoint
+    fetch(`/notifications/mark-as-read/${id}`, { method: 'POST' }) 
       .then(response => {
         if (response.ok) {
           setNotifications(prevNotifications => 
