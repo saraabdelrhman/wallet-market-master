@@ -49,7 +49,7 @@ export default function SmartphonesDetails() {
             <p className="card-text"><strong>Price:</strong> <span className="text-danger">${smartphone.price}</span></p>
             <p className="card-text"><strong className="fw-bold">Rating:</strong> <span className="text-danger fw-bold">{smartphone.rating} ⭐</span></p>
             <p className="card-text"><strong>Stock:</strong> {smartphone.stock} units available</p>
-            <Link to="/Report" className='link-underline link-underline-opacity-0 mt-5 pt-5 text-danger'>Report here</Link><br></br>
+            <Link to="/Reports" className='link-underline link-underline-opacity-0 mt-5 pt-5 text-danger'>Report here</Link><br></br>
             <button className="button mt-3 mb-5" > Add to Cart 🛒</button>
 
             <Link to="/phonereview" className='buttone link-underline link-underline-opacity-0 ms-2'>Add Review ⭐</Link><br></br>

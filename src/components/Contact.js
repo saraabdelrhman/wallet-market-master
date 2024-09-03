@@ -35,7 +35,7 @@ export default function About() {
 
     console.log(newdata);
 
-    fetch('https://wallyt.com/api/contact', {
+    fetch('https://wallyt.com/contact', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
