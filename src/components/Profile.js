@@ -31,7 +31,7 @@ const Profile = () => {
         return response.json();
       })
       .then(data => {
-        setUser(data); // Update state with the new profile data
+        setUser(data); 
         alert('Profile updated successfully!');
       })
       .catch(error => {
@@ -55,7 +55,7 @@ const Profile = () => {
       })
       .then(() => {
         alert('Profile deleted successfully!');
-        setUser({}); // Optionally reset user state or redirect
+        setUser({});
       })
       .catch(error => {
         console.error('Error deleting profile:', error);
@@ -64,9 +64,9 @@ const Profile = () => {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center vh-100">
+    <div className="container d-flex justify-content-center align-items-center vh-100 ">
       <div className="card shadow-lg w-100" style={{ maxWidth: '500px' }}>
-        <div className="card-body text-center p-5">
+        <div className="card-bodyy text-center p-5">
           <img src={user.avatar} alt="User Avatar" className="rounded-circle img-fluid profile-avatar mb-4" style={{ width: '150px', height: '150px' }} />
           <h3 className="fw-bold mt-3 text-dark">{user.name}</h3>
           <p className="text-muted mb-1">{user.email}</p>
