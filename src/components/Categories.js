@@ -82,7 +82,7 @@ export default function Categories() {
         if (!response.ok) {
           throw new Error('Failed to delete category');
         }
-        setCategories(categories.filter((cat) => cat.id !== id)); // Remove category from state
+        setCategories(categories.filter((cat) => cat.id !== id)); 
       })
       .catch((error) => {
         setError(error.message);

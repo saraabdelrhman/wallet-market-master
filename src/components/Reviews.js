@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom'; // Used to extract productId from URL
 import { Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function PhoneReview() {
+export default function ProductReview() {
+  const { productId } = useParams(); // Dynamically get the product ID from the URL
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState('5');
   const [reviews, setReviews] = useState([]);
   const [commentText, setCommentText] = useState('');
-  const [comments, setComments] = useState({}); 
-
-  // Replace with your actual product ID
-  const productId = '1';
+  const [comments, setComments] = useState({});
 
   // Fetch reviews when the component mounts
   useEffect(() => {
@@ -18,7 +17,7 @@ export default function PhoneReview() {
       .then(res => res.json())
       .then(data => setReviews(data))
       .catch(err => console.error('Error fetching reviews:', err));
-  }, []);
+  }, [productId]);
 
   // Function to fetch comments for a specific review
   const fetchComments = (reviewId) => {
@@ -48,7 +47,6 @@ export default function PhoneReview() {
       createdAt: new Date().toISOString(),
     };
 
-    // Submit the new review
     fetch('https://wallyt.com/reviews', {
       method: 'POST',
       headers: {
@@ -106,7 +104,7 @@ export default function PhoneReview() {
       notify('Comment submitted successfully!');
     })
     .catch(err => {
-      console.error('Error:', err.message);
+    console.error('Error:', err.message);
     });
   };
 
@@ -136,15 +134,9 @@ export default function PhoneReview() {
               <p className="card-text"><strong>Comment:</strong> {review.comment}</p>
               <p className="card-text"><strong>Rating:</strong> {review.rating} ⭐</p>
               <p className="card-text"><strong>Reviewed At:</strong> {new Date(review.createdAt).toLocaleString()}</p>
-
-              {/* Display Comments */}
-              <button
-                onClick={() => fetchComments(review.id)}
-                className="btn btn-link"
-              >
+              <button onClick={() => fetchComments(review.id)} className="btn btn-link">
                 {comments[review.id] ? 'Hide Comments' : 'Show Comments'}
               </button>
-
               {comments[review.id] && comments[review.id].map((comment) => (
                 <div key={comment.id} className="card mt-2">
                   <div className="card-body">
@@ -154,8 +146,6 @@ export default function PhoneReview() {
                   </div>
                 </div>
               ))}
-
-              {/* Add Comment */}
               <form onSubmit={(e) => handleSubmitComment(e, review.id)}>
                 <div className="mb-3 mt-3">
                   <textarea 
@@ -172,7 +162,7 @@ export default function PhoneReview() {
           </div>
         ))
       )}
-      <h2 className="fw-bold mb-4">Add a Comment & Review</h2>
+      <h2 className="fw-bold mb-4">Add a Review</h2>
       <form onSubmit={handleSubmitReview}>
         <div className="mb-3">
           <label htmlFor="comment" className="form-label fw-bold">Comment</label>

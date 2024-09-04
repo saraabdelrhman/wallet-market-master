@@ -10,7 +10,7 @@ import Profile from './components/Profile';
 import Head from './components/Head'; 
 import Smartphones from './components/Products';
 import Editprofile from './components/Editprofile';
-import SmartphonesDetails from './components/Smartphonesdetails';
+import Singleproduct from './components/Singleproduct';
 import PhoneReview from './components/Reviews';
 import Categories from './components/Categories';
 import Products from './components/Products';
@@ -18,6 +18,7 @@ import NotFound from './components/Notfound';
 import Reports from './components/Reports';
 import Forgotpass from './components/Forgotpass';
 import Notifications from './components/Notifications';
+import Reviews from './components/Mainreviews';
 function App() {
   return (
     <Router>
@@ -33,8 +34,8 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/smartphones" element={<Smartphones />} />
             <Route path="/editprofile" element={<Editprofile/>} />
-
-            <Route path="/smartphones/:id" element={<SmartphonesDetails />} />
+        <Route path="/products/:productId/reviews" element={<Reviews/>} />
+            <Route path="/products/:productId" element={<Singleproduct />} />
              <Route path="/phonereview" element={<PhoneReview />} />
              <Route path="/reviews" element={<PhoneReview />} />
              <Route path="/categories" element={<Categories/>} />

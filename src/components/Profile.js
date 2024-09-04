@@ -39,10 +39,34 @@ const Profile = () => {
       });
   };
 
+  const handleProfileDelete = () => {
+    if (window.confirm("Are you sure you want to delete your profile? This action cannot be undone.")) {
+      fetch('https://wallyt.com/profile', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to delete profile');
+        }
+        return response.json();
+      })
+      .then(() => {
+        alert('Profile deleted successfully!');
+        setUser({}); // Optionally reset user state or redirect
+      })
+      .catch(error => {
+        console.error('Error deleting profile:', error);
+      });
+    }
+  };
+
   return (
-    <div className="container d-flex justify-content-center align-items-center vh-100 ">
+    <div className="container d-flex justify-content-center align-items-center vh-100">
       <div className="card shadow-lg w-100" style={{ maxWidth: '500px' }}>
-        <div className="card-bodyy text-center p-5">
+        <div className="card-body text-center p-5">
           <img src={user.avatar} alt="User Avatar" className="rounded-circle img-fluid profile-avatar mb-4" style={{ width: '150px', height: '150px' }} />
           <h3 className="fw-bold mt-3 text-dark">{user.name}</h3>
           <p className="text-muted mb-1">{user.email}</p>
@@ -56,7 +80,7 @@ const Profile = () => {
             </Link>
             <button
               className="btn btn-outline-dark fw-bold"
-              onClick={handleProfileUpdate}
+              onClick={handleProfileDelete}
             >
               Delete Profile
             </button>
