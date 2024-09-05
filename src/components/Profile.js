@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './Profile.css';
-import { Link } from 'react-router-dom';
-import defaultImg from './images/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png';
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Profile.css";
+import { Link } from "react-router-dom";
+import defaultImg from "./images/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png";
 
 const Profile = () => {
   const [user, setUser] = useState({
-    name: 'Abdelrhman Shehata',
-    email: 'abdelrhman.Shehata@gmail.com',
-    bio: 'Experienced Frontend Developer with a passion for creating interactive and user-friendly web applications. Proficient in HTML, CSS, JavaScript, and React.',
+    name: "Abdelrhman Shehata",
+    email: "abdelrhman.Shehata@gmail.com",
+    bio: "Experienced Frontend Developer with a passion for creating interactive and user-friendly web applications. Proficient in HTML, CSS, JavaScript, and React.",
     avatar: defaultImg,
-    role: 'Frontend Developer',
+    role: "Frontend Developer",
     currentYear: new Date().getFullYear(),
   });
 
@@ -19,49 +19,53 @@ const Profile = () => {
   const handleProfileUpdate = () => {
     const updatedProfile = { ...user };
 
-    fetch('https://wallyt.com/profile', {
-      method: 'POST',
+    fetch("https://wallyt.com/profile", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(updatedProfile),
     })
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Failed to update profile');
+          throw new Error("Failed to update profile");
         }
         return response.json();
       })
-      .then(data => {
+      .then((data) => {
         setUser(data);
-        alert('Profile updated successfully!');
+        alert("Profile updated successfully!");
       })
-      .catch(error => {
-        console.error('Error updating profile:', error);
+      .catch((error) => {
+        console.error("Error updating profile:", error);
       });
   };
 
   const handleProfileDelete = () => {
-    if (window.confirm("Are you sure you want to delete your profile? This action cannot be undone.")) {
-      fetch('https://wallyt.com/profile/deactivate', {
-        method: 'DELETE',
+    if (
+      window.confirm(
+        "Are you sure you want to delete your profile? This action cannot be undone."
+      )
+    ) {
+      fetch("https://wallyt.com/profile/deactivate", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-        }
+          "Content-Type": "application/json",
+        },
       })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Failed to delete profile');
-        }
-        return response.json();
-      })
-      .then(() => {
-        alert('Profile deleted successfully!');
-        setUser({});
-      })
-      .catch(error => {
-        console.error('Error deleting profile:', error);
-      });
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to delete profile");
+          }
+          return response.json();
+        })
+        .then(() => {
+          alert("Profile deleted successfully!");
+          setUser({});
+        })
+        .catch((error) => {
+          console.error("Error deleting profile:", error);
+        });
     }
   };
 
@@ -71,40 +75,45 @@ const Profile = () => {
 
   const handleProfilePictureUpload = () => {
     if (!selectedFile) {
-      alert('Please select a file first.');
+      alert("Please select a file first.");
       return;
     }
 
     const formData = new FormData();
-    formData.append('avatar', selectedFile);
+    formData.append("avatar", selectedFile);
 
-    fetch('https://wallyt.com/profile/picture', {
-      method: 'POST',
+    fetch("https://wallyt.com/profile/picture", {
+      method: "POST",
       body: formData,
     })
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Failed to upload profile picture');
+          throw new Error("Failed to upload profile picture");
         }
         return response.json();
       })
-      .then(data => {
-        setUser(prevUser => ({
+      .then((data) => {
+        setUser((prevUser) => ({
           ...prevUser,
           avatar: data.avatar, // Assuming the response contains the updated avatar URL
         }));
-        alert('Profile picture uploaded successfully!');
+        alert("Profile picture uploaded successfully!");
       })
-      .catch(error => {
-        console.error('Error uploading profile picture:', error);
+      .catch((error) => {
+        console.error("Error uploading profile picture:", error);
       });
   };
 
   return (
     <div className="container d-flex justify-content-center align-items-center vh-100 ">
-      <div className="card shadow-lg w-100" style={{ maxWidth: '500px' }}>
+      <div className="card shadow-lg w-100" style={{ maxWidth: "500px" }}>
         <div className="card-bodyy text-center p-5">
-          <img src={user.avatar} alt="User Avatar" className="rounded-circle img-fluid profile-avatar mb-4" style={{ width: '150px', height: '150px' }} />
+          <img
+            src={user.avatar}
+            alt="User Avatar"
+            className="rounded-circle img-fluid profile-avatar mb-4"
+            style={{ width: "150px", height: "150px" }}
+          />
           <h3 className="fw-bold mt-3 text-dark">{user.name}</h3>
           <p className="text-muted mb-1">{user.email}</p>
           <h5 className="text-light fw-semibold">{user.role}</h5>
@@ -112,15 +121,24 @@ const Profile = () => {
           <p className="mt-3 text-muted">{user.bio}</p>
 
           <div className="mt-3">
-            <input type="file" onChange={handleFileChange} className="form-control mb-2" />
-            <button className="btn btn-light me-2 fw-bold" onClick={handleProfilePictureUpload}>
+            <input
+              type="file"
+              onChange={handleFileChange}
+              className="form-control mb-2"
+            />
+            <button
+              className="btn btn-light me-2 fw-bold"
+              onClick={handleProfilePictureUpload}
+            >
               Upload Profile Picture
             </button>
           </div>
-          
+
           <div className="mt-4">
             <Link to="/editprofile">
-              <button className="btn btn-light me-2 fw-bold">Edit Profile</button>
+              <button className="btn btn-light me-2 fw-bold">
+                Edit Profile
+              </button>
             </Link>
             <button
               className="btn btn-outline-dark fw-bold"
