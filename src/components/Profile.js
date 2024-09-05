@@ -14,6 +14,8 @@ const Profile = () => {
     currentYear: new Date().getFullYear(),
   });
 
+  const [selectedFile, setSelectedFile] = useState(null);
+
   const handleProfileUpdate = () => {
     const updatedProfile = { ...user };
 
@@ -31,7 +33,7 @@ const Profile = () => {
         return response.json();
       })
       .then(data => {
-        setUser(data); 
+        setUser(data);
         alert('Profile updated successfully!');
       })
       .catch(error => {
@@ -41,7 +43,7 @@ const Profile = () => {
 
   const handleProfileDelete = () => {
     if (window.confirm("Are you sure you want to delete your profile? This action cannot be undone.")) {
-      fetch('https://wallyt.com/profile', {
+      fetch('https://wallyt.com/profile/deactivate', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -63,6 +65,41 @@ const Profile = () => {
     }
   };
 
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
+  const handleProfilePictureUpload = () => {
+    if (!selectedFile) {
+      alert('Please select a file first.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('avatar', selectedFile);
+
+    fetch('https://wallyt.com/profile/picture', {
+      method: 'POST',
+      body: formData,
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to upload profile picture');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setUser(prevUser => ({
+          ...prevUser,
+          avatar: data.avatar, // Assuming the response contains the updated avatar URL
+        }));
+        alert('Profile picture uploaded successfully!');
+      })
+      .catch(error => {
+        console.error('Error uploading profile picture:', error);
+      });
+  };
+
   return (
     <div className="container d-flex justify-content-center align-items-center vh-100 ">
       <div className="card shadow-lg w-100" style={{ maxWidth: '500px' }}>
@@ -73,6 +110,13 @@ const Profile = () => {
           <h5 className="text-light fw-semibold">{user.role}</h5>
           <p className="text-light fw-semibold">{user.currentYear}</p>
           <p className="mt-3 text-muted">{user.bio}</p>
+
+          <div className="mt-3">
+            <input type="file" onChange={handleFileChange} className="form-control mb-2" />
+            <button className="btn btn-light me-2 fw-bold" onClick={handleProfilePictureUpload}>
+              Upload Profile Picture
+            </button>
+          </div>
           
           <div className="mt-4">
             <Link to="/editprofile">
