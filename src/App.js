@@ -17,7 +17,6 @@ import Products from './components/Products';
 import NotFound from './components/Notfound';
 import Reports from './components/Reports';
 import Forgotpass from './components/Forgotpass';
-import Notifications from './components/Notifications';
 import Reviews from './components/Mainreviews';
 function App() {
   return (
@@ -42,7 +41,6 @@ function App() {
              <Route path="/Products" element={<Products/>} />
              <Route path="/Reports" element={<Reports/>} />
              <Route path="/Forgotpass" element={<Forgotpass/>} />
-             <Route path="/Notifications" element={<Notifications/>} />
 
 
              <Route path='*' element={<NotFound/>}/>
