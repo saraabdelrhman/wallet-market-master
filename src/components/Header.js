@@ -8,34 +8,43 @@ const Header = () => {
   // Initial hardcoded notifications
   const hardcodedNotifications = [
     {
+      id: 1,
       name: 'Abagael Luth',
       action: 'deleted Volley against violence',
       time: '2 min ago',
       avatar: 'https://via.placeholder.com/30',
+      read: false
     },
     {
+      id: 2,
       name: 'Lucille Pena',
       action: 'commented on file Guest list',
       time: '25 min ago',
       avatar: 'https://via.placeholder.com/30',
+      read: false
     },
     {
+      id: 3,
       name: 'Abagael Luth',
       action: 'edited Volley against violence',
       time: '16 October',
       avatar: 'https://via.placeholder.com/30',
+      read: false
     },
     {
+      id: 4,
       name: 'Sallie Moran',
       action: 'commented on file Guest list',
       time: '12 October',
       avatar: 'https://via.placeholder.com/30',
+      read: false
     },
   ];
 
-  const [notifications, setNotifications] = useState(hardcodedNotifications); 
+  const [notifications, setNotifications] = useState(hardcodedNotifications); // State to hold notifications
 
   useEffect(() => {
+    // Replace 'userId' with the actual user ID in the URL
     fetch(`https://wallyt.com/notifications/user/{userId}`)
       .then((res) => {
         if (!res.ok) {
@@ -44,6 +53,7 @@ const Header = () => {
         return res.json();
       })
       .then((data) => {
+        // Assume the API returns an array of notifications
         setNotifications(data);
       })
       .catch((error) => {
@@ -52,6 +62,25 @@ const Header = () => {
         setNotifications(hardcodedNotifications);
       });
   }, []);
+
+  // Mark a notification as read by calling the API and updating state
+  const handleMarkAsRead = (id) => {
+    fetch(`https://wallyt.com/notifications/mark-as-read/${id}`, {
+      method: 'POST',
+    })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Failed to mark notification as read');
+      }
+      // Update the local state to mark the notification as read
+      setNotifications((prevNotifications) =>
+        prevNotifications.filter((notification) => notification.id !== id)
+      );
+    })
+    .catch((error) => {
+      console.error('Error marking notification as read:', error);
+    });
+  };
 
   return (
     <div>
@@ -88,13 +117,21 @@ const Header = () => {
                 <ul className="dropdown-menu dropdown-menu-end p-3 shadow-lg" style={{ minWidth: '300px' }}>
                   {notifications.map((notification, index) => (
                     <li key={index} className="mb-2">
-                      <div className="d-flex align-items-start">
-                        <img src={notification.avatar} alt="avatar" className="rounded-circle me-2" style={{ width: '30px', height: '30px' }} />
-                        <div>
-                          <p className="mb-0 fw-bold">{notification.name}</p>
-                          <p className="mb-0 text-muted small">{notification.action}</p>
-                          <p className="mb-0 text-muted small">{notification.time}</p>
+                      <div className="d-flex justify-content-between align-items-start">
+                        <div className="d-flex">
+                          <img src={notification.avatar} alt="avatar" className="rounded-circle me-2" style={{ width: '30px', height: '30px' }} />
+                          <div>
+                            <p className="mb-0 fw-bold">{notification.name}</p>
+                            <p className="mb-0 text-muted small">{notification.action}</p>
+                            <p className="mb-0 text-muted small">{notification.time}</p>
+                          </div>
                         </div>
+                        <button 
+                          className="btn btn-sm btn-outline-danger ms-2"
+                          style={{ fontSize: '14px', padding: '2px 6px' }}
+                          onClick={() => handleMarkAsRead(notification.id)}
+                        >Viewd
+                        </button>
                       </div>
                     </li>
                   ))}
@@ -121,3 +158,4 @@ const Header = () => {
 };
 
 export default Header;
+
