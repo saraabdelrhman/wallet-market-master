@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import * as Yup from 'yup';
+import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 
 export default function Forgotpass() {
@@ -21,8 +22,8 @@ export default function Forgotpass() {
       transition: Bounce,
     });
 
-  const notifyError = () =>
-    toast.error('Please enter a valid email address.', {
+  const notifyError = (message) =>
+    toast.error(message, {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -36,7 +37,7 @@ export default function Forgotpass() {
 
   const handleForgotPassword = () => {
     if (!email.trim()) {
-      notifyError(); // Show error notification if email field is empty
+      notifyError('Email field cannot be empty. Please enter a valid email address.'); 
       return;
     }
 
@@ -156,7 +157,7 @@ export default function Forgotpass() {
                     <div className="text-danger">{formik.errors.confirmpass}</div>
                   ) : null}
                 </div>
-                <button className="btn btn-dark w-100 mb-3" type="submit">Reset Password</button>
+            <Link to={'/Login'}>   <button className="btn btn-dark w-100 mb-3" type="submit">Reset Password</button></Link> 
               </form>
             </div>
           )}

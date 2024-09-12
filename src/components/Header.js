@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min'; // Ensure Popper.js is bundled
-import { FaBell } from 'react-icons/fa'; // Import bell icon
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import img from '../components/images/logo-86.png'; // Assuming the image is in the right path
 
 const Header = () => {
-  // Initial hardcoded notifications
   const hardcodedNotifications = [
     {
       id: 1,
@@ -13,7 +12,7 @@ const Header = () => {
       action: 'deleted Volley against violence',
       time: '2 min ago',
       avatar: 'https://via.placeholder.com/30',
-      read: false
+      read: false,
     },
     {
       id: 2,
@@ -21,30 +20,14 @@ const Header = () => {
       action: 'commented on file Guest list',
       time: '25 min ago',
       avatar: 'https://via.placeholder.com/30',
-      read: false
-    },
-    {
-      id: 3,
-      name: 'Abagael Luth',
-      action: 'edited Volley against violence',
-      time: '16 October',
-      avatar: 'https://via.placeholder.com/30',
-      read: false
-    },
-    {
-      id: 4,
-      name: 'Sallie Moran',
-      action: 'commented on file Guest list',
-      time: '12 October',
-      avatar: 'https://via.placeholder.com/30',
-      read: false
+      read: false,
     },
   ];
 
-  const [notifications, setNotifications] = useState(hardcodedNotifications); // State to hold notifications
+  const [notifications, setNotifications] = useState(hardcodedNotifications);
+  const location = useLocation(); // To track current path
 
   useEffect(() => {
-    // Replace 'userId' with the actual user ID in the URL
     fetch(`https://wallyt.com/notifications/user/{userId}`)
       .then((res) => {
         if (!res.ok) {
@@ -53,109 +36,144 @@ const Header = () => {
         return res.json();
       })
       .then((data) => {
-        // Assume the API returns an array of notifications
         setNotifications(data);
       })
       .catch((error) => {
         console.error('Error fetching notifications:', error);
-        // Fallback to hardcoded data in case of error
         setNotifications(hardcodedNotifications);
       });
   }, []);
 
-  // Mark a notification as read by calling the API and updating state
   const handleMarkAsRead = (id) => {
     fetch(`https://wallyt.com/notifications/mark-as-read/${id}`, {
       method: 'POST',
     })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error('Failed to mark notification as read');
-      }
-      // Update the local state to mark the notification as read
-      setNotifications((prevNotifications) =>
-        prevNotifications.filter((notification) => notification.id !== id)
-      );
-    })
-    .catch((error) => {
-      console.error('Error marking notification as read:', error);
-    });
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Failed to mark notification as read');
+        }
+        setNotifications((prevNotifications) =>
+          prevNotifications.filter((notification) => notification.id !== id)
+        );
+      })
+      .catch((error) => {
+        console.error('Error marking notification as read:', error);
+      });
+  };
+
+  const isActive = (path) => {
+    return location.pathname === path ? 'active' : '';
   };
 
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-2">
-        <div className="container-fluid">
-          <Link className="navbar-brand fw-bold s-1" to="/" style={{color:'#f15921', fontSize:'30px'}}>Wallyt</Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link className="nav-link text-light" to="/about">About</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-light" to="/contact">Contact</Link>
-              </li>
-              <div className="dropdown">
-                <button className="btn btn-dark position-relative d-flex p-0 pt-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <p>notifications</p>
-                  <FaBell size={20} />
-                  <span className="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
-                    <span className="visually-hidden">New notifications</span>
-                  </span>
-                </button>
-                <ul className="dropdown-menu dropdown-menu-end p-3 shadow-lg" style={{ minWidth: '300px' }}>
-                  {notifications.map((notification, index) => (
-                    <li key={index} className="mb-2">
-                      <div className="d-flex justify-content-between align-items-start">
-                        <div className="d-flex">
-                          <img src={notification.avatar} alt="avatar" className="rounded-circle me-2" style={{ width: '30px', height: '30px' }} />
-                          <div>
-                            <p className="mb-0 fw-bold">{notification.name}</p>
-                            <p className="mb-0 text-muted small">{notification.action}</p>
-                            <p className="mb-0 text-muted small">{notification.time}</p>
-                          </div>
-                        </div>
-                        <button 
-                          className="btn btn-sm btn-outline-danger ms-2"
-                          style={{ fontSize: '14px', padding: '2px 6px' }}
-                          onClick={() => handleMarkAsRead(notification.id)}
-                        >Viewd
-                        </button>
-                      </div>
-                    </li>
-                  ))}
-                  {/* <li>
-                    <Link to="/notifications" className="dropdown-item text-center text-primary fw-bold">VIEW ALL</Link>
-                  </li> */}
-                </ul>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        {/* Logo and Branding */}
+        <Link className="navbar-brand d-flex align-items-center" to="/">
+          <img
+            src={img}
+            alt="Reveyou Logo"
+            style={{ height: 40, marginRight: 10 }} // Adjust as necessary
+          />
+          <span style={{ color: 'black', fontSize: 30, fontFamily: 'Poppins', fontWeight: 700 }}>
+            Reveyou
+          </span>
+        </Link>
+
+        {/* Toggler for mobile view */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        {/* Navbar links */}
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link className={`nav-link ${isActive('/')}`} to="/" style={{ fontSize: '17.71px', color: isActive('/') ? '#377BF7' : '#474545' }}>
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className={`nav-link ${isActive('/category')}`} to="/category" style={{ fontSize: '17.71px', color: isActive('/category') ? '#377BF7' : '#474545' }}>
+                Category
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className={`nav-link ${isActive('/review')}`} to="/review" style={{ fontSize: '17.71px', color: isActive('/review') ? '#377BF7' : '#474545' }}>
+                Review
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className={`nav-link ${isActive('/about')}`} to="/about" style={{ fontSize: '17.71px', color: isActive('/about') ? '#377BF7' : '#474545' }}>
+                About
+              </Link>
+            </li>
+          </ul>
+
+          {/* Login and Register buttons */}
+          <div className="d-flex align-items-center gap-3">
+            <div style={{ display: 'flex' }}>
+              <div style={{ borderRadius: 30, display: 'flex' }}>
+                <Link
+                  style={{
+                    paddingLeft: 16,
+                    paddingRight: 16,
+                    paddingTop: 14,
+                    paddingBottom: 14,
+                    background: '#377BF7',
+                    borderRadius: 30,
+                    color: 'white',
+                    fontSize: 15,
+                    fontFamily: 'Inter',
+                    fontWeight: '600',
+                    letterSpacing: 0.07,
+                    textAlign: 'center',
+                    textDecoration: 'none',
+                  }}
+                  to="/login"
+                >
+                  Login
+                </Link>
               </div>
-              <li className="nav-item">
-                <Link className="nav-link text-light" to="/login">Login</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-light" to="/register">Register</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-light" to="/profile">Profile</Link>
-              </li>
-            </ul>
+            </div>
+
+            <div style={{ display: 'flex' }}>
+              <div style={{ borderRadius: 30, display: 'flex' }}>
+                <Link
+                  style={{
+                    paddingLeft: 16,
+                    paddingRight: 16,
+                    paddingTop: 14,
+                    paddingBottom: 14,
+                    borderRadius: 30,
+                    border: '1px #377BF7 solid',
+                    color: '#3B82F6',
+                    fontSize: 15,
+                    fontFamily: 'Inter',
+                    fontWeight: '600',
+                    letterSpacing: 0.07,
+                    textAlign: 'center',
+                    textDecoration: 'none',
+                  }}
+                  to="/register"
+                >
+                  Register
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 };
 
 export default Header;
-
