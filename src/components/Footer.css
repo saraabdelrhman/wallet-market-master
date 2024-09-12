@@ -1,120 +1,92 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
 .footer {
-  background: linear-gradient(135deg, #f5af1993, #f1271177); /* Gradient background matching your provided design */
-  color: #333;
-  padding-top: 60px;
-  padding-bottom: 40px;
-  font-family: 'Poppins', sans-serif; 
-  position: relative;
-}
-
-.footer-wave {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  width: 100%;
-  height: auto; /* Ensure it maintains the aspect ratio */
-  overflow: hidden;
-  line-height: 0;
-}
-
-.footer-wave svg {
-  position: relative;
-  display: block;
-  width: 100%; /* Ensure it fills the container's width */
-  height: auto; /* Maintain aspect ratio */
-  transform: scaleY(-1); /* Flip the wave vertically */
-}
-
-.footer h5 {
-  margin-top: 110px;
-  font-weight: 700;
-  margin-bottom:5px;
-  color: #000;
-}
-
-.footer ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer ul li {
-  margin-bottom: 7px;
-}
-
-.footer ul li a {
-  color: #000;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.footer ul li a:hover {
-  color: #555;
-}
-
-.footer .social-icons a {
-  font-size: 1.5rem;
-  margin-right: 10px;
-  color: #000;
-  transition: color 0.3s;
-  cursor: pointer;
-}
-
-.footer .social-icons a:hover {
-  color: #555;
-}
-
-.footer .newsletter-signup {
+  background-color: #141414;
+  color: white;
   display: flex;
-  margin-top: 10px;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px; /* Adjusted padding for all screen sizes */
 }
 
-.footer .newsletter-signup input {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px 0 0 5px;
+.footer-top {
+  display: flex;
+  flex-direction: row; /* Default to row for larger screens */
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 60px 0; /* Adequate padding that works across sizes */
 }
 
-.footer .newsletter-signup button {
-  border-radius: 0 5px 5px 0;
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  background-color: #000;
-  color: #fff;
-  transition: background-color 0.3s;
+.footer-logo img {
+  width: 50px; /* Adjust as necessary */
 }
 
-.footer .newsletter-signup button:hover {
-  background-color: #333;
+.footer-links {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: center; /* Center links for consistency */
 }
 
-.footer .legal-links {
-  margin-top: 20px;
-}
-
-.footer .legal-links a {
-  margin: 0 10px;
-  color: #000;
+.footer-links a {
+  color: #808080;
   text-decoration: none;
-  font-size: 0.9rem;
+  margin: 10px; /* Unified margin for all links */
+  font-family: 'Helvetica', sans-serif;
+  font-size: 16px; /* Reduced base font size */
 }
 
-.footer .legal-links a:hover {
-  color: #555;
+.footer-social {
+  display: flex;
+  justify-content: center; /* Center social icons */
+  gap: 15px; /* Reduced gap for better space management */
+  margin-top: 20px; /* Added top margin for separation */
 }
 
-.footer p {
-  color: #333;
+.footer-social svg {
+  color: #808080;
+  font-size: 24px; /* Controlled icon size */
 }
 
-@media (max-width: 767px) {
-  .footer-wave {
-    display: none; /* Hide the wave on screens smaller than 767px */
+.footer-address {
+  color: #808080;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 16px;
+  margin-top: 20px; /* Added top margin for visual separation */
+  text-align: center; /* Ensure address is centered */
+}
+
+.footer-bottom {
+  background-color: #F5F7FE;
+  color: #808080;
+  padding: 20px 10px; /* Responsive padding */
+  text-align: center;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 16px; /* Standardized font size */
+  width: 100%; /* Ensure full width coverage */
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column; /* Stack elements vertically on smaller screens */
   }
-  
-.footer h5 {
-    margin-top: 10px;
+
+  .footer-logo, .footer-links, .footer-social {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-logo img {
+    width: 40px; /* Slightly smaller logo for smaller screens */
+  }
 }
+
+@media (max-width: 480px) {
+  .footer-links a {
+    font-size: 14px; /* Smaller font size for very small devices */
+    margin: 8px; /* Slightly reduced margin */
+  }
+
+  .footer-social svg {
+    font-size: 20px; /* Smaller icons for compact spaces */
+  }
 }
