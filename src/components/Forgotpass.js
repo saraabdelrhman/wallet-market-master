@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import img1 from './images/Ellipse 2.png';
+import img2 from './images/Ellipse 3.png';
+import img3 from './images/Ellipse 4.png';
+import img4 from './images/Ellipse 5.png';
+import './Forgotpass.css'
 import * as Yup from 'yup';
-import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 
 export default function Forgotpass() {
   const [email, setEmail] = useState('');
-  const [emailSent, setEmailSent] = useState(false); // State to toggle forms
+  const [emailSent, setEmailSent] = useState(false);
 
   const notifySuccess = () =>
     toast.success('Email sent! Please check your email for a link to reset your password.', {
@@ -41,9 +45,7 @@ export default function Forgotpass() {
       return;
     }
 
-    const newdata = {
-      email: email
-    };
+    const newdata = { email: email };
 
     fetch('https://wallyt.com/forgotpass', {
       method: 'post',
@@ -54,115 +56,72 @@ export default function Forgotpass() {
       body: JSON.stringify(newdata),
     })
       .then((res) => {
-        console.log(res.headers);
-        console.log(res.status);
         if (!res.ok) {
           throw new Error('Network response was not ok');
         }
         return res.json();
       })
       .then((data) => {
-        console.log('data', data);
         notifySuccess();  
         setEmailSent(true); 
       })
       .catch((err) => {
-        console.log('error', err.message);
+        notifyError('Something went wrong, please try again.');
+        console.error('Error:', err.message);
       });
   };
 
-  const formik = useFormik({
-    initialValues: {
-      newpass: '',
-      confirmpass: '',
-    },
-    validationSchema: Yup.object({
-      newpass: Yup.string()
-        .min(6, 'Password must be at least 6 characters')
-        .max(11, 'Password must be less than 12 characters')
-        .required('Password is required'),
-      confirmpass: Yup.string()
-        .oneOf([Yup.ref('newpass')], 'Passwords must match')
-        .required('Confirm password is required'),
-    }),
-    onSubmit: (values) => {
-      console.log('Form values:', values);
-      // Handle password reset logic
-      toast.success('Password has been reset successfully!', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      });
-    },
-  });
-
   return (
-    <div className="container mt-0 mb-5">
-      <div className="row justify-content-center">
-        <div className="col-lg-12 col-xl-10">
-          {/* Conditionally render based on emailSent */}
-          {!emailSent ? (
-            <div className="carde p-5 bigger-card" style={{ background: 'linear-gradient(135deg, #f5af1993, #f1271175)' }}>
-              <h3 className="mb-4 text-center" style={{ fontWeight: '900' }}>Forgot your password!</h3>
-              <div className="mb-3">
-                <label htmlFor="email" className="form-label">Email address</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <button className="btn btn-dark w-100 mb-3" onClick={handleForgotPassword}>Send Email</button>
-            </div>
-          ) : (
-            <div className="carde p-5 bigger-card" style={{ background: 'linear-gradient(135deg, #f5af1993, #f1271175)' }}>
-              <h3 className="mb-4 text-center" style={{ fontWeight: '900' }}>Reset Password</h3>
-              <form onSubmit={formik.handleSubmit}>
-                <div className="mb-3">
-                  <label htmlFor="newpass" className="form-label">Create New Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="newpass"
-                    placeholder="Enter your new password"
-                    value={formik.values.newpass}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  />
-                  {formik.touched.newpass && formik.errors.newpass ? (
-                    <div className="text-danger">{formik.errors.newpass}</div>
-                  ) : null}
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="confirmpass" className="form-label">Confirm your Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="confirmpass"
-                    placeholder="Confirm password"
-                    value={formik.values.confirmpass}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  />
-                  {formik.touched.confirmpass && formik.errors.confirmpass ? (
-                    <div className="text-danger">{formik.errors.confirmpass}</div>
-                  ) : null}
-                </div>
-            <Link to={'/Login'}>   <button className="btn btn-dark w-100 mb-3" type="submit">Reset Password</button></Link> 
-              </form>
-            </div>
-          )}
+    <div className="page-container">
+      {/* Forgot Password Form */}
+      <div className="forgot-password-container">
+        <h2 className="forgot-password-header">Forgot Password?</h2>
+
+        <div className="forgot-password-form">
+          <label htmlFor="email" className="forgot-password-label">Email</label>
+          <input
+            type="email"
+            id="email"
+            className="forgot-password-input"
+            placeholder="Write your email here"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <small className="forgot-password-instruction">
+            Password reset instructions will be sent to your registered email address.
+          </small>
+
+          <button className="forgot-password-submit" onClick={handleForgotPassword}>
+            Submit
+          </button>
         </div>
       </div>
+
+      {/* Testimonial Section */}
+      <div className="testimonial-content">
+        <div className="circle-image large-circle">
+          <img src={img1} alt="Large Testimonial" />
+        </div>
+        <div className="circle-image medium-circle">
+          <img src={img2} alt="Medium Testimonial" />
+        </div>
+        <div className="circle-image small-circle">
+          <img src={img3} alt="Small Testimonial" />
+        </div>
+        <div className="circle-image extra-small-circle">
+          <img src={img4} alt="Extra Small Testimonial" />
+        </div>
+
+        <div className="testimonial-box">
+          <p>
+            This website helped me check reviews for items I bought before having any regrets.
+          </p>
+          <div className="stars">⭐⭐⭐⭐⭐</div>
+          <span>Tania, Gadget enthusiast</span>
+        </div>
+      </div>
+
+      {/* Toast Notifications */}
       <ToastContainer />
     </div>
   );

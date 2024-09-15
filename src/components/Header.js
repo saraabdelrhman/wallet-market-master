@@ -149,7 +149,7 @@ const Header = () => {
               <div style={{ borderRadius: 30, display: 'flex' }}>
                 <Link
                   style={{
-                    paddingLeft: 16,
+                    paddingLeft: 17,
                     paddingRight: 16,
                     paddingTop: 14,
                     paddingBottom: 14,
