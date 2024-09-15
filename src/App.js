@@ -17,7 +17,8 @@ import Products from './components/Products';
 import NotFound from './components/Notfound';
 import Reports from './components/Reports';
 import Forgotpass from './components/Forgotpass';
-import Reviews from './components/Mainreviews';
+import Reviews from './components/Mainreviews'; 
+import Reset from './components/Reset'; 
 function App() {
   return (
     <Router>
@@ -41,6 +42,7 @@ function App() {
              <Route path="/Products" element={<Products/>} />
              <Route path="/Reports" element={<Reports/>} />
              <Route path="/Forgotpass" element={<Forgotpass/>} />
+             <Route path="/Reset" element={<Reset/>} />
 
 
              <Route path='*' element={<NotFound/>}/>
