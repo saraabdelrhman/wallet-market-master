@@ -1,28 +1,22 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap is imported
-import img from './images/istockphoto-1346944001-612x612.jpg';
+import './About.css'; // Import the CSS file
 
 const About = () => {
   return (
-    <div className="container mt-5 p-5 mb-5">
-      <div className="row">
-        <div className="col-md-6">
-          <h1 className='' style={{ fontWeight: '900' }}>We're Wallyt.</h1>
-          <br />
-          <br />
-          <p style={{ fontWeight: '400', fontSize: '18px' }}>
-            Wallyt began in 2024 with a simple yet powerful idea that is more relevant today than ever — to be the universal symbol of trust, bringing consumers and businesses together through reviews.
-          </p>
-          <p style={{ fontWeight: '400', fontSize: '18px' }}>
-            Wallyt is open, independent, and impartial — we help consumers make the right choices and businesses to build trust, grow and improve.
-          </p>
-          <p style={{ fontWeight: '400', fontSize: '18px' }}>
-            We are a forward-thinking startup revolutionising e-commerce with cutting-edge technology solutions. We develop innovative products and platforms that enhance online experiences. Our mission is to merge creativity and technology to drive the future of the digital world.
-          </p>
-        </div>
-        <div className="col-md-6">
-          <img src={img} alt='who-are-we' className='w-100 h-100' />
-        </div>
+    <div className="about-container">
+     
+      <div className="title-section mt-5">
+        <h2>About us</h2>
+      </div>
+      <div className="description-section">
+        <p>
+          Reveyou is Germany's premier platform for product reviews and ratings, launched to provide a space where consumers can share their honest opinions. Whether you're satisfied or not, Reveyou offers a place for you to voice your experience with products and the stores that sell them.
+          <br /><br />
+          On Reveyou, you'll find genuine feedback from real consumers across Germany. We make it easy for users to discover products, read reviews, and contribute their own insights.
+          <br /><br />
+          We believe that consumer feedback drives product improvement and innovation. Beyond benefiting customers, our unbiased reviews offer valuable insights to manufacturers and retailers about current market trends.
+        </p>
       </div>
     </div>
   );
