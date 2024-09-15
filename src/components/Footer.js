@@ -13,7 +13,7 @@ const Footer = () => {
             <img
               src={img}
               alt="Reveyou Logo"
-              style={{ height: 40, marginRight: 10 }} // Adjust as necessary
+              style={{ height: 40, marginRight: 10 }} 
             />
             <span style={{ color: '#FFF5F5', fontSize: 30, fontFamily: 'Poppins', fontWeight: 700 }}>
               Reveyou
@@ -32,7 +32,6 @@ const Footer = () => {
         </div>
         <div className="footer-social">
           <FaFacebookF />
-          
           <FaInstagram />
           <FaTwitter />
           <FaYoutube />
