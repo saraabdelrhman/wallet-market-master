@@ -1,154 +1,83 @@
-import React, { useState } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import defaultImg from './images/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png';
+import React, { useState } from "react"; // Ensure useState is imported from React
+import "./Profile.css"; // Updated CSS file path
+import defaultImg from "./images/unsplash_xZSEvSlHRv8.png"; // Placeholder image path
+import dot from './images/Group 48097650.png';
+import shape from './images/Group 9.png';
+import icon from './images/Icons.png';
+import { Edit3 } from "react-feather"; // Using react-feather for the edit icon
 import { Link } from "react-router-dom";
-import style from '../App.css';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-const EditProfile = () => {
+const Profile = () => {
   const [user, setUser] = useState({
-    name: '',
-    email: '',
-    bio: '',
-    avatar: defaultImg,
-    country: 'Egypt',
-    role: 'Frontend Developer',
-    link: '',  // Assuming you want to add an extra field for links
+    name: "Gerald",
+    email: "Gerald@gmail.com",
+    joinDate: "09/08/2024",
+    bio: "I’m a gadget enthusiast for 3 years and love to share everything in my review",
+    avatar: defaultImg // Using a default image as placeholder
   });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUser((prevUser) => ({
-      ...prevUser,
-      [name]: value,
-    }));
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  // Handle file selection
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
   };
 
-  const handleImageUpload = (e) => {
-    const image = e.target.files[0];
-    if (image) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setUser((prevUser) => ({
-          ...prevUser,
-          avatar: reader.result,
-        }));
-      };
-      reader.readAsDataURL(image);
+  // Handle profile picture upload (mock function for now)
+  const handleProfilePictureUpload = () => {
+    if (!selectedFile) {
+      alert("Please select a file first.");
+      return;
     }
-  };
 
-  const notifySuccess = () =>
-    toast.success('Profile updated successfully!', {
-      position: "top-center",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-
-  const notifyError = () =>
-    toast.error('Failed to update profile. Please try again.', {
-      position: "top-center",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-
-  const handleSaveChanges = () => {
-    fetch('https://wallyt.com/editprofile', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-      body: JSON.stringify(user),
-    })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error('Failed to update profile');
-      }
-      return res.json();
-    })
-    .then((data) => {
-      console.log('Profile updated:', data);
-      notifySuccess();
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-      notifyError();
-    });
+    // Mock upload
+    alert("Profile picture uploaded successfully!");
   };
 
   return (
-    <div className="container mt-5 mb-5 background" style={style.background}>
-      <div className="row p-5" style={{ background: 'linear-gradient(135deg, #f5af1993, #f1271177)' }}>
-        <h3 className="text-center mb-5 mt-5 text-primary text-dark fw-bold">Edit Profile</h3>
-        <div className="col-md-6 mb-3">
-          <div className="input-group mt-4">
-            <input type="file" className="form-control files" id="inputGroupFile01" onChange={handleImageUpload} />
-          </div>
-          <label className="form-label fw-bold">User Name</label>
-          <div className="input-group flex-nowrap">
-            <span className="input-group-text bg-dark text-white" id="addon-wrapping">@</span>
+    <div className="profile-container text-left">
+      <h2 className="profile-title">User Profile</h2>
+
+      {/* Decorative images */}
+      <img src={dot} alt="Dots" className="decorative-dot" />
+      <img src={dot} alt="Dots" className="decorative-dot2" />
+      <img src={shape} alt="Shape" className="decorative-shape-1" />
+      <img src={shape} alt="Shape" className="decorative-shape-2" />
+
+      <div className="profile-card">
+        <div className="profile-image-container">
+          <img src={user.avatar} alt="Avatar" className="profile-avatar" />
+          <div className="change-photo-icon" onClick={handleProfilePictureUpload}>
+            <label htmlFor="file-input">
+              <img src={icon} alt="Change Photo" />
+            </label>
             <input
-              type="text"
-              className="form-control"
-              placeholder="Username"
-              name="name"
-              value={user.name}
-              onChange={handleInputChange}
-              aria-label="Username"
-              aria-describedby="addon-wrapping"
+              id="file-input"
+              type="file"
+              onChange={handleFileChange}
+              style={{ display: "none" }}
             />
           </div>
         </div>
-        <div className="col-md-6 mb-3">
-          <label className="form-label fw-bold">Email</label>
-          <div className="input-group flex-nowrap">
-            <span className="input-group-text bg-dark text-white" id="addon-wrapping">@</span>
-            <input
-              type="email"
-              className="form-control"
-              placeholder="Email"
-              name="email"
-              value={user.email}
-              onChange={handleInputChange}
-              aria-label="Email"
-              aria-describedby="addon-wrapping"
-            />
+        <div className="profile-details">
+          <div className="profile-info">
+            <p><span>Name:</span> {user.name}</p>
+            <p><span>Email:</span> {user.email}</p>
+            <p><span>Created:</span> {user.joinDate}</p>
+            <p><span>Bio:</span> {user.bio}</p>
           </div>
-        </div>
-        <div className="col-md-12 mb-3">
-          <label className="form-label fw-bold">Bio</label>
-          <div className="input-group">
-            <span className="input-group-text bg-dark text-white">Bio</span>
-            <textarea
-              className="form-control"
-              aria-label="With textarea"
-              name="bio"
-              value={user.bio}
-              onChange={handleInputChange}
-              placeholder="Write something about yourself..."
-            ></textarea>
-          </div>
-        </div>
-        <div className="mt-5 text-end">
-          <button className="btn btn-dark me-2 fw-bold" onClick={handleSaveChanges}>Save Changes</button>
-          <Link to="/profile">
-            <button className="btn btn-outline-dark fw-bold">Cancel</button>
-          </Link>
+          <div className="d-flex">
+<button className="edit-profile-button me-3">
+  Cancel
+</button>
+<button className="edit-profile-button text-white" style={{background:'#3b82f6'}}>
+  Save
+</button>
+</div>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };
 
-export default EditProfile;
+export default Profile;

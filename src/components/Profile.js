@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react"; // Ensure useState is imported from React
 import "./Profile.css"; // Updated CSS file path
 import defaultImg from "./images/unsplash_xZSEvSlHRv8.png"; // Placeholder image path
 import dot from './images/Group 48097650.png';
 import shape from './images/Group 9.png';
-import shapebottom from './images/Group 99.png';
 import icon from './images/Icons.png';
 import { Edit3 } from "react-feather"; // Using react-feather for the edit icon
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const [user, setUser] = useState({
     name: "Gerald",
     email: "Gerald@gmail.com",
     joinDate: "09/08/2024",
-    bio: "I’m Gadget enthusiast for 3 years and love to share everything in my review",
+    bio: "I’m a gadget enthusiast for 3 years and love to share everything in my review",
     avatar: defaultImg // Using a default image as placeholder
   });
 
@@ -41,9 +41,8 @@ const Profile = () => {
       {/* Decorative images */}
       <img src={dot} alt="Dots" className="decorative-dot" />
       <img src={dot} alt="Dots" className="decorative-dot2" />
-      <img src={shapebottom} alt="Shape" className="decorative-shape-2" />
       <img src={shape} alt="Shape" className="decorative-shape-1" />
-      
+      <img src={shape} alt="Shape" className="decorative-shape-2" />
 
       <div className="profile-card">
         <div className="profile-image-container">
@@ -67,9 +66,11 @@ const Profile = () => {
             <p><span>Created:</span> {user.joinDate}</p>
             <p><span>Bio:</span> {user.bio}</p>
           </div>
-          <button className="edit-profile-button">
-            <Edit3 /> Edit profile
-          </button>
+          <Link to={'./editprofile'} className="no-underline">
+            <button className="edit-profile-button">
+              <Edit3 /> Edit profile
+            </button>
+          </Link>
         </div>
       </div>
     </div>
@@ -77,4 +78,3 @@ const Profile = () => {
 };
 
 export default Profile;
-

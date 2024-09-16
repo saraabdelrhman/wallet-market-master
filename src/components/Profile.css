@@ -1,3 +1,35 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f7f9fc;
+  position: relative;
+  padding-left: 20px;
+}
+
+.profile-title {
+  font-size: 30px;
+  font-weight: 700;
+  padding-left: 20%;
+  width: 100%;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.profile-card {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 100px;
+  height: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+}
 
 .profile-image-container {
   position: relative;
@@ -24,13 +56,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.change-photo-text {
-  display: inline-block;
-  font-size: 12px;
-  margin-top: 5px;
-  color: #007bff;
-}
-
 .profile-details {
   display: flex;
   flex-direction: column;
@@ -49,8 +74,8 @@
 
 .profile-info span {
   font-weight: 500;
-  color:  #383737;
-padding-right: 50px;
+  color: #383737;
+  padding-right: 50px;
 }
 
 .edit-profile-button {
@@ -74,123 +99,73 @@ padding-right: 50px;
   background-color: #007bff;
   color: #fff;
 }
-/* Base styles for decorative elements */
-.decorative-dot {
+
+/* Decorative elements */
+.decorative-dot, .decorative-dot2, .decorative-shape-1, .decorative-shape-2 {
   position: absolute;
-  top: 10px;
-  left: 10px;
   width: 130px;
   z-index: 1;
+}
+
+.decorative-dot {
+  top: 10px;
+  left: 10px;
 }
 
 .decorative-dot2 {
-  position: absolute;
-  bottom: 10px;
+  bottom: 0px;
   right: 10px;
-  width: 130px;
-  z-index: 1;
 }
 
-.decorative-shape-2 {
-  position: absolute;
-  top: 110px;
-  right: 30%;
-  width: 180px;
-  z-index: 1;
+.decorative-shape-1, .decorative-shape-2 {
+  width: 150px;
 }
 
 .decorative-shape-1 {
-  position: absolute;
+  top: 150px;
+  right: 200px;
+}
+
+.decorative-shape-2 {
   bottom: 60px;
-  left: 30%;
-  width: 180px;
-  z-index: 1;
+  left: 200px;
 }
 
-/* Media Queries for responsiveness */
-@media (max-width: 768px) {
-  /* Hide decorative elements on smaller screens */
-  .decorative-dot, .decorative-dot2, .decorative-shape-1, .decorative-shape-2 {
-    display: none; /* Set display to none to hide elements on mobile */
-  }
-}
-
-/* You can keep the settings for larger screens as they were, 
-   if those were working fine, or adjust as needed */
-@media (min-width: 769px) {
-  /* Ensure decorative elements are properly positioned on larger screens */
-  .decorative-dot, .decorative-dot2, .decorative-shape-1, .decorative-shape-2 {
-    display: block; /* Make sure they are visible on larger screens */
-  }
-}
-.profile-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: #f7f9fc;
-  position: relative;
-  padding: 20px;
-}
-
-.profile-title {
-  font-size: 2rem; /* Use rem for scaling */
-  font-weight: 700;
-  width: 100%;
-  margin-bottom: 20px;
-  color: #333;
-  text-align: center;
-  margin-right: 25%;
-}
-
-.profile-card {
-  background-color: #fff;
-  border-radius: 20px;
-  padding: 2rem; /* Scaled padding */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  position: relative;
-  width: 100%;
-  max-width: 600px; /* Limit max width for larger screens */
-}
-
-.profile-details {
-  width: 100%; /* Ensure it uses full available width */
-}
-
-.profile-info p {
-  font-size: 1rem; /* Responsive font size */
-  line-height: 1.5;
-  color: #989797;
-}
-
-.profile-info span {
-  font-weight: 500;
-  color: #383737;
-  display: inline-block; /* Ensure label alignment */
-  width: 100px; /* Fixed width for labels */
-}
-
-.edit-profile-button {
-  margin-top: 20px;
-}
-
-/* Media Queries for resizing text based on screen size */
+/* Media Queries */
 @media (max-width: 768px) {
   .profile-title {
-    font-size: 2rem; /* Smaller font size for mobile */
+    font-size: 1.5rem;
   }
 
-  .profile-card {
-    padding: 1.5rem; /* Smaller padding for a tighter layout */
+  .profile-info p, .profile-info span, .edit-profile-button {
+    font-size: 0.9rem;
+    line-height: 1.4;
   }
 
-  .profile-info p {
-    font-size: 0.9rem; /* Smaller text in smaller screens */
+  .edit-profile-button {
+    padding: 8px 16px;
   }
+
+  .decorative-dot, .decorative-dot2, .decorative-shape-1, .decorative-shape-2 {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-title {
+    font-size: 1.25rem;
+  }
+
+  .profile-info p, .profile-info span, .edit-profile-button {
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .edit-profile-button {
+    padding: 7px 14px;
+  }
+}
+
+.no-underline {
+  text-decoration: none;
 }

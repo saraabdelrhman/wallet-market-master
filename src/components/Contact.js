@@ -59,7 +59,7 @@ export default function About() {
   };
 
   return (
-    <div className="contact-section container">
+    <div className="contact-section container mt-5 mb-5">
       <div className="row d-flex justify-content-center align-items-center">
         {/* Left Section: Contact Info */}
         <div className="col-lg-7 col-md-12 text-start mb-5 mb-lg-0">
