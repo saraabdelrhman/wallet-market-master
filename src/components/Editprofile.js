@@ -1,5 +1,5 @@
-import React, { useState } from "react"; // Ensure useState is imported from React
-import "./Profile.css"; // Updated CSS file path
+import React, { useState } from "react";
+import "./Profile.css"; // Ensure the CSS path is correct
 import defaultImg from "./images/unsplash_xZSEvSlHRv8.png"; // Placeholder image path
 import dot from './images/Group 48097650.png';
 import shape from './images/Group 9.png';
@@ -18,12 +18,10 @@ const Profile = () => {
 
   const [selectedFile, setSelectedFile] = useState(null);
 
-  // Handle file selection
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
 
-  // Handle profile picture upload (mock function for now)
   const handleProfilePictureUpload = () => {
     if (!selectedFile) {
       alert("Please select a file first.");
@@ -32,6 +30,14 @@ const Profile = () => {
 
     // Mock upload
     alert("Profile picture uploaded successfully!");
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUser(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   return (
@@ -61,19 +67,42 @@ const Profile = () => {
         </div>
         <div className="profile-details">
           <div className="profile-info">
-            <p><span>Name:</span> {user.name}</p>
-            <p><span>Email:</span> {user.email}</p>
-            <p><span>Created:</span> {user.joinDate}</p>
-            <p><span>Bio:</span> {user.bio}</p>
+            <input
+              type="text"
+              name="name"
+              value={user.name}
+              onChange={handleInputChange}
+              className="profile-input"
+            />
+            <input
+              type="email"
+              name="email"
+              value={user.email}
+              onChange={handleInputChange}
+              className="profile-input"
+            />
+            <input
+              type="text"
+              name="joinDate"
+              value={user.joinDate}
+              onChange={handleInputChange}
+              className="profile-input"
+            />
+            <textarea
+              name="bio"
+              value={user.bio}
+              onChange={handleInputChange}
+              className="profile-textarea"
+            />
           </div>
           <div className="d-flex">
-<button className="edit-profile-button me-3">
-  Cancel
-</button>
-<button className="edit-profile-button text-white" style={{background:'#3b82f6'}}>
-  Save
-</button>
-</div>
+            <button className="edit-profile-button me-3">
+              Cancel
+            </button>
+            <button className="edit-profile-button">
+              Save
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -81,3 +110,4 @@ const Profile = () => {
 };
 
 export default Profile;
+
