@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom"; // Assuming you want to use these buttons as links
-import img from '../components/images/notfound.jpg'; // Assuming the correct path for the image
+import img from '../components/images/server-error-1024x683-removebg-preview (1).png'; // Assuming the correct path for the image
 
 export default function NotFound() {
   return (
-    <div className="text-center mt-5">
+    <div className="text-center mt-5 mb-5">
       {/* Main container for the Not Found image and text */}
       <div
         style={{
