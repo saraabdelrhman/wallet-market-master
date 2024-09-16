@@ -116,6 +116,11 @@ const Header = () => {
                 About
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className={`nav-link ${isActive('/Contact')}`} to="/contact" style={{ fontSize: '17.71px', color: isActive('/contact') ? '#377BF7' : '#474545' }}>
+                Contact Us
+              </Link>
+            </li>
           </ul>
 
           {/* Login and Register buttons */}

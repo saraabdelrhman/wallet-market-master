@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap is imported
-import img from './images/0ab2a47a-0b9f-45af-b31f-0fa492e123ca-removebg-preview.png';
-import './Contact.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './Contact.css'; // This will hold additional styling
+import 'bootstrap-icons/font/bootstrap-icons.css'; // Ensure Bootstrap Icons are included
 
 export default function About() {
   // State variables for form input
@@ -12,7 +12,7 @@ export default function About() {
   const [message, setMessage] = useState('');
 
   const notify = () =>
-    toast.success('Thank you for your review! Your feedback has been submitted successfully!', {
+    toast.success('Thank you for your message! Your feedback has been submitted successfully!', {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -33,8 +33,6 @@ export default function About() {
       message: message,
     };
 
-    console.log(newdata);
-
     fetch('https://wallyt.com/contact', {
       method: 'post',
       headers: {
@@ -44,15 +42,12 @@ export default function About() {
       body: JSON.stringify(newdata),
     })
     .then((res) => {
-      console.log(res.headers);
-      console.log(res.status);
       if (!res.ok) {
         throw new Error('Network response was not ok');
       }
       return res.json();
     })
-    .then((data) => {
-      console.log('data', data);
+    .then(() => {
       notify();  // Show success notification
       setName(''); // Reset form fields
       setEmail('');
@@ -64,51 +59,76 @@ export default function About() {
   };
 
   return (
-    <div className='container mt-5 mb-5'>
-      <div className='row'>
-        <div className='col-md-6'>
-          <form onSubmit={handleSubmit}>
-            <h2 className='mb-4' style={{ fontWeight: '900' }}>Contact Us</h2>
-            <div className="mb-3">
-              <label htmlFor="name" className="form-label">Name</label>
-              <input 
-                type="text" 
-                className="form-control" 
-                id="name" 
-                value={name}
-                onChange={(e) => setName(e.target.value)} // Update state on change
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-              <input 
-                type="email" 
-                className="form-control" 
-                id="exampleInputEmail1" 
-                aria-describedby="emailHelp" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)} // Update state on change
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="message" className="form-label">Send us a message</label>
-              <textarea 
-                className="form-control" 
-                id="message" 
-                rows="3" 
-                value={message}
-                onChange={(e) => setMessage(e.target.value)} // Update state on change
-              ></textarea>
-            </div>
-            <div className="text-box">
-              <button type="submit" className="btn btn-primary buttons">Submit</button>
-            </div>
-          </form>
+    <div className="contact-section container">
+      <div className="row d-flex justify-content-center align-items-center">
+        {/* Left Section: Contact Info */}
+        <div className="col-lg-7 col-md-12 text-start mb-5 mb-lg-0">
+          <h2 className="text-uppercase">Contact Us</h2>
+          <h1 className="fw-bold">Get in touch today</h1>
+          <p className="text-muted">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt interdum tellus du.
+          </p>
+          <ul className="list-unstyled mt-4">
+            <li className="d-flex align-items-center mb-3">
+              <i className="bi bi-envelope-fill me-3"></i> contact@company.com
+            </li>
+            <li className="d-flex align-items-center mb-3">
+              <i className="bi bi-telephone-fill me-3"></i> (123) 456 - 7890
+            </li>
+            <li className="d-flex align-items-center">
+              <i className="bi bi-geo-alt-fill me-3"></i> 794 Mcallister St, German, 94102
+            </li>
+          </ul>
         </div>
-        <div className='col-md-6'>
-          <img src={img} alt='contact-us' className='w-100' />
+
+        {/* Right Section: Form */}
+        <div className="col-lg-5 col-md-12">
+          <div className="form-container p-5 rounded-3">
+            <form onSubmit={handleSubmit}>
+              <div className="mb-4">
+                <label className="form-label text-white">Name</label>
+                <input
+                  type="text"
+                  className="form-control rounded-pill px-4"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="John Carter"
+                  required
+                />
+              </div>
+
+              <div className="mb-4">
+                <label className="form-label text-white">Email</label>
+                <input
+                  type="email"
+                  className="form-control rounded-pill px-4"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="example@email.com"
+                  required
+                />
+              </div>
+
+              <div className="mb-4">
+                <label className="form-label text-white">Message</label>
+                <textarea
+                  className="form-control rounded-3 px-4"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Please type your message here..."
+                  rows="4"
+                  required
+                />
+              </div>
+
+              <button type="submit" className="btn btn-light rounded-pill px-4 py-2">
+                Send Message
+              </button>
+            </form>
+          </div>
         </div>
       </div>
+
       <ToastContainer />
     </div>
   );
