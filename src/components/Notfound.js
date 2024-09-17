@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom"; // Assuming you want to use these buttons as links
-import img from '../components/images/server-error-1024x683-removebg-preview (1).png'; // Assuming the correct path for the image
+import img from '../components/images/removedbackgrounderror(1).png'; // Assuming the correct path for the image
 
 export default function NotFound() {
   return (
@@ -8,8 +8,6 @@ export default function NotFound() {
       {/* Main container for the Not Found image and text */}
       <div
         style={{
-          width: '100%',
-          height: '100%',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
