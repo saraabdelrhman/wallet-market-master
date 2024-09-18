@@ -1,0 +1,150 @@
+.top-footer {
+    width: 100%;
+    height: 100%;
+    padding-top: 112.5px;
+    padding-bottom: 112.5px;
+    background: linear-gradient(to bottom right, #0B0A2F 40%, #0b0a2fba 45%, #0B0A2F 60%);
+
+
+
+
+
+    box-shadow: 0px 22.5px 56.25px rgba(11, 10, 47, 0.03);
+    border-radius: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 45px;
+  }
+  
+  .top-badge {
+    padding: 9px 18px;
+    background: #F6F5FF;
+    border-radius: 56.25px;
+    display: flex;
+    align-items: center;
+    gap: 6.75px;
+  }
+  
+  .top-badge-text {
+    color: #3B82F6;
+    font-size: 13.5px;
+    font-weight: 700;
+  }
+  
+  .community-call {
+    width: 871px;
+    text-align: center;
+    color: white;
+    font-size: 67.5px;
+    font-weight: 700;
+    line-height: 74.25px;
+  }
+  
+  .community-description {
+    width: 721px;
+    text-align: center;
+    color: #91909E;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 31.5px;
+  }
+  
+  .user-count {
+    color: white;
+    font-size: 15.75px;
+    font-weight: 600;
+  }
+  
+  .sign-up {
+    padding: 14px 16px;
+    background: #377BF7;
+    border-radius: 30px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .write-review {
+    padding: 14px 16px;
+    border: 1px solid #377BF7;
+    border-radius: 30px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+  }
+  /* General styles */
+
+.top-footer {
+    width: 100%;
+    padding-top: 112.5px;
+    padding-bottom: 112.5px;
+    background: linear-gradient(to bottom right, #0B0A2F 40%, #0b0a2fba 45%, #0B0A2F 60%);
+    box-shadow: 0px 22.5px 56.25px rgba(11, 10, 47, 0.03);
+    border-radius: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 45px;
+  }
+  
+  /* Adjustments for tablets */
+  @media (max-width: 1024px) {
+    .top-footer {
+      padding-top: 75px;
+      padding-bottom: 75px;
+    }
+  
+    .community-call {
+      width: auto;  /* Allow the text to scale with the container */
+      font-size: 50px; /* Smaller font size for smaller screens */
+      line-height: 56px;
+    }
+  
+    .community-description,
+    .user-count {
+      font-size: 16px; /* Smaller font size */
+      line-height: 24px;
+    }
+  }
+  
+  /* Adjustments for mobile devices */
+  @media (max-width: 768px) {
+    .top-footer {
+      border-radius: 45px; /* Less pronounced border-radius */
+      padding: 50px 20px; /* Less padding and more responsive */
+    }
+  
+    .top-badge {
+      padding: 6px 12px; /* Smaller padding */
+      border-radius: 30px; /* Smaller border-radius */
+    }
+  
+    .community-call,
+    .community-description {
+      width: auto; /* Full width of the container */
+      text-align: left; /* Optional: Align text to left */
+    }
+  
+    .sign-up,
+    .write-review {
+      width: 100%; /* Full-width buttons for easier interaction */
+      padding: 12px; /* Adjust padding */
+    }
+  }
+  
+  /* Even smaller devices */
+  @media (max-width: 480px) {
+    .community-call {
+      font-size: 36px; /* Even smaller font size for very small devices */
+      line-height: 42px;
+    }
+  
+    .community-description {
+      font-size: 14px; /* Smaller font size */
+      line-height: 20px;
+    }
+  }
+  

@@ -4,6 +4,7 @@ import phone from './images/image 35 (1).png';
 import watch from './images/Frame 44.png';
 import frame from './images/Frame 31.png';
 import './Trending.css';
+import './TopFooter.css'; 
 
 export default function TopRate() { // Corrected the function name to TopRate
   const groups = [
@@ -46,6 +47,30 @@ export default function TopRate() { // Corrected the function name to TopRate
           <span className="visually-hidden">Next</span>
         </button>
       </div>
+      <TopFooter></TopFooter>
     </section>
   );
 }
+
+
+
+export function TopFooter() {
+    return (
+      <div className="top-footer mt-5 mb-5">
+        <div className="top-badge">
+          {/* Complex shapes and logos should ideally be SVGs or images */}
+          <div className="top-badge-icon"></div>
+          <div className="top-badge-text">TOP website rating in the world</div>
+        </div>
+        <div>
+          <div className="community-call">Join our community and write your review</div>
+          <div className="community-description">Share your insights to help others choose better. Your opinion matters!</div>
+        </div>
+        {/* Buttons and actionable items should be <button> or <a> for accessibility */}
+        <div>
+          <button className="sign-up">Sign Up</button>
+          <button className="write-review bg-transparent">Write a review</button>
+        </div>
+      </div>
+    );
+  }
