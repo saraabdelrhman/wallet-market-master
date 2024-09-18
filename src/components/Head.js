@@ -6,6 +6,7 @@ import img3 from './images/image 6 (4).png';
 import cup from './images/cup.png';
 import threed from './images/3dcube.png';
 import crown from './images/crown.png';
+import shape from './images/Vector 2.png';
 import status from './images/status-up.png';
 import searchIcon from './images/akar-icons_search.png'; // Assuming you have a search icon image
 import './Style.css'; // Ensure this file contains your styles for the page
@@ -121,6 +122,10 @@ export const HeroSection = () => {
           </div>
         </div>
       </div>
+      <div className="d-flex align-items-end justify-content-end w-100 shape">
+      <img src={shape} alt='shape' className="hide-on-phone"></img>
+      </div>
+     
       <Categories></Categories>
     </div>
   
