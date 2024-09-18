@@ -102,7 +102,7 @@ const Header = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className={`nav-link ${isActive('/category')}`} to="/category" style={{ fontSize: '17.71px', color: isActive('/category') ? '#377BF7' : '#474545' }}>
+              <Link className={`nav-link ${isActive('/categories')}`} to="/categories" style={{ fontSize: '17.71px', color: isActive('/categories') ? '#377BF7' : '#474545' }}>
                 Category
               </Link>
             </li>
