@@ -12,6 +12,7 @@ import searchIcon from './images/akar-icons_search.png'; // Assuming you have a 
 import './Style.css'; // Ensure this file contains your styles for the page
 import Categories from './Categories';
 import Trending from './Trending';
+import TopRate from "./Top-rate";
 
 export const HeroSection = () => {
   return (
@@ -129,6 +130,7 @@ export const HeroSection = () => {
      
       <Categories></Categories>
       <Trending></Trending>
+      <TopRate></TopRate>
     </div>
   
   );
