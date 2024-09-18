@@ -1,0 +1,33 @@
+/* Categories.css */
+.category-card {
+    background-color: #fff;
+    border-radius: 20px; /* Rounded borders as per design */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px;
+}
+
+.category-icon {
+    width: 48px; /* Adjust size as needed */
+    margin-bottom: 10px; /* Space between icon and text */
+}
+
+.category-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.category-count {
+    font-size: 14px;
+    color: #6c757d; /* Using Bootstrap's text-muted color directly */
+}
+
+h2 {
+    font-size: 30px;
+    color: #000; /* Dark text for header */
+    font-weight: 700; /* Assuming a bold style is desired */
+}
+
+p {
+    font-size: 16px; /* Smaller text for the subtitle */
+    color: #6c757d; /* Lighter text color */
+}

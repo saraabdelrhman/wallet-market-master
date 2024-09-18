@@ -1,142 +1,53 @@
-// import React, { useState, useEffect } from "react";
+import React from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import micro from './images/microscope.png';
+import buildings from './images/building-4.png';
+import house from './images/house-2.png';
+import kitchen from './images/kitchen.png';
+import './Categories.css';
 
-// export default function Categories() {
-//   const [categories, setCategories] = useState([]); 
-//   const [loading, setLoading] = useState(true); 
-//   const [error, setError] = useState(null); 
-//   const [newCategory, setNewCategory] = useState(''); 
+const CategoryCard = ({ icon, title, count }) => {
+  return (
+      <Col sm={6} md={4} lg={3} className="mb-3">
+          <div className="category-card text-center p-3">
+              <img src={icon} alt={title} className="category-icon" />
+              <div className="category-title">{title}</div>
+              <div className="category-count text-muted">{count}</div>
+          </div>
+      </Col>
+  );
+};
 
-//   useEffect(() => {
-//     fetch('https://wallyt.com/categories') 
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error('Failed to fetch categories');
-//         }
-//         return response.json();
-//       })
-//       .then((data) => {
-//         setCategories(data);
-//         setLoading(false); 
-//       })
-//       .catch((error) => {
-//         setError(error.message);
-//         setLoading(false);
-//       });
-//   }, []);
+const Categories = () => {
+    const categories = [
+        { icon: micro, title: 'Smartphones', count: '18,394' },
+        { icon: kitchen, title: 'Kitchen', count: '18,394' },
+        { icon: house, title: 'Furniture', count: '18,394' },
+        { icon: buildings, title: 'Fashion', count: '18,394' },
+        { icon: micro, title: 'Apps', count: '18,394' },
+        { icon: kitchen, title: 'Car', count: '18,394' },
+        { icon: house, title: 'Laptop', count: '18,394' },
+        { icon: buildings, title: 'Insurance', count: '18,394' }
+    ];
 
-//   const handleAddCategory = () => {
-//     const category = { name: newCategory };
+    return (
+        <Container className="my-5 mt-5 mb-5">
+            <Row className="justify-content-between align-items-center mb-4">
+                <Col>
+                    <h2 className=''>Categories</h2>
+                    <p>Search categories that you love</p>
+                </Col>
+                <Col className="text-end">
+                    <Button className="bg-primary rounded-5 p-3">Explore All</Button>
+                </Col>
+            </Row>
+            <Row>
+                {categories.map((category, idx) => (
+                    <CategoryCard key={idx} {...category} />
+                ))}
+            </Row>
+        </Container>
+    );
+};
 
-//     fetch('https://wallyt.com/categories', { 
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(category),
-//     })
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error('Failed to add category');
-//         }
-//         return response.json();
-//       })
-//       .then((data) => {
-//         setCategories([...categories, data]);
-//         setNewCategory('');
-//       })
-//       .catch((error) => {
-//         setError(error.message);
-//       });
-//   };
-
-//   const handleUpdateCategory = (id) => {
-//     const updatedCategory = prompt('Enter new category name:');
-//     if (!updatedCategory) return;
-
-//     fetch(`https://wallyt.com/categories/${id}`, { 
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({ name: updatedCategory }),
-//     })
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error('Failed to update category');
-//         }
-//         return response.json();
-//       })
-//       .then((data) => {
-//         setCategories(categories.map((cat) => (cat.id === id ? data : cat)));
-//       })
-//       .catch((error) => {
-//         setError(error.message);
-//       });
-//   };
-
-//   const handleDeleteCategory = (id) => {
-//     fetch(`/categories/${id}`, { 
-//       method: 'DELETE',
-//     })
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error('Failed to delete category');
-//         }
-//         setCategories(categories.filter((cat) => cat.id !== id)); 
-//       })
-//       .catch((error) => {
-//         setError(error.message);
-//       });
-//   };
-
-//   if (loading) {
-//     return <div className="m-5 p-5">Loading categories...</div>;
-//   }
-
-//   if (error) {
-//     return <div className="m-5 p-5">Error: {error}</div>;
-//   }
-
-//   return (
-//     <div className="m-5 p-5">
-//       <h2>Categories</h2>
-//       <ul>
-//         {categories.map((category) => (
-//           <li key={category.id} className="d-flex justify-content-between align-items-center">
-//             {category.name}
-//             <div>
-//               <button
-//                 className="btn btn-sm btn-outline-primary me-2"
-//                 onClick={() => handleUpdateCategory(category.id)}
-//               >
-//                 Edit
-//               </button>
-//               <button
-//                 className="btn btn-sm btn-outline-danger"
-//                 onClick={() => handleDeleteCategory(category.id)}
-//               >
-//                 Delete
-//               </button>
-//             </div>
-//           </li>
-//         ))}
-//       </ul>
-
-//       <div className="mt-4">
-//         <input
-//           type="text"
-//           className="form-control mb-2"
-//           placeholder="New Category"
-//           value={newCategory}
-//           onChange={(e) => setNewCategory(e.target.value)}
-//         />
-//         <button
-//           className="btn btn-primary"
-//           onClick={handleAddCategory}
-//         >
-//           Add Category
-//         </button>
-//       </div>
-//     </div>
-//   );
-// }
+export default Categories;

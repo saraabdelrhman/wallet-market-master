@@ -9,6 +9,7 @@ import crown from './images/crown.png';
 import status from './images/status-up.png';
 import searchIcon from './images/akar-icons_search.png'; // Assuming you have a search icon image
 import './Style.css'; // Ensure this file contains your styles for the page
+import Categories from './Categories'
 
 export const HeroSection = () => {
   return (
@@ -30,20 +31,30 @@ export const HeroSection = () => {
               <img src={img0} alt="Chen Liaw" className="card-img" />
               <div className="card-content">
                 <span className="name">Chen Liaw</span>
-                <span className="date">12 Jun 2023</span>
-                <div className="rating">★★★★★</div>
+             
+                <div className="rating text-warning ms-2">★★★★★</div>
               </div>
+              <span className="date text-secondary">12 Jun 2023</span>
             </div>
 
-         
+            <div className="card chen-liaw">
+              <img src={img1} alt="Chen Liaw" className="card-img" />
+              <div className="card-content">
+                <span className="name">Chen Liaw</span>
+                
+                <div className="rating text-warning ms-2">★★★★★</div>
+              </div>
+              <span className="date text-secondary">12 Jun 2023</span>
+            </div>
 
             <div className="card chen-liaw">
               <img src={img2} alt="Chen Liaw" className="card-img" />
               <div className="card-content">
                 <span className="name">Chen Liaw</span>
-                <span className="date">12 Jun 2023</span>
-                <div className="rating">★★★★★</div>
+          
+                <div className="rating text-warning ms-2">★★★★★</div>
               </div>
+              <span className="date text-secondary">12 Jun 2023</span>
             </div>
           </div>
 
@@ -51,14 +62,14 @@ export const HeroSection = () => {
           <div className="content">
             <h1 className="title">Rate and Rely on the Products You Love</h1>
             <p className="subtitle">
-              500,000 ratings by 100 valid user community, reviews by people like you.
+              500,000 rating text-warning ms-2s by 100 valid user community, reviews by people like you.
             </p>
 
             <div className="search-bar">
               <div className="search-input-wrapper">
                 <img src={searchIcon} alt="Search Icon" className="search-icon" />
                 <input
-                  type="text"
+                  type text-secondary="text"
                   placeholder="Search product, title, or brand"
                   className="search-input"
                 />
@@ -82,32 +93,37 @@ export const HeroSection = () => {
               <img src={crown} alt="Hotel NYK" className="card-img" />
               <div className="card-content">
                 <span className="name">Hotel NYK</span>
-                <span className="type">Hotel</span>
-                <div className="rating">★★★★★</div>
+              
+                <div className="rating text-warning ms-2">★★★★★</div>
               </div>
+              <span className="type text-secondary ">Hotel</span>
             </div>
 
             <div className="card">
               <img src={status} alt="Nike 142" className="card-img" />
               <div className="card-content">
                 <span className="name">Nike 142</span>
-                <span className="type">Shoes</span>
-                <div className="rating">★★★★★</div>
+           
+                <div className="rating text-warning ms-2">★★★★★</div>
               </div>
+              <span className="type text-secondary ">Shoes</span>
             </div>
 
             <div className="card">
               <img src={threed} alt="Nike 256" className="card-img" />
               <div className="card-content">
                 <span className="name">Nike 256</span>
-                <span className="type">Shoes</span>
-                <div className="rating">★★★★★</div>
+           
+                <div className="rating text-warning ms-2 text-warning">★★★★★</div>
               </div>
+              <span className="type text-secondary">Shoes</span>
             </div>
           </div>
         </div>
       </div>
+      <Categories></Categories>
     </div>
+  
   );
 };
 
