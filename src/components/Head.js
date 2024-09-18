@@ -10,7 +10,8 @@ import shape from './images/Vector 2.png';
 import status from './images/status-up.png';
 import searchIcon from './images/akar-icons_search.png'; // Assuming you have a search icon image
 import './Style.css'; // Ensure this file contains your styles for the page
-import Categories from './Categories'
+import Categories from './Categories';
+import Trending from './Trending';
 
 export const HeroSection = () => {
   return (
@@ -127,6 +128,7 @@ export const HeroSection = () => {
       </div>
      
       <Categories></Categories>
+      <Trending></Trending>
     </div>
   
   );
