@@ -83,10 +83,10 @@ const Head = () => {
             <div className="search-bar">
               <div className="search-input-wrapper">
                 <img src={searchIcon} alt="Search Icon" className="search-icon" />
-                <input
+                <input 
                   type="text"
                   placeholder="Search product, title, or brand"
-                  className="search-input"
+                  className="search-input pt-3 pb-3 ps-5"
                   onChange={handleSearchChange}
                 />
                 <button className="search-button" onClick={handleSubmit}>Search</button>

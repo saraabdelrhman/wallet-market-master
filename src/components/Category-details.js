@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Category-details.css";
 import icon from './images/akar-icons_search.png'
+import { Link } from "react-router-dom";
 const categories = ["1 Star", "2 Star", "3 Star", "4 Star", "5 Star"];
 const subcategories = ["Nike", "Louis Vuitton", "Adidas", "Polo", "Gucci"];
 
@@ -27,8 +28,17 @@ const SidebarRadioGroup = ({ title, items, selected, onChange }) => (
 const ProductCard = ({ title, reviews }) => (
   <div className="product-card">
     <h3>{title}</h3>
-    <div className="product-rating">
-      <span className="stars">★★★★☆</span>
+    <div className="me-2 d-flex align-items-end justify-content-end">
+ <Link to={'/reviews'}> <button className="btn rounded-5 me-2" style={{backgroundColor: '#3B82F6', color: 'white'}}>
+    See All Reviews
+  </button></Link>
+  <button className="btn rounded-5" style={{borderColor: '#3B82F6', color: '#3B82F6'}}>
+    Write a Review
+  </button>
+</div>
+
+    <div className="">
+      <span className="stars me-3" style={{fontSize:'20px'}}>★★★★☆</span>
       <span>{reviews} Reviews</span>
     </div>
     <p>Responsive cushioning in the Pegasus provides an energized ride for everyday road running. Experience lighter-weight energy return with dual Air Zoom... <a href="#">read more</a></p>

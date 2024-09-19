@@ -3,8 +3,11 @@ import { Link, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import img from '../components/images/logo-86.png'; // Assuming the image is in the right path
+import language from '../components/images/material-symbols_language (3).png'; // Assuming the image is in the right path
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false); // State to track dropdown visibility
+  const toggleDropdown = () => setIsOpen(!isOpen);
   const hardcodedNotifications = [
     {
       id: 1,
@@ -116,13 +119,41 @@ const Header = () => {
                 About
               </Link>
             </li>
+          
             <li className="nav-item">
               <Link className={`nav-link ${isActive('/Contact')}`} to="/contact" style={{ fontSize: '17.71px', color: isActive('/contact') ? '#377BF7' : '#474545' }}>
                 Contact Us
               </Link>
             </li>
-          </ul>
+            <li className="nav-item m-2" style={{ position: 'relative' }}>
+            <img 
+                src={language} 
+                alt="Language Selector" 
+                onClick={toggleDropdown} // Toggle dropdown on image click
+                style={{ cursor: 'pointer' }} // Change cursor to indicate clickable item
+            />
+            {isOpen && (
+                <select 
+                    style={{ 
+                        position: 'absolute', 
+                        top: '100%', 
+                        left: 0,
+                        width: '100%',
+                        border: '1px solid blue', 
+                        borderRadius: '5px',
+                        backgroundColor: 'white' // Ensure the dropdown is clearly visible
+                    }}
+                    onBlur={() => setIsOpen(false)} // Close dropdown when focus is lost
+                >
+                    <option value="English">English</option>
+                    <option value="Sweden">Sweden</option>
+                    <option value="Français">Français</option>
+                    <option value="български">български</option>
+                </select>
+            )}
+        </li>
 
+            </ul>
           {/* Login and Register buttons */}
           <div className="d-flex align-items-center gap-3">
             <div style={{ display: 'flex' }}>
