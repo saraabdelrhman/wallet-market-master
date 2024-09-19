@@ -9,6 +9,7 @@ import img5 from './images/BG (5).png';
 
 // Import a search icon (FontAwesome or any other library can be used)
 import { FaSearch } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const categories = [
   {
@@ -185,7 +186,7 @@ const Categories = () => {
                 </div>
               ))}
             </div>
-            <button
+        <Link to={'/categoriesdetails'}>   <button
               style={{
                 padding: '10px 20px',
                 borderRadius: '20px',
@@ -196,7 +197,7 @@ const Categories = () => {
               }}
             >
               Find More
-            </button>
+            </button></Link> 
           </div>
         ))}
 

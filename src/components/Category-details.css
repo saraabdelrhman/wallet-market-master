@@ -1,0 +1,89 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .header {
+    background-color: #EEF5FF;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .main-content {
+    display: flex;
+    margin-top: 20px;
+  }
+  
+  .sidebar {
+    width: 200px;
+    margin-right: 20px;
+  }
+  
+  .sidebar-section {
+    margin-bottom: 20px;
+  }
+  
+  .sidebar-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .radio-label {
+    margin-bottom: 5px;
+  }
+  
+  .product-list {
+    flex-grow: 1;
+  }
+  
+  .search-sort {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .product-card {
+    border: 1px solid #E4E7E9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .stars {
+    color: #fa8232;
+  }
+  
+  .product-rating {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .search-bar {
+    display: flex;
+    position: relative;
+    max-width: 600px; 
+    width: 100%; 
+   
+  }
+  
+  .search-bar input {
+    flex-grow: 1; /* Ensures it takes up all available space */
+    padding-right: 40px; 
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .search-bar img {
+    position: absolute;
+    right: 10px;
+    width: 20px;
+    cursor: pointer;
+  }
+  

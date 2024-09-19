@@ -66,7 +66,7 @@ const Profile = () => {
             <p><span>Created:</span> {user.joinDate}</p>
             <p><span>Bio:</span> {user.bio}</p>
           </div>
-          <Link to={'./editprofile'} className="no-underline">
+          <Link to={'/editprofile'} className="no-underline">
             <button className="edit-profile-button">
               <Edit3 /> Edit profile
             </button>

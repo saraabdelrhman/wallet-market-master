@@ -111,7 +111,6 @@ const Head = () => {
       <div className="d-flex align-items-end justify-content-end w-100 shape">
         <img src={shape} alt='Decorative Shape' className="hide-on-phone" />
       </div>
-      <Categories />
       <Trending />
       <TopRate />
     </div>

@@ -96,9 +96,10 @@ const Profile = () => {
             />
           </div>
           <div className="d-flex">
-            <button className="edit-profile-button me-3">
+           <Link to={'/profile'} className="no-underline">
+           <button className="edit-profile-button me-3">
               Cancel
-            </button>
+            </button></Link> 
             <button className="edit-profile-button">
               Save
             </button>

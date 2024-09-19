@@ -13,6 +13,7 @@ import Editprofile from './components/Editprofile';
 import Singleproduct from './components/Singleproduct';
 import PhoneReview from './components/Reviews';
 import Categories from './components/Categories';
+import Categoriesdetails from './components/Category-details';
 import Products from './components/Products';
 import NotFound from './components/Notfound';
 import Reports from './components/Reports';
@@ -39,6 +40,7 @@ function App() {
              <Route path="/phonereview" element={<PhoneReview />} />
              <Route path="/reviews" element={<PhoneReview />} />
              <Route path="/categories" element={<Categories/>} />
+             <Route path="/categoriesdetails" element={<Categoriesdetails/>} />
              <Route path="/Products" element={<Products/>} />
              <Route path="/Reports" element={<Reports/>} />
              <Route path="/Forgotpass" element={<Forgotpass/>} />
