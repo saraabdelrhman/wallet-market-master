@@ -81,7 +81,7 @@ const Head = () => {
             </p>
 
             <div className="search-bar" style={{ marginTop: "24px" }}>
-  <div style={{ display: "flex", alignItems: "center", backgroundColor: "#f1f1f1", borderRadius: "8px", padding: "8px", position: "relative" }}>
+  <div style={{ display: "flex", alignItems: "center", backgroundColor: "#f1f1f1", borderRadius: "50px",border:'1px solid #a0c4ff', padding: "8px", position: "relative" }}>
     <img 
       src={searchIcon} 
       alt="Search Icon" 
@@ -90,7 +90,7 @@ const Head = () => {
     <input
       type="text"
       placeholder="Search product, title, or brand"
-      style={{ border: "none", background: "none", outline: "none", fontSize: "16px", padding: "8px 16px 8px 40px", width: "100%" }}
+      style={{ border: "0", background: "none", outline: "none", fontSize: "16px", padding: "8px 16px 8px 40px", width: "100%" }}
       onChange={handleSearchChange}
     />
     <button style={{ backgroundColor: "#3B82F6", color: 'white', border: "none", padding: "12px 24px", borderRadius: "50px", marginLeft: "8px", cursor: "pointer" }} onClick={handleSubmit}>
