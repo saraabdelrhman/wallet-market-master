@@ -17,6 +17,7 @@ import Products from './components/Products';
 import NotFound from './components/Notfound';
 import Reports from './components/Reports';
 import Forgotpass from './components/Forgotpass';
+import Thanks from './components/Thanks';
 import Reset from './components/Reset'; 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
              <Route path="/Reports" element={<Reports/>} />
              <Route path="/Forgotpass" element={<Forgotpass/>} />
              <Route path="/Reset" element={<Reset/>} />
+             <Route path="/Thanks" element={<Thanks/>} />
 
 
              <Route path='*' element={<NotFound/>}/>

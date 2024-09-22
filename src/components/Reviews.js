@@ -1,13 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import img1 from './images/image 6 (1).png';
 import img2 from './images/image 6 (2).png';
 import img3 from './images/image 6 (3).png';
-
 // Import Font Awesome for star icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStar as faStarEmpty } from '@fortawesome/free-solid-svg-icons';
+import { Link } from "react-router-dom";
 
 export default function Reviews() {
+  // State to hold reviews and new review data
+  const [reviews, setReviews] = useState([
+    { name: "Gerald", stars: 5, review: "Write a review", image: img1, date: "1 day ago" },
+    { name: "Diana", stars: 4, review: "Super efficient service and delivery.", image: img2, date: "4 days ago" },
+    { name: "Andre", stars: 4, review: "Amazing delivery speed and service quality.", image: img3, date: "27 Aug 2024" }
+  ]);
+
+  const [newReview, setNewReview] = useState({ name: '', stars: 0, review: '' });
+  const [showModal, setShowModal] = useState(false);  // State to handle modal visibility
+
+  // Function to handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (newReview.name && newReview.stars > 0 && newReview.review) {
+      const currentDate = new Date().toLocaleDateString("en-US", { day: 'numeric', month: 'short', year: 'numeric' });
+      const updatedReviews = [...reviews, { ...newReview, date: currentDate, image: img1 }]; // Use a default image
+      setReviews(updatedReviews);
+      setNewReview({ name: '', stars: 0, review: '' }); // Reset form
+      setShowModal(true);  // Show the modal after submission
+    }
+  };
+
+  // Function to close modal
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  // Function to set the star rating for new review
+  const handleStarClick = (rating) => {
+    setNewReview((prevReview) => ({ ...prevReview, stars: rating }));
+  };
+
   return (
     <div className="container w-100">
       <header className="header" style={{ backgroundColor: "#EEF5FF" }}>
@@ -33,54 +65,35 @@ export default function Reviews() {
             </div>
           </div>
 
-          {/* Star Rating Breakdown */}
-          <div style={ratingBreakdownContainerStyle}>
-            {renderRatingRow(5, 70)}
-            {renderRatingRow(4, 20)}
-            {renderRatingRow(3, 10)}
-            {renderRatingRow(2, 5)}
-            {renderRatingRow(1, 3)}
-          </div>
-
-          {/* Individual Review Cards */}
-          <div className="review-card" style={reviewCardStyle}>
-            <div className="reviewer" style={reviewerStyle}>
-              <img
-                className="reviewer-image"
-                src={img1}
-                alt="Reviewer"
-                style={reviewerImageStyle}
-              />
-              <div className="reviewer-details" style={reviewerDetailsStyle}>
-                <div className="reviewer-name" style={reviewerNameStyle}>
-                  Gerald
-                </div>
-                <div className="reviewer-action" style={writeReviewStyle}>
-                  Write a review
-                </div>
-              </div>
-            </div>
-            <div className="review-stars" style={starsContainerStyle}>
-              {renderStars(5)}
-            </div>
-          </div>
-
-          {/* Additional Reviews */}
+          {/* Display all reviews */}
           <div style={additionalReviewsStyle}>
-            <ReviewItem
-              name="Diana"
-              date="4 days ago"
-              stars={4}
-              review="Super efficient service and delivery. Couldn't fault at all...the best pet product service I have experienced over many years."
-              image={img2}
-            />
-            <ReviewItem
-              name="Andre"
-              date="27 Aug 2024"
-              stars={4}
-              review="Amazing delivery speed and service quality. Will definitely recommend to others."
-              image={img3}
-            />
+            {reviews.map((r, index) => (
+              <ReviewItem key={index} name={r.name} date={r.date} stars={r.stars} review={r.review} image={r.image} />
+            ))}
+          </div>
+
+          {/* Form to submit a new review */}
+          <div style={newReviewFormStyle}>
+            <h3>Add Your Review</h3>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={newReview.name}
+                onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
+                style={inputStyle}
+              />
+              <div style={starsContainerStyle}>
+                {renderStarsForForm(newReview.stars, handleStarClick)}
+              </div>
+              <textarea
+                placeholder="Write your review here..."
+                value={newReview.review}
+                onChange={(e) => setNewReview({ ...newReview, review: e.target.value })}
+                style={textareaStyle}
+              ></textarea>
+              <button type="submit" style={submitButtonStyle}>Submit Review</button>
+            </form>
           </div>
         </div>
 
@@ -98,11 +111,33 @@ export default function Reviews() {
           </div>
         </div>
       </div>
+
+      {/* Modal for submitting the review */}
+      {showModal && (
+        <div className="modal" style={modalStyle}>
+          <div className="modal-content" style={modalContentStyle}>
+            <h3>Rate your recent experience</h3>
+            <div style={starsContainerStyle}>
+              {renderStarsForForm(newReview.stars, handleStarClick)}
+            </div>
+            <textarea
+              placeholder="What is your experience?"
+              value={newReview.review}
+              style={textareaStyle}
+              readOnly
+            ></textarea>
+            <div style={modalActionsStyle}>
+             <Link to={'/thanks'}> <button onClick={closeModal} style={confirmButtonStyle}>Yes</button></Link>
+              <button onClick={closeModal} style={cancelButtonStyle}>Cancel</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-// Helper to render individual reviews
+// Review item component for reusability with image as a prop
 const ReviewItem = ({ name, date, stars, review, image }) => (
   <div style={reviewItemStyle}>
     <div style={reviewerStyle}>
@@ -125,7 +160,7 @@ const ReviewItem = ({ name, date, stars, review, image }) => (
   </div>
 );
 
-// Helper to render stars
+// Render stars for display
 const renderStars = (count) => {
   const stars = [];
   for (let i = 0; i < 5; i++) {
@@ -140,18 +175,110 @@ const renderStars = (count) => {
   return stars;
 };
 
-// Helper to render the rating breakdown
-const renderRatingRow = (stars, percentage) => (
-  <div style={ratingRowStyle}>
-    <div style={starLabelStyle}>{stars} Star</div>
-    <div style={ratingBarContainerStyle}>
-      <div style={{ ...ratingBarStyle, width: `${percentage}%` }}></div>
-    </div>
-    <div style={ratingPercentageStyle}>{percentage}%</div>
-  </div>
-);
+// Render stars for form submission with click functionality
+const renderStarsForForm = (selectedStars, onClick) => {
+  const stars = [];
+  for (let i = 1; i <= 5; i++) {
+    stars.push(
+      <FontAwesomeIcon
+        key={i}
+        icon={i <= selectedStars ? faStar : faStarEmpty}
+        onClick={() => onClick(i)}
+        style={{ color: i <= selectedStars ? "#FA8232" : "#ADB7BC", fontSize: "25px", cursor: "pointer" }}
+      />
+    );
+  }
+  return stars;
+};
 
-// Styles
+// Modal Styles
+const modalStyle = {
+  position: "fixed",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  zIndex: 1000
+};
+
+const modalContentStyle = {
+  width: "400px",
+  backgroundColor: "#fff",
+  padding: "20px",
+  borderRadius: "8px",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+};
+
+const modalActionsStyle = {
+  display: "flex",
+  justifyContent: "space-around",
+  marginTop: "20px",
+  width: "100%"
+};
+
+const confirmButtonStyle = {
+  padding: "10px 20px",
+  backgroundColor: "#007AFF",
+  color: "#fff",
+  border: "none",
+  borderRadius: "8px",
+  cursor: "pointer",
+};
+
+const cancelButtonStyle = {
+  padding: "10px 20px",
+  backgroundColor: "#fff",
+  color: "#007AFF",
+  border: "1px solid #007AFF",
+  borderRadius: "8px",
+  cursor: "pointer",
+};
+
+// Form Styles
+const newReviewFormStyle = {
+  width: "100%",
+  padding: "24px",
+  background: "#F5F7FE",
+  borderRadius: "24px",
+  border: "1px #E4E7E9 solid",
+  marginTop: "30px",
+};
+
+const inputStyle = {
+  width: "100%",
+  padding: "10px",
+  margin: "10px 0",
+  fontSize: "16px",
+  borderRadius: "8px",
+  border: "1px solid #E4E7E9",
+};
+
+const textareaStyle = {
+  width: "100%",
+  padding: "10px",
+  margin: "10px 0",
+  fontSize: "16px",
+  borderRadius: "8px",
+  border: "1px solid #E4E7E9",
+  minHeight: "100px",
+};
+
+const submitButtonStyle = {
+  padding: "10px 20px",
+  backgroundColor: "#007AFF",
+  color: "#fff",
+  border: "none",
+  borderRadius: "8px",
+  cursor: "pointer",
+};
+
+// Styles for existing components
 const reviewsContainerStyle = {
   display: "flex",
   justifyContent: "space-between",
@@ -210,61 +337,26 @@ const ratingNumberStyle = {
   color: "#191C1F",
 };
 
-const ratingBreakdownContainerStyle = {
-  width: '100%',
+const additionalReviewsStyle = {
+  width: "100%",
   padding: "24px",
   background: "#F5F7FE",
   borderRadius: "24px",
-  border: "1px solid #E4E7E9",
+  border: "1px #E4E7E9 solid",
   flexDirection: "column",
   display: "inline-flex",
   gap: "24px",
 };
 
-const ratingRowStyle = {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-};
-
-const starLabelStyle = {
-  fontSize: "14px",
-  fontFamily: "Poppins",
-  fontWeight: "500",
-  color: "#191C1F",
-};
-
-const ratingBarContainerStyle = {
-  flex: 1,
-  background: "rgba(120, 120, 128, 0.16)",
-  height: "10px",
-  borderRadius: "50px",
-  margin: "0 15px",
-};
-
-const ratingBarStyle = {
-  background: "#007AFF",
-  height: "100%",
-  borderRadius: "50px",
-};
-
-const ratingPercentageStyle = {
-  fontSize: "14px",
-  fontFamily: "Poppins",
-  fontWeight: "500",
-  color: "#191C1F",
-};
-
-const reviewCardStyle = {
-  alignSelf: "stretch",
+const reviewItemStyle = {
+  width: "100%",
   padding: "24px",
   background: "#F5F7FE",
-  borderRadius: "24px",
-  border: "1px solid #E4E7E9",
+  borderRadius: "30px",
+  border: "1px #E4E7E9 solid",
   display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  marginBottom: "30px",
+  flexDirection: "column",
+  gap: "20px",
 };
 
 const reviewerStyle = {
@@ -292,40 +384,6 @@ const reviewerNameStyle = {
   color: "#191C1F",
 };
 
-const writeReviewStyle = {
-  fontSize: "16px",
-  fontFamily: "Poppins",
-  fontWeight: "400",
-  color: "#377BF7",
-};
-
-const starsContainerStyle = {
-  display: "flex",
-  gap: "5px",
-};
-
-const additionalReviewsStyle = {
-  width: "100%",
-  padding: "24px",
-  background: "#F5F7FE",
-  borderRadius: "24px",
-  border: "1px #E4E7E9 solid",
-  flexDirection: "column",
-  display: "inline-flex",
-  gap: "24px",
-};
-
-const reviewItemStyle = {
-  width: "100%",
-  padding: "24px",
-  background: "#F5F7FE",
-  borderRadius: "30px",
-  border: "1px #E4E7E9 solid",
-  display: "flex",
-  flexDirection: "column",
-  gap: "20px",
-};
-
 const reviewDateStyle = {
   paddingTop: "8px",
   paddingBottom: "8px",
@@ -340,6 +398,11 @@ const reviewTextStyle = {
   color: "#636C71",
   fontSize: "16px",
   fontWeight: "400",
+};
+
+const starsContainerStyle = {
+  display: "flex",
+  gap: "5px",
 };
 
 const rightSectionStyle = {
@@ -376,4 +439,3 @@ const aboutDescriptionStyle = {
   color: "#474545",
   lineHeight: "24px",
 };
-
