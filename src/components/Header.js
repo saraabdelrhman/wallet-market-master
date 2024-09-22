@@ -110,11 +110,6 @@ const Header = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className={`nav-link ${isActive('/review')}`} to="/review" style={{ fontSize: '17.71px', color: isActive('/review') ? '#377BF7' : '#474545' }}>
-                Review
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link className={`nav-link ${isActive('/about')}`} to="/about" style={{ fontSize: '17.71px', color: isActive('/about') ? '#377BF7' : '#474545' }}>
                 About
               </Link>
