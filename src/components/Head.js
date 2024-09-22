@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom'; // Corrected import
-import './Style.css'; // Ensure the CSS file name is correct and located in the proper directory
+import { useNavigate } from 'react-router-dom';
+import './Style.css';
 
 // Importing images
 import img0 from './images/image 6.png';
@@ -13,19 +13,17 @@ import shape from './images/Vector 2.png';
 import status from './images/status-up.png';
 import searchIcon from './images/akar-icons_search.png';
 
-import Categories from './Categories';
 import Trending from './Trending';
 import TopRate from "./Top-rate";
 
 const Head = () => {
-  const [search, setSearch] = useState(""); // Correct naming convention for state
+  const [search, setSearch] = useState("");
   const [searchData, setSearchData] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (search !== "") {
-      // Assuming you have a valid URL and proper backend setup to handle the fetch request
-      fetch(`https://Wallyt.com/search?query=${search}`) 
+      fetch(`https://Wallyt.com/search?query=${search}`)
         .then(res => {
           if (!res.ok) {
             throw new Error('Product not found');
@@ -42,79 +40,99 @@ const Head = () => {
   };
 
   const handleProductClick = (id) => {
-    navigate(`/products/${id}`); // Correct URL path
+    navigate(`/products/${id}`);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Optional: Add function logic if needed for submitting search
   };
 
   return (
     <div className="hero-section">
       <div className="top-section">
-        <div className="badge-container">
-          <span className="badge text-center">
-            <img src={cup} alt="Top site badge icon" className="badge-icon" />
+        <div className="badge-container" style={{ textAlign: "center", marginBottom: "16px" }}>
+          <span className="badge" style={{ backgroundColor: "", padding: "8px 12px", borderRadius: "16px", fontWeight: "bold" }}>
+            <img src={cup} alt="Top site badge icon" style={{ marginRight: "8px" }} />
             TOP website rating in the world
           </span>
         </div>
 
-        <div className="main-content">
-          <div className="left-cards">
-            {[img0, img1, img2].map((image, index) => (
-              <div className="card chen-liaw" key={index}>
-                <img src={image} alt="Chen Liaw" className="card-img" />
-                <div className="card-content">
-                  <span className="name">Chen Liaw</span>
-                  <div className="rating text-warning ms-2">★★★★★</div>
-                </div>
-                <span className="date text-secondary">12 Jun 2023</span>
-              </div>
-            ))}
-          </div>
+        <div className="main-content" style={{ display: "flex", justifyContent: "space-between" }}>
+          {/* Left Cards */}
+          <div className="left-cards d-none d-md-flex flex-column">
+  {[img0, img1, img2].map((image, index) => (
+    <div key={index} style={{ display: "flex", alignItems: "center", backgroundColor: "#fff", borderRadius: "12px", padding: "16px", marginBottom: "16px", boxShadow: "20px 50px 50px #FDE3FF", width: "100%" }}>
+      <img src={image} alt="Chen Liaw" style={{ borderRadius: "50%", width: "48px", height: "48px", objectFit: "cover", marginRight: "16px" }} />
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <span style={{ fontSize: "18px", fontWeight: "600", color: "#1F1F2E" }}>Chen Liaw</span>
+        <div style={{ fontSize: "14px", color: "#FFD700", marginBottom: "4px" }}>★★★★★</div>
+        <span style={{ fontSize: "12px", color: "#B0B0B0" }}>12 Jun 2023</span>
+      </div>
+    </div>
+  ))}
+</div>
+          
 
-          <div className="content">
+          {/* Main Content */}
+          <div className="content" style={{ flex: "1", marginLeft: "32px" }}>
             <h1 className="title">Rate and Rely on the Products You Love</h1>
             <p className="subtitle">
               500,000 ratings by 100 valid user community, reviews by people like you.
             </p>
 
-            <div className="search-bar">
-              <div className="search-input-wrapper">
-                <img src={searchIcon} alt="Search Icon" className="search-icon" />
-                <input 
-                  type="text"
-                  placeholder="Search product, title, or brand"
-                  className="search-input pt-3 pb-3 ps-5"
-                  onChange={handleSearchChange}
-                />
-                <button className="search-button" onClick={handleSubmit}>Search</button>
-              </div>
-            </div>
-          </div>
+            <div className="search-bar" style={{ marginTop: "24px" }}>
+  <div style={{ display: "flex", alignItems: "center", backgroundColor: "#f1f1f1", borderRadius: "8px", padding: "8px", position: "relative" }}>
+    <img 
+      src={searchIcon} 
+      alt="Search Icon" 
+      style={{ position: "absolute", left: "16px", width: "20px", height: "20px" }} 
+    />
+    <input
+      type="text"
+      placeholder="Search product, title, or brand"
+      style={{ border: "none", background: "none", outline: "none", fontSize: "16px", padding: "8px 16px 8px 40px", width: "100%" }}
+      onChange={handleSearchChange}
+    />
+    <button style={{ backgroundColor: "#3B82F6", color: 'white', border: "none", padding: "12px 24px", borderRadius: "50px", marginLeft: "8px", cursor: "pointer" }} onClick={handleSubmit}>
+      Search
+    </button>
+    </div>
+    </div>
+    <div className="d-flex justify-content-center gap-1">
+    <img className=" rounded-circle" src={img0} style={{width:'30px'}}></img>
+    <img className=" rounded-circle" style={{width:'30px'}} src={img2}></img>
+    <img className=" rounded-circle"style={{width:'30px'}} src={img1}></img>
+    <div className="mt-3" style={{color: '#0B0A2F', fontSize: 15.75, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word'}}> 289,199 Review </div>
+    </div>
+    
+    </div>
 
-          <div className="right-cards">
-            {[{ img: crown, name: "Hotel NYK" }, { img: status, name: "Nike 142" }, { img: threed, name: "Nike 256" }].map((product, index) => (
-              <div className="card" key={index}>
-                <img src={product.img} alt={product.name} className="card-img" />
-                <div className="card-content">
-                  <span className="name">{product.name}</span>
-                  <div className="rating text-warning ms-2">★★★★★</div>
-                </div>
-                <span className="type text-secondary">{product.name.includes("Hotel") ? "Hotel" : "Shoes"}</span>
-              </div>
+
+     
+          {/* Right Cards */}
+          <div className="right-cards d-none d-md-flex flex-column">
+  {[{ img: crown, name: "Hotel NYK" }, { img: status, name: "Nike 142" }, { img: threed, name: "Nike 256" }].map((product, index) => (
+    <div key={index} style={{ display: "flex", alignItems: "center", backgroundColor: "#fff", borderRadius: "12px", padding: "16px", marginBottom: "16px", boxShadow: "20px 50px 50px #DEDFFF", width: "100%" }}>
+      <img src={product.img} alt={product.name} style={{ width: "48px", height: "48px", marginRight: "16px" }} />
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <span style={{ fontSize: "18px", fontWeight: "600", color: "#1F1F2E" }}>{product.name}</span>
+        <div style={{ fontSize: "14px", color: "#FFD700", marginBottom: "4px" }}>★★★★★</div>
+        <span style={{ fontSize: "12px", color: "#B0B0B0" }}>{product.name.includes("Hotel") ? "Hotel" : "Shoes"}</span>
+      </div>
+    </div>
             ))}
           </div>
         </div>
       </div>
-      <div className="d-flex align-items-end justify-content-end w-100 shape">
-        <img src={shape} alt='Decorative Shape' className="hide-on-phone" />
+
+      <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "flex-end", width: "100%", marginTop: "32px" }}>
+        <img src={shape} alt="Decorative Shape" style={{ display: "none", visibility: "hidden" }} />
       </div>
+
       <Trending />
       <TopRate />
     </div>
   );
 };
 
-export default Head; // Ensure the component name matches the filename if using default export
+export default Head;
