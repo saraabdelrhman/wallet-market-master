@@ -6,15 +6,16 @@ import img2 from './images/BG (2).png';
 import img3 from './images/BG (3).png';
 import img4 from './images/BG (4).png';
 import img5 from './images/BG (5).png';
+import shape from './images/zgzg-removebg-preview.png';
+import shape2 from './images/zgzg-left.png';
 
-// Import a search icon (FontAwesome or any other library can be used)
 import { FaSearch } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const categories = [
   {
     name: 'Smartphones',
-    image: img1,
+    image: img,
     items: ['Apple', 'Samsung', 'OnePlus', 'Xiaomi'],
   },
   {
@@ -24,22 +25,22 @@ const categories = [
   },
   {
     name: 'Fashion',
-    image: img3,
+    image: img4,
     items: ['Nike', 'Louis V', 'Adidas', 'Polo'],
   },
   {
     name: 'Finance',
-    image: img4,
+    image: img1,
     items: ['American Digital Bank', 'SolarisBank', 'O2 Banking', 'Penta'],
   },
   {
     name: 'Cars',
-    image: img5,
+    image: img3,
     items: ['Tesla', 'Toyota', 'BYD', 'Honda'],
   },
   {
     name: 'Laptops',
-    image: img, // Adding the 6th category with another image
+    image: img1, // Adding the 6th category with another image
     items: ['MacBook', 'Dell', 'HP', 'Lenovo'],
   },
 ];
@@ -49,7 +50,7 @@ const Categories = () => {
 
   // Filter categories based on search input
   const filteredCategories = categories.filter((category) =>
-    category.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    category.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
     category.items.some((item) =>
       item.toLowerCase().includes(searchQuery.toLowerCase())
     )
@@ -64,8 +65,37 @@ const Categories = () => {
         justifyContent: 'center',
         alignItems: 'center',
         padding: '20px',
+        position: 'relative', // Set position relative to anchor the absolute shapes
       }}
     >
+      {/* Left shape */}
+      <img
+        src={shape2}
+        alt="shape"
+        className='d-none d-md-flex'
+        style={{
+          position: 'absolute',
+          top: '140px',
+          left: '0',
+          width: '300px', // Adjust width as needed
+          zIndex: '-1', // Keep it behind the content
+        }}
+      />
+
+      {/* Right shape */}
+      <img
+        src={shape}
+        alt="shape"
+        className='d-none d-md-flex'
+        style={{
+          position: 'absolute',
+          top: '15px',
+          right: '0',
+          width: '300px', // Adjust width as needed
+          zIndex: '-1', // Keep it behind the content
+        }}
+      />
+
       <div
         style={{
           width: '100%',
@@ -78,7 +108,7 @@ const Categories = () => {
           marginBottom: '20px',
         }}
       >
-        Explore companies by category
+        What are you looking for ?
       </div>
 
       {/* Search Input with Icon on the Left */}
@@ -86,6 +116,7 @@ const Categories = () => {
         style={{
           position: 'relative',
           width: '100%',
+          backgroundColor: '#eef5ff',
           maxWidth: '600px',
           marginBottom: '30px',
         }}
@@ -107,12 +138,19 @@ const Categories = () => {
           style={{
             width: '100%',
             padding: '10px 10px 10px 40px', // Add extra padding on the left for the icon
-            border: '1px solid #ccc',
+            border: '0px solid #ccc',
             borderRadius: '8px',
             fontSize: '1rem',
             boxSizing: 'border-box',
           }}
         />
+      </div>
+
+      {/* The sentence aligned to the left */}
+      <div style={{ width: '100%', marginBottom: '20px' }}>
+        <h3 className='fs-3 fw-bold mt-5 pt-5' style={{ marginLeft: '10%', fontWeight: '400' }}>
+          Explore companies by category
+        </h3>
       </div>
 
       <div
@@ -123,86 +161,79 @@ const Categories = () => {
           width: '100%',
           maxWidth: '1200px',
           boxSizing: 'border-box',
-
-          /* Media queries for responsiveness */
-          '@media (max-width: 1024px)': {
-            gridTemplateColumns: 'repeat(2, 1fr)', // 2 columns for tablets
-          },
-          '@media (max-width: 768px)': {
-            gridTemplateColumns: 'repeat(1, 1fr)', // 1 column for mobile devices
-          },
         }}
       >
         {/* Display Filtered Categories */}
-        {filteredCategories.map((category) => (
-          <div
-            key={category.name}
-            style={{
-              padding: '20px',
-              borderRadius: '10px',
-              border: '1px solid #DFDFDF',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'flex-start',
-              alignItems: 'center',
-              gap: '20px',
-              backgroundColor: '#fff',
-            }}
-          >
-            <img
-              style={{
-                width: '100px',
-                height: '100px',
-                borderRadius: '9999px',
-              }}
-              src={category.image}
-              alt={category.name}
-            />
+        {filteredCategories.length > 0 ? (
+          filteredCategories.map((category) => (
             <div
+              key={category.name}
               style={{
-                fontSize: '1.5rem',
-                fontFamily: 'Poppins',
-                fontWeight: '700',
-                textAlign: 'center',
-                color: 'black',
-              }}
-            >
-              {category.name}
-            </div>
-            <div
-              style={{
-                width: '100%',
-                textAlign: 'center',
-                color: 'black',
-                fontSize: '1rem',
-                fontFamily: 'Poppins',
-                fontWeight: '400',
-                lineHeight: '1.5',
-              }}
-            >
-              {category.items.map((item) => (
-                <div key={item} style={{ marginBottom: '10px' }}>
-                  {item}
-                </div>
-              ))}
-            </div>
-        <Link to={'/categoriesdetails'}>   <button
-              style={{
-                padding: '10px 20px',
-                borderRadius: '20px',
-                border: '1px solid #377BF7',
+                padding: '20px',
+                borderRadius: '10px',
+                border: '1px solid #DFDFDF',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
+                alignItems: 'center',
+                gap: '20px',
                 backgroundColor: '#fff',
-                color: '#377BF7',
-                cursor: 'pointer',
               }}
             >
-              Find More
-            </button></Link> 
-          </div>
-        ))}
-
-        {/* If no categories match the search query */}
-        {filteredCategories.length === 0 && (
+              <img
+                style={{
+                  width: '100px',
+                  height: '100px',
+                  borderRadius: '9999px',
+                }}
+                src={category.image}
+                alt={category.name}
+              />
+              <div
+                style={{
+                  fontSize: '1.5rem',
+                  fontFamily: 'Poppins',
+                  fontWeight: '700',
+                  textAlign: 'center',
+                  color: 'black',
+                }}
+              >
+                {category.name}
+              </div>
+              <div
+                style={{
+                  width: '100%',
+                  textAlign: 'center',
+                  color: 'black',
+                  fontSize: '1rem',
+                  fontFamily: 'Poppins',
+                  fontWeight: '400',
+                  lineHeight: '1.5',
+                }}
+              >
+                {category.items.map((item) => (
+                  <div key={item} style={{ marginBottom: '10px' }}>
+                    {item}
+                  </div>
+                ))}
+              </div>
+              <Link to={'/categoriesdetails'}>
+                <button
+                  style={{
+                    padding: '10px 20px',
+                    borderRadius: '20px',
+                    border: '1px solid #377BF7',
+                    backgroundColor: '#fff',
+                    color: '#377BF7',
+                    cursor: 'pointer',
+                  }}
+                >
+                  Find More
+                </button>
+              </Link>
+            </div>
+          ))
+        ) : (
           <div
             style={{
               gridColumn: 'span 3',
