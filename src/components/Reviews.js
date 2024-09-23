@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import img1 from './images/image 6 (1).png';
 import img2 from './images/image 6 (2).png';
 import img3 from './images/image 6 (3).png';
-// Import Font Awesome for star icons
+import shape from './images/zgzg-removebg-preview.png';
+import shape2 from './images/zgzg-left.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStar as faStarEmpty } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
@@ -29,6 +30,17 @@ export default function Reviews() {
       setShowModal(true);  // Show the modal after submission
     }
   };
+// Image upload handler
+const handleImageUpload = (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setNewReview((prevReview) => ({ ...prevReview, image: reader.result }));
+    };
+    reader.readAsDataURL(file);
+  }
+};
 
   // Function to close modal
   const closeModal = () => {
@@ -41,15 +53,38 @@ export default function Reviews() {
   };
 
   return (
-    <div className="container w-100">
-      <header className="header" style={{ backgroundColor: "#EEF5FF" }}>
+    <div className="container w-100 ">
+      <header className="header" style={{ backgroundColor: 'transparent' }}>
         <h1 className="text-center mt-5 mb-5 fw-bold">
           Browse the best
           <br />
           product reviews
         </h1>
       </header>
-
+      <img
+        src={shape2}
+        alt="shape"
+        className='d-none d-md-flex'
+        style={{
+          position: 'absolute',
+          top: '240px',
+          left: '0',
+          width: '300px',
+          zIndex: '1',
+        }}
+      />
+      <img
+        src={shape}
+        alt="shape"
+        className='d-none d-md-flex'
+        style={{
+          position: 'absolute',
+          top: '80px',
+          right: '0',
+          width: '300px',
+          zIndex: '1',
+        }}
+      />
       <div className="reviews-container" style={reviewsContainerStyle}>
         {/* Left section (Reviews and Ratings) */}
         <div className="left-section" style={leftSectionStyle}>
@@ -64,7 +99,14 @@ export default function Reviews() {
               </div>
             </div>
           </div>
-
+          <div className="mt-5 mb-5" style={{ backgroundColor: '#f5f7fe' }}>
+            {/* Example star rating overview */}
+            <StarRatingOverview rating="5 Star" percentage="70%" color="#007AFF" width="205.71px" />
+            <StarRatingOverview rating="4 Star" percentage="20%" color="#007AFF" width="150.33px" />
+            <StarRatingOverview rating="3 Star" percentage="10%" color="#007AFF" width="94.94px" />
+            <StarRatingOverview rating="2 Star" percentage="5%" color="#007AFF" width="50px" />
+            <StarRatingOverview rating="1 Star" percentage="2%" color="#007AFF" width="20px" />
+          </div>
           {/* Display all reviews */}
           <div style={additionalReviewsStyle}>
             {reviews.map((r, index) => (
@@ -126,9 +168,31 @@ export default function Reviews() {
               style={textareaStyle}
               readOnly
             ></textarea>
+
+
+
+   <label htmlFor="imageUpload" style={{ cursor: 'pointer', display: 'block', marginBottom: '10px' }}>
+    <div className="d-flex justify-content-between gap-5">
+   <p className="mt-2">Attach File</p>
+  <div style={{ padding: '10px 20px', background: 'white', borderRadius: 5, border: '1px #E6E8EC solid', justifyContent: 'center', alignItems: 'center', display: 'inline-flex' }}>
+
+    <div style={{ color: '#061C3D', fontSize: 14, fontFamily: 'Lexend', fontWeight: '700', textTransform: 'capitalize' }}>
+      Upload Image
+    </div>
+  </div>
+  </div>
+  <input 
+    id="imageUpload"
+    type="file"
+    style={{ display: 'none' }}
+    onChange={handleImageUpload}
+  />
+</label>
             <div style={modalActionsStyle}>
-             <Link to={'/thanks'}> <button onClick={closeModal} style={confirmButtonStyle}>Yes</button></Link>
-              <button onClick={closeModal} style={cancelButtonStyle}>Cancel</button>
+         
+
+              <Link to={'/thanks'}><button onClick={closeModal} style={confirmButtonStyle} className="ps-5 pt-3 pb-3 pe-5">Yes</button></Link>
+              <button onClick={closeModal} style={cancelButtonStyle} className="ps-5 pt-3 pb-3 pe-5">Cancel</button>
             </div>
           </div>
         </div>
@@ -157,6 +221,20 @@ const ReviewItem = ({ name, date, stars, review, image }) => (
     <div style={reviewTextStyle}>
       {review}
     </div>
+  </div>
+);
+
+// Component to show the star rating overview
+const StarRatingOverview = ({ rating, percentage, color, width }) => (
+  <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: 20, marginBottom: '20px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+      <div style={{ backgroundColor: '#FA8232', width: '20px', height: '20px', borderRadius: '50%' }} />
+      <div>{rating}</div>
+    </div>
+    <div style={{ flexGrow: 1, height: '10px', backgroundColor: 'rgba(120, 120, 128, 0.16)', borderRadius: '9999px' }}>
+      <div style={{ width, backgroundColor: color, height: '100%', borderRadius: '9999px' }}></div>
+    </div>
+    <div>{percentage}</div>
   </div>
 );
 
@@ -439,3 +517,4 @@ const aboutDescriptionStyle = {
   color: "#474545",
   lineHeight: "24px",
 };
+
