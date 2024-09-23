@@ -15,6 +15,7 @@ import searchIcon from './images/akar-icons_search.png';
 
 import Trending from './Trending';
 import TopRate from "./Top-rate";
+import Content from "./Content";
 
 const Head = () => {
   const [search, setSearch] = useState("");
@@ -128,7 +129,7 @@ const Head = () => {
       <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "flex-end", width: "100%", marginTop: "32px" }}>
         <img src={shape} alt="Decorative Shape" style={{ display: "none", visibility: "hidden" }} />
       </div>
-
+      <Content></Content>
       <Trending />
       <TopRate />
     </div>

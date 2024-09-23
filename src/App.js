@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import About from './components/About';
 import Contact from './components/Contact';
+import Content from './components/Content';
 import Login from './components/Login';
 import Register from './components/Register';
 import Footer from './components/Footer';
@@ -19,6 +20,7 @@ import Reports from './components/Reports';
 import Forgotpass from './components/Forgotpass';
 import Thanks from './components/Thanks';
 import Reset from './components/Reset'; 
+
 function App() {
   return (
     <Router>
@@ -32,21 +34,19 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/editprofile" element={<Editprofile/>} />
-        <Route path="/products/:productId/reviews" element={<Reviews/>} />
+            <Route path="/editprofile" element={<Editprofile />} />
+            <Route path="/products/:productId/reviews" element={<Reviews />} />
             <Route path="/products/:productId" element={<Singleproduct />} />
-             <Route path="/reviews" element={<Reviews/>} />
-             <Route path="/categories" element={<Categories/>} />
-             <Route path="/categoriesdetails" element={<Categoriesdetails/>} />
-             <Route path="/Products" element={<Products/>} />
-             <Route path="/Reports" element={<Reports/>} />
-             <Route path="/Forgotpass" element={<Forgotpass/>} />
-             <Route path="/Reset" element={<Reset/>} />
-             <Route path="/Thanks" element={<Thanks/>} />
-
-
-             <Route path='*' element={<NotFound/>}/>
-
+            <Route path="/reviews" element={<Reviews />} />
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/categoriesdetails" element={<Categoriesdetails />} />
+            <Route path="/Products" element={<Products />} />
+            <Route path="/Reports" element={<Reports />} />
+            <Route path="/Forgotpass" element={<Forgotpass />} />
+            <Route path="/Reset" element={<Reset />} />
+            <Route path="/Thanks" element={<Thanks />} />
+            <Route path="/Content" element={<Content />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
@@ -56,5 +56,3 @@ function App() {
 }
 
 export default App;
-
-
