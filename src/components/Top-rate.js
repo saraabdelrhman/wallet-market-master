@@ -9,13 +9,13 @@ import './TopFooter.css';
 export default function TopRate() { // Corrected the function name to TopRate
   const groups = [
     [{ image: shoes, label: 'Shoes' }, { image: phone, label: 'Phone' }, { image: frame, label: 'Frame' }, { image: watch, label: 'Watch' }],
-    [{ image: frame, label: 'Frame' }, { image: phone, label: 'Phone' }, { image: watch, label: 'Watch' }, { image: shoes, label: 'Shoes' }]
+    [{ image: frame, label: 'Frame' }, { image: watch, label: 'Watch' }, { image: shoes, label: 'Shoes' }, { image: phone, label: 'Phone' }],
   ];
 
   return (
     <section className="pt-5" id="exercise">
-      <h2 className="pb-4 ">Top Rated Products</h2>
-      <p className="fw-bold ">Browse our most top-rated products</p>
+      <h2 className="pb-4 fs-2 ">Top Rated Products</h2>
+      <p className="fw-bold text-secondary">Browse our most top-rated products</p>
       <div id="carouselExampleFade" className="carousel slide carousel-fade">
         <div className="carousel-inner">
           {groups.map((group, idx) => (
@@ -26,9 +26,9 @@ export default function TopRate() { // Corrected the function name to TopRate
                     <div className="card text-center">
                       <img src={item.image} className="card-img-top" alt={`${item.label}`} />
                       <div className="card-body text-start">
-                        <p className="product-title text-dark">{item.label}</p>
+                        <p className="product-title text-dark" style={{fontSize:'30.57'}}>{item.label}</p>
                         <div className="rating text-warning">★★★★★</div>
-                        <p>233,000 Review </p>
+                        <p className="text-secondary " style={{fontSize:'14px'}}>233,000 Review </p>
                       </div>
                     </div>
                   </div>

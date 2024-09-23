@@ -2,6 +2,11 @@
 .pt-5 {
   padding-top: 3rem; /* Adds space at the top of the section */
 }
+.last-updated {
+  text-align: center;
+  font-size: 14px;
+  color: #6c757d; /* This corresponds to the Bootstrap text-secondary color */
+}
 
 .text-white {
   color: #fff; /* Ensures text color is white where applied */
@@ -45,7 +50,7 @@
 }
 
 .card-body {
-  padding: 20px;
+  padding: 0px;
 }
 
 .product-title {
