@@ -110,7 +110,7 @@ const ResetPassword = () => {
         <div className="circle-image medium-circle">
           <img src={img2} alt="Medium Testimonial" />
         </div>
-        <div className="circle-image small-circle">
+        <div className="circle-image small-circle"  style={{marginBottom:'20%'}}>
           <img src={img3} alt="Small Testimonial" />
         </div>
         <div className="circle-image extra-small-circle">

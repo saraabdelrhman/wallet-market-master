@@ -11,7 +11,7 @@ const subcategories = ["Nike", "Louis Vuitton", "Adidas", "Polo", "Gucci"];
 
 const SidebarRadioGroup = ({ title, items, selected, onChange }) => (
   <div className="sidebar-section">
-    <h3 className="sidebar-title">{title}</h3>
+    <h6 className="sidebar-title">{title}</h6>
     <div className="radio-group">
       {items.map((item, index) => (
         <label key={index} className="radio-label">

@@ -21,6 +21,7 @@ const About = () => {
       email: '',
       password: '',
       confirmPassword: '',
+      accountType: '', // New field for account type
     },
     validationSchema: Yup.object({
       name: Yup.string().required('Complete Name is required'),
@@ -32,6 +33,7 @@ const About = () => {
       confirmPassword: Yup.string()
         .oneOf([Yup.ref('password'), null], 'Passwords must match')
         .required('Confirm Password is required'),
+      accountType: Yup.string().required('Account type is required'), // Validation for account type
     }),
     onSubmit: async (values) => {
       setIsSubmitting(true);
@@ -66,19 +68,19 @@ const About = () => {
   });
 
   return (
-    <div className="container-fluid  ">
+    <div className="container-fluid">
       <div className="row">
         {/* Register Section */}
         <div className="col-12 col-lg-6">
           <div className="login-content w-100">
-            <h2 className="login-header ">Register</h2>
+            <h2 className="login-header">Register</h2>
 
             {/* Success message */}
             {isSubmitted && <div className="alert alert-success">Registration successful!</div>}
 
             <form onSubmit={formik.handleSubmit} className="w-100">
               {/* Complete Name */}
-              <div className="input-box mb-3">
+              <div className="input-box mb-0">
                 <label htmlFor="name" className="form-label">Complete Name</label>
                 <input
                   type="text"
@@ -106,6 +108,24 @@ const About = () => {
                 />
                 {formik.touched.email && formik.errors.email ? (
                   <div className="text-danger">{formik.errors.email}</div>
+                ) : null}
+              </div>
+
+              {/* Account Type Dropdown */}
+              <div className="input-box mb-3">
+                <label htmlFor="accountType" className="form-label">Choose Account Type</label>
+                <select
+                  id="accountType"
+                  aria-label="Account Type"
+                  className="form-select"
+                  {...formik.getFieldProps('accountType')}
+                >
+                  <option value="" label="Create a business or personal account?" />
+                  <option value="personal">Personal</option>
+                  <option value="business">Business</option>
+                </select>
+                {formik.touched.accountType && formik.errors.accountType ? (
+                  <div className="text-danger">{formik.errors.accountType}</div>
                 ) : null}
               </div>
 
@@ -143,7 +163,7 @@ const About = () => {
 
               <button
                 type="submit"
-                className="btn btn-primary w-100 mb-3"
+                className="btn btn-primary w-100 mb-0"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Creating Account...' : 'Create My Account'}
@@ -153,7 +173,7 @@ const About = () => {
             <div className="or-divider text-center">- Or Continue with -</div>
 
             {/* Google and Facebook Buttons */}
-            <div className='d-flex justify-content-center mb-2'>
+            <div className='d-flex justify-content-center mb-0'>
               <div className="btn btn-google w-50 me-2 d-flex align-items-center justify-content-center">
                 <img src={google} alt="Google Logo" className="me-2" />
                 Google
@@ -174,11 +194,11 @@ const About = () => {
           <div className="circle-image medium-circle">
             <img src={img2} alt="Medium Testimonial" />
           </div>
-          <div className="circle-image small-circle">
+          <div className="circle-image small-circle " style={{marginBottom:'40%'}}>
             <img src={img3} alt="Small Testimonial" />
           </div>
-          <div className="circle-image extra-small-circle">
-            <img src={img4} alt="Extra Small Testimonial" />
+          <div className="circle-image  extra-small-circle "  style={{marginBottom:'30%'}}>
+            <img src={img4} alt="Extra Small Testimonial"  />
           </div>
 
           <div className="testimonial-box">

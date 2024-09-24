@@ -4,6 +4,7 @@ import img2 from './images/image 6 (2).png';
 import img3 from './images/image 6 (3).png';
 import shape from './images/zgzg-removebg-preview.png';
 import shape2 from './images/zgzg-left.png';
+import ai from './images/ai.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStar as faStarEmpty } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
@@ -154,29 +155,48 @@ const handleImageUpload = (e) => {
         </div>
       </div>
 
-      {/* Modal for submitting the review */}
       {showModal && (
-        <div className="modal" style={modalStyle}>
-          <div className="modal-content" style={modalContentStyle}>
-            <h3>Rate your recent experience</h3>
-            <div style={starsContainerStyle}>
-              {renderStarsForForm(newReview.stars, handleStarClick)}
-            </div>
-            <textarea
-              placeholder="What is your experience?"
-              value={newReview.review}
-              style={textareaStyle}
-              readOnly
-            ></textarea>
+  <div className="modal" style={modalStyle}>
+    <div className="modal-content" style={modalContentStyle}>
+      <h3>Rate your recent experience</h3>
+      <div style={starsContainerStyle}>
+        {renderStarsForForm(newReview.stars, handleStarClick)}
+      </div>
+      <div style={{ position: "relative" }}>
+        <textarea
+          placeholder="What your experience ?"
+          value={newReview.review}
+          style={{ 
+            ...textareaStyle, 
+            width: "100%",  
+            height: "200px",        // Adjust height for a bigger textarea
+            paddingRight: "150px",        // Add padding for space inside the textarea
+            borderRadius: "10px",   // Rounded corners like in your design
+            border: "1px solid #e0e0e0", // Light border for textarea
+            fontSize: "16px",       // Slightly larger font size
+            color: "#8c8c8c",       // Placeholder color
+            position: "relative"    // For proper alignment of inner elements
+          }}
+          readOnly
+        />
+        <div style={{ position: "absolute", bottom: "10px", right: "10px", display: "flex", alignItems: "center" }}>
+          <img src={ai} alt="ai" className="mb-2" />
+          <p className="ms-2 mt-2 " style={{ color: '#377BF7', fontSize: "14px",cursor:'pointer' }}> Try write with AI</p>
+        </div>
+      </div>
+   
 
+   
+
+ 
 
 
    <label htmlFor="imageUpload" style={{ cursor: 'pointer', display: 'block', marginBottom: '10px' }}>
-    <div className="d-flex justify-content-between gap-5">
+    <div className="d-flex justify-content-between gap-5 ">
    <p className="mt-2">Attach File</p>
-  <div style={{ padding: '10px 20px', background: 'white', borderRadius: 5, border: '1px #E6E8EC solid', justifyContent: 'center', alignItems: 'center', display: 'inline-flex' }}>
+  <div style={{ padding: '10px 20px',marginLeft:'80px', background: 'white', borderRadius: 5, border: '1px #E6E8EC solid', justifyContent: 'center', alignItems: 'center', display: 'inline-flex' }}>
 
-    <div style={{ color: '#061C3D', fontSize: 14, fontFamily: 'Lexend', fontWeight: '700', textTransform: 'capitalize' }}>
+    <div  style={{ color: '#061C3D', fontSize: 14, fontFamily: 'Lexend', fontWeight: '700', textTransform: 'capitalize' }}>
       Upload Image
     </div>
   </div>
@@ -188,11 +208,12 @@ const handleImageUpload = (e) => {
     onChange={handleImageUpload}
   />
 </label>
+
             <div style={modalActionsStyle}>
          
 
-              <Link to={'/thanks'}><button onClick={closeModal} style={confirmButtonStyle} className="ps-5 pt-3 pb-3 pe-5">Yes</button></Link>
-              <button onClick={closeModal} style={cancelButtonStyle} className="ps-5 pt-3 pb-3 pe-5">Cancel</button>
+              <Link to={'/thanks'}><button onClick={closeModal} style={confirmButtonStyle} className="ps-5 pt-0 pb-0 rounded-5 pe-5">Yes</button></Link>
+              <button onClick={closeModal} style={cancelButtonStyle} className="ps-5 pt-0 pb-0 pe-5 rounded-5">Cancel</button>
             </div>
           </div>
         </div>

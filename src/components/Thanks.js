@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import img1 from './images/image 6 (3).png';
+import shape from './images/zgzg-removebg-preview.png';
+import shape2 from './images/zgzg-left.png';
 
 export default function Reviews() {
   // State to manage the review data
@@ -37,11 +39,35 @@ export default function Reviews() {
 
   if (!review) {
     return (
-      <div className="container w-100 ">
+      <div className="container w-100 position-relative">
+        <img
+          src={shape2}
+          alt="shape"
+          className='d-none d-md-flex'
+          style={{
+            position: 'absolute', // Changed to absolute
+            top: '240px',
+            left: '0',
+            width: '300px',
+            zIndex: '1',
+          }}
+        />
+        <img
+          src={shape}
+          alt="shape"
+          className='d-none d-md-flex'
+          style={{
+            position: 'absolute', // Changed to absolute
+            top: '80px',
+            right: '0',
+            width: '300px',
+            zIndex: '1',
+          }}
+        />
         <header className="header" style={{ backgroundColor: "#EEF5FF" }}>
           <h1 className="text-center mt-5 mb-5 fw-bold">Review Deleted</h1>
         </header>
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
           <p>Your review has been deleted.</p>
           <button
             style={{
@@ -64,8 +90,8 @@ export default function Reviews() {
   }
 
   return (
-    <div className="container w-100">
-      <header className="header" style={{ backgroundColor: "#EEF5FF" }}>
+    <div className="container w-100 position-relative" style={{ marginBottom: '50px' }}>
+      <header className="header" style={{ backgroundColor: '' }}>
         <h1 className="text-center mt-5 mb-5 fw-bold">Thanks For Your Review!</h1>
       </header>
 
@@ -81,8 +107,34 @@ export default function Reviews() {
           display: "flex",
           flexDirection: "column",
           gap: "16px",
+          marginBottom: "50px", // Added margin to the bottom
         }}
       >
+        <img
+          src={shape2}
+          alt="shape"
+          className='d-none d-md-flex'
+          style={{
+            position: 'absolute', // Changed to absolute
+            top: '200px',
+            left: '0',
+            width: '300px',
+            zIndex: '1',
+          }}
+        />
+        <img
+          src={shape}
+          alt="shape"
+          className='d-none d-md-flex'
+          style={{
+            position: 'absolute', // Changed to absolute
+            top: '80px',
+            right: '0',
+            width: '300px',
+            zIndex: '1',
+          }}
+        />
+
         {/* Review Pending Notice */}
         <div
           style={{
@@ -209,7 +261,7 @@ export default function Reviews() {
         )}
 
         {/* Edit/Delete Actions */}
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: '20px' }}>
           <div style={{ display: "flex", gap: "16px" }}>
             <div
               style={{
