@@ -1,14 +1,20 @@
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import img from '../components/images/logo-86.png';
-import language from '../components/images/material-symbols_language (3).png'; // Assuming the image is in the right path
+import threelines from '../components/images/more-dots-vertical.png';
+import person1 from '../components/images/image 6 (1).png';
+import person2 from '../components/images/image 6 (2).png';
+import language from '../components/images/material-symbols_language (3).png';
+import notification from '../components/images/notification.png';
+import { Dropdown } from 'react-bootstrap'; // Import Bootstrap Dropdown
 
 const Header = () => {
   const location = useLocation();
 
   const isActive = (path) => {
-    return location.pathname === path 
+    return location.pathname === path
       ? { color: '#377bf7' } // Active color styling
       : {};
   };
@@ -61,15 +67,16 @@ const Header = () => {
                 Contact Us
               </Link>
             </li>
+
+            {/* Language Selector */}
             <li className="nav-item d-flex align-items-center">
-              <img 
-                src={language} 
-                alt="Language Selector" 
-                tabIndex={0}
-                className=''
+              <img
+                src={language}
+                alt="Language Selector"
+                className=""
                 style={{ cursor: 'pointer', height: '24px', marginRight: '10px' }}
               />
-                <select
+              <select
                 style={{ 
                   width: '20px',
                   border: '0',
@@ -84,7 +91,82 @@ const Header = () => {
                 <option value="български">български</option>
               </select>
             </li>
+           
+            {/* Notification Dropdown */}
+            <li className="nav-item d-flex align-items-center">
+              <Dropdown>
+                <Dropdown.Toggle
+                  variant="light"
+                  id="dropdown-notification"
+                  className="d-flex align-items-center"
+                >
+                  <img
+                    src={notification}
+                    alt="Notification Icon"
+                    style={{ cursor: 'pointer', height: '24px', marginRight: '10px' }}
+                  />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu style={{ width: '300px' }}>
+                  <Dropdown.ItemText>
+                    <div className="d-flex justify-content-between align-items-center me-2">
+                      <div>
+
+                      <span>Notifications</span>
+                      <span className="badge bg-primary text-light rounded-5 p-2">2</span>
+                      </div>
+                      
+                    <div style={{fontSize:'12px',color:'#0085FF'}}>
+                    Mark all as read
+                    <img src={threelines} className='w-25' alt='threelines'></img>
+                    </div>
+                    </div>
+                 
+                  </Dropdown.ItemText>
+                  <Dropdown.Divider />
+                  <Dropdown.Item href="#">
+                    <div className="d-flex">
+                      <img
+                        src={person1}
+                        alt="Edward Curr"
+                        className="rounded-circle"
+                        style={{ width: '32px', height: '32px', marginRight: '10px' }}
+                      />
+                      <div className="ms-2">
+                        <strong>Edward Curr</strong>
+                        <div className="text-muted" style={{color:'#696F8C',fontSize:'13px'}}>Added a comment to  
+                          <span className='fw-bolder text-dark ms-1'>Gerald</span></div>
+                      </div>
+                    </div>
+                    <p  style={{color:'#696F8C',fontSize:'13px',marginTop:'15px'}}>This is a great idea! I will steal it,
+                       say <br></br>it’s mine, and give credit to myself 
+                       of<br></br> course... wait... I already did!</p>
+                    <small className="text-muted">1 day ago</small>
+                  </Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item href="#">
+                    <div className="d-flex">
+                      <img
+                        src={person2}
+                        alt="Maria Hill"
+                        className="rounded-circle"
+                        style={{ width: '32px', height: '32px', marginRight: '10px' }}
+                      />
+                      <div className="ms-2">
+                        <strong>Maria Hill</strong>
+                        <div className="text-muted" style={{color:'#696F8C',fontSize:'13px'}}>Added a comment to  
+                          <span className='fw-bolder text-dark ms-1'>Gerald</span></div>
+                      </div>
+                    </div>
+                    <p  style={{color:'#696F8C',fontSize:'13px',marginTop:'15px'}}>This can help us so much</p>
+                    <small className="text-muted">2 days ago</small>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </li>
           </ul>
+
+          {/* Login and Register Links */}
           <div className="d-flex align-items-center gap-3">
             <Link
               to="/login"
