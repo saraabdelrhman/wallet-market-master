@@ -107,23 +107,23 @@ const Header = () => {
                   />
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu style={{ width: '300px' }}>
+                <Dropdown.Menu style={{ width: '380px' }}>
                   <Dropdown.ItemText>
-                    <div className="d-flex justify-content-between align-items-center me-2">
+                    <div className="d-flex justify-content-between align-items-center ">
                       <div>
 
                       <span>Notifications</span>
                       <span className="badge bg-primary text-light rounded-5 p-2">2</span>
                       </div>
                       
-                    <div style={{fontSize:'12px',color:'#0085FF'}}>
+                    <div style={{fontSize:'12px',color:'#0085FF'}} className='d-flex '>
                     Mark all as read
-                    <img src={threelines} className='w-25' alt='threelines'></img>
+                    <img src={threelines} alt='threelines'></img>
                     </div>
                     </div>
                  
                   </Dropdown.ItemText>
-                  <Dropdown.Divider />
+                  <Dropdown.Divider  />
                   <Dropdown.Item href="#">
                     <div className="d-flex">
                       <img
