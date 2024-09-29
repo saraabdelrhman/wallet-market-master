@@ -16,10 +16,10 @@ export default function Reviews() {
   const [reviews, setReviews] = useState([
     { name: "Gerald", stars: 5, review: "Write a review", image: img1, date: "1 day ago" },
     { name: "Diana", stars: 4, review: "Super efficient service and delivery.", image: img2, date: "4 days ago" },
-    { name: "Andre", stars: 4, review: "Amazing delivery speed and service quality.", image: img3, date: "27 Aug 2024" }
+    { name: "Andre 🥇", stars: 4, review: "Amazing delivery speed and service quality.", image: img3, date: "27 Aug 2024" }
   ]);
 
-  const [newReview, setNewReview] = useState({ name: '', stars: 0, review: '' });
+  const [newReview, setNewReview] = useState({ name: '', stars: 0, review: '', isAnonymous: false });
   const [showModal, setShowModal] = useState(false);
 
   // Function to handle image upload
@@ -40,8 +40,8 @@ export default function Reviews() {
       const currentDate = new Date().toLocaleDateString("en-US", { day: 'numeric', month: 'short', year: 'numeric' });
       const updatedReviews = [...reviews, { ...newReview, date: currentDate, image: img1 }];
       setReviews(updatedReviews);
-      setNewReview({ name: '', stars: 0, review: '' });
-      setShowModal(true);
+      setNewReview({ name: '', stars: 0, review: '', isAnonymous: false });
+      setShowModal(false);
     }
   };
 
@@ -51,6 +51,10 @@ export default function Reviews() {
 
   const handleStarClick = (rating) => {
     setNewReview((prevReview) => ({ ...prevReview, stars: rating }));
+  };
+
+  const toggleAnonymous = () => {
+    setNewReview((prevReview) => ({ ...prevReview, isAnonymous: !prevReview.isAnonymous }));
   };
 
   return (
@@ -127,12 +131,48 @@ export default function Reviews() {
         </div>
       </div>
 
+      {/* Modal for new review */}
       {showModal && (
         <div className="modal" style={modalStyle}>
           <div className="modal-content" style={modalContentStyle}>
             <h3>Rate your recent experience</h3>
             <div style={starsContainerStyle}>
               {renderStarsForForm(newReview.stars, handleStarClick)}
+            </div>
+            
+            {/* Toggle for anonymous post */}
+            <div style={{ 
+              width: '100%', 
+              paddingTop: 18, 
+              paddingBottom: 18, 
+              paddingLeft: 24, 
+              paddingRight: 12, 
+              background: 'rgba(55, 123, 247, 0.20)', 
+              borderRadius: 7, 
+              justifyContent: 'space-between', 
+              alignItems: 'center', 
+              display: 'inline-flex' 
+            }}>
+              <div style={{ 
+                color: '#474545', 
+                fontSize: 16, 
+                fontFamily: 'Roboto', 
+                fontWeight: '500', 
+                letterSpacing: 0.15, 
+                wordWrap: 'break-word' 
+              }}>
+                Post anonymously
+              </div>
+              
+              {/* Checkbox Toggle */}
+              <label className="switch">
+                <input 
+                  type="checkbox" 
+                  checked={newReview.isAnonymous} 
+                  onChange={toggleAnonymous} 
+                />
+                <span className="slider round"></span>
+              </label>
             </div>
 
             <textarea
@@ -152,9 +192,7 @@ export default function Reviews() {
             </label>
 
             <div style={modalActionsStyle}>
-              <Link to={'/thanks'}>
-                <button onClick={closeModal} style={confirmButtonStyle} className="ps-5 pt-0 pb-0 rounded-5 pe-5">Submit</button>
-              </Link>
+              <button onClick={handleSubmit} style={confirmButtonStyle} className="ps-5 pt-0 pb-0 rounded-5 pe-5">Submit</button>
               <button onClick={closeModal} style={cancelButtonStyle} className="ps-5 pt-0 pb-0 pe-5 rounded-5">Cancel</button>
             </div>
           </div>
@@ -176,23 +214,23 @@ const ReviewItem = ({ name, date, stars, review, image }) => (
       </div>
     </div>
 
-
     <div className="review-stars" style={starsContainerStyle}>{renderStars(stars)}</div>
     <div style={reviewTextStyle}>{review}</div>
+    
     {/* Add like, dislike, and share buttons here */}
     <div style={interactionIconsStyle} className="d-flex justify-content-between gap-5">
-  <div className="d-flex">
-    <img src={like} alt="like" style={iconStyle} />
-    <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Helpful</div>
-    <img src={dislike} alt="dislike" style={iconStyle} className="ms-5" />
-    <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Not Helpful</div>
+      <div className="d-flex">
+        <img src={like} alt="like" style={iconStyle} />
+        <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Helpful</div>
+        <img src={dislike} alt="dislike" style={iconStyle} className="ms-5" />
+        <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Not Helpful</div>
+      </div>
+      <div className="d-flex" style={{ justifyContent: 'end' }}>
+        <img src={share} alt="share" style={iconStyle} />
+        <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Share</div>
+      </div>
+    </div>
   </div>
-  <div className="d-flex" style={{ justifyContent: 'end' }}>
-    <img src={share} alt="share" style={iconStyle} />
-    <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Share</div>
-  </div>
-</div>
-</div>
 );
 
 // Component to show the star rating overview
@@ -340,6 +378,7 @@ const writeReviewLinkStyle = {
   fontFamily: 'Poppins',
   fontWeight: '400',
   cursor: 'pointer',
+  textDecoration: 'none', // This removes any underlines or default link styles
 };
 
 const starRatingStyle = {
