@@ -86,4 +86,55 @@
     width: 20px;
     cursor: pointer;
   }
+  .filter-bar {
+    padding: 12px 24px;
+    background: #F2F4F5;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .active-filters {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .filter-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #191C1F;
+  }
+  
+  .filter-close-icon {
+    width: 12px;
+    height: 12px;
+    position: relative;
+  }
+  
+  .filter-close-icon div {
+    width: 6.75px;
+    height: 6.75px;
+    position: absolute;
+    top: 2.62px;
+    left: 2.62px;
+    background: #929FA5;
+    border: 1.5px solid #929FA5;
+  }
+  
+  .result-count {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 14px;
+    color: #5F6C72;
+  }
+  
+  .result-count .count {
+    font-weight: 600;
+    color: #191C1F;
+  }
   

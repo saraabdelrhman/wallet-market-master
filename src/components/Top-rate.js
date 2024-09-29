@@ -70,8 +70,8 @@ export function TopFooter() {
         <div className="community-call">Join our community and write your review</div>
         <div className="community-description">Share your insights to help others choose better. Your opinion matters!</div>
       </div>
-      <div>
-        <button className="sign-up">Sign Up</button>
+      <div className="">
+        <button className="sign-up me-2">Sign Up</button>
         <button className="write-review bg-transparent">Write a review</button>
       </div>
     </div>

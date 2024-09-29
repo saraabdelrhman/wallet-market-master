@@ -130,6 +130,30 @@ const ProductReviewPage = () => {
               <option>sort by: Most Popular</option>
             </select>
           </div>
+          <div className="filter-bar">
+  <div className="active-filters">
+    <div style={{color:'#5F6C72'}}>Active Filters:</div>
+    <div className="filter-item">
+      <div>Nike</div>
+      <div style={{color:'#5F6C72'}}>
+        <div>X</div>
+      </div>
+    </div>
+    
+    {/* Active Filter 2 */}
+    <div className="filter-item">
+      <div>4 Star Rating</div>
+      <div style={{color:'#5F6C72'}}>
+        <div style={{fontSize:'14'}}>x</div>
+      </div>
+    </div>
+  </div>
+
+  {/* Results Found */}
+  <div className="result-count">
+    <span className="count">65,867</span> Results found.
+  </div>
+</div>
 
           {/* Display filtered products */}
           {filteredProducts.length > 0 ? (

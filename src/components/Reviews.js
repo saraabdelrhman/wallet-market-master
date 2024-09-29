@@ -5,12 +5,14 @@ import img3 from './images/image 6 (3).png';
 import shape from './images/zgzg-removebg-preview.png';
 import shape2 from './images/zgzg-left.png';
 import ai from './images/ai.png';
+import like from './images/like.png';
+import dislike from './images/dislike.png';
+import share from './images/share.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStar as faStarEmpty } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 
 export default function Reviews() {
-  // State to hold reviews and new review data
   const [reviews, setReviews] = useState([
     { name: "Gerald", stars: 5, review: "Write a review", image: img1, date: "1 day ago" },
     { name: "Diana", stars: 4, review: "Super efficient service and delivery.", image: img2, date: "4 days ago" },
@@ -18,43 +20,41 @@ export default function Reviews() {
   ]);
 
   const [newReview, setNewReview] = useState({ name: '', stars: 0, review: '' });
-  const [showModal, setShowModal] = useState(false);  // State to handle modal visibility
+  const [showModal, setShowModal] = useState(false);
 
-  // Function to handle form submission
+  // Function to handle image upload
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];  // Get the first selected file
+    if (file) {
+      const reader = new FileReader();  // Create a new FileReader to read the file
+      reader.onloadend = () => {
+        setNewReview((prevReview) => ({ ...prevReview, image: reader.result }));  // Update the newReview state with the uploaded image
+      };
+      reader.readAsDataURL(file);  // Read the file as a data URL
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newReview.name && newReview.stars > 0 && newReview.review) {
       const currentDate = new Date().toLocaleDateString("en-US", { day: 'numeric', month: 'short', year: 'numeric' });
-      const updatedReviews = [...reviews, { ...newReview, date: currentDate, image: img1 }]; // Use a default image
+      const updatedReviews = [...reviews, { ...newReview, date: currentDate, image: img1 }];
       setReviews(updatedReviews);
-      setNewReview({ name: '', stars: 0, review: '' }); // Reset form
-      setShowModal(true);  // Show the modal after submission
+      setNewReview({ name: '', stars: 0, review: '' });
+      setShowModal(true);
     }
   };
-// Image upload handler
-const handleImageUpload = (e) => {
-  const file = e.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setNewReview((prevReview) => ({ ...prevReview, image: reader.result }));
-    };
-    reader.readAsDataURL(file);
-  }
-};
 
-  // Function to close modal
   const closeModal = () => {
     setShowModal(false);
   };
 
-  // Function to set the star rating for new review
   const handleStarClick = (rating) => {
     setNewReview((prevReview) => ({ ...prevReview, stars: rating }));
   };
 
   return (
-    <div className="container w-100 ">
+    <div className="container w-100">
       <header className="header" style={{ backgroundColor: 'transparent' }}>
         <h1 className="text-center mt-5 mb-5 fw-bold">
           Browse the best
@@ -62,32 +62,11 @@ const handleImageUpload = (e) => {
           product reviews
         </h1>
       </header>
-      <img
-        src={shape2}
-        alt="shape"
-        className='d-none d-md-flex'
-        style={{
-          position: 'absolute',
-          top: '240px',
-          left: '0',
-          width: '300px',
-          zIndex: '1',
-        }}
-      />
-      <img
-        src={shape}
-        alt="shape"
-        className='d-none d-md-flex'
-        style={{
-          position: 'absolute',
-          top: '80px',
-          right: '0',
-          width: '300px',
-          zIndex: '1',
-        }}
-      />
-      <div className="reviews-container" style={reviewsContainerStyle}>
-        {/* Left section (Reviews and Ratings) */}
+
+      <img src={shape2} alt="shape" className='d-none d-md-flex' style={{ position: 'absolute', top: '240px', left: '0', width: '300px', zIndex: '1' }} />
+      <img src={shape} alt="shape" className='d-none d-md-flex' style={{ position: 'absolute', top: '80px', right: '0', width: '300px', zIndex: '1' }} />
+
+      <div className="reviews-container mt-5" style={reviewsContainerStyle}>
         <div className="left-section" style={leftSectionStyle}>
           <div className="review-summary">
             <div className="review-header" style={reviewHeaderStyle}>
@@ -100,55 +79,48 @@ const handleImageUpload = (e) => {
               </div>
             </div>
           </div>
+
+          <div style={reviewBoxStyle}>
+            <div style={userReviewInfoStyle}>
+              <img style={userImageStyle} src={img1} alt="Gerald" />
+              <div style={userDetailsStyle}>
+                <div style={userNameStyle}>Gerald</div>
+                <Link to="#" onClick={() => setShowModal(true)} style={writeReviewLinkStyle}>
+                  Write a review
+                </Link>
+              </div>
+            </div>
+
+            <div style={starRatingStyle}>
+              {[...Array(5)].map((_, index) => (
+                <svg key={index} xmlns="http://www.w3.org/2000/svg" style={{ width: '33px' }} viewBox="0 0 24 24" fill="#377BF7">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                </svg>
+              ))}
+            </div>
+          </div>
+
           <div className="mt-5 mb-5" style={{ backgroundColor: '#f5f7fe' }}>
-            {/* Example star rating overview */}
             <StarRatingOverview rating="5 Star" percentage="70%" color="#007AFF" width="205.71px" />
             <StarRatingOverview rating="4 Star" percentage="20%" color="#007AFF" width="150.33px" />
             <StarRatingOverview rating="3 Star" percentage="10%" color="#007AFF" width="94.94px" />
             <StarRatingOverview rating="2 Star" percentage="5%" color="#007AFF" width="50px" />
             <StarRatingOverview rating="1 Star" percentage="2%" color="#007AFF" width="20px" />
           </div>
-          {/* Display all reviews */}
+
           <div style={additionalReviewsStyle}>
             {reviews.map((r, index) => (
               <ReviewItem key={index} name={r.name} date={r.date} stars={r.stars} review={r.review} image={r.image} />
             ))}
           </div>
-
-          {/* Form to submit a new review */}
-          <div style={newReviewFormStyle}>
-            <h3>Add Your Review</h3>
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                placeholder="Your Name"
-                value={newReview.name}
-                onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
-                style={inputStyle}
-              />
-              <div style={starsContainerStyle}>
-                {renderStarsForForm(newReview.stars, handleStarClick)}
-              </div>
-              <textarea
-                placeholder="Write your review here..."
-                value={newReview.review}
-                onChange={(e) => setNewReview({ ...newReview, review: e.target.value })}
-                style={textareaStyle}
-              ></textarea>
-              <button type="submit" style={submitButtonStyle}>Submit Review</button>
-            </form>
-          </div>
         </div>
 
-        {/* Right section (About Me) */}
         <div className="right-section" style={rightSectionStyle}>
           <div className="about-card" style={aboutCardStyle}>
             <div className="about-content" style={aboutContentStyle}>
               <div style={aboutTitleStyle}>About Nike</div>
               <div style={aboutDescriptionStyle}>
-                Nike, Inc. (stylized as NIKE) is an American athletic footwear
-                and apparel corporation headquartered near Beaverton, Oregon,
-                United States.
+                Nike, Inc. (stylized as NIKE) is an American athletic footwear and apparel corporation headquartered near Beaverton, Oregon, United States.
               </div>
             </div>
           </div>
@@ -156,63 +128,33 @@ const handleImageUpload = (e) => {
       </div>
 
       {showModal && (
-  <div className="modal" style={modalStyle}>
-    <div className="modal-content" style={modalContentStyle}>
-      <h3>Rate your recent experience</h3>
-      <div style={starsContainerStyle}>
-        {renderStarsForForm(newReview.stars, handleStarClick)}
-      </div>
-      <div style={{ position: "relative" }}>
-        <textarea
-          placeholder="What your experience ?"
-          value={newReview.review}
-          style={{ 
-            ...textareaStyle, 
-            width: "100%",  
-            height: "200px",        // Adjust height for a bigger textarea
-            paddingRight: "150px",        // Add padding for space inside the textarea
-            borderRadius: "10px",   // Rounded corners like in your design
-            border: "1px solid #e0e0e0", // Light border for textarea
-            fontSize: "16px",       // Slightly larger font size
-            color: "#8c8c8c",       // Placeholder color
-            position: "relative"    // For proper alignment of inner elements
-          }}
-          readOnly
-        />
-        <div style={{ position: "absolute", bottom: "10px", right: "10px", display: "flex", alignItems: "center" }}>
-          <img src={ai} alt="ai" className="mb-2" />
-          <p className="ms-2 mt-2 " style={{ color: '#377BF7', fontSize: "14px",cursor:'pointer' }}> Try write with AI</p>
-        </div>
-      </div>
-   
+        <div className="modal" style={modalStyle}>
+          <div className="modal-content" style={modalContentStyle}>
+            <h3>Rate your recent experience</h3>
+            <div style={starsContainerStyle}>
+              {renderStarsForForm(newReview.stars, handleStarClick)}
+            </div>
 
-   
+            <textarea
+              placeholder="What's your experience?"
+              value={newReview.review}
+              onChange={(e) => setNewReview((prevReview) => ({ ...prevReview, review: e.target.value }))}
+              style={textareaStyle}
+            />
 
- 
-
-
-   <label htmlFor="imageUpload" style={{ cursor: 'pointer', display: 'block', marginBottom: '10px' }}>
-    <div className="d-flex justify-content-between gap-5 ">
-   <p className="mt-2">Attach File</p>
-  <div style={{ padding: '10px 20px',marginLeft:'80px', background: 'white', borderRadius: 5, border: '1px #E6E8EC solid', justifyContent: 'center', alignItems: 'center', display: 'inline-flex' }}>
-
-    <div  style={{ color: '#061C3D', fontSize: 14, fontFamily: 'Lexend', fontWeight: '700', textTransform: 'capitalize' }}>
-      Upload Image
-    </div>
-  </div>
-  </div>
-  <input 
-    id="imageUpload"
-    type="file"
-    style={{ display: 'none' }}
-    onChange={handleImageUpload}
-  />
-</label>
+            {/* Image upload input */}
+            <label htmlFor="imageUpload" style={{ cursor: 'pointer', display: 'block', marginBottom: '10px' }}>
+              <div className="d-flex justify-content-between gap-5">
+                <p className="mt-2">Attach File</p>
+                <div style={uploadButtonStyle}>Upload Image</div>
+              </div>
+              <input id="imageUpload" type="file" style={{ display: 'none' }} onChange={handleImageUpload} />
+            </label>
 
             <div style={modalActionsStyle}>
-         
-
-              <Link to={'/thanks'}><button onClick={closeModal} style={confirmButtonStyle} className="ps-5 pt-0 pb-0 rounded-5 pe-5">Yes</button></Link>
+              <Link to={'/thanks'}>
+                <button onClick={closeModal} style={confirmButtonStyle} className="ps-5 pt-0 pb-0 rounded-5 pe-5">Submit</button>
+              </Link>
               <button onClick={closeModal} style={cancelButtonStyle} className="ps-5 pt-0 pb-0 pe-5 rounded-5">Cancel</button>
             </div>
           </div>
@@ -222,27 +164,35 @@ const handleImageUpload = (e) => {
   );
 }
 
-// Review item component for reusability with image as a prop
+// Reusable Components
+
 const ReviewItem = ({ name, date, stars, review, image }) => (
   <div style={reviewItemStyle}>
     <div style={reviewerStyle}>
       <img src={image} alt={name} style={reviewerImageStyle} />
       <div className="reviewer-details" style={reviewerDetailsStyle}>
-        <div className="reviewer-name" style={reviewerNameStyle}>
-          {name}
-        </div>
-        <div style={reviewDateStyle}>
-          {date}
-        </div>
+        <div className="reviewer-name" style={reviewerNameStyle}>{name}</div>
+        <div style={reviewDateStyle}>{date}</div>
       </div>
     </div>
-    <div className="review-stars" style={starsContainerStyle}>
-      {renderStars(stars)}
-    </div>
-    <div style={reviewTextStyle}>
-      {review}
-    </div>
+
+
+    <div className="review-stars" style={starsContainerStyle}>{renderStars(stars)}</div>
+    <div style={reviewTextStyle}>{review}</div>
+    {/* Add like, dislike, and share buttons here */}
+    <div style={interactionIconsStyle} className="d-flex justify-content-between gap-5">
+  <div className="d-flex">
+    <img src={like} alt="like" style={iconStyle} />
+    <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Helpful</div>
+    <img src={dislike} alt="dislike" style={iconStyle} className="ms-5" />
+    <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Not Helpful</div>
   </div>
+  <div className="d-flex" style={{ justifyContent: 'end' }}>
+    <img src={share} alt="share" style={iconStyle} />
+    <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Share</div>
+  </div>
+</div>
+</div>
 );
 
 // Component to show the star rating overview
@@ -274,7 +224,6 @@ const renderStars = (count) => {
   return stars;
 };
 
-// Render stars for form submission with click functionality
 const renderStarsForForm = (selectedStars, onClick) => {
   const stars = [];
   for (let i = 1; i <= 5; i++) {
@@ -290,94 +239,7 @@ const renderStarsForForm = (selectedStars, onClick) => {
   return stars;
 };
 
-// Modal Styles
-const modalStyle = {
-  position: "fixed",
-  top: 0,
-  left: 0,
-  width: "100%",
-  height: "100%",
-  backgroundColor: "rgba(0, 0, 0, 0.5)",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  zIndex: 1000
-};
-
-const modalContentStyle = {
-  width: "400px",
-  backgroundColor: "#fff",
-  padding: "20px",
-  borderRadius: "8px",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-};
-
-const modalActionsStyle = {
-  display: "flex",
-  justifyContent: "space-around",
-  marginTop: "20px",
-  width: "100%"
-};
-
-const confirmButtonStyle = {
-  padding: "10px 20px",
-  backgroundColor: "#007AFF",
-  color: "#fff",
-  border: "none",
-  borderRadius: "8px",
-  cursor: "pointer",
-};
-
-const cancelButtonStyle = {
-  padding: "10px 20px",
-  backgroundColor: "#fff",
-  color: "#007AFF",
-  border: "1px solid #007AFF",
-  borderRadius: "8px",
-  cursor: "pointer",
-};
-
-// Form Styles
-const newReviewFormStyle = {
-  width: "100%",
-  padding: "24px",
-  background: "#F5F7FE",
-  borderRadius: "24px",
-  border: "1px #E4E7E9 solid",
-  marginTop: "30px",
-};
-
-const inputStyle = {
-  width: "100%",
-  padding: "10px",
-  margin: "10px 0",
-  fontSize: "16px",
-  borderRadius: "8px",
-  border: "1px solid #E4E7E9",
-};
-
-const textareaStyle = {
-  width: "100%",
-  padding: "10px",
-  margin: "10px 0",
-  fontSize: "16px",
-  borderRadius: "8px",
-  border: "1px solid #E4E7E9",
-  minHeight: "100px",
-};
-
-const submitButtonStyle = {
-  padding: "10px 20px",
-  backgroundColor: "#007AFF",
-  color: "#fff",
-  border: "none",
-  borderRadius: "8px",
-  cursor: "pointer",
-};
-
-// Styles for existing components
+// Styles
 const reviewsContainerStyle = {
   display: "flex",
   justifyContent: "space-between",
@@ -391,7 +253,6 @@ const leftSectionStyle = {
 };
 
 const reviewHeaderStyle = {
-  alignSelf: "stretch",
   height: "161px",
   padding: "24px",
   background: "#F5F7FE",
@@ -400,7 +261,6 @@ const reviewHeaderStyle = {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  gap: "100px",
 };
 
 const reviewInfoStyle = {
@@ -434,6 +294,105 @@ const ratingNumberStyle = {
   fontFamily: "Poppins",
   fontWeight: "500",
   color: "#191C1F",
+};
+
+const reviewBoxStyle = {
+  width: '100%',
+  padding: '24px',
+  background: '#F5F7FE',
+  marginTop: '25px',
+  borderRadius: '24px',
+  border: '1px solid #E4E7E9',
+  display: 'flex',
+  justifyContent: 'flex-start',
+  alignItems: 'center',
+  gap: '47px',
+};
+
+const userReviewInfoStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '14px',
+};
+
+const userImageStyle = {
+  width: '68px',
+  background: 'linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%)',
+  borderRadius: '50%',
+};
+
+const userDetailsStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '10px',
+};
+
+const userNameStyle = {
+  color: '#191C1F',
+  fontSize: '24px',
+  fontFamily: 'Poppins',
+  fontWeight: '500',
+};
+
+const writeReviewLinkStyle = {
+  color: '#377BF7',
+  fontSize: '16px',
+  fontFamily: 'Poppins',
+  fontWeight: '400',
+  cursor: 'pointer',
+};
+
+const starRatingStyle = {
+  display: 'flex',
+  gap: '10px',
+};
+
+const interactionIconsStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent:'between',
+  marginTop: '15px',
+};
+
+const iconStyle = {
+  width: '24px',
+  height: 'auto',
+  cursor: 'pointer',
+};
+
+const rightSectionStyle = {
+  width: "360px",
+  flexShrink: 0,
+  minWidth: "300px",
+};
+
+const aboutCardStyle = {
+  padding: "24px",
+  background: "#F5F7FE",
+  borderRadius: "24px",
+  border: "1px solid #E4E7E9",
+};
+
+const aboutContentStyle = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "16px",
+};
+
+const aboutTitleStyle = {
+  fontSize: "16px",
+  fontFamily: "Poppins",
+  fontWeight: "500",
+  color: "#191C1F",
+  textTransform: "uppercase",
+};
+
+const aboutDescriptionStyle = {
+  fontSize: "14px",
+  fontFamily: "Poppins",
+  fontWeight: "400",
+  color: "#474545",
+  lineHeight: "24px",
 };
 
 const additionalReviewsStyle = {
@@ -504,38 +463,69 @@ const starsContainerStyle = {
   gap: "5px",
 };
 
-const rightSectionStyle = {
-  width: "360px",
-  flexShrink: 0,
-  minWidth: "300px",
+const modalStyle = {
+  position: "fixed",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  zIndex: 1000,
 };
 
-const aboutCardStyle = {
-  padding: "24px",
-  background: "#F5F7FE",
-  borderRadius: "24px",
-  border: "1px solid #E4E7E9",
-};
-
-const aboutContentStyle = {
+const modalContentStyle = {
+  width: "400px",
+  backgroundColor: "#fff",
+  padding: "20px",
+  borderRadius: "8px",
   display: "flex",
   flexDirection: "column",
-  gap: "16px",
+  alignItems: "center",
 };
 
-const aboutTitleStyle = {
+const textareaStyle = {
+  width: "100%",
+  padding: "10px",
   fontSize: "16px",
-  fontFamily: "Poppins",
-  fontWeight: "500",
-  color: "#191C1F",
-  textTransform: "uppercase",
+  borderRadius: "8px",
+  border: "1px solid #E4E7E9",
+  minHeight: "100px",
 };
 
-const aboutDescriptionStyle = {
-  fontSize: "14px",
-  fontFamily: "Poppins",
-  fontWeight: "400",
-  color: "#474545",
-  lineHeight: "24px",
+const modalActionsStyle = {
+  display: "flex",
+  justifyContent: "space-around",
+  marginTop: "20px",
+  width: "100%",
 };
 
+const confirmButtonStyle = {
+  padding: "10px 20px",
+  backgroundColor: "#007AFF",
+  color: "#fff",
+  border: "none",
+  borderRadius: "8px",
+  cursor: "pointer",
+};
+
+const cancelButtonStyle = {
+  padding: "10px 20px",
+  backgroundColor: "#fff",
+  color: "#007AFF",
+  border: "1px solid #007AFF",
+  borderRadius: "8px",
+  cursor: "pointer",
+};
+
+const uploadButtonStyle = {
+  padding: '10px 20px',
+  background: 'white',
+  borderRadius: 5,
+  border: '1px #E6E8EC solid',
+  justifyContent: 'center',
+  alignItems: 'center',
+  display: 'inline-flex',
+};
