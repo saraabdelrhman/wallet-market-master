@@ -1,53 +1,34 @@
 import React, { useState } from 'react';
-import { Button, Form, Container, Row, Col } from 'react-bootstrap'; 
+import { Button, Form, Container, Row, Col } from 'react-bootstrap';
 
 const Advertisment = () => {
-  const [adText, setAdText] = useState(['', '', '']); // For three ad text fields
-  const [images, setImages] = useState([null, null, null]); // For three image uploads
+  const [images, setImages] = useState([null, null, null]); // State for three image uploads
 
   const handleImageUpload = (index, event) => {
     const file = event.target.files[0];
     if (file) {
       const updatedImages = [...images];
-      updatedImages[index] = URL.createObjectURL(file); 
+      updatedImages[index] = URL.createObjectURL(file); // Preview the uploaded image
       setImages(updatedImages);
     }
   };
 
-  const handleAdTextChange = (index, event) => {
-    const updatedAdText = [...adText];
-    updatedAdText[index] = event.target.value;
-    setAdText(updatedAdText);
-  };
-
   return (
     <Container className="mt-5" style={{ width: '80%', marginLeft: '16%' }}>
-      {/* Loop for 3 Advertisement Sections */}
+      {/* Loop for 3 Image Upload Sections */}
       {[1, 2, 3].map((adIndex) => (
         <Row key={adIndex} className="mb-5">
           <Col>
             {/* Ad Label */}
-            <Form.Group controlId={`adText-${adIndex}`}>
-              <Form.Label className="fw-bold" style={{ fontSize: '18px' }}>
-                Ad Location {adIndex} {/* You can replace with more specific names like 'Header Ad', 'Sidebar Ad', etc. */}
-              </Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                placeholder={`Write the content for Ad Location ${adIndex}...`}
-                value={adText[adIndex - 1]} // -1 because array is 0-indexed
-                onChange={(e) => handleAdTextChange(adIndex - 1, e)} // -1 because array is 0-indexed
-              />
-            </Form.Group>
+            <Form.Label className="fw-bold" style={{ fontSize: '18px' }}>
+              Ad Location {adIndex} {/* Labels for each ad location */}
+            </Form.Label>
 
             {/* Image Upload Section */}
-            <Form.Label className="fw-bold mt-3" style={{ fontSize: '18px' }}>
-              Upload Image for Ad Location {adIndex}
-            </Form.Label>
             <div className="d-flex gap-3 align-items-center">
               <Button
                 variant=""
-                style={{ width: '150px', height: '40px', fontSize: '16px' ,color:'white',backgroundColor:'#377BF7'}}
+                style={{ width: '150px', height: '50px', fontSize: '16px',backgroundColor:'#377BF7',color:'white' }}
                 as="label"
                 htmlFor={`imageUpload-${adIndex}`}
               >
@@ -58,8 +39,9 @@ const Advertisment = () => {
                 type="file"
                 style={{ display: 'none' }}
                 accept="image/*"
-                onChange={(e) => handleImageUpload(adIndex - 1, e)} // -1 because array is 0-indexed
+                onChange={(e) => handleImageUpload(adIndex - 1, e)} // Handle image upload
               />
+              {/* Display the selected image preview */}
               {images[adIndex - 1] && (
                 <img
                   src={images[adIndex - 1]}
