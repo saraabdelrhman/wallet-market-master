@@ -57,7 +57,7 @@ const Users = () => {
   };
 
   return (
-    <Container fluid className="d-flex flex-column  mt-5" style={{width: '80%',marginLeft:'16%'}}>
+    <Container fluid className="d-flex flex-column  mt-5" style={{width: '80%',marginLeft:'18%'}}>
       <Row className="mb-4 align-items-center">
         <Col md={6}>
         <div style={{width: '100%', height: '100%', paddingLeft: 18, paddingRight: 18, paddingTop: 11.25, paddingBottom: 11.25, borderRadius: 56.25, border: '1.12px #EEEEEE solid', justifyContent: 'space-between', alignItems: 'center', display: 'inline-flex'}}>
@@ -85,7 +85,10 @@ const Users = () => {
           </img>
         </Col>
       </Row>
+      <div className='d-flex justify-content-between my-3'>
 <h2 className='fw-bold'>User</h2>
+<Link to={'/admin/newuser'}><button style={{backgroundColor:'#377BF7',color:'white',borderRadius:'50px', padding:'10px',border:'0px'}} >Add User</button></Link>
+</div>
       {/* Users Table */}
       <Row className="flex-grow-1">
         <Table responsive="md" striped bordered hover>
