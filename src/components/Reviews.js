@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // <-- Import useNavigate
 import img1 from './images/image 6 (1).png';
 import img2 from './images/image 6 (2).png';
 import img3 from './images/image 6 (3).png';
@@ -22,6 +23,8 @@ export default function Reviews() {
   const [newReview, setNewReview] = useState({ name: '', stars: 0, review: '', isAnonymous: false });
   const [showModal, setShowModal] = useState(false);
 
+  const navigate = useNavigate(); // <-- Initialize useNavigate hook
+
   // Function to handle image upload
   const handleImageUpload = (e) => {
     const file = e.target.files[0];  // Get the first selected file
@@ -34,6 +37,7 @@ export default function Reviews() {
     }
   };
 
+  // Updated handleSubmit function with navigation
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newReview.name && newReview.stars > 0 && newReview.review) {
@@ -42,6 +46,9 @@ export default function Reviews() {
       setReviews(updatedReviews);
       setNewReview({ name: '', stars: 0, review: '', isAnonymous: false });
       setShowModal(false);
+
+      // After successfully updating the reviews, navigate to /thanks
+      navigate("/thanks"); // <-- Redirect to the "thanks" page after submission
     }
   };
 
@@ -135,8 +142,8 @@ export default function Reviews() {
       {showModal && (
         <div className="modal" style={modalStyle}>
           <div className="modal-content" style={modalContentStyle}>
-            <h3>Rate your recent experience</h3>
-            <div style={starsContainerStyle}>
+            <h3 className="fw-bolder py-3">Edit Review ?</h3>
+            <div style={starsContainerStyle} className="py-3">
               {renderStarsForForm(newReview.stars, handleStarClick)}
             </div>
             
@@ -164,7 +171,7 @@ export default function Reviews() {
                 Post anonymously
               </div>
               
-              {/* Checkbox Toggle */}
+              {/* Toggle Switch */}
               <label className="switch">
                 <input 
                   type="checkbox" 
@@ -175,16 +182,22 @@ export default function Reviews() {
               </label>
             </div>
 
-            <textarea
+            <textarea className="py-3 my-3 pb-5"
               placeholder="What's your experience?"
               value={newReview.review}
               onChange={(e) => setNewReview((prevReview) => ({ ...prevReview, review: e.target.value }))}
               style={textareaStyle}
             />
+            <div style={{position:'absolute',bottom:'30%',right:'8%',left:'50',display:'flex',gap:'5px'}}>
+              <img src={ai} alt="AI" />
+              <div style={{color: '#377BF7', fontSize: 12, fontFamily: 'Poppins', fontWeight: '500', wordWrap: 'break-word'}}>
+                Try write with AI
+              </div>
+            </div>
 
             {/* Image upload input */}
-            <label htmlFor="imageUpload" style={{ cursor: 'pointer', display: 'block', marginBottom: '10px' }}>
-              <div className="d-flex justify-content-between gap-5">
+            <label htmlFor="imageUpload" style={{ cursor: 'pointer', display: 'block', marginBottom: '10px',display:'flex',justifyContent:'space-between' }}>
+              <div className="d-flex justify-content-between " style={{gap:'220px'}}>
                 <p className="mt-2">Attach File</p>
                 <div style={uploadButtonStyle}>Upload Image</div>
               </div>
@@ -192,8 +205,8 @@ export default function Reviews() {
             </label>
 
             <div style={modalActionsStyle}>
-              <button onClick={handleSubmit} style={confirmButtonStyle} className="ps-5 pt-0 pb-0 rounded-5 pe-5">Submit</button>
-              <button onClick={closeModal} style={cancelButtonStyle} className="ps-5 pt-0 pb-0 pe-5 rounded-5">Cancel</button>
+              <button onClick={handleSubmit} style={confirmButtonStyle} className="rounded-5">Yes</button>
+              <button onClick={closeModal} style={cancelButtonStyle} className="rounded-5">Cancel</button>
             </div>
           </div>
         </div>
@@ -516,22 +529,26 @@ const modalStyle = {
 };
 
 const modalContentStyle = {
-  width: "400px",
+  width: "500px",
   backgroundColor: "#fff",
   padding: "20px",
   borderRadius: "8px",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  backgroundColor:'#f5f7fe'
 };
 
 const textareaStyle = {
   width: "100%",
-  padding: "10px",
+  height:'200px',
+    padding: "10px",
+  paddingBottom:"150px",
   fontSize: "16px",
-  borderRadius: "8px",
-  border: "1px solid #E4E7E9",
+  borderRadius: "10px",
+  border: "0px solid #E4E7E9",
   minHeight: "100px",
+  position:'relative'
 };
 
 const modalActionsStyle = {
@@ -542,7 +559,7 @@ const modalActionsStyle = {
 };
 
 const confirmButtonStyle = {
-  padding: "10px 20px",
+  padding: "10px 90px",
   backgroundColor: "#007AFF",
   color: "#fff",
   border: "none",
@@ -551,7 +568,7 @@ const confirmButtonStyle = {
 };
 
 const cancelButtonStyle = {
-  padding: "10px 20px",
+  padding: "10px 90px",
   backgroundColor: "#fff",
   color: "#007AFF",
   border: "1px solid #007AFF",
@@ -560,11 +577,76 @@ const cancelButtonStyle = {
 };
 
 const uploadButtonStyle = {
-  padding: '10px 20px',
+  padding: '10px 20px ',
+  marginleft:'80px',
   background: 'white',
   borderRadius: 5,
   border: '1px #E6E8EC solid',
   justifyContent: 'center',
-  alignItems: 'center',
-  display: 'inline-flex',
 };
+
+// Toggle Switch Styles
+const toggleSwitchStyle = `
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+`;
+
+// Append the styles for the toggle switch
+const appendStyles = () => {
+  const styleSheet = document.createElement("style");
+  styleSheet.type = "text/css";
+  styleSheet.innerText = toggleSwitchStyle;
+  document.head.appendChild(styleSheet);
+};
+
+appendStyles();
