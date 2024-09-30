@@ -14,7 +14,7 @@ const Advertisment = () => {
   };
 
   return (
-    <Container className="mt-5" style={{ width: '80%', marginLeft: '16%' }}>
+    <Container className="mt-5" style={{ width: '80%', marginLeft: '20%' }}>
       {/* Loop for 3 Image Upload Sections */}
       {[1, 2, 3].map((adIndex) => (
         <Row key={adIndex} className="mb-5">
