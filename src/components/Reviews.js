@@ -22,6 +22,7 @@ export default function Reviews() {
 
   const [newReview, setNewReview] = useState({ name: '', stars: 0, review: '', isAnonymous: false });
   const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false); // <-- Add loading state
 
   const navigate = useNavigate(); // <-- Initialize useNavigate hook
 
@@ -29,9 +30,11 @@ export default function Reviews() {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];  // Get the first selected file
     if (file) {
+      setLoading(true); // <-- Set loading state to true
       const reader = new FileReader();  // Create a new FileReader to read the file
       reader.onloadend = () => {
         setNewReview((prevReview) => ({ ...prevReview, image: reader.result }));  // Update the newReview state with the uploaded image
+        setLoading(false); // <-- Set loading state to false after upload
       };
       reader.readAsDataURL(file);  // Read the file as a data URL
     }
@@ -46,9 +49,7 @@ export default function Reviews() {
       setReviews(updatedReviews);
       setNewReview({ name: '', stars: 0, review: '', isAnonymous: false });
       setShowModal(false);
-
-      // After successfully updating the reviews, navigate to /thanks
-      navigate("/thanks"); // <-- Redirect to the "thanks" page after submission
+      navigate("/thanks");  // <-- Redirect to the "thanks" page after submission
     }
   };
 
@@ -196,9 +197,10 @@ export default function Reviews() {
             </div>
 
             {/* Image upload input */}
-            <label htmlFor="imageUpload" style={{ cursor: 'pointer', display: 'block', marginBottom: '10px',display:'flex',justifyContent:'space-between' }}>
+            <label htmlFor="imageUpload" style={{ cursor: 'pointer', display: 'block', marginBottom: '10px', display:'flex', justifyContent:'space-between' }}>
               <div className="d-flex justify-content-between " style={{gap:'220px'}}>
-                <p className="mt-2">Attach File</p>
+                {/* Check the loading state and update text */}
+                <p className="mt-2">{loading ? <span style={{ color: 'green' }}>Uploading...</span> : 'Attach File'}</p> {/* <-- Updated text */}
                 <div style={uploadButtonStyle}>Upload Image</div>
               </div>
               <input id="imageUpload" type="file" style={{ display: 'none' }} onChange={handleImageUpload} />
@@ -543,6 +545,7 @@ const textareaStyle = {
   width: "100%",
   height:'200px',
     padding: "10px",
+    color:'#ADABC3',
   paddingBottom:"150px",
   fontSize: "16px",
   borderRadius: "10px",

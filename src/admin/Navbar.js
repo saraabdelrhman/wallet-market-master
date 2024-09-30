@@ -20,6 +20,7 @@ const Navigation = () => {
     { path: '/admin/comment', label: 'Comment', img: product },
     { path: '/admin/report', label: 'Report', img: product },
     { path: '/admin/role', label: 'Role', img: product },
+    { path: '/admin/advertisment', label: 'Advertisment', img:category },
     { path: '/admin/logout', label: 'Logout', img: logout },
   ];
   return (

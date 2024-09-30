@@ -59,6 +59,7 @@ import Newrole from './admin/Newrole';
 import Permissions from './admin/Permissions';
 import Newpermissions from './admin/Newpermission';
 import AdminLogin from './admin/Login';
+import Advertisment from './admin/Advertisment';
 
 function App() {
   return (
@@ -123,6 +124,7 @@ function App() {
           <Route path="/admin/permissionsedit" element={<Permissionsedit />} />
           <Route path="/admin/permissionsview" element={<Permissionsview />} />
           <Route path="/admin/newpermissionsview" element={<Newpermissions />} />
+          <Route path="/admin/advertisment" element={<Advertisment />} />
           <Route path="*" element={<AdminNotFound />} />
         </Route>
       </Routes>
