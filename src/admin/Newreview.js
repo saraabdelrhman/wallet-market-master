@@ -53,7 +53,10 @@ const Newreview = () => {
             </Form.Group>
           </Col>
         </Row>
-        <button type='submit' style={{backgroundColor:'#377BF7',color:'white',borderRadius:'50px', padding:'10px',border:'0px'}} >Add Review</button>
+        <div className='d-flex gap-2'>
+        <button type='submit' style={{backgroundColor:'#377BF7',color:'white',borderRadius:'50px', padding:'10px 60px 10px 60px',border:'0px'}} >Save</button>
+        <button type='submit' style={{backgroundColor:'',color:'#377BF7',borderRadius:'50px', padding:'10px 60px 10px 60px',border:'1px solid #377BF7'}} >Cancel</button>
+        </div>
       </Form>
     </Container>
   );
