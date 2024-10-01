@@ -9,13 +9,14 @@ import ai from './images/ai.png';
 import like from './images/like.png';
 import dislike from './images/dislike.png';
 import share from './images/share.png';
+import translate from './images/translate.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStar as faStarEmpty } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 
 export default function Reviews() {
   const [reviews, setReviews] = useState([
-    { name: "Gerald", stars: 5, review: "Write a review", image: img1, date: "1 day ago" },
+    { name: "Gerald", stars: 5, review: "I love this product! easy to user and super cozy!", image: img1, date: "Now" },
     { name: "Diana", stars: 4, review: "Super efficient service and delivery.", image: img2, date: "4 days ago" },
     { name: "Andre 🥇", stars: 4, review: "Amazing delivery speed and service quality.", image: img3, date: "27 Aug 2024" }
   ]);
@@ -218,35 +219,53 @@ export default function Reviews() {
 }
 
 // Reusable Components
-
 const ReviewItem = ({ name, date, stars, review, image }) => (
   <div style={reviewItemStyle}>
+    
     <div style={reviewerStyle}>
-      <img src={image} alt={name} style={reviewerImageStyle} />
+     
+      <img src={image} alt={name}  />
+     
+  
       <div className="reviewer-details" style={reviewerDetailsStyle}>
+      
         <div className="reviewer-name" style={reviewerNameStyle}>{name}</div>
+        
         <div style={reviewDateStyle}>{date}</div>
+        
+      </div>
+      <div className='d-flex justify-content-end align-content-end gap-2 pb-5 ms-2' >
+      <img src={translate} alt={translate} />
+      <span>Translate</span>
       </div>
     </div>
 
     <div className="review-stars" style={starsContainerStyle}>{renderStars(stars)}</div>
     <div style={reviewTextStyle}>{review}</div>
-    
-    {/* Add like, dislike, and share buttons here */}
-    <div style={interactionIconsStyle} className="d-flex justify-content-between gap-5">
-      <div className="d-flex">
-        <img src={like} alt="like" style={iconStyle} />
-        <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Helpful</div>
-        <img src={dislike} alt="dislike" style={iconStyle} className="ms-5" />
-        <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Not Helpful</div>
+
+    {name === "Gerald" ? (
+      <div  className="d-flex justify-content-end gap-2 ">
+        <Link to={'/'}> <button type='submit' style={{backgroundColor:'#377BF7',color:'white',borderRadius:'50px', padding:'10px 20px 10px 20px',border:'0px'}} >Edit</button></Link> 
+          <button type='submit' style={{color:'#377BF7',borderRadius:'50px', padding:'10px 20px 10px 20px',border:'1px solid #377BF7'}} >Delete</button>
+      
       </div>
-      <div className="d-flex" style={{ justifyContent: 'end' }}>
-        <img src={share} alt="share" style={iconStyle} />
-        <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Share</div>
+    ) : (
+      <div style={interactionIconsStyle} className="d-flex justify-content-between gap-5">
+        <div className="d-flex">
+          <img src={like} alt="like" style={iconStyle} />
+          <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Helpful</div>
+          <img src={dislike} alt="dislike" style={iconStyle} className="ms-5" />
+          <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Not Helpful</div>
+        </div>
+        <div className="d-flex" style={{ justifyContent: 'end' }}>
+          <img src={share} alt="share" style={iconStyle} />
+          <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Share</div>
+        </div>
       </div>
-    </div>
+    )}
   </div>
 );
+
 
 // Component to show the star rating overview
 const StarRatingOverview = ({ rating, percentage, color, width }) => (
