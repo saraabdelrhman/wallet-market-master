@@ -123,6 +123,7 @@ const Review = () => {
             <th>User Id</th>
             <th>Rating</th>
             <th>Actions</th>
+            <th>Verification</th>
           </tr>
         </thead>
         <tbody>
@@ -135,6 +136,7 @@ const Review = () => {
                 <td>{review.productId}</td>
                 <td>{review.userId}</td>
                 <td>{review.rating}</td>
+               
                 <td>
                   {/* <Link to={`/reviewview/${review.id}`}> */}
                   <Link to={'/reviewview'}>
@@ -152,6 +154,7 @@ const Review = () => {
                       <FaTrash />    </Button></Link>
                  
                 </td>
+                <td> <td> <button type='submit' style={{backgroundColor:'#377BF7',color:'white',borderRadius:'50px', padding:'8px',border:'0px'}} >Verify</button></td></td>
               </tr>
             ))
           )}
