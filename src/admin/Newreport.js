@@ -3,7 +3,7 @@ import { Container, Form, Row, Col, Button } from 'react-bootstrap';
 
 const Newreport = () => {
   return (
-    <Container className="mt-4">
+    <Container className="mt-4" style={{width: '80%',marginLeft:'18%'}}>
       <h2 className="fw-bold pb-2">Add New Report</h2>
       <Form>
         <Row className="mb-3">
@@ -58,9 +58,7 @@ const Newreport = () => {
           </Col>
         </Row>
 
-        <Button variant="warning"  type="submit">
-          Save
-        </Button>
+        <button type='submit' style={{backgroundColor:'#377BF7',color:'white',borderRadius:'50px', padding:'10px',border:'0px'}} >Add Report</button>
       </Form>
     </Container>
   );
