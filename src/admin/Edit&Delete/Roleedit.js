@@ -48,7 +48,7 @@ const Roleedit = () => {
   };
 
   return (
-    <Container fluid className="p-4">
+    <Container fluid className="p-4" style={{width: '80%',marginLeft:'18%'}}>
       <Row className="align-items-center mb-4">
         <Col md={6}>
           <h2 className="fw-bold">Edit Role</h2>
@@ -89,9 +89,9 @@ const Roleedit = () => {
             </Form.Group>
           </Col>
         </Row>
-        <Button variant="warning" type="submit">
-          Add User
-        </Button>
+        <button type='submit'  
+        style={{backgroundColor:'#377BF7',color:'white'
+      ,borderRadius:'50px', padding:'10px 60px 10px 60px',border:'0px'}} >Save</button>
       </Form>
     </Container>
   );

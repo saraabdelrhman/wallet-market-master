@@ -51,7 +51,7 @@ const ProductEdit = () => {
   };
 
   return (
-    <Container fluid className="mt-4">
+    <Container fluid className="mt-4" style={{width: '80%',marginLeft:'18%'}}>
       <h2 className="fw-bold pb-2">Edit Product</h2>
       <Form>
         <Row className="mb-3">
@@ -140,10 +140,10 @@ const ProductEdit = () => {
             </Form.Group>
           </Col>
         </Row>
-
-        <Button variant="warning" onClick={handleSave}>
-          <FaSave /> Save
-        </Button>
+        <button type='submit' onClick={handleSave}  
+        style={{backgroundColor:'#377BF7',color:'white'
+      ,borderRadius:'50px', padding:'10px 60px 10px 60px',border:'0px'}} >Save</button>
+       
       </Form>
     </Container>
   );

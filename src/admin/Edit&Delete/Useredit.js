@@ -69,7 +69,7 @@ const UserEdit = () => {
   };
 
   return (
-    <Container fluid className="p-4">
+    <Container fluid className="p-4" style={{width: '80%',marginLeft:'18%'}}>
       <h2 className="fw-bold mb-4">Edit User</h2>
       <Form>
         {/* ID and Email */}
@@ -193,9 +193,11 @@ const UserEdit = () => {
           </Col>
         </Row>
 
-        <Button variant="warning" onClick={handleSave}>
-          Save
-        </Button>
+ 
+        <button type='submit'  onClick={handleSave} 
+        style={{backgroundColor:'#377BF7',color:'white'
+      ,borderRadius:'50px', padding:'10px 60px 10px 60px',border:'0px'}} >Save</button>
+    
       </Form>
     </Container>
   );
