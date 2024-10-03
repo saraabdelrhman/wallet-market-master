@@ -9,14 +9,15 @@ import ai from './images/ai.png';
 import like from './images/like.png';
 import dislike from './images/dislike.png';
 import share from './images/share.png';
-import translate from './images/translate.png';
+import translate from './images/bi_translate.png';
+import anonymous from './images/anonymous.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStar as faStarEmpty } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 
 export default function Reviews() {
   const [reviews, setReviews] = useState([
-    { name: "Gerald", stars: 5, review: "I love this product! easy to user and super cozy!", image: img1, date: "Now" },
+    { name: "Gerald", stars: 5, review: "I love this product! easy to user and super cozy!", image: anonymous, date: "Now" },
     { name: "Diana", stars: 4, review: "Super efficient service and delivery.", image: img2, date: "4 days ago" },
     { name: "Andre 🥇", stars: 4, review: "Amazing delivery speed and service quality.", image: img3, date: "27 Aug 2024" }
   ]);
@@ -220,29 +221,37 @@ export default function Reviews() {
 
 // Reusable Components
 const ReviewItem = ({ name, date, stars, review, image }) => (
-  <div style={reviewItemStyle}>
+  <div style={reviewItemStyle} className="d-flex">
     
-    <div style={reviewerStyle}>
+    <div style={reviewerStyle} className="d-flex">
      
-      <img src={image} alt={name}  />
+      <img src={image} alt={name} className="rounded-5 mb-3" />
      
   
       <div className="reviewer-details" style={reviewerDetailsStyle}>
       
+      <div className="d-flex">
+<div className="d-bock">
         <div className="reviewer-name" style={reviewerNameStyle}>{name}</div>
         
         <div style={reviewDateStyle}>{date}</div>
-        
-      </div>
-      <div className='d-flex justify-content-end align-content-end gap-2 pb-5 ms-2' >
-      <img src={translate} alt={translate} />
-      <span>Translate</span>
-      </div>
+        </div>
+
+        <div className="review-stars mt-5 ms-5" style={starsContainerStyle}>{renderStars(stars)}</div>
+
+        </div>
+       
+     
+     
     </div>
-
-    <div className="review-stars" style={starsContainerStyle}>{renderStars(stars)}</div>
+</div>
+    <hr></hr>
     <div style={reviewTextStyle}>{review}</div>
+    <div className='d-flex  gap-2 pb-0 ms-2' style={{color:'#377BF7'}} >
 
+<img src={translate} alt={translate} className=""/>
+<span>View Transalation</span>
+</div>
     {name === "Gerald" ? (
       <div  className="d-flex justify-content-end gap-2 ">
         <Link to={'/'}> <button type='submit' style={{backgroundColor:'#377BF7',color:'white',borderRadius:'50px', padding:'10px 20px 10px 20px',border:'0px'}} >Edit</button></Link> 
@@ -385,6 +394,7 @@ const userReviewInfoStyle = {
   display: 'flex',
   alignItems: 'center',
   gap: '14px',
+  borderRadius:'50%'
 };
 
 const userImageStyle = {
