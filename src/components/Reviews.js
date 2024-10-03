@@ -145,7 +145,7 @@ export default function Reviews() {
       {showModal && (
         <div className="modal" style={modalStyle}>
           <div className="modal-content" style={modalContentStyle}>
-            <h3 className="fw-bolder py-3">Edit Review ?</h3>
+            <h3 className="fw-bolder py-3">Rate your recent experience</h3>
             <div style={starsContainerStyle} className="py-3">
               {renderStarsForForm(newReview.stars, handleStarClick)}
             </div>
@@ -247,7 +247,7 @@ const ReviewItem = ({ name, date, stars, review, image }) => (
 </div>
     <hr></hr>
     <div style={reviewTextStyle}>{review}</div>
-    <div className='d-flex  gap-2 pb-0 ms-2' style={{color:'#377BF7'}} >
+    <div className='d-flex  gap-2 pb-5 ms-2' style={{color:'#377BF7'}} >
 
 <img src={translate} alt={translate} className=""/>
 <span>View Transalation</span>
