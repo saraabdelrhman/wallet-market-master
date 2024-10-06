@@ -25,6 +25,8 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
+  margin-top: 80px;
+  margin-bottom: 100px;
   align-items: center;
   z-index: 2;
   position: relative;
@@ -122,13 +124,13 @@
 }
 
 .decorative-shape-1 {
-  top: 10px;
-  right: 200px;
+  top: 0px;
+  right: 300px;
 }
 
 .decorative-shape-2 {
   bottom: 1px;
-  left: 200px;
+  left: 400px;
 }
 
 /* Media Queries */
@@ -214,3 +216,4 @@
 .nav-link-active {
   color: #007bff !important; /* Blue color for active link */
 }
+
