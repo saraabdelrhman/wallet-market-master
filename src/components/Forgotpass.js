@@ -74,15 +74,18 @@ export default function Forgotpass() {
   return (
     <div className="page-container">
       {/* Forgot Password Form */}
-      <div className="forgot-password-container">
-        <h2 className="forgot-password-header">Forgot Password?</h2>
+      <div className="forgot-password-container ">
+        <h2 className="forgot-password-header pt-5 ">Forgot Password?</h2>
 
-        <div className="forgot-password-form">
-          <label htmlFor="email" className="forgot-password-label">Email</label>
+        <div className="forgot-password-form mt-3">
+          <label htmlFor="email" className="forgot-password-label mt-3">Email</label>
           <input
             type="email"
             id="email"
             className="forgot-password-input"
+            style={{color:'#838E9E',fontSize: 16,
+              fontFamily: 'Poppins',
+              fontWeight: '400'}}
             placeholder="Write your email here"
             value={email}
             onChange={(e) => setEmail(e.target.value)}

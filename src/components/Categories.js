@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import img from './images/BG.png';
 import img1 from './images/BG (1).png';
 import img2 from './images/BG (2).png';
@@ -246,8 +245,48 @@ const Categories = () => {
           </div>
         )}
       </div>
+
+      {/* Responsive Design: Add media queries */}
+      <style>
+        {`
+          @media (max-width: 1200px) {
+            div[style*='grid-template-columns'] {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+
+          @media (max-width: 768px) {
+            div[style*='grid-template-columns'] {
+              grid-template-columns: repeat(1, 1fr);
+            }
+
+            div[style*='font-size: 2rem'] {
+              font-size: 1.5rem;
+            }
+
+            input[type="text"] {
+              font-size: 0.9rem;
+              padding: 8px 8px 8px 35px;
+            }
+
+            h3.fs-3.fw-bold {
+              font-size: 1.25rem;
+              margin-left: 5%;
+            }
+
+            img[alt="shape"] {
+              width: 200px !important; 
+            }
+
+            div[style*='padding: 20px'] {
+              padding: 15px;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };
 
 export default Categories;
+

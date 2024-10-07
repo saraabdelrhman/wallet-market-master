@@ -70,27 +70,29 @@ const Header = () => {
 
             {/* Language Selector */}
             <li className="nav-item d-flex align-items-center">
-              <img
-                src={language}
-                alt="Language Selector"
-                className=""
-                style={{ cursor: 'pointer', height: '24px', marginRight: '10px' }}
-              />
-              <select
-                style={{ 
-                  width: '20px',
-                  border: '0',
-                  marginRight:'15px',
-                  borderRadius: '5px',
-                  backgroundColor: 'white'
-                }}
-              >
-                <option value="English">English</option>
-                <option value="Sweden">Sweden</option>
-                <option value="Français">Français</option>
-                <option value="български">български</option>
-              </select>
-            </li>
+  {/* <img
+    src={language}
+    alt="Language Selector"
+    style={{ cursor: 'pointer', height: '24px', marginRight: '10px' }}
+    onClick={() => document.getElementById('languageSelect').focus()} // Focus on select when clicking the image
+  /> */}
+  <select
+    id="languageSelect" // Add an id to the select element
+    style={{
+      width: 'auto', // Adjust to fit the content
+      border: '0',
+      marginRight: '15px',
+      borderRadius: '5px',
+      backgroundColor: 'white'
+    }}
+  >
+    <option value="English">English</option>
+    <option value="Sweden">Sweden</option>
+    <option value="Français">Français</option>
+    <option value="български">български</option>
+  </select>
+</li>
+
            
             {/* Notification Dropdown */}
             <li className="nav-item d-flex align-items-center">
@@ -113,12 +115,15 @@ const Header = () => {
                       <div>
 
                       <span>Notifications</span>
-                      <span className="badge bg-primary text-light rounded-5 p-2">2</span>
+                      <span className="badge bg-primary text-light text-center  rounded-circle ms-2 m-0  "style={{}}>2</span>
+                    
+
                       </div>
-                      
-                    <div style={{fontSize:'12px',color:'#0085FF'}} className='d-flex '>
+                      <div>
+                    <div style={{fontSize:'12px',color:'#0085FF'}} className='d-flex mt-3'>
                     Mark all as read
                     <img src={threelines} alt='threelines'></img>
+                    </div>
                     </div>
                     </div>
                  
@@ -138,10 +143,10 @@ const Header = () => {
                           <span className='fw-bolder text-dark ms-1'>Gerald</span></div>
                       </div>
                     </div>
-                    <p  style={{color:'#696F8C',fontSize:'13px',marginTop:'15px'}}>This is a great idea! I will steal it,
+                    <p  style={{color:'#696F8C',fontSize:'13px',marginTop:'15px',marginLeft:'50px'}}>This is a great idea! I will steal it,
                        say <br></br>it’s mine, and give credit to myself 
                        of<br></br> course... wait... I already did!</p>
-                    <small className="text-muted">1 day ago</small>
+                    <small className="text-muted ms-5">1 day ago</small>
                   </Dropdown.Item>
                   <Dropdown.Divider />
                   <Dropdown.Item href="#">
@@ -158,8 +163,8 @@ const Header = () => {
                           <span className='fw-bolder text-dark ms-1'>Gerald</span></div>
                       </div>
                     </div>
-                    <p  style={{color:'#696F8C',fontSize:'13px',marginTop:'15px'}}>This can help us so much</p>
-                    <small className="text-muted">2 days ago</small>
+                    <p  style={{color:'#696F8C',fontSize:'13px',marginTop:'15px',marginLeft:'50px'}}>This can help us so much</p>
+                    <small className="text-muted ms-5">2 days ago</small>
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>

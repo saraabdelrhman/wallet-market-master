@@ -26,11 +26,9 @@
 }
 
 /* Input box styling */
-/* Input box styling */
 .input-box {
   margin-bottom: 20px;
   position: relative;
-  border: 0px;
   display: flex;
   background-color: transparent;
   flex-direction: column;
@@ -38,48 +36,49 @@
 
 /* Styling the label */
 .form-label {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: bold;
   color: #333;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 /* Styling the input field */
 .input-box input {
   width: 100%;
-  padding: 15px;
- 
+  padding: 12px 15px;
   background-color: white;
+  border: 2px solid #ccc;
   border-radius: 8px;
   font-size: 16px;
   outline: none;
-  color: #838e9e;
+  color: #333;
 }
 
 .input-box input::placeholder {
-  color: #c7c7c7;
+  color: #aaa;
 }
 
-/* Add hover/focus effects if necessary */
 .input-box input:focus {
   border-color: #007dfc;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
 }
-
 
 /* Sign In Button */
-.button {
-  padding: 15px;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: 600;
-}
-
 .btn-primary {
   background-color: #007dfc;
   color: white;
   border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
   text-align: center;
-  margin-bottom: 30px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
 }
 
 /* OR divider styling */
@@ -107,19 +106,6 @@
   margin-right: 10px;
 }
 
-/* Link text for forgot password */
-.link-text {
-  text-align: right;
-  margin-top: 10px;
-}
-
-.link-text a {
-  color: #377bf7;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-}
-
 /* Testimonial Section */
 .testimonial-content {
   width: 50%;
@@ -131,7 +117,6 @@
   overflow: hidden;
 }
 
-/* Circle images */
 .circle-image {
   position: absolute;
   border-radius: 50%;
@@ -172,7 +157,6 @@
   border-radius: 50%;
 }
 
-/* Testimonial box */
 .testimonial-box {
   position: absolute;
   bottom: 10%;
@@ -205,7 +189,6 @@
   margin-bottom: 10px;
 }
 
-/* Flex behavior for mobile */
 @media (max-width: 992px) {
   .page-container {
     flex-direction: column;
@@ -227,21 +210,12 @@
   }
 }
 
-/* Mobile adjustments */
 @media (max-width: 768px) {
-  /* Hide the testimonial section on mobile devices */
   .testimonial-content {
     display: none;
   }
 
-  /* Make the login content take the full width */
   .login-content {
     width: 100%;
   }
-}
-.btn:hover {
-  color: none;
-  background-color: white;
-  border: 1px solid #c5c4c4;
-  border-color: none;
 }

@@ -68,7 +68,7 @@ const About = () => {
             <input
               type="email"
               id="email"
-              placeholder="Enter your email"
+              placeholder="Email Adress"
               {...formik.getFieldProps('email')}
             />
             {formik.touched.email && formik.errors.email ? (
@@ -80,18 +80,18 @@ const About = () => {
             <input
               type="password"
               id="password"
-              placeholder="Enter your password"
+              placeholder="Password"
               {...formik.getFieldProps('password')}
             />
             {formik.touched.password && formik.errors.password ? (
               <div className="text-danger">{formik.errors.password}</div>
             ) : null}
           </div>
-
-          <button type="submit" className="button btn-primary w-100">Sign In</button>
           <div className="link-text text-end mt-3">
-            <Link to="/Forgotpass">Forgot Password?</Link>
+            <Link to="/Forgotpass" style={{ textAlign: 'right', color: '#377BF7', fontSize: 16, fontFamily: 'Poppins', fontWeight: '200',  wordWrap: 'break-word'}}>Forgot Password?</Link>
           </div>
+          <button type="submit" className="button btn-primary w-100">Sign In</button>
+        
         </form>
 
         <div className="or-divider">-OR-</div>
