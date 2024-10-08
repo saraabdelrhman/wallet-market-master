@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Table, InputGroup, FormControl, Container, Row, Col } from 'react-bootstrap';
+import { Button, Table, Container, Row, Col } from 'react-bootstrap';
 import { FaEye, FaEdit, FaTrash } from 'react-icons/fa';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import searchIcon from './images/search-normal.png'; // Ensure you have this image in the specified path
-import '../App.css'; // Ensure your CSS is properly set up
+import searchIcon from './images/search-normal.png';
+import '../App.css';
 import photo from './images/photo.png';
 
 const Users = () => {
@@ -14,14 +14,13 @@ const Users = () => {
   const [page, setPage] = useState(0);
   const [size, setSize] = useState(10);
 
-  // Define fake data inside the component
   const fakeData = {
     users: [
       { id: '1', email: 'fake.john@example.com', name: 'John Doe', role: 'Admin' },
       { id: '2', email: 'fake.jane@example.com', name: 'Jane Doe', role: 'User' },
       { id: '3', email: 'fake.jack@example.com', name: 'Jack Smith', role: 'Moderator' },
     ],
-    totalPages: 1
+    totalPages: 1,
   };
 
   useEffect(() => {
@@ -57,76 +56,117 @@ const Users = () => {
   };
 
   return (
-    <Container fluid className="d-flex flex-column  mt-5" >
+    <Container fluid className="d-flex flex-column mt-5">
       <Row className="mb-4 align-items-center">
-        <Col md={6}>
-        <div style={{width: '100%', height: '100%', paddingLeft: 18, paddingRight: 18, paddingTop: 11.25, paddingBottom: 11.25, borderRadius: 56.25, border: '1.12px #EEEEEE solid', justifyContent: 'space-between', alignItems: 'center', display: 'inline-flex'}}>
-    <div style={{textAlign: 'right', color: '#7F8190', fontSize: 18, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word'}}>Search </div>
-    <div style={{width: 36, height: 36, background: '#377BF7', borderRadius: 56.25, justifyContent: 'center', alignItems: 'center', gap: 11.25, display: 'flex'}}>
-        <div style={{width: 18, height: 18, justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
-            <div style={{width: 18, height: 18, position: 'relative'}}>
-                <img src={searchIcon} style={{width: 18, height: 18, left: 0, top: 0, position: 'absolute', opacity: 1}}></img>
+        <Col md={6} xs={12} className="d-flex align-items-center search-container">
+          <div
+            style={{
+              width: '100%',
+              padding: '11.25px 18px',
+              borderRadius: '56.25px',
+              border: '1.12px solid #EEEEEE',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            <div
+              style={{
+                textAlign: 'right',
+                color: '#7F8190',
+                fontSize: '18px',
+                fontFamily: 'Poppins',
+                fontWeight: '400',
+              }}
+            >
+              Search
             </div>
-        </div>
-    </div>
-</div>
+            <div
+              style={{
+                width: '36px',
+                height: '36px',
+                background: '#377BF7',
+                borderRadius: '50%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <img src={searchIcon} alt="Search Icon" style={{ width: '18px', height: '18px' }} />
+            </div>
+          </div>
         </Col>
-        <Col md={6} className="d-flex justify-content-end align-items-center">
+
+        <Col md={6} xs={12} className="d-flex justify-content-end align-items-center mt-3 mt-md-0 user-info">
           <div className="text-end">
             <div className="fw-bold" style={{ fontSize: 18 }}>Elisa</div>
             <div style={{ color: '#7F8190', fontSize: 15 }}>Admin</div>
           </div>
-          <img src={photo} style={{
-            width: 51.75, height: 51.75, marginLeft: 10,
-            background: '#E6D3F8', borderRadius: '50%',
-            display: 'flex', justifyContent: 'center', alignItems: 'center'
-          }}>
-            {/* Placeholder for user avatar */}
-          </img>
+          <img
+            src={photo}
+            alt="User Avatar"
+            className="user-avatar"
+          />
         </Col>
       </Row>
-      <div className='d-flex justify-content-between my-3'>
-<h2 className='fw-bold'>User</h2>
-<Link to={'/admin/newuser'}><button style={{backgroundColor:'#377BF7',color:'white',borderRadius:'50px', padding:'10px',border:'0px'}} >Add User</button></Link>
-</div>
-      {/* Users Table */}
-      <Row className="flex-grow-1">
-        <Table responsive="md" striped bordered hover>
-          <thead className="bg-light">
-            <tr>
-              <th>ID</th>
-              <th>Email</th>
-              <th>Name</th>
-              <th>Role</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {loading ? <tr><td colSpan="5">Loading...</td></tr> :
-              users.map(user => (
-                <tr key={user.id} className='rounded-5'>
-                  <td>{user.id}</td>
-                  <td>{user.email}</td>
-                  <td>{user.name}</td>
-                  <td>{user.role}</td>
-                  <td>
-                    {/* <Link to={`/singleuser/${user.id}`}> */}
-                    <Link to={'/singleuser'}>
-                      <Button size="sm" className="me-2 mb-1 bg-transparent text-dark"><FaEye /></Button>
-                    </Link>
-                    {/* <Link to={`/useredit/${user.id}`}> */}
-                    <Link to={'/useredit'}>
-                      <Button  size="sm" className="me-2 mb-1 bg-transparent text-dark"><FaEdit /></Button>
-                    </Link>
-                    <Link><Button size="sm" className="me-2 mb-1  bg-transparent text-dark" onClick={() => handleDelete(user.id)}>
-                      <FaTrash />    </Button></Link>
-                 
-                  </td>
+
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h2 className="fw-bold">Users</h2>
+        <Link to={'/admin/newuser'}>
+          <Button
+            style={{
+              backgroundColor: '#377BF7',
+              color: 'white',
+              borderRadius: '50px',
+              padding: '10px',
+            }}
+          >
+            Add User
+          </Button>
+        </Link>
+      </div>
+
+      <Row>
+        <div className="table-responsive">
+          <Table striped bordered hover>
+            <thead className="bg-light">
+              <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {loading ? (
+                <tr>
+                  <td colSpan="5">Loading...</td>
                 </tr>
-              ))
-            }
-          </tbody>
-        </Table>
+              ) : (
+                users.map(user => (
+                  <tr key={user.id}>
+                    <td>{user.id}</td>
+                    <td>{user.email}</td>
+                    <td>{user.name}</td>
+                    <td>{user.role}</td>
+                    <td className="action-buttons">
+                      <Link to={'/singleuser'}>
+                        <Button size="sm" className="me-2 bg-transparent text-dark"><FaEye /></Button>
+                      </Link>
+                      <Link to={'/useredit'}>
+                        <Button size="sm" className="me-2 bg-transparent text-dark"><FaEdit /></Button>
+                      </Link>
+                      <Button size="sm" className="bg-transparent text-dark" onClick={() => handleDelete(user.id)}>
+                        <FaTrash />
+                      </Button>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </Table>
+        </div>
       </Row>
       <div style={{width: '100%', height: '100%', justifyContent: 'center',alignItems: 'center', gap: 20, display: 'inline-flex'}}>
         {/* Left Arrow */}

@@ -2,3 +2,144 @@
 .background{
   background-color: #eaeaea;;
 }
+/* Base styling for all screen sizes */
+.container {
+  padding: 20px;
+}
+
+.table-responsive {
+  width: 100%;
+}
+
+.user-avatar {
+  width: 51.75px;
+  height: 51.75px;
+  border-radius: 50%;
+}
+
+/* Styles for screens up to 600px (small phones) */
+@media (max-width: 600px) {
+  /* Stack search bar and user info vertically */
+  .search-container {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .search-container div {
+    margin-bottom: 10px;
+  }
+
+  /* User avatar and name adjustments */
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .user-info {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  /* Adjust button sizing */
+  .pagination-btn {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Center align and resize buttons */
+  .table-responsive th,
+  .table-responsive td {
+    font-size: 14px;
+  }
+}
+
+/* Styles for screens up to 900px (tablets, small desktops) */
+@media (min-width: 601px) and (max-width: 900px) {
+  /* Search bar stays inline */
+  .search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  /* Adjust the avatar size slightly */
+  .user-avatar {
+    width: 45px;
+    height: 45px;
+  }
+
+  /* Adjust the table font-size and layout */
+  .table-responsive th,
+  .table-responsive td {
+    font-size: 16px;
+  }
+
+  /* Pagination button adjustments */
+  .pagination-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Styles for screens up to 1200px (larger desktops) */
+@media (min-width: 901px) and (max-width: 1200px) {
+  .search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  /* Slightly larger user avatar */
+  .user-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Adjust font-size for larger screens */
+  .table-responsive th,
+  .table-responsive td {
+    font-size: 18px;
+  }
+
+  /* Pagination button adjustments */
+  .pagination-btn {
+    padding: 12px;
+    font-size: 16px;
+  }
+}
+
+/* Large desktop styles (1200px and above) */
+@media (min-width: 1201px) {
+  .search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+  }
+
+  /* Default avatar size */
+  .user-avatar {
+    width: 51.75px;
+    height: 51.75px;
+  }
+
+  /* Larger font-size for desktop */
+  .table-responsive th,
+  .table-responsive td {
+    font-size: 20px;
+  }
+
+  /* Larger pagination buttons */
+  .pagination-btn {
+    padding: 15px;
+    font-size: 18px;
+  }
+}
