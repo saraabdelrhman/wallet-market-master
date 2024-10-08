@@ -77,7 +77,7 @@ const Header = () => {
                 style={{
                   width: 'auto',
                   border: '0',
-                  marginRight: '15px',
+                  marginRight: '5px',
                   borderRadius: '5px',
                   backgroundColor: 'white',
                 }}
@@ -100,7 +100,7 @@ const Header = () => {
                   <img
                     src={notification}
                     alt="Notification Icon"
-                    style={{ cursor: 'pointer', height: '24px', marginRight: '10px' }}
+                    style={{ cursor: 'pointer', height: '24px', marginRight: '5px' }}
                   />
                 </Dropdown.Toggle>
 
@@ -126,7 +126,7 @@ const Header = () => {
                         src={person1}
                         alt="Edward Curr"
                         className="rounded-circle"
-                        style={{ width: '32px', height: '32px', marginRight: '10px' }}
+                        style={{ width: '32px', height: '32px', marginRight: '5px' }}
                       />
                       <div className="ms-2">
                         <strong>Edward Curr</strong>
@@ -169,13 +169,14 @@ const Header = () => {
           </ul>
 
           {/* Login and Register Links */}
-          <div className="d-flex align-items-center gap-3">
+          <div className="d-flex align-items-center gap-3 ">
             <Link
               to="/login"
               style={{
                 background: '#377BF7',
                 borderRadius: 30,
                 color: 'white',
+
                 fontSize: 15,
                 padding: '14px 16px',
                 fontFamily: 'Inter',

@@ -57,7 +57,7 @@ const Users = () => {
   };
 
   return (
-    <Container fluid className="d-flex flex-column  mt-5" style={{width: '80%',marginLeft:'12%'}}>
+    <Container fluid className="d-flex flex-column  mt-5" >
       <Row className="mb-4 align-items-center">
         <Col md={6}>
         <div style={{width: '100%', height: '100%', paddingLeft: 18, paddingRight: 18, paddingTop: 11.25, paddingBottom: 11.25, borderRadius: 56.25, border: '1.12px #EEEEEE solid', justifyContent: 'space-between', alignItems: 'center', display: 'inline-flex'}}>
