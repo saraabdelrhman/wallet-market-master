@@ -137,8 +137,7 @@ const Header = () => {
                       </div>
                     </div>
                     <p style={{ color: '#696F8C', fontSize: '13px', marginTop: '15px', marginLeft: '50px' }}>
-                      This is a great idea! I will steal it, say it’s mine, and give credit to myself, of course... wait...
-                      I already did!
+                      This is a great idea! 
                     </p>
                     <small className="text-muted ms-5">1 day ago</small>
                   </Dropdown.Item>

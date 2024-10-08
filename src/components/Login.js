@@ -31,7 +31,7 @@ const About = () => {
 
   const handleRegister = (data) => {
     console.log('Data to be sent:', data);
-
+    
     fetch('https://wallyt.com/login', {
       method: 'POST',
       headers: {
@@ -42,9 +42,6 @@ const About = () => {
       body: JSON.stringify(data),
     })
       .then((res) => {
-        console.log('Response status:', res.status);
-        console.log('Response headers:', res.headers);
-
         if (!res.ok) {
           throw new Error('Network response was not ok');
         }
@@ -64,34 +61,30 @@ const About = () => {
       <div className="login-content">
         <h2 className="login-header">Login</h2>
         <form onSubmit={formik.handleSubmit}>
-          <div className="input-box">
-            <input
-              type="email"
-              id="email"
-              placeholder="Email Adress"
-              {...formik.getFieldProps('email')}
-            />
-            {formik.touched.email && formik.errors.email ? (
-              <div className="text-danger">{formik.errors.email}</div>
-            ) : null}
-          </div>
+          <input
+            type="email"
+            id="email"
+            placeholder="Email Address"
+            {...formik.getFieldProps('email')}
+          />
+          {formik.touched.email && formik.errors.email ? (
+            <div className="text-danger">{formik.errors.email}</div>
+          ) : null}
 
-          <div className="input-box">
-            <input
-              type="password"
-              id="password"
-              placeholder="Password"
-              {...formik.getFieldProps('password')}
-            />
-            {formik.touched.password && formik.errors.password ? (
-              <div className="text-danger">{formik.errors.password}</div>
-            ) : null}
-          </div>
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            {...formik.getFieldProps('password')}
+          />
+          {formik.touched.password && formik.errors.password ? (
+            <div className="text-danger">{formik.errors.password}</div>
+          ) : null}
+         
           <div className="link-text text-end mt-3">
-            <Link to="/Forgotpass" style={{ textAlign: 'right', color: '#377BF7', fontSize: 16, fontFamily: 'Poppins', fontWeight: '200',  wordWrap: 'break-word'}}>Forgot Password?</Link>
+            <Link to="/Forgotpass" style={{ textAlign: 'right', color: '#377BF7', fontSize: 16, fontFamily: 'Poppins', fontWeight: '200', wordWrap: 'break-word' }}>Forgot Password?</Link>
           </div>
           <button type="submit" className="button btn-primary w-100">Sign In</button>
-        
         </form>
 
         <div className="or-divider">-OR-</div>
@@ -114,7 +107,7 @@ const About = () => {
         <div className="circle-image medium-circle">
           <img src={img2} alt="Medium Testimonial" />
         </div>
-        <div className="circle-image small-circle"  style={{marginBottom:'20%'}}>
+        <div className="circle-image small-circle" style={{ marginBottom: '20%' }}>
           <img src={img3} alt="Small Testimonial" />
         </div>
         <div className="circle-image extra-small-circle">

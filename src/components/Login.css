@@ -215,4 +215,56 @@
       width: 100%;
     }
   }
-  
+  /* Login.css */
+
+/* General styles for input fields */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 15px; /* Adjust padding for more comfortable input */
+    margin: 10px 0; /* Space between input fields */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size for the input text */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+    outline: none; /* Remove outline */
+}
+
+/* Focus state for input fields */
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #377BF7; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(55, 123, 247, 0.5); /* Light blue glow */
+}
+
+/* Style for the error messages */
+.text-danger {
+    font-size: 14px; /* Font size for error messages */
+    margin-top: -5px; /* Space above the error messages */
+    margin-bottom: 10px; /* Space below the error messages */
+}
+
+/* Button styles */
+.button {
+    display: flex; /* Flexbox for centering content */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    border-radius: 5px; /* Rounded corners */
+    padding: 12px; /* Padding inside the button */
+    color: white; /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Button hover effects */
+.button:hover {
+    opacity: 0.9; /* Slightly transparent on hover */
+}
+
+/* Google and Facebook buttons */
+.btn-google {
+    background-color: #DB4437; /* Google red */
+}
+
+.btn-facebook {
+    background-color: #3b5998; /* Facebook blue */
+}

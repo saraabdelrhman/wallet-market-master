@@ -49,6 +49,7 @@
   }
   
   .product-card {
+    background-color: white;
     border: 1px solid #E4E7E9;
     padding: 20px;
     border-radius: 8px;
@@ -88,8 +89,9 @@
   }
   .filter-bar {
     padding: 12px 24px;
-    background: #F2F4F5;
+    background: #ebedee;
     border-radius: 4px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
