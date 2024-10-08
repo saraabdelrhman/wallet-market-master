@@ -78,19 +78,25 @@ wordWrap: 'break-word'}}>What are you looking for?</h2>
         </div>
 
         <div className="col-12 mb-3 mt-5 pt-5">
-          <h3 className="text-start ps-5">Explore companies by category</h3>
+          <h3 className="text-start  fw-bolder">Explore companies by category</h3>
         </div>
 
         <div className="col-12">
           <div className="row g-4">
             {filteredCategories.length > 0 ? filteredCategories.map((category) => (
-              <div className="col-12 col-md-6 col-lg-4 d-flex align-items-stretch" key={category.name}>
-                <div className="card text-center p-3 w-100 d-flex justify-content-center align-items-center">
+              <div className="col-12 col-md-6 col-lg-4 d-flex align-items-stretch " key={category.name}>
+              
+                <div className="card  text-center p-3 w-100 d-flex justify-content-center align-items-center">
                   <img src={category.image} className="card-img-top mx-auto" style={{ width: '100px', height: '100px', borderRadius: '50%' }} alt={category.name} />
-                  <div className="card-body d-flex flex-column justify-content-center align-items-center">
-                    <h5 className="card-title">{category.name}</h5>
+                  
+                  <div className="card-body d-flex flex-column justify-content-center align-items-center p-2 ">
+                    <h5 className="card-title fw-bolder">{category.name}</h5>
+                    
                     <ul className="list-unstyled">
-                      {category.items.map((item) => <li key={item}>{item}</li>)}
+                      
+                      {category.items.map((item) => <li key={item} style={{lineHeight:'45px'}}>{item}<hr ></hr></li>)}
+                      
+                      
                     </ul>
                     <Link to="/categoriesdetails" className="btn btn-outline-primary">Find More</Link>
                   </div>

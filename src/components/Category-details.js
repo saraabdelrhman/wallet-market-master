@@ -45,7 +45,7 @@ const ProductCard = ({ title, reviews }) => (
 
     <div className="">
       <span className="stars me-3" style={{fontSize:'20px'}}>★★★★☆</span>
-      <span>{reviews} Reviews</span>
+      <span style={{color:'#77878F'}}>{reviews} Reviews</span>
     </div>
     <p>Responsive cushioning in the Pegasus provides an energized ride for everyday road running. Experience lighter-weight energy return with dual Air Zoom... <a href="#">read more</a></p>
   </div>
