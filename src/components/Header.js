@@ -8,15 +8,16 @@ import person1 from '../components/images/image 6 (1).png';
 import person2 from '../components/images/image 6 (2).png';
 import language from '../components/images/material-symbols_language (3).png';
 import notification from '../components/images/notification.png';
-import { Dropdown } from 'react-bootstrap'; // Import Bootstrap Dropdown
-
+import { Dropdown } from 'react-bootstrap';
+import './Header.css'
 const Header = () => {
   const location = useLocation();
 
+  // Check if the current path matches the passed path
   const isActive = (path) => {
     return location.pathname === path
-      ? { color: '#377bf7' } // Active color styling
-      : {};
+      ? { color: '#377bf7' } // Apply active style
+      : { color: '#474545' }; // Default style
   };
 
   return (
@@ -46,54 +47,48 @@ const Header = () => {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto gap-4">
-            <li className="nav-item">
-              <Link className="nav-link" style={isActive('/')} to="/">
-                Home
-              </Link>
+          <ul className="navbar-nav ms-auto gap-5">
+            <li className="nav-item mt-1 " >
+            <Link className="nav" to="/" style={isActive('/')} >
+    Home
+</Link>
+
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" style={isActive('/categories')} to="/categories">
+            <li className="nav-item mt-1">
+              <Link className="nav" style={isActive('/categories')} to="/categories">
                 Category
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" style={isActive('/about')} to="/about">
+            <li className="nav-item mt-1">
+              <Link className="nav" style={isActive('/about')} to="/about">
                 About
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" style={isActive('/contact')} to="/contact">
+            <li className="nav-item mt-1">
+              <Link className="nav" style={isActive('/contact')} to="/contact">
                 Contact Us
               </Link>
             </li>
 
             {/* Language Selector */}
-            <li className="nav-item d-flex align-items-center">
-  {/* <img
-    src={language}
-    alt="Language Selector"
-    style={{ cursor: 'pointer', height: '24px', marginRight: '10px' }}
-    onClick={() => document.getElementById('languageSelect').focus()} // Focus on select when clicking the image
-  /> */}
-  <select
-    id="languageSelect" // Add an id to the select element
-    style={{
-      width: 'auto', // Adjust to fit the content
-      border: '0',
-      marginRight: '15px',
-      borderRadius: '5px',
-      backgroundColor: 'white'
-    }}
-  >
-    <option value="English">English</option>
-    <option value="Sweden">Sweden</option>
-    <option value="Français">Français</option>
-    <option value="български">български</option>
-  </select>
-</li>
+            <li className="nav d-flex align-items-center">
+              <select
+                id="languageSelect"
+                style={{
+                  width: 'auto',
+                  border: '0',
+                  marginRight: '15px',
+                  borderRadius: '5px',
+                  backgroundColor: 'white',
+                }}
+              >
+                <option value="English">English</option>
+                <option value="Sweden">Sweden</option>
+                <option value="Français">Français</option>
+                <option value="български">български</option>
+              </select>
+            </li>
 
-           
             {/* Notification Dropdown */}
             <li className="nav-item d-flex align-items-center">
               <Dropdown>
@@ -113,22 +108,18 @@ const Header = () => {
                   <Dropdown.ItemText>
                     <div className="d-flex justify-content-between align-items-center ">
                       <div>
-
-                      <span>Notifications</span>
-                      <span className="badge bg-primary text-light text-center  rounded-circle ms-2 m-0  "style={{}}>2</span>
-                    
-
+                        <span>Notifications</span>
+                        <span className="badge bg-primary text-light text-center rounded-circle ms-2 m-0">2</span>
                       </div>
                       <div>
-                    <div style={{fontSize:'12px',color:'#0085FF'}} className='d-flex mt-3'>
-                    Mark all as read
-                    <img src={threelines} alt='threelines'></img>
+                        <div style={{ fontSize: '12px', color: '#0085FF' }} className="d-flex mt-3">
+                          Mark all as read
+                          <img src={threelines} alt="three dots"></img>
+                        </div>
+                      </div>
                     </div>
-                    </div>
-                    </div>
-                 
                   </Dropdown.ItemText>
-                  <Dropdown.Divider  />
+                  <Dropdown.Divider />
                   <Dropdown.Item href="#">
                     <div className="d-flex">
                       <img
@@ -139,13 +130,16 @@ const Header = () => {
                       />
                       <div className="ms-2">
                         <strong>Edward Curr</strong>
-                        <div className="text-muted" style={{color:'#696F8C',fontSize:'13px'}}>Added a comment to  
-                          <span className='fw-bolder text-dark ms-1'>Gerald</span></div>
+                        <div className="text-muted" style={{ color: '#696F8C', fontSize: '13px' }}>
+                          Added a comment to
+                          <span className="fw-bolder text-dark ms-1">Gerald</span>
+                        </div>
                       </div>
                     </div>
-                    <p  style={{color:'#696F8C',fontSize:'13px',marginTop:'15px',marginLeft:'50px'}}>This is a great idea! I will steal it,
-                       say <br></br>it’s mine, and give credit to myself 
-                       of<br></br> course... wait... I already did!</p>
+                    <p style={{ color: '#696F8C', fontSize: '13px', marginTop: '15px', marginLeft: '50px' }}>
+                      This is a great idea! I will steal it, say it’s mine, and give credit to myself, of course... wait...
+                      I already did!
+                    </p>
                     <small className="text-muted ms-5">1 day ago</small>
                   </Dropdown.Item>
                   <Dropdown.Divider />
@@ -159,11 +153,15 @@ const Header = () => {
                       />
                       <div className="ms-2">
                         <strong>Maria Hill</strong>
-                        <div className="text-muted" style={{color:'#696F8C',fontSize:'13px'}}>Added a comment to  
-                          <span className='fw-bolder text-dark ms-1'>Gerald</span></div>
+                        <div className="text-muted" style={{ color: '#696F8C', fontSize: '13px' }}>
+                          Added a comment to
+                          <span className="fw-bolder text-dark ms-1">Gerald</span>
+                        </div>
                       </div>
                     </div>
-                    <p  style={{color:'#696F8C',fontSize:'13px',marginTop:'15px',marginLeft:'50px'}}>This can help us so much</p>
+                    <p style={{ color: '#696F8C', fontSize: '13px', marginTop: '15px', marginLeft: '50px' }}>
+                      This can help us so much
+                    </p>
                     <small className="text-muted ms-5">2 days ago</small>
                   </Dropdown.Item>
                 </Dropdown.Menu>
@@ -203,6 +201,7 @@ const Header = () => {
                 letterSpacing: 0.07,
                 textAlign: 'center',
                 textDecoration: 'none',
+               
               }}
             >
               Register
