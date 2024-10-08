@@ -2,9 +2,9 @@
 .background{
   background-color: #eaeaea;;
 }
-/* Base styling for all screen sizes */
+/* General styling for all screen sizes */
 .container {
-  padding: 20px;
+  padding: 15px; /* Reduce container padding */
 }
 
 .table-responsive {
@@ -12,28 +12,32 @@
 }
 
 .user-avatar {
-  width: 51.75px;
-  height: 51.75px;
+  width: 45px;  /* Slightly smaller avatar */
+  height: 45px;
   border-radius: 50%;
+}
+
+.search-container div {
+  font-size: 16px; /* Reduced font size */
+}
+
+.pagination-btn {
+  padding: 8px;   /* Smaller padding for pagination buttons */
+  font-size: 14px;
 }
 
 /* Styles for screens up to 600px (small phones) */
 @media (max-width: 600px) {
-  /* Stack search bar and user info vertically */
   .search-container {
     display: block;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
-  .search-container div {
-    margin-bottom: 10px;
-  }
-
-  /* User avatar and name adjustments */
+  /* Reduce the size of the avatar even further */
   .user-avatar {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
   }
 
   .user-info {
@@ -41,9 +45,9 @@
     margin-bottom: 10px;
   }
 
-  /* Adjust button sizing */
+  /* Adjust button size */
   .pagination-btn {
-    padding: 8px;
+    padding: 6px;
     font-size: 12px;
   }
 
@@ -52,39 +56,39 @@
     justify-content: center;
   }
 
-  /* Center align and resize buttons */
+  /* Reduce table font-size */
   .table-responsive th,
   .table-responsive td {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 
 /* Styles for screens up to 900px (tablets, small desktops) */
 @media (min-width: 601px) and (max-width: 900px) {
-  /* Search bar stays inline */
+  /* Keep search bar inline, but reduce padding */
   .search-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 5px;
   }
 
-  /* Adjust the avatar size slightly */
+  /* Reduce avatar size */
   .user-avatar {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
   }
 
-  /* Adjust the table font-size and layout */
+  /* Reduce table font-size */
   .table-responsive th,
   .table-responsive td {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   /* Pagination button adjustments */
   .pagination-btn {
-    padding: 10px;
-    font-size: 14px;
+    padding: 7px;
+    font-size: 13px;
   }
 }
 
@@ -94,25 +98,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 15px;
   }
 
-  /* Slightly larger user avatar */
+  /* Adjust avatar size */
   .user-avatar {
-    width: 50px;
-    height: 50px;
+    width: 43px;
+    height: 43px;
   }
 
-  /* Adjust font-size for larger screens */
+  /* Reduce table font-size */
   .table-responsive th,
   .table-responsive td {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   /* Pagination button adjustments */
   .pagination-btn {
-    padding: 12px;
-    font-size: 16px;
+    padding: 8px;
+    font-size: 14px;
   }
 }
 
@@ -122,24 +126,24 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 30px;
+    padding: 0 20px;
   }
 
-  /* Default avatar size */
+  /* Keep avatar size reduced slightly */
   .user-avatar {
-    width: 51.75px;
-    height: 51.75px;
+    width: 45px;
+    height: 45px;
   }
 
-  /* Larger font-size for desktop */
+  /* Reduce table font-size slightly */
   .table-responsive th,
   .table-responsive td {
-    font-size: 20px;
+    font-size: 17px;
   }
 
-  /* Larger pagination buttons */
+  /* Pagination button adjustments */
   .pagination-btn {
-    padding: 15px;
-    font-size: 18px;
+    padding: 10px;
+    font-size: 15px;
   }
 }
