@@ -6,14 +6,13 @@ import img from '../components/images/logo-86.png';
 import threelines from '../components/images/more-dots-vertical.png';
 import person1 from '../components/images/image 6 (1).png';
 import person2 from '../components/images/image 6 (2).png';
-import language from '../components/images/material-symbols_language (3).png';
 import notification from '../components/images/notification.png';
 import { Dropdown } from 'react-bootstrap';
-import './Header.css'
-const Header = () => {
+import './Header.css';
+
+const Header = ({ language, setLanguage }) => {
   const location = useLocation();
 
-  // Check if the current path matches the passed path
   const isActive = (path) => {
     return location.pathname === path
       ? { color: '#377bf7' } // Apply active style
@@ -24,14 +23,8 @@ const Header = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <Link className="navbar-brand d-flex align-items-center" to="/">
-          <img
-            src={img}
-            alt="Reveyou Logo"
-            style={{ height: 40, marginRight: 10 }}
-          />
-          <span style={{ color: 'black', fontSize: 30, fontFamily: 'Poppins', fontWeight: 700 }}>
-            Reveyou
-          </span>
+          <img src={img} alt="Reveyou Logo" style={{ height: 40, marginRight: 10 }} />
+          <span style={{ color: 'black', fontSize: 30, fontFamily: 'Poppins', fontWeight: 700 }}>Reveyou</span>
         </Link>
 
         <button
@@ -48,31 +41,24 @@ const Header = () => {
 
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto gap-5">
-            <li className="nav-item mt-1 " >
-            <Link className="nav" to="/" style={isActive('/')} >
-    Home
-</Link>
-
+            <li className="nav-item mt-1">
+              <Link className="nav mt-2" to="/" style={isActive('/')}>Home</Link>
             </li>
             <li className="nav-item mt-1">
-              <Link className="nav" style={isActive('/categories')} to="/categories">
-                Category
-              </Link>
+              <Link className="nav mt-2" style={isActive('/categories')} to="/categories">Category</Link>
             </li>
             <li className="nav-item mt-1">
-              <Link className="nav" style={isActive('/about')} to="/about">
-                About
-              </Link>
+              <Link className="nav mt-2" style={isActive('/about')} to="/about">About</Link>
             </li>
             <li className="nav-item mt-1">
-              <Link className="nav" style={isActive('/contact')} to="/contact">
-                Contact Us
-              </Link>
+              <Link className="nav mt-2" style={isActive('/contact')} to="/contact">Contact Us</Link>
             </li>
 
             {/* Language Selector */}
             <li className="nav d-flex align-items-center">
               <select
+                value={language}
+                onChange={(e) => setLanguage(e.target.value)}
                 id="languageSelect"
                 style={{
                   width: 'auto',
@@ -83,9 +69,10 @@ const Header = () => {
                 }}
               >
                 <option value="English">English</option>
-                <option value="Sweden">Sweden</option>
-                <option value="Français">Français</option>
-                <option value="български">български</option>
+                <option value="German">German</option>
+                <option value="Swedish">Swedish</option>
+                <option value="Spanish">Spanish</option>
+                <option value="French">French</option>
               </select>
             </li>
 
@@ -103,13 +90,12 @@ const Header = () => {
                     style={{ cursor: 'pointer', height: '24px', marginRight: '5px' }}
                   />
                 </Dropdown.Toggle>
-
                 <Dropdown.Menu style={{ width: '380px' }}>
                   <Dropdown.ItemText>
-                    <div className="d-flex justify-content-between align-items-center ">
+                    <div className="d-flex justify-content-between align-items-center">
                       <div>
                         <span>Notifications</span>
-                        <span className="badge bg-primary text-light text-center rounded-circle ms-2 m-0">2</span>
+                        <span className="badge bg-primary text-light text-center rounded-circle ms-2">2</span>
                       </div>
                       <div>
                         <div style={{ fontSize: '12px', color: '#0085FF' }} className="d-flex mt-3">
@@ -137,7 +123,7 @@ const Header = () => {
                       </div>
                     </div>
                     <p style={{ color: '#696F8C', fontSize: '13px', marginTop: '15px', marginLeft: '50px' }}>
-                      This is a great idea! 
+                      This is a great idea!
                     </p>
                     <small className="text-muted ms-5">1 day ago</small>
                   </Dropdown.Item>
@@ -166,10 +152,8 @@ const Header = () => {
                 </Dropdown.Menu>
               </Dropdown>
             </li>
-          </ul>
-
-          {/* Login and Register Links */}
-          <div className="d-flex align-items-center gap-3 ">
+         
+            <div className="d-flex align-items-center gap-3 ">
             <Link
               to="/login"
               style={{
@@ -206,7 +190,8 @@ const Header = () => {
             >
               Register
             </Link>
-          </div>
+      </div>
+      </ul>
         </div>
       </div>
     </nav>

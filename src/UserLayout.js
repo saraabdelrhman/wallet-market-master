@@ -4,10 +4,10 @@ import { Outlet } from 'react-router-dom';
 import Header from './components/Header'; // User Header
 import Footer from './components/Footer'; // User Footer
 
-const UserLayout = () => {
+const UserLayout = ({ language, setLanguage }) =>  {
   return (
     <>
-      <Header /> {/* User Navbar */}
+          <Header language={language} setLanguage={setLanguage} />
       <main>
         <Outlet /> {/* User pages content will be rendered here */}
       </main>
