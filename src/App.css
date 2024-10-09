@@ -1,10 +1,6 @@
-
-.background{
-  background-color: #eaeaea;;
-}
-/* General styling for all screen sizes */
+/* Base styling for all screen sizes */
 .container {
-  padding: 15px; /* Reduce container padding */
+  padding: 15px; /* General padding for larger screens */
 }
 
 .table-responsive {
@@ -12,43 +8,51 @@
 }
 
 .user-avatar {
-  width: 45px;  /* Slightly smaller avatar */
+  width: 45px;  /* Slightly smaller avatar for larger screens */
   height: 45px;
   border-radius: 50%;
 }
 
 .search-container div {
-  font-size: 16px; /* Reduced font size */
+  font-size: 16px; /* Default font size for search container */
 }
 
 .pagination-btn {
-  padding: 8px;   /* Smaller padding for pagination buttons */
+  padding: 8px;   /* Default padding for pagination buttons */
   font-size: 14px;
 }
 
 /* Styles for screens up to 600px (small phones) */
 @media (max-width: 600px) {
+  /* Stack the search bar and user info vertically */
   .search-container {
     display: block;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px; /* Reduce margin between search bar and other content */
   }
 
-  /* Reduce the size of the avatar even further */
+  .search-container div {
+    margin-bottom: 5px; /* Tighten spacing in the search container */
+    font-size: 14px; /* Smaller font size for the search text */
+  }
+
+  /* Further reduce the size of the avatar on mobile */
   .user-avatar {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
   }
 
+  /* User info adjustments */
   .user-info {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    font-size: 12px; /* Smaller font for user info */
   }
 
-  /* Adjust button size */
+  /* Smaller font size for buttons */
   .pagination-btn {
-    padding: 6px;
-    font-size: 12px;
+    padding: 4px; /* Smaller padding for pagination buttons */
+    font-size: 10px; /* Smaller text size */
   }
 
   .action-buttons {
@@ -56,10 +60,20 @@
     justify-content: center;
   }
 
-  /* Reduce table font-size */
+  /* Reduce the table font-size */
   .table-responsive th,
   .table-responsive td {
-    font-size: 13px;
+    font-size: 11px; /* Smaller font size for table on mobile */
+  }
+
+  /* Smaller icons */
+  .table-responsive button {
+    font-size: 12px; /* Smaller icon size for action buttons */
+  }
+
+  /* Reduce padding on the container */
+  .container {
+    padding: 10px; /* Less padding on mobile */
   }
 }
 
