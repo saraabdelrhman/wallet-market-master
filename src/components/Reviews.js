@@ -17,9 +17,9 @@ import { Link } from "react-router-dom";
 
 export default function Reviews() {
   const [reviews, setReviews] = useState([
-    { name: "Gerald", stars: 5, review: "I love this product! easy to user and super cozy!", image: anonymous, date: "Now" },
-    { name: "Diana", stars: 4, review: "Super efficient service and delivery.", image: img2, date: "4 days ago" },
-    { name: "Andre 🥇", stars: 4, review: "Amazing delivery speed and service quality.", image: img3, date: "27 Aug 2024" }
+    { name: "Gerald ",role:'Expert 🎖️', stars: 5, review: "I love this product! easy to user and super cozy!", image: anonymous, date: "Now" },
+    { name: "Diana ",role:'Expert 🎖️', stars: 4, review: "Super efficient service and delivery.", image: img2, date: "4 days ago" },
+    { name: "Andre ", role:'Expert 🎖️',stars: 4, review: "Amazing delivery speed and service quality.", image: img3, date: "27 Aug 2024" }
   ]);
 
   const [newReview, setNewReview] = useState({ name: '', stars: 0, review: '', isAnonymous: false });
@@ -124,7 +124,7 @@ export default function Reviews() {
 
           <div style={additionalReviewsStyle}>
             {reviews.map((r, index) => (
-              <ReviewItem key={index} name={r.name} date={r.date} stars={r.stars} review={r.review} image={r.image} />
+              <ReviewItem key={index} name={r.name} role={r.role} date={r.date} stars={r.stars} review={r.review} image={r.image} />
             ))}
           </div>
         </div>
@@ -220,7 +220,7 @@ export default function Reviews() {
 }
 
 // Reusable Components
-const ReviewItem = ({ name, date, stars, review, image }) => (
+const ReviewItem = ({ name, date, stars, review, image,role }) => (
   <div style={reviewItemStyle} className="d-flex">
     
     <div style={reviewerStyle} className="d-flex">
@@ -232,7 +232,19 @@ const ReviewItem = ({ name, date, stars, review, image }) => (
       
       <div className="d-flex">
 <div className="d-bock">
-        <div className="reviewer-name" style={reviewerNameStyle}>{name}</div>
+  <div className="d-flex">
+  <div className="reviewer-name" style={reviewerNameStyle}>{name}</div>
+  <span className="mt-1 ms-3 " style={{color: '#6F7171',
+fontSize: 20,
+fontFamily: 'Poppins',
+fontWeight: '500'}}>| </span>
+  <div className="mt-1 ms-2" style={{color: '#377BF7',
+fontSize: 20,
+fontFamily: 'Poppins',
+fontWeight: '500',
+wordWrap: 'break-word'}}>{role}</div>
+  </div>
+       
         
         <div style={reviewDateStyle}>{date}</div>
         </div>
