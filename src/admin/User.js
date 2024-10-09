@@ -168,24 +168,23 @@ const Users = () => {
         </div>
       </Row>
 
-     ]<Row className="d-flex justify-content-center my-4">
+      <Row className="d-flex justify-content-center my-4">
         <Button
           variant="link"
           onClick={() => setPage(page - 1)}
           disabled={page === 0}
           className="pagination-btn"
         >
-          <FaArrowLeft size={20} color={page === 0 ? '#ccc' : '#377BF7'} />
+          <FaArrowLeft size={14} color={page === 0 ? '#ccc' : '#377BF7'} />
         </Button>
 
-        {/* Render pagination buttons */}
         {[...Array(6).keys()].map((number) => (
           <Button
             key={number}
             className={`pagination-btn ${number === page ? 'active' : ''}`}
             onClick={() => setPage(number)}
           >
-            {`0${number + 1}`}
+            {number + 1} {/* This will display 1, 2, 3, etc. */}
           </Button>
         ))}
 
@@ -195,7 +194,7 @@ const Users = () => {
           disabled={page === 5}
           className="pagination-btn"
         >
-          <FaArrowRight size={20} color={page === 5 ? '#ccc' : '#377BF7'} />
+          <FaArrowRight size={14} color={page === 5 ? '#ccc' : '#377BF7'} />
         </Button>
       </Row>
     </Container>
