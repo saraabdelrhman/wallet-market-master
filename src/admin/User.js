@@ -125,7 +125,6 @@ const Users = () => {
           </Button>
         </Link>
       </div>
-
       <Row>
         <div className="table-responsive">
           <Table striped bordered hover>
@@ -150,14 +149,14 @@ const Users = () => {
                     <td>{user.email}</td>
                     <td>{user.name}</td>
                     <td>{user.role}</td>
-                    <td className="action-buttons">
+                    <td className="d-flex justify-content-center gap-4">
                       <Link to={'/singleuser'}>
-                        <Button size="sm" className="me-2 bg-transparent text-dark"><FaEye /></Button>
+                        <Button size="sm" className="bg-transparent text-dark p-0"><FaEye /></Button>
                       </Link>
                       <Link to={'/useredit'}>
-                        <Button size="sm" className="me-2 bg-transparent text-dark"><FaEdit /></Button>
+                        <Button size="sm" className="bg-transparent text-dark p-0"><FaEdit /></Button>
                       </Link>
-                      <Button size="sm" className="bg-transparent text-dark" onClick={() => handleDelete(user.id)}>
+                      <Button size="sm" className="bg-transparent text-dark p-0" onClick={() => handleDelete(user.id)}>
                         <FaTrash />
                       </Button>
                     </td>
@@ -168,40 +167,37 @@ const Users = () => {
           </Table>
         </div>
       </Row>
-      <div style={{width: '100%', height: '100%', justifyContent: 'center',alignItems: 'center', gap: 20, display: 'inline-flex'}}>
-        {/* Left Arrow */}
-        <button className="pagination-arrow" style={{ border: 'none', background: 'transparent', marginBottom:'30px' }}>
-          <FaArrowLeft style={{ fontSize: '24px', color: '#377BF7' }} />
-        </button>
 
-        <div style={{justifyContent: 'flex-start', alignItems: 'flex-start', gap: 8, display: 'flex', marginBottom:'30px'}}>
-          {/* Pagination buttons */}
-          <div style={{paddingTop: 10, paddingBottom: 10, background: '#377BF7', borderRadius: '50%', justifyContent: 'center', alignItems: 'center', width: '40px', height: '40px', display: 'flex'}}>
-            <div style={{textAlign: 'center', color: 'white', fontSize: 14, fontFamily: 'Public Sans', fontWeight: '600', lineHeight: 20, wordWrap: 'break-word'}}>01</div>
-          </div>
-          <div style={{paddingTop: 10, paddingBottom: 10, background: 'white', borderRadius: '50%', border: '1px #E4E7E9 solid', justifyContent: 'center', alignItems: 'center', width: '40px', height: '40px', display: 'flex'}}>
-            <div style={{textAlign: 'center', color: '#191C1F', fontSize: 14, fontFamily: 'Public Sans', fontWeight: '400', lineHeight: 20, wordWrap: 'break-word'}}>02</div>
-          </div>
-          <div style={{paddingTop: 10, paddingBottom: 10, background: 'white', borderRadius: '50%', border: '1px #E4E7E9 solid', justifyContent: 'center', alignItems: 'center', width: '40px', height: '40px', display: 'flex'}}>
-            <div style={{textAlign: 'center', color: '#191C1F', fontSize: 14, fontFamily: 'Public Sans', fontWeight: '400', lineHeight: 20, wordWrap: 'break-word'}}>03</div>
-          </div>
-          <div style={{paddingTop: 10, paddingBottom: 10, background: 'white', borderRadius: '50%', border: '1px #E4E7E9 solid', justifyContent: 'center', alignItems: 'center', width: '40px', height: '40px', display: 'flex'}}>
-            <div style={{textAlign: 'center', color: '#191C1F', fontSize: 14, fontFamily: 'Public Sans', fontWeight: '400', lineHeight: 20, wordWrap: 'break-word'}}>04</div>
-          </div>
-          <div style={{paddingTop: 10, paddingBottom: 10, background: 'white', borderRadius: '50%', border: '1px #E4E7E9 solid', justifyContent: 'center', alignItems: 'center', width: '40px', height: '40px', display: 'flex'}}>
-            <div style={{textAlign: 'center', color: '#191C1F', fontSize: 14, fontFamily: 'Public Sans', fontWeight: '400', lineHeight: 20, wordWrap: 'break-word'}}>05</div>
-          </div>
-          <div style={{paddingTop: 10, paddingBottom: 10, background: 'white', borderRadius: '50%', border: '1px #E4E7E9 solid', justifyContent: 'center', alignItems: 'center', width: '40px', height: '40px', display: 'flex'}}>
-            <div style={{textAlign: 'center', color: '#191C1F', fontSize: 14, fontFamily: 'Public Sans', fontWeight: '400', lineHeight: 20, wordWrap: 'break-word'}}>06</div>
-          </div>
-          {/* More pagination buttons */}
-        </div>
+     ]<Row className="d-flex justify-content-center my-4">
+        <Button
+          variant="link"
+          onClick={() => setPage(page - 1)}
+          disabled={page === 0}
+          className="pagination-btn"
+        >
+          <FaArrowLeft size={20} color={page === 0 ? '#ccc' : '#377BF7'} />
+        </Button>
 
-        {/* Right Arrow */}
-        <button className="pagination-arrow" style={{ border: 'none', background: 'transparent', marginBottom:'30px' }}>
-          <FaArrowRight style={{ fontSize: '24px', color: '#377BF7' }} />
-        </button>
-      </div>
+        {/* Render pagination buttons */}
+        {[...Array(6).keys()].map((number) => (
+          <Button
+            key={number}
+            className={`pagination-btn ${number === page ? 'active' : ''}`}
+            onClick={() => setPage(number)}
+          >
+            {`0${number + 1}`}
+          </Button>
+        ))}
+
+        <Button
+          variant="link"
+          onClick={() => setPage(page + 1)}
+          disabled={page === 5}
+          className="pagination-btn"
+        >
+          <FaArrowRight size={20} color={page === 5 ? '#ccc' : '#377BF7'} />
+        </Button>
+      </Row>
     </Container>
   );
 };

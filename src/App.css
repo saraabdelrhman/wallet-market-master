@@ -129,11 +129,55 @@
 
   .table-responsive th,
   .table-responsive td {
-    font-size: 15px; /* Smaller table font for large desktops */
+    font-size: 15px;
   }
 
   .pagination-btn {
     padding: 8px;
-    font-size: 13px; /* Slight reduction in button size for large screens */
+    font-size: 13px; 
+  }
+}
+
+
+/* General Circular Pagination Styling */
+.pagination-btn {
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Makes the buttons circular */
+  font-size: 14px;
+  text-align: center;
+  margin: 0 4px; /* Spacing between the buttons */
+  background-color: #fff; /* Background color */
+  border: 1px solid #ccc; /* Button border */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.pagination-btn:hover {
+  background-color: #377BF7;
+  color: white;
+}
+
+.pagination-btn.active {
+  background-color: #377BF7;
+  color: white;
+  border-color: #377BF7;
+}
+
+/* For mobile screens (up to 600px) */
+@media (max-width: 600px) {
+  .pagination-btn {
+    width: 30px; /* Smaller width for mobile */
+    height: 30px; /* Smaller height for mobile */
+    font-size: 12px; /* Smaller font size */
+  }
+}
+
+/* For tablets (601px to 900px) */
+@media (min-width: 601px) and (max-width: 900px) {
+  .pagination-btn {
+    width: 35px; /* Adjusted width for tablets */
+    height: 35px; /* Adjusted height for tablets */
+    font-size: 13px; /* Adjusted font size for tablets */
   }
 }
