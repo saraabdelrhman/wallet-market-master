@@ -13,7 +13,12 @@
         "trending":"Latest trending product",
         "top-rated":"Top Rated Products",
         "footer":"Join our community and write your review",
-        ""
+
+
+        "login":"login",
+        "register":"register",
+        "forgot password":"forgot password",
+        "sign in":"sign in"
 
 
 
@@ -33,7 +38,15 @@
         "Categories":"Kategorien",
         "trending":"Neuestes Trendprodukt",
         "top-rated":"Bestbewertete Produkte",
-        "footer":"Werden Sie Teil unserer Community und schreiben Sie Ihre Bewertung"
+        "footer":"Werden Sie Teil unserer Community und schreiben Sie Ihre Bewertung",
+
+               
+        "login":"login",
+        "register":"register",
+        "forgot password":"forgot password",
+        "sign in":"sign in"
+
+
     },
     "Spanish": {
         "title": "Sobre nosotras",
@@ -49,7 +62,15 @@
         "Categories":"categorías",
         "trending":"Últimos productos de moda",
         "top-rated":"Productos mejor valorados",
-        "footer":"Únete a nuestra comunidad y escribe tu opinión"
+        "footer":"Únete a nuestra comunidad y escribe tu opinión",
+
+               
+        "login":"login",
+        "register":"register",
+        "forgot password":"forgot password",
+        "sign in":"sign in"
+
+
     },
 
 
@@ -66,7 +87,15 @@
        "Categories":"    kategorier",
        "trending":" Senaste trendprodukten",
        "top-rated":" Topprankade produkter",
-       "footer":"Gå med i vår community och skriv din recension"
+       "footer":"Gå med i vår community och skriv din recension",
+
+              
+       "login":"login",
+       "register":"register",
+       "forgot password":"forgot password",
+       "sign in":"sign in"
+
+
     },
 
 
@@ -84,6 +113,14 @@
         "Categories":"catégories",
         "trending":"Dernier produit tendance",
         "top-rated":"Produits les mieux notés",
-        "footer":"Rejoignez notre communauté et rédigez votre avis"
+        "footer":"Rejoignez notre communauté et rédigez votre avis",
+
+               
+        "login":"login",
+        "register":"register",
+        "forgot password":"forgot password",
+        "sign in":"sign in"
+
+
     }
 }
