@@ -9,7 +9,7 @@ import icon from './images/Icons.png';
 import rec from './images/Rectangle 1.png'
 import messages from './images/text.png';
 
-const Profile = () => {
+const Profile = ({content}) => {
   const [user, setUser] = useState({
     name: "Gerald",
     email: "Gerald@gmail.com",
@@ -53,9 +53,9 @@ const Profile = () => {
       <div className="profile-card mb-5">
         <div className="profile-details">
           <div className="nav-links d-flex justify-content-between mb-5 p-3" style={{ backgroundColor: '#f5f7fe' }}>
-            <Link to="#" className={getLinkClass("profile")} onClick={() => setView("profile")}>Profile</Link>
-            <Link to="#" className={getLinkClass("addProduct")} onClick={() => setView("addProduct")}>Add Product</Link>
-            <Link to="#" className={getLinkClass("exportData")} onClick={() => setView("exportData")}>Export Data</Link>
+            <Link to="#" className={getLinkClass("profile")} onClick={() => setView("profile")}>  {content["profile"]}</Link>
+            <Link to="#" className={getLinkClass("addProduct")} onClick={() => setView("addProduct")}>  {content["add-product"]}</Link>
+            <Link to="#" className={getLinkClass("exportData")} onClick={() => setView("exportData")}>  {content["export"]}</Link>
           </div>
 
           {view === "profile" && (

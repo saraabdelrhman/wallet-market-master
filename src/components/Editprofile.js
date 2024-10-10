@@ -7,7 +7,7 @@ import icon from './images/Icons.png';
 import { Edit3 } from "react-feather"; // Using react-feather for the edit icon
 import { Link } from "react-router-dom";
 
-const Profile = () => {
+const Profile = ({content}) => {
   const [user, setUser] = useState({
     name: "Gerald",
     email: "Gerald@gmail.com",
@@ -42,7 +42,7 @@ const Profile = () => {
 
   return (
     <div className="profile-container text-left">
-      <h2 className="profile-title">User Profile</h2>
+      <h2 className="profile-title">{content["profile"]}</h2>
 
       {/* Decorative images */}
       <img src={dot} alt="Dots" className="decorative-dot" />

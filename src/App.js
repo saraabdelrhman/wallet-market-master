@@ -95,8 +95,8 @@ function App() {
             <Route path="/contact" element={<Contact content={content}/>} />
             <Route path="/login" element={<Login content={content}/>} />
             <Route path="/register" element={<Register content={content} />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/editprofile" element={<Editprofile />} />
+            <Route path="/profile" element={<Profile content={content}  />} />
+            <Route path="/editprofile" element={<Editprofile content={content}  />} />
             <Route path="/products/:productId/reviews" element={<Reviews  content={content}/>} />
             <Route path="/products/:productId" element={<Singleproduct />} />
             <Route path="/reviews" element={<Reviews  content={content} />} />

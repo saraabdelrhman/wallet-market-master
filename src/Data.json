@@ -27,7 +27,11 @@
         
         "best-rated":"Browse the best product review",
         "see-reviews":"See all reviews",
-        "write-review":"Write review"
+        "write-review":"Write review",
+        
+        "profile":"Profile",
+        "add-product":"Add product",
+        "export":"Export"
 
 
 
@@ -60,8 +64,11 @@
           
   "best-rated":"Durchsuchen Sie die besten Produktbewertungen",
   "see-reviews":"Alle Bewertungen anzeigen",
-  "write-review":"Bewertung schreiben"
+  "write-review":"Bewertung schreiben",
 
+  "profile":"Profil",
+  "add-product":"Produkt hinzufügen",
+  "export":"Exportieren"
 
 
     },
@@ -94,10 +101,13 @@
                   
         "best-rated":"Explorar la mejor reseña de productos",
         "see-reviews":"Ver todas las reseñas",
-        "write-review":"Escribir reseña"
+        "write-review":"Escribir reseña",
 
        
-       
+        "profile":"perfil",
+        "add-product":"añadir producto",
+        "export":"exportar"
+
        
        
     },
@@ -131,8 +141,11 @@
                  
         "best-rated":"Bläddra i den bästa produktrecensionen",
         "see-reviews":"Se alla recensioner",
-        "write-review":"Skriv recension"
+        "write-review":"Skriv recension",
 
+        "profile":"profil",
+        "add-product":"lägga till produkt",
+        "export":"exportera"
 
 
     },
@@ -166,7 +179,11 @@
         
           "best-rated":"Parcourez les meilleurs avis sur les produits",
           "see-reviews":"Voir tous les avis",
-          "write-review":"Rédiger un avis"
+          "write-review":"Rédiger un avis",
+
+          "profile":"profil",
+          "add-product":"ajouter un produit",
+          "export":"exporter"
   
     }
 }
