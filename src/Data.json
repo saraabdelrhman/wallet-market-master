@@ -9,6 +9,9 @@
         "more":"Find more",
 
         "header-title":"Rate and Rely on the Products You Love",
+        "header-span":"500,000 ratings by 100 valid user community, reviews by people like you.",
+        "header-desc":"Browse our most top rated product",
+
         "Categories":"Categories",
         "trending":"Latest trending product",
         "top-rated":"Top Rated Products",
@@ -19,8 +22,12 @@
         "register":"register",
         "forgot-password":"forgot password",
         "sign-in":"sign in",
-        "create":"create my account"
+        "create":"create my account",
 
+        
+        "best-rated":"Browse the best product review",
+        "see-reviews":"See all reviews",
+        "write-review":"Write review"
 
 
 
@@ -36,6 +43,8 @@
         
          
         "header-title":"Bewerten Sie die Produkte, die Sie lieben, und vertrauen Sie ihnen",
+        "header-span":"500.000 Bewertungen von 100 gültigen Benutzer-Communitys, Rezensionen von Leuten wie Ihnen.",
+        "header-desc":"Durchsuchen Sie unsere am besten bewerteten Produkte",
         "Categories":"Kategorien",
         "trending":"Neuestes Trendprodukt",
         "top-rated":"Bestbewertete Produkte",
@@ -46,7 +55,14 @@
         "register":"Registrieren",
         "forgot password":"Passwort vergessen",
         "sign-in":"Anmelden",
-  "create":"Mein Konto erstellen"
+  "create":"Mein Konto erstellen",
+
+          
+  "best-rated":"Durchsuchen Sie die besten Produktbewertungen",
+  "see-reviews":"Alle Bewertungen anzeigen",
+  "write-review":"Bewertung schreiben"
+
+
 
     },
     "Spanish": {
@@ -60,6 +76,8 @@
 
          
         "header-title":"Califica y confía en los productos que te encantan",
+        "header-span":"500.000 valoraciones de una comunidad de 100 usuarios válidos, reseñas de personas como tú.",
+        "header-desc":"Explore nuestros productos mejor calificados",
         "Categories":"categorías",
         "trending":"Últimos productos de moda",
         "top-rated":"Productos mejor valorados",
@@ -70,7 +88,14 @@
         "register":" Registrarse",
         "forgot password":" Olvidé mi contraseña",
         "sign-in":" Iniciar sesión",
-          "create":"crear mi cuenta"
+          "create":"crear mi cuenta",
+
+
+                  
+        "best-rated":"Explorar la mejor reseña de productos",
+        "see-reviews":"Ver todas las reseñas",
+        "write-review":"Escribir reseña"
+
        
        
        
@@ -88,6 +113,8 @@
        "more":"hitta mer",
        
        "header-title":" Betygsätt och lita på de produkter du älskar",
+       "header-span":"500 000 betyg av 100 giltiga användare, recensioner av personer som du.",
+       "header-desc":"Bläddra bland vår mest högst rankade produkt",
        "Categories":"    kategorier",
        "trending":" Senaste trendprodukten",
        "top-rated":" Topprankade produkter",
@@ -98,7 +125,14 @@
        "register":"register",
        "forgot password":"glömt lösenordet",
        "sign-in":"logga in",
-         "create":"skapa mitt konto"
+         "create":"skapa mitt konto",
+
+
+                 
+        "best-rated":"Bläddra i den bästa produktrecensionen",
+        "see-reviews":"Se alla recensioner",
+        "write-review":"Skriv recension"
+
 
 
     },
@@ -115,6 +149,8 @@
         "more":"en savoir plus",
         
         "header-title":"Notez et faites confiance aux produits que vous aimez",
+        "header-span":"500 000 évaluations par 100 communautés d'utilisateurs valides, des avis de personnes comme vous..",
+        "header-desc":"Parcourez nos produits les mieux notés",
         "Categories":"catégories",
         "trending":"Dernier produit tendance",
         "top-rated":"Produits les mieux notés",
@@ -125,8 +161,12 @@
         "register":"inscription",
         "forgot password":"mot de passe oublié",
         "sign-in":"connexion",
-          "create":"créer mon compte"
+          "create":"créer mon compte",
 
-
+        
+          "best-rated":"Parcourez les meilleurs avis sur les produits",
+          "see-reviews":"Voir tous les avis",
+          "write-review":"Rédiger un avis"
+  
     }
 }

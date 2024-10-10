@@ -6,12 +6,12 @@ import kitechenandcar from './images/kitchen.png';
 import furnitureandlabtop from './images/house-2.png';
 import fashonandinsurance from './images/building-4.png';
 
-export default function Content() {
+export default function Content({content}) {
   return (
     <div style={styles.container}>
       <div style={styles.header}>
         <div style={styles.headerText}>
-          <div style={styles.headerTitle}>Categories</div>
+          <div style={styles.headerTitle}>{content["Categories"]}</div>
           <div style={styles.headerSubtitle}>Search categories that you love</div>
         </div>
         <div style={styles.exploreButton}>

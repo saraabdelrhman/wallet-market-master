@@ -6,7 +6,7 @@ import frame from './images/Frame 31.png';
 import img from './images/Ellipse 2.png';
 import './Trending.css';
 
-export default function Trending() {
+export default function Trending({content}) {
   const groups = [
     [{ image: shoes, label: 'Shoes' }, { image: phone, label: 'Phone' }, { image: frame, label: 'Frame' }, { image: watch, label: 'Watch' }],
     [{ image: frame, label: 'Frame' }, { image: phone, label: 'Phone' }, { image: watch, label: 'Watch' }, { image: shoes, label: 'Shoes' }]
@@ -14,8 +14,8 @@ export default function Trending() {
 
   return (
     <section className="pt-5" id="exercise">
-      <h2 className="pb-4 fs-2">Latest trending product</h2>
-      <p className="fw-bold text-secondary">Browse our most top rated product</p>
+      <h2 className="pb-4 fs-2">{content["trending"]}</h2>
+      <p className="fw-bold text-secondary">{content["header-desc"]}</p>
       <div id="carouselExampleFade" className="carousel slide carousel-fade">
         <div className="carousel-inner">
           {groups.map((group, idx) => (

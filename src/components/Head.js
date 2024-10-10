@@ -17,7 +17,7 @@ import Trending from './Trending';
 import TopRate from "./Top-rate";
 import Content from "./Content";
 
-const Head = () => {
+const Head = ({content}) => {
   const [search, setSearch] = useState("");
   const [searchData, setSearchData] = useState([]);
   const navigate = useNavigate();
@@ -76,9 +76,9 @@ const Head = () => {
 
           {/* Main Content */}
           <div className="content" style={{ flex: "1", marginLeft: "32px" }}>
-            <h1 className="title">Rate and Rely on the Products You Love</h1>
+            <h1 className="title">{content["header-title"]}</h1>
             <p className="subtitle">
-              500,000 ratings by 100 valid user community, reviews by people like you.
+            {content["header-span"]}
             </p>
 
             <div className="search-bar" style={{ marginTop: "24px" }}>
@@ -129,9 +129,9 @@ const Head = () => {
       <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "flex-end", width: "100%", marginTop: "32px" }}>
         <img src={shape} alt="Decorative Shape" style={{ display: "none", visibility: "hidden" }} />
       </div>
-      <Content></Content>
-      <Trending />
-      <TopRate />
+      <Content content={content}></Content>
+      <Trending content={content}/>
+      <TopRate content={content} />
     </div>
   );
 };

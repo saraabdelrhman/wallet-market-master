@@ -7,7 +7,7 @@ import './Trending.css';
 import './TopFooter.css'; 
 import { Shoes } from './Shoes';  // Corrected import to match named export
 
-export default function TopRate() {
+export default function TopRate({content}) {
   const groups = [
     [{ image: shoes, label: 'Shoes' }, { image: phone, label: 'Phone' }, { image: frame, label: 'Frame' }, { image: watch, label: 'Watch' }],
     [{ image: frame, label: 'Frame' }, { image: watch, label: 'Watch' }, { image: shoes, label: 'Shoes' }, { image: phone, label: 'Phone' }],
@@ -15,8 +15,8 @@ export default function TopRate() {
 
   return (
     <section className="pt-5" id="exercise">
-      <h2 className="pb-4 fs-2">Top Rated Products</h2>
-      <p className="fw-bold text-secondary">Browse our most top-rated products</p>
+      <h2 className="pb-4 fs-2">{content["top-rated"]}</h2>
+      <p className="fw-bold text-secondary">{content["header-desc"]}</p>
       <div id="carouselExampleFade" className="carousel slide carousel-fade">
         <div className="carousel-inner">
           {groups.map((group, idx) => (
@@ -50,15 +50,15 @@ export default function TopRate() {
       </div>
 
       {/* Shoes Component */}
-      <Shoes />
+      <Shoes  content={content}/>
 
       {/* TopFooter Component */}
-      <TopFooter />
+      <TopFooter content={content} />
     </section>
   );
 }
 
-export function TopFooter() {
+export function TopFooter({content}) {
   return (
     <div className="top-footer mt-5 mb-5">
       <div className="top-badge">
@@ -67,11 +67,11 @@ export function TopFooter() {
         <div className="top-badge-text">TOP website rating in the world</div>
       </div>
       <div>
-        <div className="community-call">Join our community and write your review</div>
+        <div className="community-call">{content["footer"]}</div>
         <div className="community-description">Share your insights to help others choose better. Your opinion matters!</div>
       </div>
       <div className="">
-        <button className="sign-up me-2">Sign Up</button>
+        <button className="sign-up me-2">{content["sign-in"]}</button>
         <button className="write-review bg-transparent">Write a review</button>
       </div>
     </div>

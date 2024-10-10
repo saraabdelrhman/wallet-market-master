@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStar as faStarEmpty } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 
-export default function Reviews() {
+export default function Reviews({content}) {
   const [reviews, setReviews] = useState([
     { name: "Gerald ",role:'Expert 🎖️', stars: 5, review: "I love this product! easy to user and super cozy!", image: anonymous, date: "Now" },
     { name: "Diana ",role:'Most commented 🏆', stars: 4, review: "Super efficient service and delivery.", image: img2, date: "4 days ago" },
@@ -71,9 +71,7 @@ export default function Reviews() {
     <div className="container w-100">
       <header className="header" style={{ backgroundColor: 'transparent' }}>
         <h1 className="text-center mt-5 mb-5 fw-bold">
-          Browse the best
-          <br />
-          product reviews
+        {content["best-rated"]}
         </h1>
       </header>
 

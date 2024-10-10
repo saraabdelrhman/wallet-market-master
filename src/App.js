@@ -90,18 +90,18 @@ function App() {
         <Routes>
           {/* User Routes with Header and Footer */}
           <Route element={<UserLayout language={language} setLanguage={setLanguage} />}>
-            <Route path="/" element={<Head  />} />
+            <Route path="/" element={<Head   content={content}/>} />
             <Route path="/about" element={<About content={content} />} />
             <Route path="/contact" element={<Contact content={content}/>} />
             <Route path="/login" element={<Login content={content}/>} />
             <Route path="/register" element={<Register content={content} />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/editprofile" element={<Editprofile />} />
-            <Route path="/products/:productId/reviews" element={<Reviews />} />
+            <Route path="/products/:productId/reviews" element={<Reviews  content={content}/>} />
             <Route path="/products/:productId" element={<Singleproduct />} />
-            <Route path="/reviews" element={<Reviews />} />
+            <Route path="/reviews" element={<Reviews  content={content} />} />
             <Route path="/categories" element={<Categories content={content} />} />
-            <Route path="/categoriesdetails" element={<Categoriesdetails />} />
+            <Route path="/categoriesdetails" element={<Categoriesdetails  content={content}/>} />
             <Route path="/products" element={<Products />} />
             <Route path="/reports" element={<Reports />} />
             <Route path="/forgotpass" element={<Forgotpass content={content} />} />
