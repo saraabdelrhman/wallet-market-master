@@ -94,7 +94,7 @@ function App() {
             <Route path="/about" element={<About content={content} />} />
             <Route path="/contact" element={<Contact content={content}/>} />
             <Route path="/login" element={<Login content={content}/>} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/register" element={<Register content={content} />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/editprofile" element={<Editprofile />} />
             <Route path="/products/:productId/reviews" element={<Reviews />} />
@@ -104,7 +104,7 @@ function App() {
             <Route path="/categoriesdetails" element={<Categoriesdetails />} />
             <Route path="/products" element={<Products />} />
             <Route path="/reports" element={<Reports />} />
-            <Route path="/forgotpass" element={<Forgotpass />} />
+            <Route path="/forgotpass" element={<Forgotpass content={content} />} />
             <Route path="/reset" element={<Reset />} />
             <Route path="/thanks" element={<Thanks />} />
             <Route path="/content" element={<Content />} />

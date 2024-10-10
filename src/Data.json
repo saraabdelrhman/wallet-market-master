@@ -17,8 +17,9 @@
 
         "login":"login",
         "register":"register",
-        "forgot password":"forgot password",
-        "sign-in":"sign in"
+        "forgot-password":"forgot password",
+        "sign-in":"sign in",
+        "create":"create my account"
 
 
 
@@ -44,8 +45,8 @@
         "login":"Anmelden",
         "register":"Registrieren",
         "forgot password":"Passwort vergessen",
-        "sign-in":"Anmelden"
-
+        "sign-in":"Anmelden",
+  "create":"Mein Konto erstellen"
 
     },
     "Spanish": {
@@ -68,7 +69,8 @@
         "login":" Iniciar sesión",
         "register":" Registrarse",
         "forgot password":" Olvidé mi contraseña",
-        "sign-in":" Iniciar sesión"
+        "sign-in":" Iniciar sesión",
+          "create":"crear mi cuenta"
        
        
        
@@ -95,7 +97,8 @@
        "login":"Inloggning",
        "register":"register",
        "forgot password":"glömt lösenordet",
-       "sign-in":"logga in"
+       "sign-in":"logga in",
+         "create":"skapa mitt konto"
 
 
     },
@@ -121,7 +124,8 @@
         "login":"Connexion",
         "register":"inscription",
         "forgot password":"mot de passe oublié",
-        "sign-in":"connexion"
+        "sign-in":"connexion",
+          "create":"créer mon compte"
 
 
     }

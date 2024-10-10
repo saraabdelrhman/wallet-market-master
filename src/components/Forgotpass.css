@@ -49,4 +49,11 @@
   .forgot-password-submit:hover {
     background-color: #295ec5;
   }
+  .hidden-text {
+    color: white;
+    background-color: white;
+    font-size: 0px;
+    visibility: hidden;
+    display: none;
+  }
   
