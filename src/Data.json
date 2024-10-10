@@ -18,7 +18,7 @@
         "login":"login",
         "register":"register",
         "forgot password":"forgot password",
-        "sign in":"sign in"
+        "sign-in":"sign in"
 
 
 
@@ -41,10 +41,10 @@
         "footer":"Werden Sie Teil unserer Community und schreiben Sie Ihre Bewertung",
 
                
-        "login":"login",
-        "register":"register",
-        "forgot password":"forgot password",
-        "sign in":"sign in"
+        "login":"Anmelden",
+        "register":"Registrieren",
+        "forgot password":"Passwort vergessen",
+        "sign-in":"Anmelden"
 
 
     },
@@ -65,12 +65,14 @@
         "footer":"Únete a nuestra comunidad y escribe tu opinión",
 
                
-        "login":"login",
-        "register":"register",
-        "forgot password":"forgot password",
-        "sign in":"sign in"
-
-
+        "login":" Iniciar sesión",
+        "register":" Registrarse",
+        "forgot password":" Olvidé mi contraseña",
+        "sign-in":" Iniciar sesión"
+       
+       
+       
+       
     },
 
 
@@ -90,10 +92,10 @@
        "footer":"Gå med i vår community och skriv din recension",
 
               
-       "login":"login",
+       "login":"Inloggning",
        "register":"register",
-       "forgot password":"forgot password",
-       "sign in":"sign in"
+       "forgot password":"glömt lösenordet",
+       "sign-in":"logga in"
 
 
     },
@@ -116,10 +118,10 @@
         "footer":"Rejoignez notre communauté et rédigez votre avis",
 
                
-        "login":"login",
-        "register":"register",
-        "forgot password":"forgot password",
-        "sign in":"sign in"
+        "login":"Connexion",
+        "register":"inscription",
+        "forgot password":"mot de passe oublié",
+        "sign-in":"connexion"
 
 
     }

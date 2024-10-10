@@ -93,7 +93,7 @@ function App() {
             <Route path="/" element={<Head  />} />
             <Route path="/about" element={<About content={content} />} />
             <Route path="/contact" element={<Contact content={content}/>} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login content={content}/>} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/editprofile" element={<Editprofile />} />
