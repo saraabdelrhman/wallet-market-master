@@ -89,12 +89,12 @@ const About = () => {
 
         <div className="or-divider">-OR-</div>
 
-        <div className="button btn-google w-100 mb-3">
-          <img src={google} alt="Google Logo" />
+        <div className="button btn-google w-100 mb-3 text-dark">
+          <img src={google} alt="Google Logo" className='text-dark' />
           Sign in with Google
         </div>
-        <div className="button btn-facebook w-100">
-          <img src={facebook} alt="Facebook Logo" />
+        <div className="button btn-facebook w-100 text-dark">
+          <img src={facebook} alt="Facebook Logo" className='text-dark'/>
           Sign in with Facebook
         </div>
       </div>

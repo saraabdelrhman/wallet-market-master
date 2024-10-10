@@ -61,6 +61,7 @@ import Permissions from './admin/Permissions';
 import Newpermissions from './admin/Newpermission';
 import AdminLogin from './admin/Login';
 import Advertisment from './admin/Advertisment';
+import TopRate from './components/Top-rate';
 
 function App() {
   const [language, setLanguage] = useState('English');
@@ -89,9 +90,9 @@ function App() {
         <Routes>
           {/* User Routes with Header and Footer */}
           <Route element={<UserLayout language={language} setLanguage={setLanguage} />}>
-            <Route path="/" element={<Head />} />
+            <Route path="/" element={<Head  />} />
             <Route path="/about" element={<About content={content} />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/contact" element={<Contact content={content}/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
@@ -99,7 +100,7 @@ function App() {
             <Route path="/products/:productId/reviews" element={<Reviews />} />
             <Route path="/products/:productId" element={<Singleproduct />} />
             <Route path="/reviews" element={<Reviews />} />
-            <Route path="/categories" element={<Categories />} />
+            <Route path="/categories" element={<Categories content={content} />} />
             <Route path="/categoriesdetails" element={<Categoriesdetails />} />
             <Route path="/products" element={<Products />} />
             <Route path="/reports" element={<Reports />} />
@@ -108,6 +109,7 @@ function App() {
             <Route path="/thanks" element={<Thanks />} />
             <Route path="/content" element={<Content />} />
             <Route path="/desktop" element={<Desktop />} />
+            <Route path="/toprate" element={<TopRate  content={content}  />} />
             <Route path="*" element={<NotFound />} />
           </Route>
 

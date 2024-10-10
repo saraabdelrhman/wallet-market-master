@@ -1,22 +1,89 @@
 {
     "English": {
         "title": "About us",
-        "description": "Reveyou is Germany's premier platform for product reviews and ratings, launched to provide a space where consumers can share their honest opinions. Whether you're satisfied or not, Reveyou offers a place for you to voice your experience with products and the stores that sell them.\n\nOn Reveyou, you'll find genuine feedback from real consumers across Germany. We make it easy for users to discover products, read reviews, and contribute their own insights.\n\nWe believe that consumer feedback drives product improvement and innovation. Beyond benefiting customers, our unbiased reviews offer valuable insights to manufacturers and retailers about current market trends."
+        "description": "Reveyou is Germany's premier platform for product reviews and ratings, launched to provide a space where consumers can share their honest opinions. Whether you're satisfied or not, Reveyou offers a place for you to voice your experience with products and the stores that sell them.\n\nOn Reveyou, you'll find genuine feedback from real consumers across Germany. We make it easy for users to discover products, read reviews, and contribute their own insights.\n\nWe believe that consumer feedback drives product improvement and innovation. Beyond benefiting customers, our unbiased reviews offer valuable insights to manufacturers and retailers about current market trends.",
+        "catrgory-title":"What are you looking for?",
+        "category-search":"Explore companies by category",
+        "contact-title":"Contact Us ",
+        "contact-desc":"Get in touch today",
+        "more":"Find more",
+
+        "header-title":"Rate and Rely on the Products You Love",
+        "Categories":"Categories",
+        "trending":"Latest trending product",
+        "top-rated":"Top Rated Products",
+        "footer":"Join our community and write your review",
+        ""
+
+
+
+
     },
     "German": {
         "title": "Über uns",
-        "description": "Reveyou ist Deutschlands führende Plattform für Produktbewertungen und -rezensionen. Sie wurde ins Leben gerufen, um Verbrauchern einen Ort zu bieten, an dem sie ihre ehrliche Meinung äußern können. Ob Sie zufrieden sind oder nicht, Reveyou bietet Ihnen einen Ort, an dem Sie Ihre Erfahrungen mit Produkten und den Geschäften, die sie verkaufen, äußern können.\n\nAuf Reveyou finden Sie echtes Feedback von echten Verbrauchern aus ganz Deutschland. Wir machen es Benutzern leicht, Produkte zu entdecken, Bewertungen zu lesen und ihre eigenen Erkenntnisse beizutragen.\n\nWir glauben, dass Verbraucherfeedback Produktverbesserungen und Innovationen vorantreibt. Unsere unvoreingenommenen Bewertungen kommen nicht nur den Kunden zugute, sondern bieten Herstellern und Einzelhändlern auch wertvolle Einblicke in aktuelle Markttrends."
+        "description": "Reveyou ist Deutschlands führende Plattform für Produktbewertungen und -rezensionen. Sie wurde ins Leben gerufen, um Verbrauchern einen Ort zu bieten, an dem sie ihre ehrliche Meinung äußern können. Ob Sie zufrieden sind oder nicht, Reveyou bietet Ihnen einen Ort, an dem Sie Ihre Erfahrungen mit Produkten und den Geschäften, die sie verkaufen, äußern können.\n\nAuf Reveyou finden Sie echtes Feedback von echten Verbrauchern aus ganz Deutschland. Wir machen es Benutzern leicht, Produkte zu entdecken, Bewertungen zu lesen und ihre eigenen Erkenntnisse beizutragen.\n\nWir glauben, dass Verbraucherfeedback Produktverbesserungen und Innovationen vorantreibt. Unsere unvoreingenommenen Bewertungen kommen nicht nur den Kunden zugute, sondern bieten Herstellern und Einzelhändlern auch wertvolle Einblicke in aktuelle Markttrends.",
+         "catrgory-title":"Wonach suchst du?",
+        "category-search":"Wonach suchst du?",
+         "contact-title":"Kontaktieren Sie uns ",
+        "contact-desc":"Nehmen Sie noch heute Kontakt mit uns auf",
+         "more":"Mehr erfahren",
+        
+         
+        "header-title":"Bewerten Sie die Produkte, die Sie lieben, und vertrauen Sie ihnen",
+        "Categories":"Kategorien",
+        "trending":"Neuestes Trendprodukt",
+        "top-rated":"Bestbewertete Produkte",
+        "footer":"Werden Sie Teil unserer Community und schreiben Sie Ihre Bewertung"
     },
     "Spanish": {
         "title": "Sobre nosotras",
-        "description": "Reveyou es la principal plataforma de Alemania para reseñas y valoraciones de productos, creada para ofrecer un espacio en el que los consumidores puedan compartir sus opiniones sinceras. Independientemente de si está satisfecho o no, Reveyou le ofrece un lugar para expresar su experiencia con los productos y las tiendas que los venden.\n\nEn Reveyou, encontrará comentarios genuinos de consumidores reales de toda Alemania. Facilitamos a los usuarios la tarea de descubrir productos, leer reseñas y contribuir con sus propias opiniones.\n\nCreemos que las opiniones de los consumidores impulsan la mejora y la innovación de los productos. Además de beneficiar a los clientes, nuestras reseñas imparciales ofrecen información valiosa a los fabricantes y minoristas sobre las tendencias actuales del mercado."
+        "description": "Reveyou es la principal plataforma de Alemania para reseñas y valoraciones de productos, creada para ofrecer un espacio en el que los consumidores puedan compartir sus opiniones sinceras. Independientemente de si está satisfecho o no, Reveyou le ofrece un lugar para expresar su experiencia con los productos y las tiendas que los venden.\n\nEn Reveyou, encontrará comentarios genuinos de consumidores reales de toda Alemania. Facilitamos a los usuarios la tarea de descubrir productos, leer reseñas y contribuir con sus propias opiniones.\n\nCreemos que las opiniones de los consumidores impulsan la mejora y la innovación de los productos. Además de beneficiar a los clientes, nuestras reseñas imparciales ofrecen información valiosa a los fabricantes y minoristas sobre las tendencias actuales del mercado.",
+     "catrgory-title":"¿Qué estás buscando?",
+        "category-search":"Explorar empresas por categoría",
+         "contact-title":"Contáctenos ",
+        "contact-desc":"Póngase en contacto con nosotros hoy mismo",
+         "more":"Encuentra más",
+
+         
+        "header-title":"Califica y confía en los productos que te encantan",
+        "Categories":"categorías",
+        "trending":"Últimos productos de moda",
+        "top-rated":"Productos mejor valorados",
+        "footer":"Únete a nuestra comunidad y escribe tu opinión"
     },
+
+
     "Swedish": {
         "title": "Om oss",
-        "description": "Reveyou är Tysklands främsta plattform för produktrecensioner och betyg, lanserad för att ge ett utrymme där konsumenter kan dela sina ärliga åsikter. Oavsett om du är nöjd eller inte, erbjuder Reveyou en plats där du kan uttrycka din upplevelse av produkter och butikerna som säljer dem.\n\nPå Reveyou hittar du genuin feedback från riktiga konsumenter över hela Tyskland. Vi gör det enkelt för användare att upptäcka produkter, läsa recensioner och bidra med sina egna insikter.\n\nVi tror att konsumentfeedback driver produktförbättring och innovation. Förutom att gynna kunderna, erbjuder våra opartiska recensioner värdefulla insikter till tillverkare och återförsäljare om aktuella marknadstrender."
+        "description": "Reveyou är Tysklands främsta plattform för produktrecensioner och betyg, lanserad för att ge ett utrymme där konsumenter kan dela sina ärliga åsikter. Oavsett om du är nöjd eller inte, erbjuder Reveyou en plats där du kan uttrycka din upplevelse av produkter och butikerna som säljer dem.\n\nPå Reveyou hittar du genuin feedback från riktiga konsumenter över hela Tyskland. Vi gör det enkelt för användare att upptäcka produkter, läsa recensioner och bidra med sina egna insikter.\n\nVi tror att konsumentfeedback driver produktförbättring och innovation. Förutom att gynna kunderna, erbjuder våra opartiska recensioner värdefulla insikter till tillverkare och återförsäljare om aktuella marknadstrender.",
+     "catrgory-title":"Vad letar du efter?",
+        "category-search":"Utforska företag efter kategori?",
+         "contact-title":"Kontakta oss ",
+        "contact-desc":"Hör av dig idag",
+       "more":"hitta mer",
+       
+       "header-title":" Betygsätt och lita på de produkter du älskar",
+       "Categories":"    kategorier",
+       "trending":" Senaste trendprodukten",
+       "top-rated":" Topprankade produkter",
+       "footer":"Gå med i vår community och skriv din recension"
     },
+
+
+
     "French": {
         "title": "À propos de nous",
-        "description": "Reveyou est la première plateforme allemande d'évaluation et de notation de produits. Elle a été lancée pour offrir aux consommateurs un espace où ils peuvent partager leurs opinions honnêtes. Que vous soyez satisfait ou non, Reveyou vous offre un espace pour exprimer votre expérience avec les produits et les magasins qui les vendent.\n\nSur Reveyou, vous trouverez des commentaires authentiques de vrais consommateurs dans toute l'Allemagne. Nous facilitons la découverte des produits, la lecture des avis et la contribution de leurs propres idées.\n\nNous pensons que les commentaires des consommateurs favorisent l'amélioration et l'innovation des produits. Au-delà des avantages pour les clients, nos avis impartiaux offrent aux fabricants et aux détaillants des informations précieuses sur les tendances actuelles du marché."
+        "description": "Reveyou est la première plateforme allemande d'évaluation et de notation de produits. Elle a été lancée pour offrir aux consommateurs un espace où ils peuvent partager leurs opinions honnêtes. Que vous soyez satisfait ou non, Reveyou vous offre un espace pour exprimer votre expérience avec les produits et les magasins qui les vendent.\n\nSur Reveyou, vous trouverez des commentaires authentiques de vrais consommateurs dans toute l'Allemagne. Nous facilitons la découverte des produits, la lecture des avis et la contribution de leurs propres idées.\n\nNous pensons que les commentaires des consommateurs favorisent l'amélioration et l'innovation des produits. Au-delà des avantages pour les clients, nos avis impartiaux offrent aux fabricants et aux détaillants des informations précieuses sur les tendances actuelles du marché.",
+     "catrgory-title":"Qu'est-ce que tu cherches?",
+        "category-search":"Explorer les entreprises par catégorie",
+         "contact-title":"Contactez-nous ",
+        "contact-desc":"Contactez-nous dès aujourd'hui",
+        "more":"en savoir plus",
+        
+        "header-title":"Notez et faites confiance aux produits que vous aimez",
+        "Categories":"catégories",
+        "trending":"Dernier produit tendance",
+        "top-rated":"Produits les mieux notés",
+        "footer":"Rejoignez notre communauté et rédigez votre avis"
     }
 }
