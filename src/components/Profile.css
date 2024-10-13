@@ -231,7 +231,7 @@
   }
 }
 @media (max-width: 768px) {
-  input, textarea, button {
+  input, textarea {
     width: 100%;
   }
 
