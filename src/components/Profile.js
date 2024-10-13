@@ -252,7 +252,7 @@ const Profile = ({content}) => {
               </div>
             </div>
           )}
-          {view === "addProduct" && <div>
+          {view === "addProduct" && <div className="addproduct">
             <h2 className="text-center mb-5 fw-bolder">Add products</h2>
             <div style={{width: '100%', height: '100%', paddingLeft: 32, paddingRight: 32, paddingTop: 50, paddingBottom: 50, background: '#F5F7FE', borderRadius: 25, border: '1px #E4E7E9 solid', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
               
@@ -304,31 +304,106 @@ const Profile = ({content}) => {
 </div>
             </div>}
 
-          {view === "exportData" && <div><div style={{width: '100%', height: '100%', paddingLeft: 32, paddingRight: 32, paddingTop: 50, paddingBottom: 50, background: '#F5F7FE', borderRadius: 25, border: '1px #E4E7E9 solid', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
-    <div style={{width: 552, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 40, display: 'inline-flex'}}>
-        <div style={{alignSelf: 'stretch', height: 145, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 17, display: 'flex'}}>
-            <div style={{width: 86, height: 80, position: 'relative'}}>
-                <img src={messages} style={{width: 60.54, height: 71.79, left: 12.73, top: 4.11, position: 'absolute'}}></img>
-            </div>
-            <div style={{alignSelf: 'stretch', height: 48, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 6, display: 'flex'}}>
-                <div style={{alignSelf: 'stretch', textAlign: 'center', color: '#474545', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word'}}>Export your data</div>
-                <div style={{alignSelf: 'stretch', textAlign: 'center', color: '#838E9E', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word'}}>Data will export by Excel</div>
-            </div>
-        </div>
-        <div style={{alignSelf: 'stretch', height: 46, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'flex'}}>
-            <div style={{width: 189, justifyContent: 'center', alignItems: 'center', gap: 27, display: 'inline-flex'}}>
-                <div style={{flex: '1 1 0', height: 46, justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
-                    <div style={{flex: '1 1 0', height: 46, borderRadius: 30, justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
-                        <div style={{flex: '1 1 0', height: 46, paddingLeft: 16, paddingRight: 16, paddingTop: 14, paddingBottom: 14, background: '#377BF7', borderRadius: 30, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
-                            <div style={{textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Inter', fontWeight: '600', letterSpacing: 0.07, wordWrap: 'break-word'}}>Export</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+          {view === "exportData" && <div style={{
+  width: '100%',
+  height: '100%',
+  paddingLeft: 32,
+  paddingRight: 32,
+  paddingTop: 50,
+  paddingBottom: 50,
+  background: '#F5F7FE',
+  borderRadius: 25,
+  border: '1px solid #E4E7E9',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
+}}>
+  <div style={{
+    maxWidth: 552,
+    width: '100%', // Ensures it doesn't exceed 552px but is responsive
+    flexDirection: 'column',
+    display: 'flex',
+    alignItems: 'center',
+    gap: 40
+  }}>
+    <div style={{
+      alignSelf: 'stretch',
+      height: 145,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: 17
+    }}>
+      <div style={{ width: 86, height: 80, position: 'relative' }}>
+        <img src={messages} style={{ width: 60.54, height: 71.79, position: 'absolute', left: 12.73, top: 4.11 }} alt="Messages Icon" />
+      </div>
+      <div style={{
+        alignSelf: 'stretch',
+        height: 48,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 6
+      }}>
+        <div style={{
+          textAlign: 'center',
+          color: '#474545',
+          fontSize: 16,
+          fontFamily: 'Poppins',
+          fontWeight: '600'
+        }}>Export your data</div>
+        <div style={{
+          textAlign: 'center',
+          color: '#838E9E',
+          fontSize: 12,
+          fontFamily: 'Poppins',
+          fontWeight: '400'
+        }}>Data will export by Excel</div>
+      </div>
     </div>
-    <div style={{flex: '1 1 0', alignSelf: 'stretch', background: '#F5F7FE'}} />
-</div></div>}
+    <div style={{
+      alignSelf: 'stretch',
+      height: 46,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: 8
+    }}>
+      <div style={{ width: 189, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 27 }}>
+        <div style={{ flex: 1, height: 46 }}>
+          <div style={{ flex: 1, height: 46, borderRadius: 30, display: 'flex' }}>
+            <div style={{
+              flex: 1,
+              paddingLeft: 16,
+              paddingRight: 16,
+              paddingTop: 14,
+              paddingBottom: 14,
+              background: '#377BF7',
+              borderRadius: 30,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: 10
+            }}>
+              <div style={{
+                textAlign: 'center',
+                color: 'white',
+                fontSize: 15,
+                fontFamily: 'Inter',
+                fontWeight: '600',
+                letterSpacing: '0.07em'
+              }}>Export</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style={{ flex: 1, background: '#F5F7FE' }}></div>
+</div>
+}
         </div>
       </div>
     </div>

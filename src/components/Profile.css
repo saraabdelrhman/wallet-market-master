@@ -128,39 +128,7 @@
   left: 400px;
 }
 
-@media (max-width: 768px) {
-  .profile-title {
-    font-size: 1.5rem;
-  }
 
-  .profile-info p, .profile-info span, .edit-profile-button {
-    font-size: 0.9rem;
-    line-height: 1.4;
-  }
-
-  .edit-profile-button {
-    padding: 8px 16px;
-  }
-
-  .decorative-dot, .decorative-dot2, .decorative-shape-1, .decorative-shape-2 {
-    display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .profile-title {
-    font-size: 1.25rem;
-  }
-
-  .profile-info p, .profile-info span, .edit-profile-button {
-    font-size: 0.8rem;
-    line-height: 1.3;
-  }
-
-  .edit-profile-button {
-    padding: 7px 14px;
-  }
-}
 
 /* Base Styles */
 .nav-links {
@@ -192,9 +160,7 @@
 
 /* Responsive Styling */
 @media (max-width: 768px) {
-  .nav-links {
-    flex-direction: column;
-  }
+ 
 
   .nav-link {
     width: 100%;
@@ -221,21 +187,4 @@
   width: 30px;
   height: 30px;
   font-size: 12px;
-}
-
-@media (min-width: 601px) and (max-width: 900px) {
-  .pagination-btn {
-    width: 35px;
-    height: 35px;
-    font-size: 13px;
-  }
-}
-@media (max-width: 768px) {
-  input, textarea {
-    width: 100%;
-  }
-
-  div {
-    padding: 20px;
-  }
 }
