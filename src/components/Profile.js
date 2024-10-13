@@ -252,8 +252,83 @@ const Profile = ({content}) => {
               </div>
             </div>
           )}
-          {view === "addProduct" && <div>Add Product Component</div>}
-          {view === "exportData" && <div>Export Data Component</div>}
+          {view === "addProduct" && <div>
+            <h2 className="text-center mb-5 fw-bolder">Add products</h2>
+            <div style={{width: '100%', height: '100%', paddingLeft: 32, paddingRight: 32, paddingTop: 50, paddingBottom: 50, background: '#F5F7FE', borderRadius: 25, border: '1px #E4E7E9 solid', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+              
+    <div style={{flex: '1 1 0', alignSelf: 'stretch', background: '#F5F7FE', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 32, display: 'inline-flex'}}>
+        <div style={{alignSelf: 'stretch', height: 30, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 14, display: 'flex'}}>
+            <div style={{alignSelf: 'stretch', height: 30, textAlign: 'center', color: 'black', fontSize: 24, fontFamily: 'Poppins', fontWeight: '500', lineHeight: 28, wordWrap: 'break-word'}}>Add Product</div>
+        </div>
+        
+        <div style={{alignSelf: 'stretch', height: 80, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 8, display: 'flex'}}>
+            <div style={{color: '#0A090B', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word'}}>Name</div>
+            <div style={{width: 552, height: 48, paddingTop: 12, paddingBottom: 12, paddingLeft: 18, paddingRight: 189, background: 'white', borderRadius: 8, border: '1px #E6E8EC solid', justifyContent: 'flex-start', alignItems: 'center', display: 'inline-flex'}}>
+                <div style={{color: '#838E9E', fontSize: 16, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 24, wordWrap: 'break-word'}}></div>
+            </div>
+        </div>
+
+        <div style={{height: 80, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 8, display: 'flex'}}>
+            <div style={{color: '#0A090B', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word'}}>Category</div>
+            <div style={{width: 552, height: 48, paddingLeft: 18, paddingRight: 18, paddingTop: 12, paddingBottom: 12, background: 'white', borderRadius: 8, border: '1px #E6E8EC solid', justifyContent: 'center', alignItems: 'flex-start', gap: 359, display: 'inline-flex'}}>
+             
+             
+            </div>
+        </div>
+
+        
+        <div style={{alignSelf: 'stretch', height: 175, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 8, display: 'flex'}}>
+            <div style={{color: '#0A090B', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word'}}>Description</div>
+            <div style={{width: 552, height: 143, paddingTop: 12, paddingBottom: 83, paddingLeft: 18, paddingRight: 32, background: 'white', borderRadius: 8, border: '1px #E6E8EC solid', justifyContent: 'flex-start', alignItems: 'center', display: 'inline-flex'}}>
+                <div style={{color: '#838E9E', fontSize: 16, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 24, wordWrap: 'break-word'}}><br/></div>
+            </div>
+        </div>
+        <div style={{width: 552, height: 68, paddingTop: 14, paddingBottom: 14, paddingLeft: 24, paddingRight: 12, background: 'white', borderRadius: 7, justifyContent: 'flex-end', alignItems: 'center', gap: 294, display: 'inline-flex'}}>
+            <div style={{color: '#42526B', fontSize: 16, fontFamily: 'Inter', fontWeight: '500', lineHeight: 24, wordWrap: 'break-word'}}>Attach file</div>
+            <div style={{paddingLeft: 20, paddingRight: 20, background: 'white', borderRadius: 5, border: '1px #E6E8EC solid', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+                <div style={{color: '#061C3D', fontSize: 14, fontFamily: 'Lexend', fontWeight: '700', textTransform: 'capitalize', lineHeight:3, wordWrap: 'break-word'}}>Upload Image</div>
+            </div>
+        </div>
+        <div style={{alignSelf: 'stretch', height: 46, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'flex'}}>
+            <div style={{width: 189, justifyContent: 'center', alignItems: 'center', gap: 27, display: 'inline-flex'}}>
+                <div style={{flex: '1 1 0', height: 46, justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
+                    <div style={{flex: '1 1 0', height: 46, borderRadius: 30, justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
+                        <div style={{flex: '1 1 0', height: 46, paddingLeft: 16, paddingRight: 16, paddingTop: 14, paddingBottom: 14, background: '#377BF7', borderRadius: 30, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
+                            <div style={{textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Inter', fontWeight: '600', letterSpacing: 0.07, wordWrap: 'break-word'}}>Add Product</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>}
+
+          {view === "exportData" && <div><div style={{width: '100%', height: '100%', paddingLeft: 32, paddingRight: 32, paddingTop: 50, paddingBottom: 50, background: '#F5F7FE', borderRadius: 25, border: '1px #E4E7E9 solid', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+    <div style={{width: 552, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 40, display: 'inline-flex'}}>
+        <div style={{alignSelf: 'stretch', height: 145, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 17, display: 'flex'}}>
+            <div style={{width: 86, height: 80, position: 'relative'}}>
+                <img src={messages} style={{width: 60.54, height: 71.79, left: 12.73, top: 4.11, position: 'absolute'}}></img>
+            </div>
+            <div style={{alignSelf: 'stretch', height: 48, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 6, display: 'flex'}}>
+                <div style={{alignSelf: 'stretch', textAlign: 'center', color: '#474545', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word'}}>Export your data</div>
+                <div style={{alignSelf: 'stretch', textAlign: 'center', color: '#838E9E', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word'}}>Data will export by Excel</div>
+            </div>
+        </div>
+        <div style={{alignSelf: 'stretch', height: 46, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'flex'}}>
+            <div style={{width: 189, justifyContent: 'center', alignItems: 'center', gap: 27, display: 'inline-flex'}}>
+                <div style={{flex: '1 1 0', height: 46, justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
+                    <div style={{flex: '1 1 0', height: 46, borderRadius: 30, justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
+                        <div style={{flex: '1 1 0', height: 46, paddingLeft: 16, paddingRight: 16, paddingTop: 14, paddingBottom: 14, background: '#377BF7', borderRadius: 30, overflow: 'hidden', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
+                            <div style={{textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Inter', fontWeight: '600', letterSpacing: 0.07, wordWrap: 'break-word'}}>Export</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style={{flex: '1 1 0', alignSelf: 'stretch', background: '#F5F7FE'}} />
+</div></div>}
         </div>
       </div>
     </div>

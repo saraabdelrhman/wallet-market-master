@@ -260,10 +260,12 @@ body {
   .search-input-wrapper {
     width: 100%;
   }
-
   .title {
-    font-size: 28px;
-  }
+    font-size: 40px;
+    font-weight: 900;
+    font-family: 'Arial Black', sans-serif; /* Example of a bolder font */
+}
+
 
   .subtitle {
     font-size: 14px;
