@@ -14,7 +14,7 @@ export default function Trending({content}) {
 
   return (
     <section className="pt-5" id="exercise">
-      <h2 className="pb-4 fs-2">{content["trending"]}</h2>
+      <h2 className="pb-4 fs-2 fw-bold">{content["trending"]}</h2>
       <p className="fw-bold text-secondary">{content["header-desc"]}</p>
       <div id="carouselExampleFade" className="carousel slide carousel-fade">
         <div className="carousel-inner">
