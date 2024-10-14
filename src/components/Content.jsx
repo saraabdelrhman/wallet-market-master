@@ -1,10 +1,13 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import smartphonesandapps from './images/microscope.png';
+import smartphonesandapps from './images/material-symbols_smartphone.png';
 import kitechenandcar from './images/kitchen.png';
 import furnitureandlabtop from './images/house-2.png';
 import fashonandinsurance from './images/building-4.png';
+import laptop from './images/bx_laptop.png';
+import apps from './images/fluent_apps-20-regular.png';
+
 
 export default function Content({content}) {
   return (
@@ -22,8 +25,8 @@ export default function Content({content}) {
       <div style={styles.categoryContainer}>
         {/* Smartphones */}
         <div style={styles.categoryCard}>
-          <div style={styles.imageWrapper}>
-            <img src={smartphonesandapps} alt="Smartphones and Apps" style={styles.image} />
+        <div style={styles.imageWrapper}>
+            <img src={smartphonesandapps} alt="Apps" style={styles.image} />
           </div>
           <div style={styles.categoryText}>
             <div style={styles.categoryTitle}>Smartphones</div>
@@ -69,7 +72,7 @@ export default function Content({content}) {
         {/* Apps */}
         <div style={styles.categoryCard}>
           <div style={styles.imageWrapper}>
-            <img src={smartphonesandapps} alt="Apps" style={styles.image} />
+            <img src={apps} alt="Apps" style={styles.image} />
           </div>
           <div style={styles.categoryText}>
             <div style={styles.categoryTitle}>Apps</div>
@@ -91,7 +94,7 @@ export default function Content({content}) {
         {/* Laptop */}
         <div style={styles.categoryCard}>
           <div style={styles.imageWrapper}>
-            <img src={furnitureandlabtop} alt="Laptop" style={styles.image} />
+            <img src={laptop} alt="Laptop" style={styles.image} />
           </div>
           <div style={styles.categoryText}>
             <div style={styles.categoryTitle}>Laptop</div>
@@ -109,6 +112,14 @@ export default function Content({content}) {
             <div style={styles.categoryCount}>18,394</div>
           </div>
         </div>
+        
+        <div style={{width: '100%', height: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+    <div style={{justifyContent: 'flex-start', alignItems: 'center', gap: 5, display: 'inline-flex'}}>
+        <div style={{width: 10, height: 10, position: 'relative', transform: 'rotate(-180deg)', transformOrigin: '0 0', background: '#377BF7', borderRadius: 100}} />
+        <div style={{width: 10, height: 10, position: 'relative', transform: 'rotate(-180deg)', transformOrigin: '0 0', background: 'rgba(55, 123, 247, 0.60)', borderRadius: 100}} />
+        <div style={{width: 10, height: 10, position: 'relative', transform: 'rotate(-180deg)', transformOrigin: '0 0', background: 'rgba(55, 123, 247, 0.60)', borderRadius: 100}} />
+    </div>
+</div>
       </div>
     </div>
   );

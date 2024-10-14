@@ -1,23 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import './Style.css';
-
+import { FaYoutube } from 'react-icons/fa';
 // Importing images
-import img0 from './images/image 6.png';
-import img1 from './images/image 6 (1).png';
-import img2 from './images/image 6 (3).png';
-import cup from './images/cup.png';
-import threed from './images/3dcube.png';
-import crown from './images/crown.png';
-import shape from './images/Vector 2.png';
-import status from './images/status-up.png';
+import bali from './images/bali-indonesiajpg.jpg';
+// import googleLogo from './images/google-logo.png'; // Example paths
+// import facebookLogo from './images/facebook-logo.png';
+// import youtubeLogo from './images/youtube-logo.png';
+// import webflowLogo from './images/webflow-logo.png';
 import searchIcon from './images/akar-icons_search.png';
-
-import Trending from './Trending';
-import TopRate from "./Top-rate";
-import Content from "./Content";
-
-const Head = ({content}) => {
+import TopRate from './Top-rate';
+import Trending from "./Trending"
+import Last from "./Last";
+const Head = ({ content }) => {
   const [search, setSearch] = useState("");
   const [searchData, setSearchData] = useState([]);
   const navigate = useNavigate();
@@ -49,40 +44,17 @@ const Head = ({content}) => {
   };
 
   return (
-    <div className="hero-section">
-      <div className="top-section">
-        <div className="badge-container" style={{ textAlign: "center", marginBottom: "16px" }}>
-          <span className="badge" style={{ backgroundColor: "", padding: "8px 12px", borderRadius: "16px", fontWeight: "bold" }}>
-            <img src={cup} alt="Top site badge icon" style={{ marginRight: "8px" }} />
-            TOP website rating in the world
-          </span>
-        </div>
-
-        <div className="main-content" style={{ display: "flex", justifyContent: "space-between" }}>
-          {/* Left Cards */}
-          <div className="left-cards d-none d-md-flex flex-column">
-  {[img0, img1, img2].map((image, index) => (
-    <div key={index} style={{ display: "flex", alignItems: "center", backgroundColor: "#fff", borderRadius: "12px", padding: "16px", marginBottom: "16px", boxShadow: "20px 50px 50px #FDE3FF", width: "100%" }}>
-      <img src={image} alt="Chen Liaw" style={{ borderRadius: "50%", width: "48px", height: "48px", objectFit: "cover", marginRight: "16px" }} />
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <span style={{ fontSize: "18px", fontWeight: "600", color: "#1F1F2E" }}>Chen Liaw</span>
-        <div style={{ fontSize: "14px", color: "#FFD700", marginBottom: "4px" }}>★★★★★</div>
-        <span style={{ fontSize: "12px", color: "#B0B0B0" }}>12 Jun 2023</span>
-      </div>
-    </div>
-  ))}
-</div>
-          
-
-          {/* Main Content */}
-          <div className="content" style={{ flex: "1", marginLeft: "32px" }}>
-            <h1 className="title">{content["header-title"]}</h1>
-            <p className="subtitle">
-            {content["header-span"]}
-            </p>
-
-            <div className="search-bar" style={{ marginTop: "24px" }}>
-  <div style={{ display: "flex", alignItems: "center", backgroundColor: "#f1f1f1", borderRadius: "50px",border:'1px solid #a0c4ff', padding: "8px", position: "relative" }}>
+    <div className="container mt-5 mb-5">
+      <div className="row align-items-center gap-5">
+        {/* Left Section - Text and Search */}
+        <div className="col-md-6 ">
+          <h1 className="display-4 fw-bold">{content["header-title"]}</h1>
+          <p className="lead text-secondary">
+          {content["header-span"]}
+          </p>
+          <form onSubmit={handleSubmit} className="input-group my-3">
+          <div className="search-bar" style={{ marginTop: "24px" }}>
+   <div style={{ display: "flex", alignItems: "center", backgroundColor: "#f1f1f1", borderRadius: "50px", padding: "8px", position: "relative" }}>
     <img 
       src={searchIcon} 
       alt="Search Icon" 
@@ -91,7 +63,7 @@ const Head = ({content}) => {
     <input
       type="text"
       placeholder="Search product, title, or brand"
-      style={{ border: "0", background: "none", outline: "none", fontSize: "16px", padding: "8px 16px 8px 40px", width: "100%" }}
+      style={{ border: "0", background: "none", outline: "none", fontSize: "16px", padding: "8px 100px 8px 40px"}}
       onChange={handleSearchChange}
     />
     <button style={{ backgroundColor: "#3B82F6", color: 'white', border: "none", padding: "12px 24px", borderRadius: "50px", marginLeft: "8px", cursor: "pointer" }} onClick={handleSubmit}>
@@ -99,39 +71,45 @@ const Head = ({content}) => {
     </button>
     </div>
     </div>
-    <div className="d-flex justify-content-center gap-1">
-    <img className=" rounded-circle" src={img0} style={{width:'30px'}}></img>
-    <img className=" rounded-circle" style={{width:'30px'}} src={img2}></img>
-    <img className=" rounded-circle"style={{width:'30px'}} src={img1}></img>
-    <div className="mt-3" style={{color: '#0B0A2F', fontSize: 15.75, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word'}}> 289,199 Review </div>
-    </div>
-    
-    </div>
+          </form>
+          <span className="text-body-tertiary">Supported by:</span>
+          <div className="d-flex align-items-center mt-3 gap-3">
+          
+   <h5 className="text-secondary ">Google</h5>
+   <h5 className="text-secondary ">Facebook</h5>
+   <div className="d-flex">
+   <FaYoutube className="text-secondary fs-3" />
+   <h5 className="text-secondary ">Youtube</h5>
+   </div>
 
-
-     
-          {/* Right Cards */}
-          <div className="right-cards d-none d-md-flex flex-column">
-  {[{ img: crown, name: "Hotel NYK" }, { img: status, name: "Nike 142" }, { img: threed, name: "Nike 256" }].map((product, index) => (
-    <div key={index} style={{ display: "flex", alignItems: "center", backgroundColor: "#fff", borderRadius: "12px", padding: "16px", marginBottom: "16px", boxShadow: "20px 50px 50px #DEDFFF", width: "100%" }}>
-      <img src={product.img} alt={product.name} style={{ width: "48px", height: "48px", marginRight: "16px" }} />
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <span style={{ fontSize: "18px", fontWeight: "600", color: "#1F1F2E" }}>{product.name}</span>
-        <div style={{ fontSize: "14px", color: "#FFD700", marginBottom: "4px" }}>★★★★★</div>
-        <span style={{ fontSize: "12px", color: "#B0B0B0" }}>{product.name.includes("Hotel") ? "Hotel" : "Shoes"}</span>
-      </div>
-    </div>
-            ))}
+   <h5 className="text-secondary ">Webflow</h5>
           </div>
         </div>
-      </div>
 
-      <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "flex-end", width: "100%", marginTop: "32px" }}>
-        <img src={shape} alt="Decorative Shape" style={{ display: "none", visibility: "hidden" }} />
+        {/* Right Section - Image */}
+        <div className="col-md-5 position-relative">
+            <img src={bali} className="card-img-top rounded-5 h-100" alt="Hotel Paradise, Bali" />
+            <div className="card-body">
+              <div style={{position:'absolute',bottom:'25%' , right:'0px',left:'30px'}}>
+              <h4 className="card-title fw-bold text-light">Hotel Paradise, Bali</h4>
+              <div className="d-flex align-items-center mt-3">
+                <span className="me-2 text-warning bg-light rounded-5 ps-3 pe-3">★★★★☆</span>
+              </div>
+              </div>
+              <div style={{width: '100%',marginTop:'25px', height: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+    <div style={{justifyContent: 'flex-start', alignItems: 'center', gap: 5, display: 'inline-flex'}}>
+        <div style={{width: 10, height: 10, position: 'relative', transform: 'rotate(-180deg)', transformOrigin: '0 0', background: '#377BF7', borderRadius: 100}} />
+        <div style={{width: 10, height: 10, position: 'relative', transform: 'rotate(-180deg)', transformOrigin: '0 0', background: 'rgba(55, 123, 247, 0.60)', borderRadius: 100}} />
+        <div style={{width: 10, height: 10, position: 'relative', transform: 'rotate(-180deg)', transformOrigin: '0 0', background: 'rgba(55, 123, 247, 0.60)', borderRadius: 100}} />
+    </div>
+</div>
+            </div>
+         
+        </div>
+        <TopRate content={content} />
+        <Trending content={content} />
+        <Last></Last>
       </div>
-      <Content content={content}></Content>
-      <Trending content={content}/>
-      <TopRate content={content} />
     </div>
   );
 };

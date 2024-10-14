@@ -8,13 +8,13 @@
         "contact-desc":"Get in touch today",
         "more":"Find more",
 
-        "header-title":"Rate and Rely on the Products You Love",
+        "header-title":"Share, Discover, and Get the Help You Need",
         "header-span":"500,000 ratings by 100 valid user community, reviews by people like you.",
         "header-desc":"Browse our most top rated product",
 
         "Categories":"Categories",
         "trending":"Latest trending product",
-        "top-rated":"Top Rated Products",
+        "popular-cat":"popular categories",
         "footer":"Join our community and write your review",
 
 
@@ -46,12 +46,12 @@
          "more":"Mehr erfahren",
         
          
-        "header-title":"Bewerten Sie die Produkte, die Sie lieben, und vertrauen Sie ihnen",
+        "header-title":"Teilen, entdecken und die Hilfe erhalten, die Sie benötigen",
         "header-span":"500.000 Bewertungen von 100 gültigen Benutzer-Communitys, Rezensionen von Leuten wie Ihnen.",
         "header-desc":"Durchsuchen Sie unsere am besten bewerteten Produkte",
         "Categories":"Kategorien",
         "trending":"Neuestes Trendprodukt",
-        "top-rated":"Bestbewertete Produkte",
+        "popular-cat":"beliebte Kategorien",
         "footer":"Werden Sie Teil unserer Community und schreiben Sie Ihre Bewertung",
 
                
@@ -82,12 +82,12 @@
          "more":"Encuentra más",
 
          
-        "header-title":"Califica y confía en los productos que te encantan",
+        "header-title":"Comparte, descubre y obtén la ayuda que necesitas",
         "header-span":"500.000 valoraciones de una comunidad de 100 usuarios válidos, reseñas de personas como tú.",
         "header-desc":"Explore nuestros productos mejor calificados",
         "Categories":"categorías",
         "trending":"Últimos productos de moda",
-        "top-rated":"Productos mejor valorados",
+        "popular-cat":"categorías populares",
         "footer":"Únete a nuestra comunidad y escribe tu opinión",
 
                
@@ -122,12 +122,12 @@
         "contact-desc":"Hör av dig idag",
        "more":"hitta mer",
        
-       "header-title":" Betygsätt och lita på de produkter du älskar",
+       "header-title":"Dela, upptäck och få den hjälp du behöver",
        "header-span":"500 000 betyg av 100 giltiga användare, recensioner av personer som du.",
        "header-desc":"Bläddra bland vår mest högst rankade produkt",
        "Categories":"    kategorier",
        "trending":" Senaste trendprodukten",
-       "top-rated":" Topprankade produkter",
+       "popular-cat":" Topprankade produkter",
        "footer":"Gå med i vår community och skriv din recension",
 
               
@@ -161,12 +161,12 @@
         "contact-desc":"Contactez-nous dès aujourd'hui",
         "more":"en savoir plus",
         
-        "header-title":"Notez et faites confiance aux produits que vous aimez",
+        "header-title":"Partagez, découvrez et obtenez l'aide dont vous avez besoin",
         "header-span":"500 000 évaluations par 100 communautés d'utilisateurs valides, des avis de personnes comme vous..",
         "header-desc":"Parcourez nos produits les mieux notés",
         "Categories":"catégories",
         "trending":"Dernier produit tendance",
-        "top-rated":"Produits les mieux notés",
+        "popular-cat":"catégories populaires",
         "footer":"Rejoignez notre communauté et rédigez votre avis",
 
                
