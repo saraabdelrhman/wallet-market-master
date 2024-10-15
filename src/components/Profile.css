@@ -20,7 +20,7 @@
 .profile-card {
   background-color: #fff;
   border-radius: 20px;
-  padding: 50px 10px;
+  padding: 50px 20%;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
@@ -62,7 +62,8 @@
   align-items: flex-start;
   flex: 1;
   padding-top: 10px;
-  padding-left: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .profile-info p {

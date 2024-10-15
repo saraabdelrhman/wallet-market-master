@@ -59,7 +59,7 @@ const Profile = ({content}) => {
           </div>
 
           {view === "profile" && (
-       <div className="mb-5">
+       <div className="mb-5" style={{ maxWidth: '800px', margin: '0 auto' }}> {/* Adjusted width */}
        <div className="profile-image-container">
          <div className="row">
            <div className="col-md-4 col-sm-12 d-flex justify-content-center mb-3">
@@ -367,39 +367,37 @@ const Profile = ({content}) => {
                        style={{
                          width: '100%',
                          paddingBottom: 17,
-                         display: 'inline-flex',
-                         justifyContent: 'center',
+                         display: 'flex',
+                         flexDirection: 'column',
+                         gap: 8,
                        }}
                      >
-                       <div
+                       <input
+                         placeholder="Type your message..."
                          style={{
-                           flex: '1 1 0',
-                           display: 'inline-flex',
-                           flexDirection: 'column',
-                           justifyContent: 'center',
-                           alignItems: 'flex-end',
+                           border: '1px solid #B5B5B5',
+                           borderRadius: 24,
+                           padding: '10px 20px',
+                           outline: 'none',
+                           width: '100%',
+                           height: 50,
+                           fontSize: 16,
+                         }}
+                       />
+                       <button
+                         style={{
+                           padding: '12px 24px',
+                           borderRadius: 24,
+                           background: '#377BF7',
+                           color: 'white',
+                           border: 'none',
+                           fontSize: 16,
+                           fontFamily: 'Poppins',
+                           cursor: 'pointer',
                          }}
                        >
-                         <div
-                           style={{
-                             width: '100%',
-                             justifyContent: 'space-between',
-                             display: 'inline-flex',
-                           }}
-                         >
-                           <div style={{ color: '#A7A7A7', fontSize: 14 }}>2:35 PM</div>
-                         </div>
-                         <div
-                           style={{
-                             textAlign: 'center',
-                             paddingTop: 16,
-                             color: '#A7A7A7',
-                             fontSize: 18,
-                           }}
-                         >
-                           That's okay, thank you!
-                         </div>
-                       </div>
+                         Send
+                       </button>
                      </div>
                    </div>
                  </div>
@@ -411,57 +409,124 @@ const Profile = ({content}) => {
      </div>
           )}     
           {view === "addProduct" && <div className="addproduct">
-            <h2 className="text-center mb-5 fw-bolder">Add products</h2>
-            <div style={{width: '100%', height: '100%', paddingLeft: 32, paddingRight: 32, paddingTop: 50, paddingBottom: 50, background: '#F5F7FE', borderRadius: 25, border: '1px #E4E7E9 solid', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
-              
-    <div style={{flex: '1 1 0', alignSelf: 'stretch', background: '#F5F7FE', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 32, display: 'inline-flex'}}>
-        <div style={{alignSelf: 'stretch', height: 30, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', gap: 14, display: 'flex'}}>
-            <div style={{alignSelf: 'stretch', height: 30, textAlign: 'center', color: 'black', fontSize: 24, fontFamily: 'Poppins', fontWeight: '500', lineHeight: 28, wordWrap: 'break-word'}}>Add Product</div>
-        </div>
-        
-        <div style={{alignSelf: 'stretch', height: 80, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 8, display: 'flex'}}>
-            <div style={{color: '#0A090B', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word'}}>Name</div>
-            <div style={{width: 552, height: 48, paddingTop: 12, paddingBottom: 12, paddingLeft: 18, paddingRight: 189, background: 'white', borderRadius: 8, border: '1px #E6E8EC solid', justifyContent: 'flex-start', alignItems: 'center', display: 'inline-flex'}}>
-                <div style={{color: '#838E9E', fontSize: 16, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 24, wordWrap: 'break-word'}}></div>
-            </div>
-        </div>
+  <div
+    style={{
+      width: '100%',
+      padding: '20px 10px',
+      margin: '20px 10px',
+      background: '#F5F7FE',
+      borderRadius: 25,
+      border: '1px #E4E7E9 solid',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+  >
+    <div
+      style={{
+        flex: '1',
+        maxWidth: '1400px', // Increased max width to 1400px
+        background: '#F5F7FE',
+        borderRadius: 25,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 32,
+      }}
+    >
+      <div style={{ textAlign: 'center', fontSize: 24, fontFamily: 'Poppins', fontWeight: '500' }}>
+        Add Product
+      </div>
 
-        <div style={{height: 80, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 8, display: 'flex'}}>
-            <div style={{color: '#0A090B', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word'}}>Category</div>
-            <div style={{width: 552, height: 48, paddingLeft: 18, paddingRight: 18, paddingTop: 12, paddingBottom: 12, background: 'white', borderRadius: 8, border: '1px #E6E8EC solid', justifyContent: 'center', alignItems: 'flex-start', gap: 359, display: 'inline-flex'}}>
-             
-             
-            </div>
-        </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <label style={{ color: '#0A090B', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600' }}>Name</label>
+        <input
+          type="text"
+          placeholder="Product Name"
+          style={{
+            width: '100%',
+            height: 48,
+            padding: '2px 8px',
+            background: 'white',
+            borderRadius: 8,
+            border: '1px #E6E8EC solid',
+            fontSize: 16,
+            fontFamily: 'Poppins',
+          }}
+        />
+      </div>
 
-        
-        <div style={{alignSelf: 'stretch', height: 175, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 8, display: 'flex'}}>
-            <div style={{color: '#0A090B', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600', wordWrap: 'break-word'}}>Description</div>
-            <div style={{width: 552, height: 143, paddingTop: 12, paddingBottom: 83, paddingLeft: 18, paddingRight: 32, background: 'white', borderRadius: 8, border: '1px #E6E8EC solid', justifyContent: 'flex-start', alignItems: 'center', display: 'inline-flex'}}>
-                <div style={{color: '#838E9E', fontSize: 16, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 24, wordWrap: 'break-word'}}><br/></div>
-            </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <label style={{ color: '#0A090B', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600' }}>Category</label>
+        <select
+          style={{
+            width: '100%',
+            height: 48,
+            padding: '12px 18px',
+            background: 'white',
+            borderRadius: 8,
+            border: '1px #E6E8EC solid',
+            fontSize: 16,
+            fontFamily: 'Poppins',
+          }}
+        >
+          <option value="">Select Category</option>
+          {/* Add your categories here */}
+        </select>
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <label style={{ color: '#0A090B', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600' }}>Description</label>
+        <textarea
+          placeholder="Product Description"
+          style={{
+            width: '100%',
+            height: 143,
+            padding: '12px 18px',
+            background: 'white',
+            borderRadius: 8,
+            border: '1px #E6E8EC solid',
+            fontSize: 16,
+            fontFamily: 'Poppins',
+          }}
+        />
+      </div>
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div style={{ color: '#42526B', fontSize: 16, fontFamily: 'Inter', fontWeight: '500' }}>Attach file</div>
+        <div style={{
+          padding: '10px 20px',
+          background: 'white',
+          borderRadius: 5,
+          border: '1px #E6E8EC solid',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          cursor: 'pointer',
+        }}>
+          <span style={{ color: '#061C3D', fontSize: 14, fontFamily: 'Lexend', fontWeight: '700' }}>Upload Image</span>
         </div>
-        <div style={{width: 552, height: 68, paddingTop: 14, paddingBottom: 14, paddingLeft: 24, paddingRight: 12, background: 'white', borderRadius: 7, justifyContent: 'flex-end', alignItems: 'center', gap: 294, display: 'inline-flex'}}>
-            <div style={{color: '#42526B', fontSize: 16, fontFamily: 'Inter', fontWeight: '500', lineHeight: 24, wordWrap: 'break-word'}}>Attach file</div>
-            <div style={{paddingLeft: 20, paddingRight: 20, background: 'white', borderRadius: 5, border: '1px #E6E8EC solid', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
-                <div style={{color: '#061C3D', fontSize: 14, fontFamily: 'Lexend', fontWeight: '700', textTransform: 'capitalize', lineHeight:3, wordWrap: 'break-word'}}>Upload Image</div>
-            </div>
-        </div>
-        <div style={{alignSelf: 'stretch', height: 46, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'flex'}}>
-            <div style={{width: 189, justifyContent: 'center', alignItems: 'center', gap: 27, display: 'inline-flex'}}>
-                <div style={{flex: '1 1 0', height: 46, justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
-                    <div style={{flex: '1 1 0', height: 46, borderRadius: 30, justifyContent: 'flex-start', alignItems: 'flex-start', display: 'flex'}}>
-                        <div style={{flex: '1 1 0', height: 46, paddingLeft: 16, paddingRight: 16, paddingTop: 14, paddingBottom: 14, background: '#377BF7', borderRadius: 30, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
-                            <div style={{textAlign: 'center', color: 'white', fontSize: 15, fontFamily: 'Inter', fontWeight: '600', letterSpacing: 0.07, wordWrap: 'break-word'}}>Add Product</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
+
+      <button
+        style={{
+          height: 46,
+          background: '#377BF7',
+          borderRadius: 30,
+          color: 'white',
+          border: 'none',
+          fontSize: 15,
+          fontFamily: 'Inter',
+          cursor: 'pointer',
+          padding: '12px 16px',
+          alignSelf: 'center',
+        }}
+      >
+        Add Product
+      </button>
     </div>
+  </div>
 </div>
-            </div>}
-
+}
           {view === "exportData" && <div style={{
   width: '100%',
   height: '100%',
