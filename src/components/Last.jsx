@@ -8,41 +8,47 @@ export default function Last() {
   };
 
   return (
-    <div className="container mt-5 mb-5">
+    <div className="container mt-5 mb-6 ">
       <div className="row align-items-center gap-5">
-        <div className="col-md-5 position-relative">
-          <img src={man} className="card-img-top rounded-5 h-100" alt="Join our community" />
+        {/* Left Section - Image */}
+        <div className="col-md-5 position-relative ">
+          <img src={man} className="card-img-top rounded-5 h-100 w-100" alt="Join our community" />
         </div>
 
         {/* Right Section - Text and Buttons */}
-        <div className="col-md-6">
-          <h3 className="display-4 fw-bold">Join our community and write your review</h3>
-          <p className="lead text-secondary">
-            Join us for product reviews and share your insights to help others choose better, your opinion matters!
+        <div className="col-md-6 ">
+          <h3 className="display-4 fw-bold mb-3">Join our community and write your review</h3>
+          <p className="lead text-secondary mb-4">
+            Join us for product reviews and share your insights to help others make better choices. Your opinion matters!
           </p>
           <div className="d-flex mt-4">
+            {/* Sign Up Button */}
             <button
               style={{
                 backgroundColor: "#3B82F6",
                 color: 'white',
                 border: "none",
-                padding: "12px 24px",
+                padding: "12px 30px",
                 borderRadius: "50px",
                 cursor: "pointer",
-                marginRight: "10px"
+                marginRight: "20px", // Increased margin for spacing between buttons
+                fontWeight: "bold"
               }}
               onClick={handleSubmit}
             >
               Sign up
             </button>
+
+            {/* Write Review Button */}
             <button
               style={{
                 backgroundColor: "white",
                 color: '#3B82F6',
-                border: "1px solid #3B82F6",
-                padding: "12px 24px",
+                border: "2px solid #3B82F6", // Increased border thickness for emphasis
+                padding: "12px 30px",
                 borderRadius: "50px",
-                cursor: "pointer"
+                cursor: "pointer",
+                fontWeight: "bold"
               }}
               onClick={handleSubmit}
             >

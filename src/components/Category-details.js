@@ -108,13 +108,13 @@ const ProductReviewPage = ({ content }) => {
 
       </header>
 
-      <div className="main-content">
-        <aside className="sidebar">
-          <SidebarRadioGroup title="CATEGORY" items={categories} selected={category} onChange={handleCategoryChange} />
-          <SidebarRadioGroup title="SUBCATEGORY" items={subcategories} selected={subcategory} onChange={handleSubcategoryChange} />
+      <div className="main-content mt-5" >
+        <aside className="sidebar mt-5 pe-5 ps-3 pt-4 pb-4 rounded-5 " >
+          <SidebarRadioGroup title="CATEGORY" items={categories} selected={category} onChange={handleCategoryChange} className='rightside' />
+          <SidebarRadioGroup title="SUBCATEGORY" items={subcategories} selected={subcategory}  onChange={handleSubcategoryChange} className='leftside' />
         </aside>
 
-        <div className="product-list">
+        <div className="product-list mt-5">
           <div className="search-sort">
             <div className="search-bar">
               <input
@@ -126,11 +126,13 @@ const ProductReviewPage = ({ content }) => {
               <img src={icon} alt="Search" />
             </div>
 
-            <select className="d-flex ms-2">
-              <option>sort by: Most Popular</option>
+            <div className="d-flex ms-2">
+              <span className="mt-3 me-3">sort by:</span>
+            <select className="ps-3 pe-3 text-secondary "style={{border:'1px solid #e4e7e9'}}>
+              <option className="">Most Popular</option>
             </select>
           </div>
-
+</div>
           <div className="filter-bar">
             <div className="active-filters">
               <div style={{ color: '#5F6C72' }}>Active Filters:</div>

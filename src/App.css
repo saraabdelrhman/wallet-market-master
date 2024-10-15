@@ -181,3 +181,33 @@
     font-size: 13px; /* Adjusted font size for tablets */
   }
 }
+/* App.css */
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .table-responsive {
+    font-size: 14px;
+  }
+
+  .star-rating svg {
+    width: 14px; /* Smaller star size for mobile */
+    height: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .table-responsive {
+    font-size: 5px;
+  }
+
+  .star-rating svg {
+    width: 5px; /* Even smaller stars for very small screens */
+    height: 5px;
+  }
+}

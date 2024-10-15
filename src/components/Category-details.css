@@ -139,4 +139,41 @@
     font-weight: 600;
     color: #191C1F;
   }
-  
+  /* Default styles */
+.sidebar {
+  margin-top: 5rem;
+  display: block; /* Default display */
+}
+
+/* Default styles */
+.sidebar {
+  margin-top: 5rem;
+  display: block;
+  background-Color:#eaeeef;
+  height:20%
+}
+
+/* Media query for mobile screens */
+@media (max-width: 767px) {
+  .sidebar {
+    display: flex;
+    background-color: #f5f7fe;
+    flex-direction: row; /* Align items side by side */
+    flex-wrap: wrap; /* Allows items to wrap if necessary */
+  }
+
+  /* Each SidebarRadioGroup should take 40% of the width to allow a huge gap */
+  .sidebar > * {
+    flex: 0 0 30%; /* Reduces width to 40% to allow more space */
+    max-width: 30%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+  }
+
+  /* Apply a huge margin to the first item */
+  .sidebar > *:nth-child(1) {
+    margin-right: 40%; /* Huge gap between the two items */
+  }
+}
+
+

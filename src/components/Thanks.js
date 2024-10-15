@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import img1 from './images/image 6 (3).png';
-import shape from './images/zgzg-removebg-preview.png';
-import shape2 from './images/zgzg-left.png';
+import { Link } from "react-router-dom";
+// import shape from './images/zgzg-removebg-preview.png';
+// import shape2 from './images/zgzg-left.png';
 
 export default function Reviews() {
   // State to manage the review data
@@ -40,7 +41,7 @@ export default function Reviews() {
   if (!review) {
     return (
       <div className="container w-100 position-relative">
-        <img
+        {/* <img
           src={shape2}
           alt="shape"
           className='d-none d-md-flex'
@@ -63,7 +64,7 @@ export default function Reviews() {
             width: '300px',
             zIndex: '1',
           }}
-        />
+        /> */}
         <header className="header" style={{ backgroundColor: "#EEF5FF" }}>
           <h1 className="text-center mt-5 mb-5 fw-bold">Review Deleted</h1>
         </header>
@@ -110,7 +111,7 @@ export default function Reviews() {
           marginBottom: "50px", // Added margin to the bottom
         }}
       >
-        <img
+        {/* <img
           src={shape2}
           alt="shape"
           className='d-none d-md-flex'
@@ -133,7 +134,7 @@ export default function Reviews() {
             width: '300px',
             zIndex: '1',
           }}
-        />
+        /> */}
 
         {/* Review Pending Notice */}
         <div
@@ -210,7 +211,7 @@ export default function Reviews() {
             {/* Star Rating */}
             <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
               {Array.from({ length: 5 }).map((_, index) => (
-                <span key={index} style={{ color: index < review.stars ? "#FA8232" : "#ADB7BC", fontSize: "20px" }}>
+                <span key={index} style={{ color: index < review.stars ? "#FA8232" : "#ADB7BC", fontSize: "40px" }}>
                   ★
                 </span>
               ))}
@@ -259,7 +260,7 @@ export default function Reviews() {
             </div>
           </div>
         )}
-
+<hr></hr>
         {/* Edit/Delete Actions */}
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: '20px' }}>
           <div style={{ display: "flex", gap: "16px" }}>
@@ -306,9 +307,64 @@ export default function Reviews() {
                 Delete
               </span>
             </div>
+            
           </div>
         </div>
+        
       </div>
+      <div style={{
+  display: 'flex', 
+  justifyContent: 'center', 
+  alignItems: 'center'
+}}>
+  <div style={{
+    width: '100%', 
+    maxWidth: '200px', /* Limit the max width */
+    height: 'auto', 
+    paddingLeft: 16, 
+    paddingRight: 16, 
+    paddingTop: 14, 
+    paddingBottom: 14, 
+    borderRadius: 30, 
+    overflow: 'hidden', 
+    border: '1px #377BF7 solid', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    gap: 10, 
+    display: 'inline-flex'
+  }}>
+      <div style={{
+        width: 12.38, 
+        height: 1.12, 
+        left: 3.38, 
+        top: 8.44, 
+        position: 'absolute', 
+        background: '#377BF7'
+      }}>
+      <div style={{
+        width: 6.19, 
+        left: 2.81, 
+        top: 3.37, 
+        position: 'absolute', 
+        background: '#377BF7'
+      }}></div>
     </div>
+    <Link to="/" style={{ textDecoration: 'none' }}>
+  <div style={{
+    textAlign: 'center', 
+    color: '#377BF7', 
+    fontSize: 15, 
+    fontFamily: 'Inter', 
+    fontWeight: '600', 
+    letterSpacing: 0.07, 
+    wordWrap: 'break-word'
+  }}> Back to Home</div>
+</Link>
+  </div>
+</div>
+
+      </div>
+   
+    
   );
 }

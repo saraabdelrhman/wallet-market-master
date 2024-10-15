@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 export default function Reviews({content}) {
   const [reviews, setReviews] = useState([
     { name: "Gerald ",role:'Expert 🎖️', stars: 5, review: "I love this product! easy to user and super cozy!", image: anonymous, date: "Now" },
-    { name: "Diana ",role:'Most commented 🏆', stars: 4, review: "Super efficient service and delivery.", image: img2, date: "4 days ago" },
+    { name: "Diana ",role:'Editor 🏆', stars: 4, review: "Super efficient service and delivery.", image: img2, date: "4 days ago" },
     { name: "Andre ", role:'User 🏅 ',stars: 4, review: "Amazing delivery speed and service quality.", image: img3, date: "27 Aug 2024" }
   ]);
 
@@ -51,7 +51,7 @@ export default function Reviews({content}) {
       setReviews(updatedReviews);
       setNewReview({ name: '', stars: 0, review: '', isAnonymous: false });
       setShowModal(false);
-      navigate("/thanks");  // <-- Redirect to the "thanks" page after submission
+      navigate('/thanks');  // <-- Redirect to the "thanks" page after submission
     }
   };
 
@@ -207,7 +207,7 @@ export default function Reviews({content}) {
             </label>
 
             <div style={modalActionsStyle}>
-              <button onClick={handleSubmit} style={confirmButtonStyle} className="rounded-5">Yes</button>
+           <Link to='/thanks'>  <button onClick={handleSubmit} style={confirmButtonStyle} className="rounded-5">Yes</button></Link> 
               <button onClick={closeModal} style={cancelButtonStyle} className="rounded-5">Cancel</button>
             </div>
           </div>
@@ -247,7 +247,7 @@ wordWrap: 'break-word'}}>{role}</div>
         <div style={reviewDateStyle}>{date}</div>
         </div>
 
-        <div className="review-stars mt-5 ms-5" style={starsContainerStyle}>{renderStars(stars)}</div>
+        <div className="review-stars mt-5 " style={starsContainerStyle}>{renderStars(stars)}</div>
 
         </div>
        
@@ -263,13 +263,13 @@ wordWrap: 'break-word'}}>{role}</div>
 <span>View Transalation</span>
 </div>
     {name === "Gerald" ? (
-      <div  className="d-flex justify-content-end gap-2 ">
+      <div  className=" justify-content-end gap-2 ">
         <Link to={'/'}> <button type='submit' style={{backgroundColor:'#377BF7',color:'white',borderRadius:'50px', padding:'10px 20px 10px 20px',border:'0px'}} >Edit</button></Link> 
           <button type='submit' style={{color:'#377BF7',borderRadius:'50px', padding:'10px 20px 10px 20px',border:'1px solid #377BF7'}} >Delete</button>
       
       </div>
     ) : (
-      <div style={interactionIconsStyle} className="d-flex justify-content-between gap-5">
+      <div style={interactionIconsStyle} className=" justify-content-between gap-5">
         <div className="d-flex">
           <img src={like} alt="like" style={iconStyle} />
           <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Helpful</div>

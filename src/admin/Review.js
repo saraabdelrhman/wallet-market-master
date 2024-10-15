@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Table, Container, Row, Col } from 'react-bootstrap';
-import { FaEye, FaEdit, FaTrash, FaArrowRight, FaArrowLeft } from 'react-icons/fa'; 
+import { FaEye, FaEdit, FaTrash, FaArrowRight, FaArrowLeft, FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa'; 
 import { Link } from 'react-router-dom';
-import searchIcon from './images/search-normal.png'; // Ensure you have this image in the specified path
-import '../App.css'; // Ensure your CSS is properly set up
+import searchIcon from './images/search-normal.png';
+import '../App.css';
 import photo from './images/photo.png';
 
 const Review = () => { 
@@ -11,20 +11,19 @@ const Review = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
-  const [page, setPage] = useState(0); // Current page number
-  const [size, setSize] = useState(10); // Default page size
-  const [totalPages, setTotalPages] = useState(1); // Total pages
+  const [page, setPage] = useState(0);
+  const [size, setSize] = useState(10);
+  const [totalPages, setTotalPages] = useState(1);
 
-  // Fake data to use if the fetch fails
   const fakeData = {
     reviews: [
-      { id: '1', productId: '968', userId: '858', rating: 'Good' },
-      { id: '2', productId: '123', userId: '654', rating: 'Excellent' },
-      { id: '3', productId: '876', userId: '987', rating: 'Average' },
-      { id: '4', productId: '456', userId: '321', rating: 'Bad' },
-      { id: '5', productId: '999', userId: '123', rating: 'Good' },
+      { id: '1', productId: '968', userId: '858', rating: 4.5 },
+      { id: '2', productId: '123', userId: '654', rating: 5 },
+      { id: '3', productId: '876', userId: '987', rating: 3 },
+      { id: '4', productId: '456', userId: '321', rating: 2 },
+      { id: '5', productId: '999', userId: '123', rating: 4 },
     ],
-    totalPages: 2 // Assume multiple pages for fake data
+    totalPages: 2 
   };
 
   useEffect(() => {
@@ -40,7 +39,7 @@ const Review = () => {
         setTotalPages(data.totalPages);
       } catch (error) {
         setError(error.message);
-        setReviews(fakeData.reviews); // Use fake data if the API request fails
+        setReviews(fakeData.reviews); 
         setTotalPages(fakeData.totalPages);
       } finally {
         setLoading(false);
@@ -68,6 +67,20 @@ const Review = () => {
         alert(`Error deleting review: ${error.message}`);
       }
     }
+  };
+
+  const renderStarRating = (rating) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      if (i <= rating) {
+        stars.push(<FaStar key={i} />);
+      } else if (i - 0.5 === rating) {
+        stars.push(<FaStarHalfAlt key={i} />);
+      } else {
+        stars.push(<FaRegStar key={i} />);
+      }
+    }
+    return stars;
   };
 
   return (
@@ -148,7 +161,6 @@ const Review = () => {
         </Link>
       </div>
 
-      {/* Reviews Table */}
       <Row>
         <div className="table-responsive">
           <Table striped bordered hover>
@@ -173,7 +185,7 @@ const Review = () => {
                     <td>{review.id}</td>
                     <td>{review.productId}</td>
                     <td>{review.userId}</td>
-                    <td>{review.rating}</td>
+                    <td>{renderStarRating(review.rating)}</td>
                     <td className="d-flex justify-content-center gap-4">
                       <Link to={'/reviewview'}>
                         <Button size="sm" className="bg-transparent text-dark p-0"><FaEye /></Button>
@@ -198,7 +210,6 @@ const Review = () => {
         </div>
       </Row>
 
-      {/* Pagination */}
       <Row className="d-flex justify-content-center my-4">
         <Button
           variant="link"
@@ -215,7 +226,7 @@ const Review = () => {
             className={`pagination-btn ${number === page ? 'active' : ''}`}
             onClick={() => setPage(number)}
           >
-            {number + 1} {/* This will display 1, 2, 3, etc. */}
+            {number + 1}
           </Button>
         ))}
 

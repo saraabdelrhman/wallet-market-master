@@ -19,4 +19,147 @@ h3.text-center {
   .icon {
     margin-right: 10px; /* Optional: Add some space between the icon and the text */
   }
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+    overflow: hidden;
+  }
   
+  .header {
+    padding: 30px 0;
+  }
+  
+  .reviews-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .left-section {
+    width: 100%;
+    max-width: 700px;
+  }
+  
+  .review-summary {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+  }
+  
+  .review-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  
+  .review-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .review-list {
+    margin-bottom: 24px;
+  }
+  
+  .review-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  
+  .review-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 24px;
+  }
+  
+  .review-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .review-content {
+    flex: 1;
+  }
+  
+  .review-actions {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+  }
+  
+  .review-actions img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .form-group {
+    margin-bottom: 24px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .form-group input[type="file"] {
+    padding: 0;
+  }
+  
+  .form-group img {
+    width: 100%;
+    max-width: 200px;
+    margin-top: 12px;
+  }
+  
+  .right-section {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .right-section img {
+    width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .left-section,
+    .right-section {
+      width: 100%;
+    }
+  }

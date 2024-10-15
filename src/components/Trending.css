@@ -33,7 +33,7 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin: 15px;
   overflow: hidden; /* Hides anything that overflows the card */
-  width: 100%; /* Ensures card takes full column width */
+  width: 90%; /* Ensures card takes full column width */
   transition: transform 0.3s ease-in-out; /* Smooth transition for hover effects */
 }
 
@@ -88,4 +88,18 @@
 .carousel-control-next-icon {
   background-color: #000; /* More visible against images */
   border-radius: 50%;
+}
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  transition: transform 0.6s ease;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Optional, to make the arrows visible */
+}
+
+/* Make sure the container allows overflow */
+.trending-section {
+  overflow: visible; /* Allow the carousel to move horizontally */
 }

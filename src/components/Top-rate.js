@@ -13,7 +13,8 @@ export default function TopRate({ content }) {
   ];
 
   return (
-    <section className="pt-5 " id="exercise">
+    <div className="container-fluid"  style={{backgroundColor: "#eef5ff"}}>
+    <section className="pt-5 container-fluid" id="exercise">
       <h2 className="pb-4 fs-2 fw-bold">{content["popular-cat"]}</h2>
       <p className="fw-bold text-secondary ">{content["header-desc"]}</p>
 
@@ -61,5 +62,6 @@ export default function TopRate({ content }) {
         </button>
       </div>
     </section>
+    </div>
   );
 }
