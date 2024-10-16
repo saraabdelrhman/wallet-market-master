@@ -207,6 +207,7 @@
       width: 100%;   /* Full width for larger screens */
       height: 400px; /* Set a specific height for medium screens */
   }
+  
 }
 
 @media (min-width: 992px) {
@@ -214,6 +215,7 @@
       width: 80%;    /* Adjust width for larger screens */
       height: 500px; /* Set a specific height for large screens */
   }
+  
 }
 
 @media (min-width: 1200px) {

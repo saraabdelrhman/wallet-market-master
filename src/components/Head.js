@@ -58,7 +58,7 @@ const Head = ({ content }) => {
                 alt="Search Icon"
                 style={{
                   position: "absolute",
-                  left: "10px",
+                  left: "6px",
                   top: "50%",
                   transform: "translateY(-50%)",
                   width: "20px",
@@ -73,13 +73,13 @@ const Head = ({ content }) => {
                   background: "#eef5ff",
                   outline: "none",
                   borderRadius: "50px",
-                  padding: "20px 100px 20px 40px", // Adjust padding for icon and button
+                  padding: "20px 0px 20px 25px", // Adjust padding for icon and button
                   width: "100%",
                   fontSize: "16px"
                 }}
                 onChange={handleSearchChange}
               />
-              <button className="btn btn-primary rounded-5 position-absolute ps-4 pe-4  pt-3 pb-3" style={{ right: '0px', top: '20%', transform: 'translateY(-50%)' }} type="button">
+              <button className="btn search-button btn-primary rounded-5 position-absolute ps-4 pe-4  pt-3 pb-3" style={{ right: '-2px', top: '20%', transform: 'translateY(-50%)' }} type="button">
                 Search
               </button>
             </div>
