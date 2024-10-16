@@ -8,15 +8,25 @@ export default function Last() {
   };
 
   return (
-    <div className="container mt-5 mb-6 ">
+    <div className="container mt-5 mb-6">
       <div className="row align-items-center gap-5">
         {/* Left Section - Image */}
-        <div className="col-md-5 position-relative ">
-          <img src={man} className="card-img-top rounded-5 h-100 w-100" alt="Join our community" />
+        <div className="col-md-5 position-relative">
+          <img
+            src={man}
+            className="rounded-5 img-fluid" // Added img-fluid for responsiveness
+            alt="Join our community"
+            style={{
+              width:'400px',
+              height: '400px', // Changed height to auto for responsive scaling
+              maxHeight: '400px', // Sets a max height for larger screens
+              width: '100%', // Ensures full width for the container
+            }}
+          />
         </div>
 
         {/* Right Section - Text and Buttons */}
-        <div className="col-md-6 ">
+        <div className="col-md-6">
           <h3 className="display-4 fw-bold mb-3">Join our community and write your review</h3>
           <p className="lead text-secondary mb-4">
             Join us for product reviews and share your insights to help others make better choices. Your opinion matters!

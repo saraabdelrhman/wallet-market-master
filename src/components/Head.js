@@ -99,9 +99,10 @@ const Head = ({ content }) => {
 </div>
 </div>
 
-        {/* Right Section - Image */}
-        <div className="col-md-5 position-relative">
-          <img src={bali} className="card-img-top rounded-5 h-100" alt="Hotel Paradise, Bali" />
+   <div className="col-md-5 position-relative">
+   <img src={bali} className="bali rounded-5 img-fluid" alt="Hotel Paradise, Bali"  style={{height:'400px',maxWidth:'100%'}}/>
+
+
           <div className="card-body">
             <div style={{ position: 'absolute', bottom: '25%', right: '0px', left: '30px' }}>
               <h4 className="card-title fw-bold text-light">Hotel Paradise, Bali</h4>

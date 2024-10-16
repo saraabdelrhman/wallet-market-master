@@ -44,11 +44,17 @@
   }
   
   .card-img {
+    max-width: 100%; /* Adjust as needed */
+  height: auto;
     border-radius: 50%; /* If you want circular images */
-    width: 48px; /* Adjust as needed */
-    height: 48px; /* Adjust as needed */
+
     object-fit: cover; /* Maintain aspect ratio */
     margin-right: 16px; /* Spacing between image and content */
+  }
+  .card-img-top {
+    width: 100%;
+    height: auto;  /* Maintains the aspect ratio */
+    border-radius: 5px;  /* If you want rounded corners */
   }
   
   .card-content {
@@ -161,3 +167,71 @@
     }
   }
   
+  /* Ensuring the container manages height and width properly */
+.position-relative {
+  width: 100%; /* Ensures the container takes the full width available */
+  min-height: 400px; /* Minimum height to start with, adjust as needed */
+}
+
+/* CSS for the image to fill the width and have a greater height */
+.card-img-top {
+  width: 100%;    /* Maintains full width of its container */
+  height: auto;   /* Adjusts height automatically based on the aspect ratio */
+  min-height: 400px; /* Ensures that the image has a significant height */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  border-radius: 5px;
+}
+
+/* Ensuring the container manages height and width properly */
+.position-relative {
+  width: 100%; /* Ensures the container takes the full width available */
+  min-height: 400px; /* Minimum height to start with, adjust as needed */
+}
+
+/* CSS for the image to fill the width and have a greater height */
+/* CSS to ensure the container manages width and height properly */
+.position-relative {
+  width: 100%;  /* Ensures the container takes the full width available */
+  min-height: 400px; /* A starting minimum height, adjust based on your needs */
+}
+
+.bali {
+  width: 100%;      /* Ensures the image takes the full width of its container */
+  height: auto;     /* Maintains the aspect ratio */
+  border-radius: 5px; /* For rounded corners */
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .bali {
+      width: 100%;   /* Full width for larger screens */
+      height: 400px; /* Set a specific height for medium screens */
+  }
+}
+
+@media (min-width: 992px) {
+  .bali {
+      width: 80%;    /* Adjust width for larger screens */
+      height: 500px; /* Set a specific height for large screens */
+  }
+}
+
+@media (min-width: 1200px) {
+  .bali {
+      width: 70%;    /* Further adjust width for extra-large screens */
+      height: 600px; /* Set a specific height for extra-large screens */
+  }
+}
+
+/* Optional: Ensure the parent container has some height */
+.position-relative {
+  width: 100%;
+  display: flex; /* Using flex to center the image both horizontally and vertically */
+  justify-content: center; /* Center image horizontally */
+  align-items: center; /* Center image vertically */
+  min-height: 400px; /* Minimum height for the container */
+}
+.img-fluid {
+  max-width: 100%;
+  height: 400px;
+}
