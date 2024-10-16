@@ -8,123 +8,6 @@ import fashonandinsurance from './images/building-4.png';
 import laptop from './images/bx_laptop.png';
 import apps from './images/fluent_apps-20-regular.png';
 
-
-export default function Content({content}) {
-  return (
-    <div style={styles.container}>
-      <div style={styles.header}>
-        <div style={styles.headerText}>
-          <div style={styles.headerTitle}>{content["Categories"]}</div>
-          <div style={styles.headerSubtitle}>Search categories that you love</div>
-        </div>
-        <div style={styles.exploreButton}>
-          <div style={styles.exploreText}>Explore All</div>
-        </div>
-      </div>
-
-      <div style={styles.categoryContainer}>
-        {/* Smartphones */}
-        <div style={styles.categoryCard}>
-        <div style={styles.imageWrapper}>
-            <img src={smartphonesandapps} alt="Apps" style={styles.image} />
-          </div>
-          <div style={styles.categoryText}>
-            <div style={styles.categoryTitle}>Smartphones</div>
-            <div style={styles.categoryCount}>18,394</div>
-          </div>
-        </div>
-
-        {/* Kitchen */}
-        <div style={styles.categoryCard}>
-          <div style={styles.imageWrapper}>
-            <img src={kitechenandcar} alt="Kitchen and Car" style={styles.image} />
-          </div>
-          <div style={styles.categoryText}>
-            <div style={styles.categoryTitle}>Kitchen</div>
-            <div style={styles.categoryCount}>18,394</div>
-          </div>
-        </div>
-
-        {/* Furniture */}
-        <div style={styles.categoryCard}>
-          <div style={styles.imageWrapper}>
-            <img src={furnitureandlabtop} alt="Furniture and Laptop" style={styles.image} />
-          </div>
-          <div style={styles.categoryText}>
-            <div style={styles.categoryTitle}>Furniture</div>
-            <div style={styles.categoryCount}>18,394</div>
-          </div>
-        </div>
-
-        {/* Fashion */}
-        <div style={styles.categoryCard}>
-          <div style={styles.imageWrapper}>
-            <img src={fashonandinsurance} alt="Fashion and Insurance" style={styles.image} />
-          </div>
-          <div style={styles.categoryText}>
-            <div style={styles.categoryTitle}>Fashion</div>
-            <div style={styles.categoryCount}>18,394</div>
-          </div>
-        </div>
-      </div>
-
-      <div style={styles.categoryContainer}>
-        {/* Apps */}
-        <div style={styles.categoryCard}>
-          <div style={styles.imageWrapper}>
-            <img src={apps} alt="Apps" style={styles.image} />
-          </div>
-          <div style={styles.categoryText}>
-            <div style={styles.categoryTitle}>Apps</div>
-            <div style={styles.categoryCount}>18,394</div>
-          </div>
-        </div>
-
-        {/* Car */}
-        <div style={styles.categoryCard}>
-          <div style={styles.imageWrapper}>
-            <img src={kitechenandcar} alt="Car" style={styles.image} />
-          </div>
-          <div style={styles.categoryText}>
-            <div style={styles.categoryTitle}>Car</div>
-            <div style={styles.categoryCount}>18,394</div>
-          </div>
-        </div>
-
-        {/* Laptop */}
-        <div style={styles.categoryCard}>
-          <div style={styles.imageWrapper}>
-            <img src={laptop} alt="Laptop" style={styles.image} />
-          </div>
-          <div style={styles.categoryText}>
-            <div style={styles.categoryTitle}>Laptop</div>
-            <div style={styles.categoryCount}>18,394</div>
-          </div>
-        </div>
-
-        {/* Insurance */}
-        <div style={styles.categoryCard}>
-          <div style={styles.imageWrapper}>
-            <img src={fashonandinsurance} alt="Insurance" style={styles.image} />
-          </div>
-          <div style={styles.categoryText}>
-            <div style={styles.categoryTitle}>Insurance</div>
-            <div style={styles.categoryCount}>18,394</div>
-          </div>
-        </div>
-        
-        <div style={{width: '100%', height: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
-    <div style={{justifyContent: 'flex-start', alignItems: 'center', gap: 5, display: 'inline-flex'}}>
-        <div style={{width: 10, height: 10, position: 'relative', transform: 'rotate(-180deg)', transformOrigin: '0 0', background: '#377BF7', borderRadius: 100}} />
-        <div style={{width: 10, height: 10, position: 'relative', transform: 'rotate(-180deg)', transformOrigin: '0 0', background: 'rgba(55, 123, 247, 0.60)', borderRadius: 100}} />
-        <div style={{width: 10, height: 10, position: 'relative', transform: 'rotate(-180deg)', transformOrigin: '0 0', background: 'rgba(55, 123, 247, 0.60)', borderRadius: 100}} />
-    </div>
-</div>
-      </div>
-    </div>
-  );
-}
-
 const styles = {
   container: {
     width: '100%',
@@ -220,5 +103,81 @@ const styles = {
     fontFamily: 'Poppins',
     fontWeight: '400',
   },
+  arrowsContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '5px',
+  },
+  arrow: {
+    width: '10px',
+    height: '10px',
+    borderRadius: '50%',
+    background: '#377BF7',  // Primary color
+  },
+  arrowSecondary: {
+    background: 'rgba(55, 123, 247, 0.60)' // Secondary color
+  }
 };
 
+export default function Content({ content }) {
+  return (
+    <div style={styles.container}>
+      <div style={styles.header}>
+        <div style={styles.headerText}>
+          <div style={styles.headerTitle}>{content["Categories"]}</div>
+          <div style={styles.headerSubtitle}>Search categories that you love</div>
+        </div>
+        <div style={styles.exploreButton}>
+          <div style={styles.exploreText}>Explore All</div>
+        </div>
+      </div>
+
+      <div style={styles.categoryContainer}>
+        {/* Each category entry */}
+        <div style={styles.categoryCard}>
+          <div style={styles.imageWrapper}>
+            <img src={smartphonesandapps} alt="Smartphones and Apps" style={styles.image} />
+          </div>
+          <div style={styles.categoryText}>
+            <div style={styles.categoryTitle}>Smartphones</div>
+            <div style={styles.categoryCount}>18,394</div>
+          </div>
+        </div>
+
+        {/* Repeated for each category with respective changes in source and titles */}
+        <div style={styles.categoryCard}>
+          <div style={styles.imageWrapper}>
+            <img src={kitechenandcar} alt="Kitchen and Car" style={styles.image} />
+          </div>
+          <div style={styles.categoryText}>
+            <div style={styles.categoryTitle}>Kitchen</div>
+            <div style={styles.categoryCount}>18,394</div>
+          </div>
+        </div>
+
+        <div style={styles.categoryCard}>
+          <div style={styles.imageWrapper}>
+            <img src={furnitureandlabtop} alt="Furniture and Laptop" style={styles.image} />
+          </div>
+          <div style={styles.categoryText}>
+            <div style={styles.categoryTitle}>Furniture</div>
+            <div style={styles.categoryCount}>18,394</div>
+          </div>
+        </div>
+
+        <div style={styles.categoryCard}>
+          <div style={styles.imageWrapper}>
+            <img src={fashonandinsurance} alt="Fashion and Insurance" style={styles.image} />
+          </div>
+          <div style={styles.categoryText}>
+            <div style={styles.categoryTitle}>Fashion</div>
+            <div style={styles.categoryCount}>18,394</div>
+          </div>
+        </div>
+
+        {/* More categories as needed... */}
+      </div>
+    </div>
+  );
+}

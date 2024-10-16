@@ -73,7 +73,7 @@ const Head = ({ content }) => {
                   background: "#eef5ff",
                   outline: "none",
                   borderRadius: "50px",
-                  padding: "20px 60px 20px 40px", // Adjust padding for icon and button
+                  padding: "20px 100px 20px 40px", // Adjust padding for icon and button
                   width: "100%",
                   fontSize: "16px"
                 }}
@@ -85,17 +85,19 @@ const Head = ({ content }) => {
             </div>
           </form>
 
-          <span className="text-body-tertiary">Supported by:</span>
-          <div className="d-flex align-items-center mt-3 gap-3">
-            <h5 className="text-secondary">Google</h5>
-            <h5 className="text-secondary">Facebook</h5>
-            <div className="d-flex">
-              <FaYoutube className="text-secondary fs-3" />
-              <h5 className="text-secondary">Youtube</h5>
-            </div>
-            <h5 className="text-secondary">Webflow</h5>
-          </div>
-        </div>
+          <div>
+  <span className="text-body-tertiary">Supported by:</span>
+  <div className="d-flex align-items-center flex-wrap mt-3 gap-2 support-list">
+    <h6 className="text-body-tertiary fw-bolder">Google</h6>
+    <h6 className="text-body-tertiary fw-bolder">Facebook</h6>
+    <div className="d-flex align-items-center">
+      <FaYoutube className="text-body-tertiary fs-2 mb-2" />
+      <h6 className="text-body-tertiary fw-bolder">Youtube</h6>
+    </div>
+    <h6 className="text-body-tertiary fw-bolder">Webflow</h6>
+  </div>
+</div>
+</div>
 
         {/* Right Section - Image */}
         <div className="col-md-5 position-relative">

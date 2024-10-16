@@ -125,3 +125,39 @@
     cursor: pointer;
   }
   
+  .support-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Ensures the items wrap onto the next line if not enough space */
+    gap: 1rem; /* Spacing between items */
+  }
+  
+  .text-secondary {
+    font-size: 1rem; /* Default size */
+  }
+  
+  .fs-3 {
+    font-size: 1.5rem; /* Default icon size */
+  }
+  
+  @media (max-width: 768px) {
+    .text-secondary {
+      font-size: 0.9rem; /* Smaller text on smaller screens */
+    }
+  
+    .fs-3 {
+      font-size: 1.2rem; /* Smaller icon on smaller screens */
+    }
+  
+    .support-list {
+      justify-content: center; /* Center items on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .support-list {
+      flex-direction: column; /* Stack items vertically on very small screens */
+      align-items: start; /* Align items to the start */
+    }
+  }
+  
