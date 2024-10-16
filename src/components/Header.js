@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Header.css'; // Removed extra space here
+import './Header.css';
 
 import img from '../components/images/logo-86.png';
 import threelines from '../components/images/more-dots-vertical.png';
@@ -10,24 +10,20 @@ import person2 from '../components/images/image 6 (2).png';
 import notification from '../components/images/notification.png';
 import { Dropdown } from 'react-bootstrap';
 
-// Rest of your code remains the same
-
-
 const Header = ({ language, setLanguage }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to track menu visibility
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
   const isActive = (path) =>
     location.pathname === path
-      ? { color: '#377bf7' } // Apply active style
-      : { color: '#474545' }; // Default style
+      ? { color: '#377bf7' }
+      : { color: '#474545' };
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen); // Toggle menu state on button click
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        {/* Brand Logo */}
         <Link className="navbar-brand d-flex align-items-center" to="/">
           <img src={img} alt="Reveyou Logo" style={{ height: 40, marginRight: 10 }} />
           <span style={{ color: 'black', fontSize: 30, fontFamily: 'Poppins', fontWeight: 700 }}>
@@ -39,19 +35,17 @@ const Header = ({ language, setLanguage }) => {
         <button
           className="navbar-toggler"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDropdown" // Target ID must match the collapse div
-          aria-controls="navbarNavDropdown"
-          aria-expanded={isMenuOpen} // Set aria-expanded based on menu state
-          aria-label="Toggle navigation"
           onClick={toggleMenu}
+          aria-controls="navbarNavDropdown"
+          aria-expanded={isMenuOpen}
+          aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
         {/* Navbar Links (conditionally rendered based on menu state) */}
         <div
-          className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} // Use 'show' class for open menu
+          className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`}
           id="navbarNavDropdown"
         >
           <ul className="navbar-nav ms-auto gap-5">
