@@ -1,92 +1,112 @@
 .footer {
-  background-color: #141414;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 20px; /* Adjusted padding for all screen sizes */
+  background-color: #1d1d1d; /* Dark background for main footer */
+  padding-top: 40px;
+  color: #9a9a9a; /* Light gray text color for links */
+  font-family: 'Poppins', sans-serif;
 }
 
 .footer-top {
   display: flex;
-  flex-direction: row; /* Default to row for larger screens */
   justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  padding: 60px 0; /* Adequate padding that works across sizes */
+  align-items: flex-start;
+  padding-bottom: 30px;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
 
-.footer-logo img {
-  width: 50px; /* Adjust as necessary */
+.footer-logo {
+  max-width: 200px;
+  flex: 1 1 200px; /* Allow flexibility */
+  text-align: center; /* Center logo and address */
+}
+
+.footer-address {
+  margin-top: 10px;
+  color: #9a9a9a; /* Text color */
 }
 
 .footer-links {
-  display: flex;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  justify-content: center; /* Center links for consistency */
+  max-width: 150px;
+  flex: 1 1 150px; /* Allow flexibility */
+  margin: 10px 0; /* Add margin for spacing */
+}
+
+.footer-links h5 {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .footer-links a {
-  color: #808080;
+  display: block;
+  color: #9a9a9a;
+  margin-bottom: 8px;
   text-decoration: none;
-  margin: 10px; /* Unified margin for all links */
-  font-family: 'Helvetica', sans-serif;
-  font-size: 16px; /* Reduced base font size */
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #fff; /* White text on hover */
 }
 
 .footer-social {
   display: flex;
   justify-content: center; /* Center social icons */
-  gap: 15px; /* Reduced gap for better space management */
-  margin-top: 20px; /* Added top margin for separation */
+  margin-top: 20px; /* Add margin for spacing */
 }
 
 .footer-social svg {
-  color: #808080;
-  font-size: 24px; /* Controlled icon size */
+  font-size: 20px;
+  color: white;
+  margin-right: 15px;
+  cursor: pointer;
+  transition: color 0.3s;
 }
 
-.footer-address {
-  color: #808080;
-  font-family: 'Helvetica', sans-serif;
-  font-size: 16px;
-  margin-top: 20px; /* Added top margin for visual separation */
-  text-align: center; /* Ensure address is centered */
+.footer-social svg:hover {
+  color: #999; /* Lighter hover effect */
 }
 
 .footer-bottom {
-  background-color: #F5F7FE;
-  color: #808080;
-  padding: 20px 10px; /* Responsive padding */
   text-align: center;
-  font-family: 'Helvetica', sans-serif;
-  font-size: 16px; /* Standardized font size */
-  width: 100%; /* Ensure full width coverage */
+  background-color: #f5f7fe; /* White background for copyright section */
+  color: #333; /* Darker text color */
+  padding: 20px 0;
+  font-size: 14px;
+  margin-top: 30px;
+  border-top: none; /* Remove border to blend with white background */
 }
 
-/* Responsive Media Queries */
+/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   .footer-top {
-    flex-direction: column; /* Stack elements vertically on smaller screens */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center align */
   }
 
-  .footer-logo, .footer-links, .footer-social {
-    align-items: center;
-    justify-content: center;
+  .footer-links {
+    text-align: center; /* Center links */
   }
 
-  .footer-logo img {
-    width: 40px; /* Slightly smaller logo for smaller screens */
+  .footer-social {
+    justify-content: center; /* Center social icons */
+  }
+
+  .footer-logo {
+    margin-bottom: 0px; /* Add space between logo and links */
   }
 }
 
 @media (max-width: 480px) {
-  .footer-links a {
-    font-size: 14px; /* Smaller font size for very small devices */
-    margin: 8px; /* Slightly reduced margin */
+  .footer-links h5 {
+    font-size: 16px; /* Smaller heading size */
   }
 
-  .footer-social svg {
-    font-size: 20px; /* Smaller icons for compact spaces */
+  .footer-links a {
+    font-size: 14px; /* Smaller link size */
+  }
+
+  .footer-bottom {
+    font-size: 12px; /* Smaller copyright text */
   }
 }

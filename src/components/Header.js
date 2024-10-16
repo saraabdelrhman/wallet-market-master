@@ -1,57 +1,79 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+import './Header.css'; // Removed extra space here
+
 import img from '../components/images/logo-86.png';
 import threelines from '../components/images/more-dots-vertical.png';
 import person1 from '../components/images/image 6 (1).png';
 import person2 from '../components/images/image 6 (2).png';
 import notification from '../components/images/notification.png';
 import { Dropdown } from 'react-bootstrap';
-import './Header.css';
+
+// Rest of your code remains the same
+
 
 const Header = ({ language, setLanguage }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to track menu visibility
   const location = useLocation();
 
-  const isActive = (path) => {
-    return location.pathname === path
+  const isActive = (path) =>
+    location.pathname === path
       ? { color: '#377bf7' } // Apply active style
       : { color: '#474545' }; // Default style
-  };
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen); // Toggle menu state on button click
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
+        {/* Brand Logo */}
         <Link className="navbar-brand d-flex align-items-center" to="/">
           <img src={img} alt="Reveyou Logo" style={{ height: 40, marginRight: 10 }} />
-          <span style={{ color: 'black', fontSize: 30, fontFamily: 'Poppins', fontWeight: 700 }}>Reveyou</span>
+          <span style={{ color: 'black', fontSize: 30, fontFamily: 'Poppins', fontWeight: 700 }}>
+            Reveyou
+          </span>
         </Link>
 
+        {/* Navbar Toggler for Responsive Menu */}
         <button
           className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
+          data-bs-target="#navbarNavDropdown" // Target ID must match the collapse div
+          aria-controls="navbarNavDropdown"
+          aria-expanded={isMenuOpen} // Set aria-expanded based on menu state
           aria-label="Toggle navigation"
+          onClick={toggleMenu}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarNav">
+        {/* Navbar Links (conditionally rendered based on menu state) */}
+        <div
+          className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} // Use 'show' class for open menu
+          id="navbarNavDropdown"
+        >
           <ul className="navbar-nav ms-auto gap-5">
             <li className="nav-item mt-1">
-              <Link className="nav mt-2" to="/" style={isActive('/')}>Home</Link>
+              <Link className="nav mt-2" to="/" style={isActive('/')}>
+                Home
+              </Link>
             </li>
             <li className="nav-item mt-1">
-              <Link className="nav mt-2" style={isActive('/categories')} to="/categories">Category</Link>
+              <Link className="nav mt-2" style={isActive('/categories')} to="/categories">
+                Category
+              </Link>
             </li>
             <li className="nav-item mt-1">
-              <Link className="nav mt-2" style={isActive('/about')} to="/about">About</Link>
+              <Link className="nav mt-2" style={isActive('/about')} to="/about">
+                About
+              </Link>
             </li>
             <li className="nav-item mt-1">
-              <Link className="nav mt-2" style={isActive('/contact')} to="/contact">Contact Us</Link>
+              <Link className="nav mt-2" style={isActive('/contact')} to="/contact">
+                Contact Us
+              </Link>
             </li>
 
             {/* Language Selector */}
@@ -100,7 +122,7 @@ const Header = ({ language, setLanguage }) => {
                       <div>
                         <div style={{ fontSize: '12px', color: '#0085FF' }} className="d-flex mt-3">
                           Mark all as read
-                          <img src={threelines} alt="three dots"></img>
+                          <img src={threelines} alt="three dots" />
                         </div>
                       </div>
                     </div>
@@ -152,46 +174,45 @@ const Header = ({ language, setLanguage }) => {
                 </Dropdown.Menu>
               </Dropdown>
             </li>
-         
-            <div className="d-flex align-items-center gap-3 ">
-            <Link
-              to="/login"
-              style={{
-                background: '#377BF7',
-                borderRadius: 30,
-                color: 'white',
 
-                fontSize: 15,
-                padding: '14px 16px',
-                fontFamily: 'Inter',
-                fontWeight: '600',
-                letterSpacing: 0.07,
-                textAlign: 'center',
-                textDecoration: 'none',
-              }}
-            >
-              Login
-            </Link>
-            <Link
-              to="/register"
-              style={{
-                borderRadius: 30,
-                border: '1px #377BF7 solid',
-                color: '#3B82F6',
-                fontSize: 15,
-                padding: '14px 17px',
-                fontFamily: 'Inter',
-                fontWeight: '600',
-                letterSpacing: 0.07,
-                textAlign: 'center',
-                textDecoration: 'none',
-               
-              }}
-            >
-              Register
-            </Link>
-      </div>
-      </ul>
+            {/* Login and Register Buttons */}
+            <div className="d-flex align-items-center gap-3">
+              <Link
+                to="/login"
+                style={{
+                  background: '#377BF7',
+                  borderRadius: 30,
+                  color: 'white',
+                  fontSize: 15,
+                  padding: '14px 16px',
+                  fontFamily: 'Inter',
+                  fontWeight: '600',
+                  letterSpacing: 0.07,
+                  textAlign: 'center',
+                  textDecoration: 'none',
+                }}
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                style={{
+                  borderRadius: 30,
+                  border: '1px #377BF7 solid',
+                  color: '#3B82F6',
+                  fontSize: 15,
+                  padding: '14px 17px',
+                  fontFamily: 'Inter',
+                  fontWeight: '600',
+                  letterSpacing: 0.07,
+                  textAlign: 'center',
+                  textDecoration: 'none',
+                }}
+              >
+                Register
+              </Link>
+            </div>
+          </ul>
         </div>
       </div>
     </nav>
