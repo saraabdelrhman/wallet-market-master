@@ -119,7 +119,7 @@ const Profile = ({content}) => {
                <p><span>Bio:</span> {user.bio}</p>
              </div>
              <Link to={'/editprofile'} className="no-underline">
-               <button className="edit-profile-button ps-5 pe-5">
+               <button className="edit-profile-button ps-5 ms-5 pe-5">
                  <Edit3 /> Edit profile
                </button>
              </Link>
@@ -153,12 +153,13 @@ const Profile = ({content}) => {
              Review Alert
            </div>
      
-           <div
+           <div className="paddin"
              style={{
-               padding: 24,
+              paddingTop:24,
+               paddingLeft:5,
+               paddingRight:5,
                background: 'white',
                borderRadius: 24,
-               overflow: 'hidden',
                border: '1px solid #B3261E',
                flexDirection: 'column',
                justifyContent: 'flex-start',
