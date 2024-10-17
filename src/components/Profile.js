@@ -259,154 +259,211 @@ const Profile = ({content}) => {
              </button>
      
              {isVisible && (
-               <div
-                 style={{
-                   position: 'fixed',
-                   top: 0,
-                   left: 0,
-                   right: 0,
-                   bottom: 0,
-                   backgroundColor: 'rgba(0, 0, 0, 0.5)', // Slightly dim the background
-                   display: 'flex',
-                   justifyContent: 'center',
-                   alignItems: 'center',
-                 }}
-                 onClick={toggleVisibility} // Close the modal on background click
-               >
-                 <div
-                   style={{
-                     width: '80%', // Adjust width as needed
-                     maxWidth: 800,
-                     padding: '32px',
-                     background: '#F5F7FE',
-                     borderRadius: 25,
-                     border: '1px #E4E7E9 solid',
-                     display: 'flex',
-                     flexDirection: 'column',
-                     justifyContent: 'center',
-                     alignItems: 'center',
-                     gap: 16,
-                   }}
-                   onClick={(e) => e.stopPropagation()} // Prevent closing on content click
-                 >
-                   {/* Modal Content */}
-                   <div
-                     style={{
-                       width: '100%',
-                       height: '100%',
-                       paddingTop: 8,
-                       paddingBottom: 8,
-                       background: 'rgba(55, 123, 247, 0.20)',
-                       borderRadius: 24,
-                       display: 'inline-flex',
-                       justifyContent: 'center',
-                       alignItems: 'center',
-                       gap: 14,
-                     }}
-                   >
-                     <div
-                       style={{
-                         height: 41,
-                         textAlign: 'center',
-                         color: 'black',
-                         fontSize: 28,
-                         fontFamily: 'DM Sans',
-                         fontWeight: '700',
-                         lineHeight: 42,
-                         zIndex: '2',
-                       }}
-                     >
-                       Message
-                     </div>
-                   </div>
-                   <div
-                     style={{
-                       width: '100%',
-                       flexDirection: 'column',
-                       gap: 40,
-                       display: 'inline-flex',
-                     }}
-                   >
-                     <div
-                       style={{
-                         paddingLeft: 24,
-                         paddingRight: 24,
-                         paddingTop: 16,
-                         paddingBottom: 16,
-                         borderBottom: '0.25px #AFB8CF solid',
-                         display: 'inline-flex',
-                       }}
-                     >
-                       <div
-                         style={{
-                           flex: '1 1 0',
-                           height: 35,
-                           display: 'flex',
-                           gap: 8,
-                         }}
-                       >
-                         <img
-                           style={{ width: 35, height: 35, borderRadius: 8 }}
-                           src={rec}
-                           alt="profile"
-                         />
-                         <div
-                           style={{
-                             color: '#636363',
-                             fontSize: 14,
-                             fontFamily: 'Inter',
-                             fontWeight: '600',
-                             wordWrap: 'break-word',
-                           }}
-                         >
-                           Ammi Watts
-                         </div>
-                       </div>
-                     </div>
-                     <div
-                       style={{
-                         width: '100%',
-                         paddingBottom: 17,
-                         display: 'flex',
-                         flexDirection: 'column',
-                         gap: 8,
-                       }}
-                     >
-                       <input
-                         placeholder="Type your message..."
-                         style={{
-                           border: '1px solid #B5B5B5',
-                           borderRadius: 24,
-                           padding: '10px 20px',
-                           outline: 'none',
-                           width: '100%',
-                           height: 50,
-                           fontSize: 16,
-                         }}
-                       />
-                       <button
-                         style={{
-                           padding: '12px 24px',
-                           borderRadius: 24,
-                           background: '#377BF7',
-                           color: 'white',
-                           border: 'none',
-                           fontSize: 16,
-                           fontFamily: 'Poppins',
-                           cursor: 'pointer',
-                         }}
-                       >
-                         Send
-                       </button>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-             )}
-           </div>
-         </div>
-       </div>
-     </div>
+  <div
+    style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Slightly dim the background
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+    onClick={toggleVisibility} // Close the modal on background click
+  >
+    <div
+      style={{
+        width: '80%', // Adjust width as needed
+        maxWidth: 800,
+        padding: '32px',
+        background: '#F5F7FE',
+        borderRadius: 25,
+        border: '1px #E4E7E9 solid',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 16,
+      }}
+      onClick={(e) => e.stopPropagation()} // Prevent closing on content click
+    >
+      {/* Modal Content */}
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          paddingTop: 8,
+          paddingBottom: 8,
+          background: 'rgba(55, 123, 247, 0.20)',
+          borderRadius: 24,
+          display: 'inline-flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: 14,
+        }}
+      >
+        <div
+          style={{
+            height: '41px',
+            textAlign: 'center',
+            color: 'black',
+            fontSize: 28,
+            fontFamily: 'DM Sans',
+            fontWeight: '700',
+            zIndex: '2',
+          }}
+        >
+          Message
+        </div>
+      </div>
+      <div
+        style={{
+          width: '100%',
+          flexDirection: 'column',
+          gap: 40,
+          display: 'inline-flex',
+        }}
+      >
+        <div
+          style={{
+            paddingLeft: 24,
+            paddingRight: 24,
+            paddingTop: 16,
+            paddingBottom: 16,
+            borderBottom: '0.25px #AFB8CF solid',
+            display: 'inline-flex',
+          }}
+        >
+          <div
+            style={{
+              flex: '1 1 0',
+              height: 35,
+              display: 'flex',
+              gap: 8,
+            }}
+          >
+            <img
+              style={{ width: 35, height: 35, borderRadius: 8 }}
+              src={rec}
+              alt="profile"
+            />
+            <div
+              style={{
+                color: '#636363',
+                fontSize: 14,
+                fontFamily: 'Inter',
+                fontWeight: '600',
+                wordWrap: 'break-word',
+              }}
+            >
+              Ammi Watts
+            </div>
+          </div>
+        </div>
+        <div
+          style={{
+            width: '100%',
+            paddingBottom: 17,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 8,
+          }}
+        >
+          <div
+            style={{
+              width: '50%',
+              height: 'auto', // Let the height adjust dynamically
+              paddingLeft: 24,
+              marginLeft: '50%', // Align it to the right
+              paddingRight: 24,
+              paddingTop: 16,
+              paddingBottom: 16,
+              background: '#3D64FD',
+              borderTopLeftRadius: 32,
+              borderTopRightRadius: 32,
+              borderBottomLeftRadius: 32, // Add the missing corner radius for message bubble effect
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+              gap: 10,
+              display: 'inline-flex',
+              color: '#F8F9FD', // Text color for readability
+              fontFamily: 'Inter',
+              fontSize: 12,
+            }}
+          >
+            <div
+              style={{
+                color: '#F8F9FD',
+                fontSize: 12,
+                fontFamily: 'Inter',
+                fontWeight: '400',
+                wordWrap: 'break-word',
+              }}
+            >
+              Oh, hello! Can you help us to improve this product?
+            </div>
+          </div>
+          <input
+            placeholder="Text here..."
+            style={{
+              border: 'none', // Removed border
+              color: '#dbdae8',
+              borderRadius: 15,
+              marginTop: '20px',
+              padding: '50px 20px',
+              outline: 'none',
+              width: '100%',
+              fontSize: 18,
+            }}
+            // Custom styles for the placeholder text
+            placeholderStyle={{
+              color: '#dbdae8',
+              fontWeight: '100', // Lighter font weight for the placeholder
+            }}
+          />
+          <div className="d-flex justify-content-center">
+            <button
+              style={{
+                padding: '12px 40px',
+                borderRadius: 24,
+                background: '#377BF7',
+                color: 'white',
+                border: 'none',
+                fontSize: 16,
+                fontFamily: 'Poppins',
+                cursor: 'pointer',
+              }}
+            >
+              Send
+            </button>
+            <button
+              style={{
+                padding: '12px 40px',
+                marginLeft: '12px',
+                borderRadius: 24, // Correct borderRadius value
+                color: '#377BF7', // Text color
+                border: '2px solid #377BF7', // Border color and width
+                backgroundColor: 'transparent', // Transparent background
+                fontSize: 16,
+                fontFamily: 'Poppins',
+                cursor: 'pointer',
+              }}
+              onClick={toggleVisibility} // Close the modal on Cancel click
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+</div>
+</div>
+</div>
+</div>
           )}     
           {view === "addProduct" && <div className="addproduct">
   <div
