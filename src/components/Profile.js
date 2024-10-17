@@ -112,7 +112,7 @@ const Profile = ({content}) => {
              </div>
            </div>
            <div className="col-md-8 col-sm-12">
-             <div className="profile-info ms-5">
+             <div className="profile-info ">
                <p><span>Name:</span> {user.name}</p>
                <p><span>Email:</span> {user.email}</p>
                <p><span>Created:</span> {user.joinDate}</p>
