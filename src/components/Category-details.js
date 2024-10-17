@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // Added useEffect import
 import "./Category-details.css";
 import icon from './images/akar-icons_search.png';
 import { Link } from "react-router-dom";
@@ -13,6 +13,16 @@ const ProductReviewPage = ({ content }) => {
   const [category, setCategory] = useState("1 Star");
   const [subcategory, setSubcategory] = useState("Nike");
   const [searchQuery, setSearchQuery] = useState("");
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 768);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const products = [
     { title: "Nike Pegasus 41 PQ", reviews: 8000 },
@@ -67,7 +77,7 @@ const ProductReviewPage = ({ content }) => {
           {content["write-review"]}
         </button>
       </div>
-      <div className="">
+      <div>
         <span className="stars me-3" style={{ fontSize: '20px' }}>★★★★☆</span>
         <span style={{ color: '#77878F' }}>{reviews} Reviews</span>
       </div>
@@ -102,55 +112,104 @@ const ProductReviewPage = ({ content }) => {
             zIndex: '1',
           }}
         />
-      <div className='d-flex justify-content-center align-items-center'>
-    <h1 className="text-center mt-5 mb-5 fw-bold w-75">{content["best-rated"]}</h1>
-</div>
-
+        <div className='d-flex justify-content-center align-items-center'>
+          <h1 className="text-center mt-5 mb-5 fw-bold w-75">{content["best-rated"]}</h1>
+        </div>
       </header>
 
-      <div className="main-content mt-5" >
-        <aside className="sidebar mt-5 pe-5 ps-3 pt-4 pb-4 rounded-5 " >
-          <SidebarRadioGroup title="CATEGORY" items={categories} selected={category} onChange={handleCategoryChange} className='rightside' />
-          <SidebarRadioGroup title="SUBCATEGORY" items={subcategories} selected={subcategory}  onChange={handleSubcategoryChange} className='leftside' />
-        </aside>
+      <div className="main-content mt-5">
+        <>
+          {/* Sidebar (will be hidden on mobile) */}
+          {!isMobile && (
+            <aside className="sidebar mt-5 pe-5 ps-3 pt-4 pb-4 rounded-5">
+              <SidebarRadioGroup
+                title="CATEGORY"
+                items={categories}
+                selected={category}
+                onChange={handleCategoryChange}
+                className='rightside'
+              />
+              <SidebarRadioGroup
+                title="SUBCATEGORY"
+                items={subcategories}
+                selected={subcategory}
+                onChange={handleSubcategoryChange}
+                className='leftside'
+              />
+            </aside>
+          )}
+
+          {/* Filters (both category and subcategory) shown on mobile */}
+          {isMobile && (
+            <div className="d-flex ms-2 mt-3 align-items-center">
+              <select
+                className="ps-3 pt-3 pb-3 pe-3 text-secondary me-2"
+                style={{ border: '1px solid #e4e7e9' }}
+                onChange={handleCategoryChange}
+              >
+                <option value="">Filter by Category</option>
+                {categories.map((item) => (
+                  <option key={item} value={item}>{item}</option>
+                ))}
+              </select>
+
+              <select
+                className="ps-3 pt-3 pb-3 pe-3 text-secondary me-2"
+                style={{ border: '1px solid #e4e7e9' }}
+                onChange={handleSubcategoryChange}
+              >
+                <option value="">Filter by Subcategory</option>
+                {subcategories.map((item) => (
+                  <option key={item} value={item}>{item}</option>
+                ))}
+              </select>
+
+              {/* Search bar for mobile */}
+             
+            </div>
+          )}
+        </>
 
         <div className="product-list mt-5">
-          <div className="search-sort">
-            <div className="search-bar">
+          <div className="search-sort d-flex justify-content-between align-items-center">
+            <div className="search-bar d-flex align-items-center">
               <input
                 type="text"
                 placeholder="Search for anything..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}  // Update search query state
+                onChange={(e) => setSearchQuery(e.target.value)} // Update search query state
+                className="me-2 pt-2 pb-2 pe-2"
               />
               <img src={icon} alt="Search" />
             </div>
 
-            <div className="d-flex ms-2">
-              <span className="mt-3 me-3">sort by:</span>
-            <select className="ps-3 pe-3 text-secondary "style={{border:'1px solid #e4e7e9'}}>
-              <option className="">Most Popular</option>
-            </select>
+            <div className="d-flex align-items-center">
+              <span className="mt-3 me-2 mb-4 sortby">sort by:</span>
+              <select className="ps-3 pe-3 pt-3 pb-3 mb-3 text-secondary" style={{ border: '1px solid #e4e7e9' }}>
+                <option>Most Popular</option>
+                {/* Add other sorting options here if needed */}
+              </select>
+            </div>
           </div>
-</div>
+
           <div className="filter-bar">
             <div className="active-filters">
               <div style={{ color: '#5F6C72' }}>Active Filters:</div>
               <div className="filter-item">
-                <div>Nike</div>
+                <div>{subcategory}</div>
                 <div style={{ color: '#5F6C72' }}>
                   <div>X</div>
                 </div>
               </div>
               <div className="filter-item">
-                <div>4 Star Rating</div>
+                <div>{category} Rating</div>
                 <div style={{ color: '#5F6C72' }}>
                   <div style={{ fontSize: '14' }}>x</div>
                 </div>
               </div>
             </div>
             <div className="result-count">
-              <span className="count">65,867</span> Results found.
+              <span className="count">{filteredProducts.length}</span> Results found.
             </div>
           </div>
 

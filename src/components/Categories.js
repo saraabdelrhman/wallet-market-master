@@ -64,7 +64,7 @@ const Categories = ({ content }) => {
             {content["catrgory-title"]}
           </h2>
           <div className="input-group mb-3" style={{ maxWidth: '600px', margin: 'auto' }}>
-            <span className="input-group-text bg-white border-end-0"><FaSearch /></span>
+            <span className="input-group-text bg-white border-end-0 border-0"><FaSearch /></span>
             <input
               type="text" 
               className="form-control border-start-0 p-3 rounded-3"

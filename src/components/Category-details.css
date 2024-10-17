@@ -175,5 +175,14 @@
     margin-right: 40%; /* Huge gap between the two items */
   }
 }
+@media (max-width: 768px) {
+  .sidebar {
+    display: none; /* Hide sidebar on mobile devices */
+  }
+  .sortby {
+    display: none; /* Hide sidebar on mobile devices */
+  }
+}
+
 
 
