@@ -82,7 +82,7 @@ const Profile = ({content}) => {
                  style={{
                    position: 'absolute',
                    left: '100px',
-                   bottom: '5px',
+                   bottom: '35px',
                    background: '#fff',
                    borderRadius: '50%',
                    width: '50px',
