@@ -337,8 +337,7 @@ const reviewBoxStyle = {
   border: '1px solid #E4E7E9',
   display: 'flex',
   justifyContent: 'flex-start',
-  alignItems: 'center',
-  gap: '47px',
+  alignItems: 'center'
 };
 
 const userReviewInfoStyle = {
@@ -378,7 +377,7 @@ const writeReviewLinkStyle = {
 
 const starRatingStyle = {
   display: 'flex',
-  gap: '10px',
+  gap: '0px',
 };
 
 const interactionIconsStyle = {
