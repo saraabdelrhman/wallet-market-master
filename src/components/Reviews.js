@@ -155,10 +155,22 @@ export default function Reviews({ content }) {
               </div>
 
               {/* Toggle Switch */}
-              <label style={toggleSwitchStyle}>
-  <input type="checkbox" checked={newReview.isAnonymous} onChange={toggleAnonymous} style={{display: 'none'}} />
-  <span style={{...toggleSliderStyle, ...(newReview.isAnonymous ? checkedSliderStyle  : {})}}></span>
+              <label style={{
+    ...toggleSwitchStyle,
+    backgroundColor: newReview.isAnonymous ? 'gray' : '#007DFC'
+  }}>
+  <input 
+    type="checkbox" 
+    checked={newReview.isAnonymous} 
+    onChange={toggleAnonymous} 
+    style={{
+      display: 'none'
+    }} 
+  />
+  <span style={{...toggleSliderStyle, ...(newReview.isAnonymous ? checkedSliderStyle : {})}}></span>
 </label>
+
+
 
             </div>
 
@@ -210,7 +222,7 @@ const ReviewItem = ({ name, date, stars, review, image, role }) => (
     </div>
     <hr />
     <div style={reviewTextStyle}>{review}</div>
-    <div className='d-flex gap-2 pb-5 ms-2' style={{ color: '#377BF7' }}>
+    <div className='d-flex gap-2 pb-5 ms-2 ' style={{ color: '#377BF7' }}>
       <img src={translate} alt={translate} className="" />
       <span>View Translation</span>
     </div>
@@ -220,18 +232,34 @@ const ReviewItem = ({ name, date, stars, review, image, role }) => (
         <button type='submit' style={{ color: '#377BF7', borderRadius: '50px', padding: '10px 20px', border: '1px solid #377BF7' }}>Delete</button>
       </div>
     ) : (
-      <div style={interactionIconsStyle} className=" justify-content-between gap-5">
-        <div className="d-flex">
-          <img src={like} alt="like" style={iconStyle} />
-          <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Helpful</div>
-          <img src={dislike} alt="dislike" style={iconStyle} className="ms-5" />
-          <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Not Helpful</div>
-        </div>
-        <div className="d-flex" style={{ justifyContent: 'end' }}>
-          <img src={share} alt="share" style={iconStyle} />
-          <div style={{ color: '#636C71', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', wordWrap: 'break-word' }}>Share</div>
-        </div>
-      </div>
+<div>
+  <div
+    style={opinionStyle}
+    className="opinion d-flex justify-content-between align-items-center"
+  >
+    <div className="d-flex opinion align-items-center">
+      <img src={like} alt="like" style={iconStyle} />
+      <div className="helpful" style={helpfulTextStyle}>Helpful</div>
+      <img
+        src={dislike}
+        alt="dislike"
+        style={{ ...iconStyle, ...marginLeft20 }} // Conditional margin
+      />
+      <div style={helpfulTextStyle}>Not Helpful</div>
+    </div>
+
+    <div
+      className="d-flex justify-content-end align-items-center"
+      style={shareStyle} // Added style for Share section
+    >
+      <img src={share} alt="share" style={iconStyle} />
+      <div style={helpfulTextStyle}>Share</div>
+    </div>
+  </div>
+</div>
+
+
+
     )}
   </div>
 );
@@ -387,10 +415,16 @@ const interactionIconsStyle = {
   marginTop: '15px',
 };
 
-const iconStyle = {
-  width: '24px',
+// const iconStyle = {
+//   width: '25px',
+//   height: 'auto',
+//   cursor: 'pointer',
+// };
+const iconStylenothelpful = {
+  width: '25px',
   height: 'auto',
   cursor: 'pointer',
+  marginleft:'50px'
 };
 
 const rightSectionStyle = {
@@ -578,7 +612,7 @@ const toggleSliderStyle = {
 // Style when the checkbox is checked
 const checkedSliderStyle = {
   transform: 'translateX(26px)', // Adjust translation distance to match new width
-  backgroundColor: '#6a6a6b', // Slider color when active
+  backgroundColor: 'white', // Slider color when active
 };
 
 
@@ -590,6 +624,43 @@ const uploadButtonStyle = {
   border: '1px #E6E8EC solid',
   justifyContent: 'center',
 };
+const opinionStyle = {
+  display: 'flex',
+  flexWrap: 'nowrap',  // Change to nowrap to keep items in a single line
+  alignItems: 'center',
+  gap: '10px',
+  width: '100%', // Ensure it takes full width
+};
+
+const shareStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  marginLeft: 'auto', // Push the Share section to the end
+};
+
+const iconStyle = {
+  width: '25px',
+  height: 'auto',
+  cursor: 'pointer',
+};
+
+const helpfulTextStyle = {
+  color: '#636C71',
+  fontSize: '14px',
+  fontFamily: 'Poppins, sans-serif',
+  fontWeight: '400',
+  wordWrap: 'break-word',
+};
+
+const marginLeft20 = {
+  marginLeft: '20px',
+};
+
+// Media queries still need to be in CSS, or you can handle them with a CSS-in-JS solution like styled-components or inline styles that you conditionally apply based on the window size.
+
+
+
+
 
 /* Media Queries */
 const mediaQueries = `
@@ -646,8 +717,18 @@ const mediaQueries = `
     .stars-container {
       justify-content: flex-start;
     }
+      .opinion{
+      width:50px;
+      }
+
+      .iconStyle = {
+  width: '10px',
+  height: 'auto',
+  cursor: 'pointer',
+};
   }
 `;
+
 
 // Append media queries to the document head
 const appendStyles = () => {
