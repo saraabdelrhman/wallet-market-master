@@ -31,7 +31,7 @@ const Role = () => {
     const fetchRoles = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`https://wallyt.com/roles?page=${page}&size=${size}`);
+        const response = await fetch(`http://194.62.97.207/roles?page=${page}&size=${size}`);
         if (!response.ok) {
           throw new Error('Failed to fetch roles data');
         }
@@ -53,7 +53,7 @@ const Role = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this role? This action cannot be undone.")) {
       try {
-        const response = await fetch(`https://wallyt.com/role/${id}`, {
+        const response = await fetch(`http://194.62.97.207/role/${id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json'

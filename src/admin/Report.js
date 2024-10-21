@@ -31,7 +31,7 @@ const Report = () => {
     const fetchReports = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`https://wallyt.com/reports?page=${page}&size=${size}`);
+        const response = await fetch(`http://194.62.97.207/reports?page=${page}&size=${size}`);
         if (!response.ok) {
           throw new Error('Failed to fetch reports data');
         }
@@ -53,7 +53,7 @@ const Report = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this report? This action cannot be undone.")) {
       try {
-        const response = await fetch(`https://wallyt.com/report/${id}`, {
+        const response = await fetch(`http://194.62.97.207/report/${id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json'

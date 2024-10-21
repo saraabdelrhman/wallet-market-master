@@ -27,7 +27,7 @@ const Users = () => {
     const fetchUsers = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`https://wallyt.com/users?page=${page}&size=${size}`);
+        const response = await fetch(`http://194.62.97.207/users?page=${page}&size=${size}`);
         if (!response.ok) throw new Error('Failed to fetch users data');
         const data = await response.json();
         setUsers(data.users);
@@ -45,7 +45,7 @@ const Users = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
-        const response = await fetch(`https://wallyt.com/Users/${id}`, { method: 'DELETE' });
+        const response = await fetch(`http://194.62.97.207/users/${id}`, { method: 'DELETE' });
         if (!response.ok) throw new Error('Failed to delete user');
         alert('User deleted successfully!');
         setUsers(users.filter(user => user.id !== id));

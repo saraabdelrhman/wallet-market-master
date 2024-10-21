@@ -31,7 +31,7 @@ const Category = () => {
     const fetchCategories = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`https://api.example.com/categories?page=${page}&size=${size}`);
+        const response = await fetch(`http://194.62.97.207/categories?page=${page}&size=${size}`);
         if (!response.ok) {
           throw new Error('Failed to fetch categories');
         }
@@ -54,7 +54,7 @@ const Category = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this category?")) {
       try {
-        const response = await fetch(`https://api.example.com/category/${id}`, { method: 'DELETE' });
+        const response = await fetch(`http://194.62.97.207/category/${id}`, { method: 'DELETE' });
         if (!response.ok) throw new Error('Failed to delete category');
         alert('Category deleted successfully!');
         setCategories(categories.filter(category => category.id !== id));
@@ -226,4 +226,3 @@ const Category = () => {
 };
 
 export default Category;
-
