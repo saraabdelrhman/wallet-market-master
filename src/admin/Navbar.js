@@ -12,6 +12,11 @@ const Navigation = () => {
 
   const toggleSidebar = () => setIsVisible(!isVisible);  // Toggle function
 
+  const handleLinkClick = (path) => {
+    setActiveItem(path);  // Set the active item
+    setIsVisible(false);  // Close the sidebar
+  };
+
   const navItems = [
     { path: '/admin/user', label: 'User', img: user },
     { path: '/admin/products', label: 'Product', img: product },
@@ -78,7 +83,7 @@ const Navigation = () => {
           }}
         >
           <img src={logo} alt="Logo" style={{ width: 45, height: 45 }} />
-          <Link to="/" style={{ textDecoration: 'none' }} onClick={() => setActiveItem('/')}>
+          <Link to="/" style={{ textDecoration: 'none' }} onClick={() => handleLinkClick('/')}>
             <div
               style={{
                 color: 'black',
@@ -113,7 +118,7 @@ const Navigation = () => {
               key={item.label}
               to={item.path}
               style={{ textDecoration: 'none', width: '100%' }}
-              onClick={() => setActiveItem(item.path)}
+              onClick={() => handleLinkClick(item.path)} // Call the new function
             >
               <div
                 style={{
