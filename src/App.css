@@ -1,7 +1,3 @@
-/* General styling for all screen sizes (smaller by default) */
-.container {
-  padding: 10px; /* Reduced padding for the entire container */
-}
 
 .table-responsive {
   width: 100%;
