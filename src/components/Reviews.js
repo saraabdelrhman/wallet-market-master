@@ -214,9 +214,12 @@ const ReviewItem = ({ name, date, stars, review, image, role }) => (
               <span className="mt-1 ms-3" style={{ color: '#6F7171', fontSize: 20, fontFamily: 'Poppins', fontWeight: '500' }}>| </span>
               <div className="mt-1 ms-2" style={{ color: '#377BF7', fontSize: 20, fontFamily: 'Poppins', fontWeight: '500', wordWrap: 'break-word' }}>{role}</div>
             </div>
+            <div className="d-flex justify-content-between">
             <div style={reviewDateStyle}>{date}</div>
+            <div className="review-stars mt-5 " style={starsContainerStyle}>{renderStars(stars)}</div>
+            </div>
           </div>
-          <div className="review-stars mt-5 " style={starsContainerStyle}>{renderStars(stars)}</div>
+         
         </div>
       </div>
     </div>
@@ -365,7 +368,11 @@ const reviewBoxStyle = {
   border: '1px solid #E4E7E9',
   display: 'flex',
   justifyContent: 'flex-start',
-  alignItems: 'center'
+  alignItems: 'center',
+  '@media (max-width: 768px)': {
+    width: '80%', // Adjust the width for small screens
+    padding: '16px', // Optional: Adjust padding for small screens
+  },
 };
 
 const userReviewInfoStyle = {
