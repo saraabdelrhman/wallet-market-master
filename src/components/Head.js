@@ -115,15 +115,16 @@ const Head = ({ content }) => {
             </div>
             <div style={{ width: '100%', marginTop: '25px', height: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex' }}>
               <div style={{ justifyContent: 'flex-start', alignItems: 'center', gap: 5, display: 'inline-flex' }}>
-                {images.map((image, index) => (
+                {images.map((_, index) => (
                   <div
                     key={index}
                     style={{
                       width: 10,
                       height: 10,
-                      borderRadius: 100,
+                      borderRadius: '100%',
                       background: currentImageIndex === index ? '#377BF7' : 'rgba(55, 123, 247, 0.60)', // Change color based on active state
-                      cursor: 'pointer'
+                      cursor: 'pointer',
+                      margin: '0 5px' // Add some spacing between dots
                     }}
                     onClick={() => handleDotClick(index)}
                   />
