@@ -21,6 +21,11 @@ const Header = ({ language, setLanguage }) => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  // Function to close the menu
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -50,25 +55,20 @@ const Header = ({ language, setLanguage }) => {
         >
           <ul className="navbar-nav ms-auto gap-5">
             <li className="nav-item mt-1">
-              <Link className="nav mt-2" to="/" style={isActive('/')}>
-                Home
-              </Link>
-            </li>
-            <li className="nav-item mt-1">
-              <Link className="nav mt-2" style={isActive('/categories')} to="/categories">
+              <Link className="nav mt-2" style={isActive('/categories')} to="/categories" onClick={handleLinkClick}>
                 Category
               </Link>
             </li>
-            <li className="nav-item mt-1">
-              <Link className="nav mt-2" style={isActive('/about')} to="/about">
+            {/* <li className="nav-item mt-1">
+              <Link className="nav mt-2" style={isActive('/about')} to="/about" onClick={handleLinkClick}>
                 About
               </Link>
             </li>
             <li className="nav-item mt-1">
-              <Link className="nav mt-2" style={isActive('/contact')} to="/contact">
+              <Link className="nav mt-2" style={isActive('/contact')} to="/contact" onClick={handleLinkClick}>
                 Contact Us
               </Link>
-            </li>
+            </li> */}
 
             {/* Language Selector */}
             <li className="nav d-flex align-items-center">
