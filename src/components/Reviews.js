@@ -74,7 +74,7 @@ export default function Reviews({ content }) {
   const isMobile = window.innerWidth <= 768;
 
   // Set size based on screen size
-  const starSize = isMobile ? '40px' : '50px';
+  const starSize = isMobile ? '33px' : '50px';
   return (
     <div className="container w-100">
       <header className="header" style={{ backgroundColor: 'transparent' }}>
