@@ -63,7 +63,18 @@ export default function Reviews({ content }) {
   const toggleAnonymous = () => {
     setNewReview((prevReview) => ({ ...prevReview, isAnonymous: !prevReview.isAnonymous }));
   };
+  const starRatingStyle = {
+    display: 'flex',
+    justifyContent: 'center', // Center the stars
+    alignItems: 'center',
+    gap: '0px' // Add space between stars
+  };
 
+  // Determine if the screen is mobile
+  const isMobile = window.innerWidth <= 768;
+
+  // Set size based on screen size
+  const starSize = isMobile ? '40px' : '50px';
   return (
     <div className="container w-100">
       <header className="header" style={{ backgroundColor: 'transparent' }}>
@@ -104,12 +115,26 @@ export default function Reviews({ content }) {
             </div>
 
             <div style={starRatingStyle}>
-              {[...Array(5)].map((_, index) => (
-                <svg key={index} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style={{ width: '50px', height: '50px', position: 'relative', cursor: 'pointer' }}>
-                  <polygon points="50,15 61,35 82,35 67,50 73,70 50,58 27,70 33,50 18,35 39,35" style={{ fill: 'white', stroke: '#ADB7BC', strokeWidth: 7 }} />
-                </svg>
-              ))}
-            </div>
+      {[...Array(5)].map((_, index) => (
+        <svg
+          key={index}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 100 100"
+          style={{
+            width: starSize,
+            height: starSize,
+            gap:'0px',
+            position: 'relative',
+            cursor: 'pointer'
+          }}
+        >
+          <polygon
+            points="50,15 61,35 82,35 67,50 73,70 50,58 27,70 33,50 18,35 39,35"
+            style={{ fill: 'white', stroke: '#ADB7BC', strokeWidth: 7 }}
+          />
+        </svg>
+      ))}
+    </div>
           </div>
 
           <div className="mt-5 mb-5" style={{ backgroundColor: '#f5f7fe' }}>
@@ -733,7 +758,12 @@ const mediaQueries = `
   width: '10px',
   height: 'auto',
   cursor: 'pointer',
-};
+}
+
+.gerladstars={
+width:'10px,
+height:'10px
+}
   }
 `;
 
