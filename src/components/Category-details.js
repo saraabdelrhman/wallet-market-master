@@ -141,9 +141,9 @@ const ProductReviewPage = ({ content }) => {
 
           {/* Filters (both category and subcategory) shown on mobile */}
           {isMobile && (
-            <div className="d-flex ms-2 mt-3 align-items-center">
+            <div className="d-flex gap-2 mt-3 align-items-center">
               <select
-                className="ps-3 pt-3 pb-3 pe-3 text-secondary me-2"
+                className="pt-3 pb-3 pe-3 text-secondary "
                 style={{ border: '1px solid #e4e7e9' }}
                 onChange={handleCategoryChange}
               >
@@ -154,7 +154,7 @@ const ProductReviewPage = ({ content }) => {
               </select>
 
               <select
-                className="ps-3 pt-3 pb-3 pe-3 text-secondary me-2"
+                className="pt-3 pb-3 pe-3 text-secondary "
                 style={{ border: '1px solid #e4e7e9' }}
                 onChange={handleSubcategoryChange}
               >
