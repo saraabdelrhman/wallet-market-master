@@ -114,7 +114,7 @@ const Products = () => {
 
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h2 className="fw-bold">Products</h2>
-        <Link to={'/admin/newproduct'}>
+        <Link to={'/admin/newproducts'}>
           <Button
             style={{
               backgroundColor: '#377BF7',

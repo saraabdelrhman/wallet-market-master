@@ -114,10 +114,10 @@ const Header = ({ language, setLanguage }) => {
                         <span className="badge bg-primary text-light text-center rounded-circle ms-2">2</span>
                       </div>
                       <div>
-                        <div style={{ fontSize: '12px', color: '#0085FF' }} className="d-flex mt-3">
-                          Mark all as read
-                          <img src={threelines} alt="three dots" />
-                        </div>
+                        <button style={{ fontSize: '12px', color: '#0085FF' }} className="d-flex  border-0 bg-transparent">
+                         <span> Mark all as read</span>
+                          <img src={threelines} alt="three dots" className='' />
+                        </button>
                       </div>
                     </div>
                   </Dropdown.ItemText>

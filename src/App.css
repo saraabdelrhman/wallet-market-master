@@ -1,4 +1,6 @@
-
+.body{
+  background-color: #fff;
+}
 .table-responsive {
   width: 100%;
 }

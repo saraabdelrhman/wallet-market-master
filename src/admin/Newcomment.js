@@ -3,7 +3,7 @@ import { Container, Form, Row, Col, Button } from 'react-bootstrap';
 
 const Newcomment = () => {
   return (
-    <Container className="mt-4" style={{width: '80%',marginLeft:'18%'}}>
+    <Container className="mt-4 mt-5" >
       <h2 className="fw-bold pb-2">Add Comment</h2>
       <Form>
         <Row className="mb-3">
