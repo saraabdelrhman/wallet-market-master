@@ -54,8 +54,8 @@ const Footer = () => {
         {/* Company Links */}
         <div className="footer-links">
           <h5 style={{ color: '#FFF', fontWeight: 'bold' }}>Company</h5>
-          <Link to="/about-us" style={{ color: '#9a9a9a' }}>About Us</Link><br />
-          <Link to="/contact-us" style={{ color: '#9a9a9a' }}>Contact Us</Link>
+          <Link to="/about" style={{ color: '#9a9a9a' }}>About Us</Link><br />
+          <Link to="/contact" style={{ color: '#9a9a9a' }}>Contact Us</Link>
         </div>
 
         {/* Social Media Icons */}
