@@ -347,9 +347,10 @@ const reviewCountStyle = {
 };
 
 const ratingStyle = {
+  
   display: "flex",
   alignItems: "center",
-  gap: "20px",
+  marginRight:"40px"
 };
 
 const ratingNumberStyle = {
