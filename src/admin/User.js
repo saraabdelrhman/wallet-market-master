@@ -58,63 +58,63 @@ const Users = () => {
   return (
     <Container fluid className="d-flex flex-column mt-5">
       <Row className="mb-2 align-items-center">
-      <Col md={6} xs={12} className="d-flex align-items-center search-container">
-  <div
-    style={{
-      width: '100%',
-      padding: '11.25px 18px',
-      borderRadius: '56.25px',
-      border: '1.12px solid #EEEEEE',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      backgroundColor: 'transparent', // Transparent background
-    }}
-  >
-    <input
-      type="text"
-      placeholder="Search"
-      style={{
-        textAlign: 'left', // Placeholder aligned to the left
-        color: '#7F8190',
-        fontSize: '18px',
-        fontFamily: 'Poppins',
-        fontWeight: '400',
-        border: 'none',
-        outline: 'none',
-        width: '100%',
-        backgroundColor: 'transparent', // Transparent background
-        padding: '0', // Remove padding for better alignment
-      }}
-    />
-    <div
-      style={{
-        width: '36px',
-        height: '36px',
-        background: '#377BF7',
-        borderRadius: '50%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <img src={searchIcon} alt="Search Icon" style={{ width: '18px', height: '18px' }} />
-    </div>
-  </div>
-</Col>
-
-
-
-        <Col md={6} xs={12} className="d-flex justify-content-end align-items-center mt-3 mt-md-0 user-info">
-          <div className="text-end">
-            <div className="fw-bold" style={{ fontSize: 18 }}>Elisa</div>
-            <div style={{ color: '#7F8190', fontSize: 15 }}>Admin</div>
+        <Col md={12} xs={12} className="d-flex justify-content-between align-items-center search-container">
+          {/* Search Section */}
+          <div
+            style={{
+              width: '50%', // Adjust width for the search bar
+              padding: '11.25px 18px',
+              borderRadius: '56.25px',
+              border: '1.12px solid #EEEEEE',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              backgroundColor: 'transparent', // Transparent background
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Search"
+              style={{
+                textAlign: 'left', // Placeholder aligned to the left
+                color: '#7F8190',
+                fontSize: '18px',
+                fontFamily: 'Poppins',
+                fontWeight: '400',
+                border: 'none',
+                outline: 'none',
+                width: '100%',
+                backgroundColor: 'transparent', // Transparent background
+                padding: '0', // Remove padding for better alignment
+              }}
+            />
+            <div
+              style={{
+                width: '36px',
+                height: '36px',
+                background: '#377BF7',
+                borderRadius: '50%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <img src={searchIcon} alt="Search Icon" style={{ width: '18px', height: '18px' }} />
+            </div>
           </div>
-          <img
-            src={photo}
-            alt="User Avatar"
-            className="user-avatar"
-          />
+
+          {/* Admin Section */}
+          <div className="d-flex align-items-center">
+            <div className="text-end me-3"> {/* Add margin-right */}
+              <div className="fw-bold" style={{ fontSize: 18 }}>Elisa</div>
+              <div style={{ color: '#7F8190', fontSize: 15 }}>Admin</div>
+            </div>
+            <img
+              src={photo}
+              alt="User Avatar"
+              className="user-avatar"
+            />
+          </div>
         </Col>
       </Row>
 
@@ -133,6 +133,7 @@ const Users = () => {
           </Button>
         </Link>
       </div>
+
       <Row>
         <div className="table-responsive">
           <Table striped bordered hover>
