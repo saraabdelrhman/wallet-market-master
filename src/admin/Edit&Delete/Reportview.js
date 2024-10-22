@@ -18,7 +18,7 @@ const ReportDetails = ({ reportId }) => {
   useEffect(() => {
     const fetchReportDetails = async () => {
       try {
-        const response = await fetch(`https://wallyt.com/reports/${reportId}`);
+        const response = await fetch(`http://194.62.97.207/reports/${reportId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

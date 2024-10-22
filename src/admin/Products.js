@@ -154,10 +154,10 @@ const Products = () => {
                     <td>{product.categoryid}</td>
                     <td>{product.brand}</td>
                     <td className="d-flex justify-content-center gap-4">
-                      <Link to={'/productview'}>
+                      <Link to={'/admin/productview'}>
                         <Button size="sm" className="bg-transparent text-dark p-0"><FaEye /></Button>
                       </Link>
-                      <Link to={'/productedit'}>
+                      <Link to={'/admin/productedit'}>
                         <Button size="sm" className="bg-transparent text-dark p-0"><FaEdit /></Button>
                       </Link>
                       <Button size="sm" className="bg-transparent text-dark p-0" onClick={() => handleDelete(product.id)}>

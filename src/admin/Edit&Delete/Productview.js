@@ -55,7 +55,7 @@ const Products = ({ productId }) => {
   if (loading) return <Container>Loading...</Container>;
 
   return (
-    <Container fluid className="mt-4 text-center">
+    <Container fluid className="mt-5 text-center">
       <h2 className="fw-bold pb-3">Product Details</h2>
       {error && <div className="text-danger mb-3">Error: {error}. Showing fallback data.</div>}
       <div className="d-flex flex-column align-items-center">

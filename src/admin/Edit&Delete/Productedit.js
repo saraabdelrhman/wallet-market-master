@@ -29,7 +29,7 @@ const ProductEdit = () => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch(`https://wallyt/products/${product.id}`, {
+      const response = await fetch(`http://194.62.97.207/products/${product.id}`, {
         method: 'PUT', // 
         headers: {
           'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ const ProductEdit = () => {
   };
 
   return (
-    <Container fluid className="mt-4" style={{width: '80%',marginLeft:'18%'}}>
+    <Container fluid className="mt-5" >
       <h2 className="fw-bold pb-2">Edit Product</h2>
       <Form>
         <Row className="mb-3">

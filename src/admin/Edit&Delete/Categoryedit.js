@@ -30,7 +30,7 @@ const Categoryedit = () => {
   };
 
   return (
-    <Container fluid className="p-4" style={{width: '80%',marginLeft:'18%'}} >
+    <Container fluid className="p-4 mt-5"  >
       <Row className="align-items-center mb-4">
         <Col md={6}>
           <h2 className="fw-bold">Edit Category</h2>

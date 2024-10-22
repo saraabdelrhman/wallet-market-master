@@ -3,7 +3,7 @@ import { Container, Form, Row, Col, Button } from 'react-bootstrap';
 
 const Reviewedit = () => {
   return (
-    <Container className="mt-4" style={{width: '80%',marginLeft:'18%'}}>
+    <Container className="mt-5" >
       <h2 className="fw-bold pb-2">Edit Review</h2>
       <Form>
         <Row className="mb-3">

@@ -23,7 +23,7 @@ const UserEdit = () => {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const url = 'https://wallyt.com/profile/0001'; 
+      const url = 'http://194.62.97.207/profile/0001'; 
       try {
         const response = await fetch(url);
         const data = await response.json();
@@ -69,7 +69,7 @@ const UserEdit = () => {
   };
 
   return (
-    <Container fluid className="p-4" style={{width: '80%',marginLeft:'18%'}}>
+    <Container fluid className="p-4 mt-5" >
       <h2 className="fw-bold mb-4">Edit User</h2>
       <Form>
         {/* ID and Email */}

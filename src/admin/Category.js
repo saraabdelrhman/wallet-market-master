@@ -173,10 +173,12 @@ const Category = () => {
                     <td>{category.name}</td>
                     <td>{category.parentCategoryId || 'N/A'}</td>
                     <td className="d-flex justify-content-center gap-4">
-                      <Link to={`/categoryview/${category.id}`}>
+                      {/* <Link to={`/categoryview/${category.id}`}> */}
+                      <Link to={`/admin/categoryview/`}>
                         <Button size="sm" className="bg-transparent text-dark p-0"><FaEye /></Button>
                       </Link>
-                      <Link to={`/categoryedit/${category.id}`}>
+                      <Link to={`/admin/categoryedit/`}>
+                      {/* <Link to={`/admin/categoryedit/${category.id}`}> */}
                         <Button size="sm" className="bg-transparent text-dark p-0"><FaEdit /></Button>
                       </Link>
                       <Button size="sm" className="bg-transparent text-dark p-0" onClick={() => handleDelete(category.id)}>

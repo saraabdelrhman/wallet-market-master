@@ -31,7 +31,7 @@ const Newproducts = () => {
     formData.append('photo', productDetails.photo);
   
     try {
-      const response = await fetch('https://wallyt.com/products/images', {
+      const response = await fetch('http://194.62.97.207/products/images', {
         method: 'POST',
         body: formData,
       });

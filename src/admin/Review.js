@@ -187,10 +187,10 @@ const Review = () => {
                     <td>{review.userId}</td>
                     <td>{renderStarRating(review.rating)}</td>
                     <td className="d-flex justify-content-center gap-4">
-                      <Link to={'/reviewview'}>
+                      <Link to={'/admin/reviewview'}>
                         <Button size="sm" className="bg-transparent text-dark p-0"><FaEye /></Button>
                       </Link>
-                      <Link to={'/reviewedit'}>
+                      <Link to={'/admin/reviewedit'}>
                         <Button size="sm" className="bg-transparent text-dark p-0"><FaEdit /></Button>
                       </Link>
                       <Button size="sm" className="bg-transparent text-dark p-0" onClick={() => handleDelete(review.id)}>

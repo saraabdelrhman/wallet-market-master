@@ -174,10 +174,10 @@ const Report = () => {
                     <td>{report.Userid}</td>
                     <td>{report.report}</td>
                     <td className="d-flex justify-content-center gap-4">
-                      <Link to={'/reportview'}>
+                      <Link to={'/admin/reportview'}>
                         <Button size="sm" className="bg-transparent text-dark p-0"><FaEye /></Button>
                       </Link>
-                      <Link to={'/reportedit'}>
+                      <Link to={'/admin/reportedit'}>
                         <Button size="sm" className="bg-transparent text-dark p-0"><FaEdit /></Button>
                       </Link>
                       <Button size="sm" className="bg-transparent text-dark p-0" onClick={() => handleDelete(report.id)}>

@@ -150,10 +150,10 @@ const Users = () => {
                     <td>{user.name}</td>
                     <td>{user.role}</td>
                     <td className="d-flex justify-content-center gap-4">
-                      <Link to={'/singleuser'}>
+                      <Link to={'/admin/singleuser'}>
                         <Button size="sm" className="bg-transparent text-dark p-0"><FaEye /></Button>
                       </Link>
-                      <Link to={'/useredit'}>
+                      <Link to={'/admin/useredit'}>
                         <Button size="sm" className="bg-transparent text-dark p-0"><FaEdit /></Button>
                       </Link>
                       <Button size="sm" className="bg-transparent text-dark p-0" onClick={() => handleDelete(user.id)}>

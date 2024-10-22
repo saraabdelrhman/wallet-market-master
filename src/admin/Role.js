@@ -170,10 +170,10 @@ const Role = () => {
                     <td>{role.role}</td>
                     <td>{role.permissions}</td>
                     <td className="d-flex justify-content-center gap-4">
-                      <Link to={'/roleview'}>
+                      <Link to={'/admin/roleview'}>
                         <Button size="sm" className="bg-transparent text-dark p-0"><FaEye /></Button>
                       </Link>
-                      <Link to={'/roleedit'}>
+                      <Link to={'/admin/roleedit'}>
                         <Button size="sm" className="bg-transparent text-dark p-0"><FaEdit /></Button>
                       </Link>
                       <Button size="sm" className="bg-transparent text-dark p-0" onClick={() => handleDelete(role.id)}>

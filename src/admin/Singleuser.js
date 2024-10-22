@@ -18,7 +18,7 @@ const Singleuser = ({ userId }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`https://wallyt.com/profile/${userId}`); // Dynamic URL based on userId
+        const response = await fetch(`http://194.62.97.207/profile/${userId}`); // Dynamic URL based on userId
         if (!response.ok) {
           throw new Error('Failed to fetch user details');
         }

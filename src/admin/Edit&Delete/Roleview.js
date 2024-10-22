@@ -13,7 +13,7 @@ const Role = ({ roleId }) => {
   useEffect(() => {
     const fetchRoleDetails = async () => {
       try {
-        const response = await fetch(`https://wallyt.com/roles/${roleId}`); // Adjust to your API endpoint
+        const response = await fetch(`http://194.62.97.207/review/roles/${roleId}`); // Adjust to your API endpoint
         if (!response.ok) {
           throw new Error('Failed to fetch role details');
         }
@@ -37,7 +37,7 @@ const Role = ({ roleId }) => {
   if (loading) return <Container>Loading...</Container>;
 
   return (
-    <Container fluid className="mt-4 text-center">
+    <Container fluid className="mt-5 text-center">
       <h2 className="fw-bold pb-3">Role Details</h2>
       {error && <p className="text-danger">{error}</p>}
       <div className="d-flex flex-column align-items-center">

@@ -17,7 +17,7 @@ const Review = ({ reviewId }) => {
   useEffect(() => {
     const fetchReviewData = async () => {
       try {
-        const response = await fetch(`https://wallyt.com/review/${reviewId}`); // Adjust to your API endpoint
+        const response = await fetch(`http://194.62.97.207/review/${reviewId}`); // Adjust to your API endpoint
         if (!response.ok) {
           throw new Error('Failed to fetch review details');
         }
@@ -55,7 +55,7 @@ const Review = ({ reviewId }) => {
   if (loading) return <Container>Loading...</Container>;
 
   return (
-    <Container fluid className="mt-4 text-center">
+    <Container fluid className="mt-5 text-center">
       <h2 className="fw-bold pb-3">Review Moderation</h2>
       {error && <div className="text-danger mb-3">Error: {error}. Showing fallback data.</div>}
       <div className="d-flex flex-column align-items-center">
