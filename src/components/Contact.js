@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Contact.css'; // This will hold additional styling
-import 'bootstrap-icons/font/bootstrap-icons.css'; // Ensure Bootstrap Icons are included
+import config from '../Config'; // Import the config file
 
 function Contact({ content }) {
   // State variables for form input
@@ -11,7 +11,7 @@ function Contact({ content }) {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
-  const notify = () =>
+  const notifySuccess = () =>
     toast.success('Thank you for your message! Your feedback has been submitted successfully!', {
       position: "top-center",
       autoClose: 5000,
@@ -19,7 +19,18 @@ function Contact({ content }) {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+
+  const notifyError = (error) => 
+    toast.error(`Error submitting your feedback: ${error}`, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
       theme: "light",
       transition: Bounce,
     });
@@ -33,8 +44,8 @@ function Contact({ content }) {
       message: message,
     };
 
-    fetch('https://yourwebsite.com/contact', { // Update with your actual endpoint
-      method: 'post',
+    fetch(`${config.apiUrl}/contact`, { // Use the API URL from the config
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
@@ -48,14 +59,14 @@ function Contact({ content }) {
       return response.json();
     })
     .then(() => {
-      notify();  // Show success notification
+      notifySuccess();  // Show success notification
       setName(''); // Reset form fields
       setEmail('');
       setMessage('');
     })
     .catch((error) => {
       console.error('Error:', error.message);
-      toast.error('Error submitting your feedback. Please try again.');
+      notifyError(error.message);
     });
   };
 

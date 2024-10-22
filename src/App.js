@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import translate from './Data.json'; // Import translation data
+// import config from './Config.json'; // Import translation data
 
 // User Components
 import UserLayout from './UserLayout';  // Layout for user with Header and Footer

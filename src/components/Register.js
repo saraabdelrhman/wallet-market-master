@@ -10,6 +10,7 @@ import img3 from './images/Ellipse 4.png';
 import img4 from './images/Ellipse 5.png';
 
 import * as Yup from 'yup';
+import config from '../Config'; // Import the config file
 
 const Register = ({ content }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,7 +40,7 @@ const Register = ({ content }) => {
       setIsSubmitting(true);
       console.log('Form values:', values);
       try {
-        const response = await fetch('https://wallyt.com/register', {
+        const response = await fetch(`${config.apiUrl}/register`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -119,8 +120,7 @@ const Register = ({ content }) => {
                 className="btn btn-primary w-100"
                 disabled={isSubmitting}
               >
-        {isSubmitting ? 'Creating Account...' : `${content["create"]}`}
-
+                {isSubmitting ? 'Creating Account...' : `${content["create"]}`}
               </button>
             </form>
             <div className="or-divider text-center">- Or Continue with -</div>

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductCard from './ProductCard';  // Component for individual product cards
+import config from '../Config'; // Import the config file
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -9,7 +10,7 @@ export default function Products() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('https://wallyt.com/products')
+    fetch(`${config.apiUrl}/products`) // Use the API URL from the config
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

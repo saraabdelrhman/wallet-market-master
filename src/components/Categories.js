@@ -60,7 +60,7 @@ const Categories = ({ content }) => {
       <img src={shape} alt="shape" className="d-none d-md-block position-absolute" style={{ top: '100px', right: '0', width: '300px', zIndex: '-1' }} />
       <div className="row ">
         <div className="col-12 text-center mb-3">
-          <h2 className='mt-5 mb-3' style={{color: 'black', fontSize: 30, fontFamily: 'Helvetica', fontWeight: '700', wordWrap: 'break-word'}}>
+          <h2 className='mt-5 mb-3 ' style={{color: 'black', fontSize: 30, fontFamily: 'Helvetica', fontWeight: '700', wordWrap: 'break-word'}}>
             {content["catrgory-title"]}
           </h2>
           <div className="input-group mb-3" style={{ maxWidth: '600px', margin: 'auto' }}>
@@ -76,7 +76,7 @@ const Categories = ({ content }) => {
         </div>
 
         <div className="col-12 mb-3 mt-5 pt-5">
-          <h3 className="text-start  fw-bolder">{content["category-search"]}</h3>
+          <h3 className="text-start ms-3  fw-bolder">{content["category-search"]}</h3>
         </div>
 
         <div className="col-12">

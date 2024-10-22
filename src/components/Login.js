@@ -10,6 +10,7 @@ import img4 from './images/Ellipse 5.png';
 import google from './images/search 1.png';
 import facebook from './images/facebook 1.png';
 import * as Yup from 'yup';
+import config from '../Config'; // Import the config file
 
 const Login = ({ content }) => {
   const formik = useFormik({
@@ -25,14 +26,14 @@ const Login = ({ content }) => {
     }),
     onSubmit: (values) => {
       console.log('Form values:', values);
-      handleRegister(values);
+      handleLogin(values); // Change to handleLogin for clarity
     },
   });
 
-  const handleRegister = (data) => {
+  const handleLogin = (data) => {
     console.log('Data to be sent:', data);
     
-    fetch('https://wallyt.com/login', {
+    fetch(`${config.apiUrl}/login`, { // Use the API URL from the config
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -85,9 +86,6 @@ const Login = ({ content }) => {
           </div>
           <button type="submit" className="btn btn-primary w-100">{content["sign-in"]}</button>
         </form>
-        <div className="link-text text-end mt-3">
-            <Link to="/Forgotpass" style={{ textAlign: 'right', color: '#377BF7', fontSize: 16, fontFamily: 'Poppins', fontWeight: '200', wordWrap: 'break-word' }}>{content["forgot password"]}</Link>
-          </div>
         <div className="or-divider">-OR-</div>
 
         <div className="btn btn-google w-100 mb-3">

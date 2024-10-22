@@ -58,11 +58,10 @@ const Users = () => {
   return (
     <Container fluid className="d-flex flex-column mt-5">
       <Row className="mb-2 align-items-center">
-        <Col md={12} xs={12} className="d-flex justify-content-between align-items-center search-container">
-          {/* Search Section */}
+        <Col md={6} xs={12} className="d-flex align-items-center search-container">
           <div
             style={{
-              width: '50%', // Adjust width for the search bar
+              width: '100%',
               padding: '11.25px 18px',
               borderRadius: '56.25px',
               border: '1.12px solid #EEEEEE',
@@ -102,17 +101,19 @@ const Users = () => {
               <img src={searchIcon} alt="Search Icon" style={{ width: '18px', height: '18px' }} />
             </div>
           </div>
+        </Col>
 
-          {/* Admin Section */}
+        <Col md={6} xs={12} className="d-flex justify-content-end align-items-center mt-3 mt-md-0">
           <div className="d-flex align-items-center">
-            <div className="text-end me-3"> {/* Add margin-right */}
+            <div className="text-end">
               <div className="fw-bold" style={{ fontSize: 18 }}>Elisa</div>
               <div style={{ color: '#7F8190', fontSize: 15 }}>Admin</div>
             </div>
             <img
               src={photo}
               alt="User Avatar"
-              className="user-avatar"
+              className="user-avatar ms-3"
+              style={{ width: '36px', height: '36px', borderRadius: '50%' }}
             />
           </div>
         </Col>
@@ -133,7 +134,8 @@ const Users = () => {
           </Button>
         </Link>
       </div>
-
+      
+      {/* User Table */}
       <Row>
         <div className="table-responsive">
           <Table striped bordered hover>
@@ -177,6 +179,7 @@ const Users = () => {
         </div>
       </Row>
 
+      {/* Pagination */}
       <Row className="d-flex justify-content-center my-4">
         <Button
           variant="link"
@@ -211,3 +214,4 @@ const Users = () => {
 };
 
 export default Users;
+
