@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-
+import config from '../Config'; // Import the config file
 const Singleuser = ({ userId }) => {
   const [userDetails, setUserDetails] = useState({
     id: '',
@@ -18,7 +18,7 @@ const Singleuser = ({ userId }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://194.62.97.207/profile/${userId}`); // Dynamic URL based on userId
+        const response = await fetch(`${config.apiUrl}/${userId}`); // Dynamic URL based on userId
         if (!response.ok) {
           throw new Error('Failed to fetch user details');
         }

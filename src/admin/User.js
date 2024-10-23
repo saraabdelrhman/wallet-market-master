@@ -4,6 +4,7 @@ import { FaEye, FaEdit, FaTrash } from 'react-icons/fa';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import searchIcon from './images/search-normal.png';
+import config from '../Config'; // Import the config file
 import '../App.css';
 import photo from './images/photo.png';
 
@@ -27,7 +28,11 @@ const Users = () => {
     const fetchUsers = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://194.62.97.207/users?page=${page}&size=${size}`);
+        // Correct the API endpoint structure here
+        const response = await fetch(`${config.apiUrl}/user?page=${page}&size=${size}`);
+
+
+
         if (!response.ok) throw new Error('Failed to fetch users data');
         const data = await response.json();
         setUsers(data.users);
@@ -38,9 +43,10 @@ const Users = () => {
         setLoading(false);
       }
     };
-
+  
     fetchUsers();
   }, [page, size]);
+  
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {

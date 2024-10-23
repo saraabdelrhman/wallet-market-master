@@ -22,7 +22,7 @@ const Navigation = () => {
     { path: '/admin/products', label: 'Product', img: product },
     { path: '/admin/category', label: 'Category', img: category },
     { path: '/admin/review', label: 'Review', img: product },
-    { path: '/admin/comment', label: 'Comment', img: product },
+    // { path: '/admin/comment', label: 'Comment', img: product },
     { path: '/admin/report', label: 'Report', img: product },
     { path: '/admin/role', label: 'Role', img: product },
     { path: '/admin/advertisment', label: 'Advertisment', img: category },

@@ -7,6 +7,7 @@ const Review = ({ reviewId }) => {
     productId: '',
     userId: '',
     rating: '',
+    comment: '',
     reviewText: '',
     createdAt: ''
   });
@@ -27,6 +28,7 @@ const Review = ({ reviewId }) => {
           productId: data.productId,
           userId: data.userId,
           rating: data.rating,
+          comment: data.comment,
           reviewText: data.reviewText,
           createdAt: data.createdAt
         });
@@ -41,6 +43,7 @@ const Review = ({ reviewId }) => {
           productId: '255',
           userId: '189',
           rating: '4',
+          comment: 'i recoomend it',
           reviewText: 'Good',
           createdAt: '2024'
         });
@@ -64,6 +67,7 @@ const Review = ({ reviewId }) => {
         <p><strong>User ID:</strong> {reviewDetails.userId}</p>
         <p><strong>Rating:</strong> {reviewDetails.rating}</p>
         <p><strong>Review:</strong> {reviewDetails.reviewText}</p>
+        <p><strong>Comment:</strong> {reviewDetails.comment}</p>
         <p><strong>Created At:</strong> {reviewDetails.createdAt}</p>
       </div>
     </Container>
