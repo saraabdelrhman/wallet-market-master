@@ -32,7 +32,7 @@ const Header = ({ language, setLanguage }) => {
         <Link className="navbar-brand d-flex align-items-center" to="/">
           <img src={img} alt="Reveyou Logo" style={{ height: 40, marginRight: 10 }} />
           <span style={{ color: 'black', fontSize: 30, fontFamily: 'Poppins', fontWeight: 700 }}>
-            Reveyou
+            Gadgetzreview
           </span>
         </Link>
 
