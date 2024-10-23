@@ -8,13 +8,13 @@ import logout from './images/security-safe.png';
 
 const Navigation = () => {
   const [activeItem, setActiveItem] = useState('/');
-  const [isVisible, setIsVisible] = useState(true);  // Visibility state
+  const [isVisible, setIsVisible] = useState(false); // Sidebar initially hidden
 
-  const toggleSidebar = () => setIsVisible(!isVisible);  // Toggle function
+  const toggleSidebar = () => setIsVisible(!isVisible);
 
   const handleLinkClick = (path) => {
-    setActiveItem(path);  // Set the active item
-    setIsVisible(false);  // Close the sidebar
+    setActiveItem(path);
+    setIsVisible(false); // Close sidebar when a link is clicked
   };
 
   const navItems = [
@@ -31,95 +31,92 @@ const Navigation = () => {
 
   return (
     <>
+      {/* Toggle Button (Hamburger Icon or Close Icon) */}
       <div
         onClick={toggleSidebar}
         style={{
           position: 'fixed',
           top: 20,
-          left: isVisible ? 260 : 20,  // Adjust based on sidebar visibility
-          zIndex: 1000,
+          left: 20,
+          zIndex: 1001, // Ensure it's always above the sidebar
           cursor: 'pointer',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-around',
-          height: '25px',  // Adjust the height as needed
-          width: '30px',  // Adjust the width as needed
+          height: '30px',
+          width: '35px',
           padding: '5px',
         }}
       >
-        <div
-          style={{ background: 'black', height: '3px', width: '100%', borderRadius: '5px' }}
-        ></div>
-        <div
-          style={{ background: 'black', height: '3px', width: '100%', borderRadius: '5px' }}
-        ></div>
-        <div
-          style={{ background: 'black', height: '3px', width: '100%', borderRadius: '5px' }}
-        ></div>
+        {/* Change to "X" icon when sidebar is visible */}
+        {isVisible ? (
+          <div style={{ fontSize: '24px', color: 'black' }}>×</div> // X icon
+        ) : (
+          <>
+            <div
+              style={{
+                background: 'black',
+                height: '3px',
+                width: '100%',
+                borderRadius: '5px',
+              }}
+            ></div>
+            <div
+              style={{
+                background: 'black',
+                height: '3px',
+                width: '100%',
+                borderRadius: '5px',
+              }}
+            ></div>
+            <div
+              style={{
+                background: 'black',
+                height: '3px',
+                width: '100%',
+                borderRadius: '5px',
+              }}
+            ></div>
+          </>
+        )}
       </div>
 
+      {/* Sidebar */}
       <div
         style={{
-          width: 250,
+          width: isVisible ? (window.innerWidth < 768 ? '100vw' : '250px') : '0', // 250px on larger screens, full width on mobile
           height: '100vh',
-          padding: '20px 15px',
+          padding: isVisible ? '20px 15px' : '0',
           background: '#FBFBFB',
           borderRight: '1px solid #EEEEEE',
-          display: isVisible ? 'flex' : 'none',  // Control visibility
+          display: 'flex',
           flexDirection: 'column',
-          alignItems: 'flex-start',  // Align items to the left
+          alignItems: 'flex-start',
           position: 'fixed',
           top: 0,
           left: 0,
           overflowY: 'auto',
+          transition: 'width 0.3s ease-in-out',
+          zIndex: 9999,
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 10,
-            width: '100%',
-          }}
-        >
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, width: '100%' }}>
           <img src={logo} alt="Logo" style={{ width: 45, height: 45 }} />
           <Link to="/" style={{ textDecoration: 'none' }} onClick={() => handleLinkClick('/')}>
-            <div
-              style={{
-                color: 'black',
-                fontSize: 33,
-                fontFamily: 'Poppins',
-                fontWeight: '700',
-              }}
-            >
+            <div style={{ color: 'black', fontSize: 33, fontFamily: 'Poppins', fontWeight: '700' }}>
               Reveyou
             </div>
           </Link>
         </div>
 
-        <div
-          style={{
-            textAlign: 'center',
-            color: '#A5ABB2',
-            fontSize: 13.5,
-            fontFamily: 'Poppins',
-            fontWeight: '700',
-            wordWrap: 'break-word',
-            marginTop: '30px',
-          }}
-        >
+        <div style={{ textAlign: 'center', color: '#A5ABB2', fontSize: 13.5, fontFamily: 'Poppins', fontWeight: '700', marginTop: '30px' }}>
           DAILY USE
         </div>
 
-        {/* Navigation items */}
+        {/* Navigation Items */}
         <div style={{ width: '100%', marginTop: '20px' }}>
           {navItems.map((item) => (
-            <Link
-              key={item.label}
-              to={item.path}
-              style={{ textDecoration: 'none', width: '100%' }}
-              onClick={() => handleLinkClick(item.path)} // Call the new function
-            >
+            <Link key={item.label} to={item.path} style={{ textDecoration: 'none', width: '100%' }} onClick={() => handleLinkClick(item.path)}>
               <div
                 style={{
                   display: 'flex',
@@ -143,8 +140,41 @@ const Navigation = () => {
           ))}
         </div>
       </div>
+
+      {/* Overlay for Sidebar */}
+      {isVisible && (
+        <div
+          onClick={toggleSidebar}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent overlay
+            zIndex: 9998, // Behind sidebar
+          }}
+        ></div>
+      )}
+
+      {/* Media Query for Mobile Devices */}
+      <style jsx>{`
+        @media (max-width: 768px) {
+          /* No additional styles needed for mobile */
+        }
+
+        @media (min-width: 769px) {
+          /* Sidebar width of 250px on larger screens */
+          div[style*="width: 100vw"] {
+            width: 250px; /* Set to fixed width on larger screens */
+          }
+        }
+      `}</style>
     </>
   );
 };
 
 export default Navigation;
+
+
+
