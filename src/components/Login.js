@@ -25,34 +25,56 @@ const Login = ({ content }) => {
         .matches(/^[A-Z][a-z]{5,10}$/, 'Password must be between 6 to 11 characters and start with an uppercase letter'),
     }),
     onSubmit: (values) => {
-      console.log('Form values:', values);
-      handleLogin(values); // Change to handleLogin for clarity
+      handleLogin(values); // Trigger login
     },
   });
 
   const handleLogin = (data) => {
     console.log('Data to be sent:', data);
     
-    fetch(`${config.apiUrl}/login`, { // Use the API URL from the config
+    
+    fetch(`${config.apiUrl}/login`, { 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        Authorization: 'Bearer YOUR_BEARER_TOKEN', // Ensure this token is securely handled and not exposed
       },
       body: JSON.stringify(data),
     })
       .then((res) => {
         if (!res.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error('Login failed');
         }
         return res.json();
       })
-      .then((data) => {
-        console.log('Response data:', JSON.stringify(data));
+      .then((loginData) => {
+        console.log('Login successful:', loginData);
+        
+        // Now call the /login-success API if login is successful
+        fetch(`${config.apiUrl}/login-success`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
+          body: JSON.stringify({ userId: loginData.userId }), // Pass any relevant data here
+        })
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error('Login success API call failed');
+            }
+            return res.json();
+          })
+          .then((successData) => {
+            console.log('Login success API response:', successData);
+            // Perform any additional actions here (e.g., redirect, store data)
+          })
+          .catch((err) => {
+            console.error('Error during login-success API call:', err.message);
+          });
       })
       .catch((err) => {
-        console.error('Error:', err.message);
+        console.error('Error during login:', err.message);
       });
   };
 
