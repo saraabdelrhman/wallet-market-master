@@ -6,6 +6,7 @@ import img2 from './images/Ellipse 3.png';
 import img3 from './images/Ellipse 4.png';
 import img4 from './images/Ellipse 5.png';
 import './Forgotpass.css';
+import config from '../Config'; // Assuming the same config file for the API URL
 
 export default function Forgotpass({ content }) {
   const [email, setEmail] = useState('');
@@ -41,13 +42,13 @@ export default function Forgotpass({ content }) {
 
   const handleForgotPassword = () => {
     if (!email.trim()) {
-      notifyError('Email field cannot be empty. Please enter a valid email address.'); 
+      notifyError('Email field cannot be empty. Please enter a valid email address.');
       return;
     }
 
     const newdata = { email: email };
 
-    fetch('https://wallyt.com/forgotpass', {
+    fetch(`${config.apiUrl}/forgot-password`, { 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -63,7 +64,7 @@ export default function Forgotpass({ content }) {
     })
     .then(() => {
       notifySuccess();  
-      setEmailSent(true); 
+      setEmailSent(true);
     })
     .catch((err) => {
       notifyError('Something went wrong, please try again.');
@@ -73,8 +74,10 @@ export default function Forgotpass({ content }) {
 
   return (
     <div className="page-container">
-      <div className="forgot-password-container ">
-      <h2 className="forgot-password-header pt-5 text-dark">{content["forgot-password"] || "Forgot Password"}</h2>
+      <div className="forgot-password-container">
+        <h2 className="forgot-password-header pt-5 text-dark">
+          {content["forgot-password"] || "Forgot Password"}
+        </h2>
 
         <div className="forgot-password-form mt-3">
           <label htmlFor="email" className="forgot-password-label mt-3">Email</label>
