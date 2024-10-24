@@ -4,6 +4,7 @@ import { FaEye, FaEdit, FaTrash, FaArrowRight, FaArrowLeft } from 'react-icons/f
 import { Link } from 'react-router-dom';
 import searchIcon from './images/search-normal.png'; // Ensure you have this image in the specified path
 import '../App.css'; // Ensure your CSS is properly set up
+import config from '../Config'
 import photo from './images/photo.png';
 
 const Report = () => { 
@@ -31,7 +32,7 @@ const Report = () => {
     const fetchReports = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://194.62.97.207/reports?page=${page}&size=${size}`);
+        const response = await fetch(`${config.apiUrl}/reports?page=${page}&size=${size}`);
         if (!response.ok) {
           throw new Error('Failed to fetch reports data');
         }

@@ -4,6 +4,7 @@ import { FaEye, FaEdit, FaTrash, FaArrowRight, FaArrowLeft, FaStar, FaStarHalfAl
 import { Link } from 'react-router-dom';
 import searchIcon from './images/search-normal.png';
 import '../App.css';
+import config from '../Config';
 import photo from './images/photo.png';
 
 const Review = () => { 
@@ -30,7 +31,7 @@ const Review = () => {
     const fetchReviews = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://194.62.97.207/reviews?page=${page}&size=${size}`);
+        const response = await fetch(`${config.apiUrl}/review?page=${page}&size=${size}`);
         if (!response.ok) {
           throw new Error('Failed to fetch reviews data');
         }
@@ -52,7 +53,7 @@ const Review = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this review? This action cannot be undone.")) {
       try {
-        const response = await fetch(`http://194.62.97.207/review/${id}`, {
+        const response = await fetch(`${config.apiUrl}/review/${id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json'

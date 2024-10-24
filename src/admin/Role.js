@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom';
 import searchIcon from './images/search-normal.png'; // Ensure you have this image in the specified path
 import '../App.css'; // Ensure your CSS is properly set up
 import photo from './images/photo.png';
+import config from '../Config';
 
 const Role = () => {
   const [roles, setRoles] = useState([]);  // State for handling multiple roles
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   const [page, setPage] = useState(0);  // Current page number
   const [size, setSize] = useState(10);  // Default page size
   const [totalPages, setTotalPages] = useState(1);  // Total pages
@@ -31,7 +32,7 @@ const Role = () => {
     const fetchRoles = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://194.62.97.207/roles?page=${page}&size=${size}`);
+        const response = await fetch(`${config.apiUrl}/roles?page=${page}&size=${size}`);
         if (!response.ok) {
           throw new Error('Failed to fetch roles data');
         }
@@ -53,7 +54,7 @@ const Role = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this role? This action cannot be undone.")) {
       try {
-        const response = await fetch(`http://194.62.97.207/role/${id}`, {
+        const response = await fetch(`${config.apiUrl}/roles/${id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json'
