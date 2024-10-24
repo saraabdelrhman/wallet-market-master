@@ -170,6 +170,28 @@ const Profile = ({ content, role, userId }) => {
     }
   };
 
+  // Function to handle deactivation of account
+  const handleDeactivate = async () => {
+    try {
+      const response = await fetch(`${config.apiUrl}/profile/deactivate`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify({ userId }), // Send user ID for deactivation
+      });
+
+      if (!response.ok) throw new Error('Failed to deactivate account');
+
+      alert("Account deactivated successfully!");
+      // You can add additional logic here, such as redirecting the user after deactivation
+    } catch (error) {
+      console.error('Error deactivating account:', error);
+      alert("Failed to deactivate account.");
+    }
+  };
+
   return (
     <div className="profile-container text-left">
       <img src={dot} alt="Dots" className="decorative-dot" />
@@ -342,7 +364,7 @@ const Profile = ({ content, role, userId }) => {
                     </div>
                   </div>
 
-                  {/* Message Button for All Users */}
+                  {/* Message and Deactivate Buttons */}
                   <div
                     style={{
                       position: 'relative',
@@ -384,6 +406,36 @@ const Profile = ({ content, role, userId }) => {
                         }}
                       >
                         Message
+                      </div>
+                    </button>
+
+                    <button
+                      style={{
+                        padding: 12,
+                        borderRadius: 24,
+                        border: '1px solid #377BF7',
+                        justifyContent: 'flex-start',
+                        alignItems: 'center',
+                        gap: 12,
+                        marginLeft: '7px',
+                        display: 'flex',
+                        backgroundColor: 'white',
+                        color: '#377BF7',
+                      }}
+                      onClick={handleDeactivate} // Handle deactivate
+                    >
+                      <div
+                        style={{
+                          fontSize: 18,
+                          fontFamily: 'Poppins',
+                          fontWeight: 500,
+                          marginLeft: '5px',
+                          textTransform: 'capitalize',
+                          lineHeight: '24px',
+                          wordWrap: 'break-word',
+                        }}
+                      >
+                        Deactivate
                       </div>
                     </button>
                   </div>
@@ -820,4 +872,3 @@ const Profile = ({ content, role, userId }) => {
 };
 
 export default Profile;
-
