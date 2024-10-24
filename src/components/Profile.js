@@ -23,6 +23,7 @@ const Profile = ({ content, role, userId }) => {
   const [isVisible, setIsVisible] = useState(false); // State for message visibility
   const [selectedFile, setSelectedFile] = useState(null); // State for file input
   const [messages, setMessages] = useState([]); // State for storing messages
+  const [messageInput, setMessageInput] = useState(""); // Input state for message input
   const [unreadCount, setUnreadCount] = useState(0); // Unread messages count
 
   const handleFileChange = (e) => {
@@ -65,7 +66,7 @@ const Profile = ({ content, role, userId }) => {
         // Now, fetch the real messages from API for business users only
         if (role === 'business') {
           const response = await fetch(`${config.apiUrl}/messages/conversation/${userId}`, {
-            method: 'GET', // Assuming GET is the correct method for fetching messages
+            method: 'GET', 
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -88,13 +89,34 @@ const Profile = ({ content, role, userId }) => {
     fetchMessages();
   }, [userId, role]);
 
-  const handleSendMessage = () => {
+  // Function to handle sending message
+  const handleSendMessage = async () => {
     if (role !== 'business') {
       // If the user is not a business user, show an alert
       alert("Messaging is only available for business users.");
     } else {
-      // Handle message sending logic for business users
-      alert("Message sent successfully!");
+      try {
+        const response = await fetch(`${config.apiUrl}/messages/send`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
+          body: JSON.stringify({
+            userId,
+            message: messageInput,
+          }),
+        });
+
+        if (!response.ok) throw new Error('Failed to send message');
+
+        const data = await response.json();
+        setMessages((prevMessages) => [...prevMessages, data.message]); // Add new message to the list
+        setMessageInput(""); // Clear input field
+        alert("Message sent successfully!");
+      } catch (error) {
+        console.error('Error sending message:', error);
+      }
     }
   };
 
@@ -468,6 +490,8 @@ const Profile = ({ content, role, userId }) => {
 
                             <input
                               placeholder="Text here..."
+                              value={messageInput}
+                              onChange={(e) => setMessageInput(e.target.value)}
                               style={{
                                 border: 'none',
                                 color: '#1e1e1e',
@@ -477,11 +501,6 @@ const Profile = ({ content, role, userId }) => {
                                 outline: 'none',
                                 width: '100%',
                                 fontSize: 18,
-                              }}
-                              // Custom styles for the placeholder text
-                              placeholderStyle={{
-                                color: '#1e1e1e',
-                                fontWeight: '100', // Lighter font weight for the placeholder
                               }}
                             />
 
