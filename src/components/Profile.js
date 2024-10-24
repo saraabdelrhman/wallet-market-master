@@ -24,20 +24,43 @@ const Profile = ({ content, role, userId }) => {
   const [selectedFile, setSelectedFile] = useState(null); // State for file input
   const [messages, setMessages] = useState([]); // State for storing messages
   const [messageInput, setMessageInput] = useState(""); // Input state for message input
+  const [productInput, setProductInput] = useState({ name: "", category: "", description: "" }); // Product input state
   const [unreadCount, setUnreadCount] = useState(0); // Unread messages count
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
 
-  const handleProfilePictureUpload = () => {
+  // Handle profile picture upload
+  const handleProfilePictureUpload = async () => {
     if (!selectedFile) {
       alert("Please select a file first.");
       return;
     }
-    alert("Profile picture uploaded successfully!");
+    try {
+      const formData = new FormData();
+      formData.append('picture', selectedFile);
+
+      const response = await fetch(`${config.apiUrl}/profile/picture`, {
+        method: 'POST',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+        body: formData,
+      });
+
+      if (!response.ok) throw new Error('Failed to upload picture');
+
+      const data = await response.json();
+      setUser((prev) => ({ ...prev, avatar: data.pictureUrl })); // Update user avatar
+      alert("Profile picture uploaded successfully!");
+    } catch (error) {
+      console.error('Error uploading profile picture:', error);
+      alert("Failed to upload profile picture.");
+    }
   };
 
+  // Toggle message modal visibility
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
@@ -117,6 +140,33 @@ const Profile = ({ content, role, userId }) => {
       } catch (error) {
         console.error('Error sending message:', error);
       }
+    }
+  };
+
+  // Function to handle product submission
+  const handleAddProduct = async () => {
+    const { name, category, description } = productInput;
+    if (!name || !category || !description) {
+      alert("Please fill out all product fields.");
+      return;
+    }
+    try {
+      const response = await fetch(`${config.apiUrl}/products`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify(productInput),
+      });
+
+      if (!response.ok) throw new Error('Failed to add product');
+
+      alert("Product added successfully!");
+      setProductInput({ name: "", category: "", description: "" }); // Clear the input fields after success
+    } catch (error) {
+      console.error('Error adding product:', error);
+      alert("Failed to add product.");
     }
   };
 
@@ -582,6 +632,8 @@ const Profile = ({ content, role, userId }) => {
                     <input
                       type="text"
                       placeholder="Product Name"
+                      value={productInput.name}
+                      onChange={(e) => setProductInput({ ...productInput, name: e.target.value })}
                       style={{
                         width: '100%',
                         height: 48,
@@ -598,6 +650,8 @@ const Profile = ({ content, role, userId }) => {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                     <label style={{ color: '#0A090B', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600' }}>Category</label>
                     <select
+                      value={productInput.category}
+                      onChange={(e) => setProductInput({ ...productInput, category: e.target.value })}
                       style={{
                         width: '100%',
                         height: 48,
@@ -610,6 +664,10 @@ const Profile = ({ content, role, userId }) => {
                       }}
                     >
                       <option value="">Select Category</option>
+                      {/* Add categories dynamically if needed */}
+                      <option value="Electronics">Electronics</option>
+                      <option value="Home">Home</option>
+                      <option value="Fashion">Fashion</option>
                     </select>
                   </div>
 
@@ -617,6 +675,8 @@ const Profile = ({ content, role, userId }) => {
                     <label style={{ color: '#0A090B', fontSize: 16, fontFamily: 'Poppins', fontWeight: '600' }}>Description</label>
                     <textarea
                       placeholder="Product Description"
+                      value={productInput.description}
+                      onChange={(e) => setProductInput({ ...productInput, description: e.target.value })}
                       style={{
                         width: '100%',
                         height: 143,
@@ -631,6 +691,7 @@ const Profile = ({ content, role, userId }) => {
                   </div>
 
                   <button
+                    onClick={handleAddProduct}
                     style={{
                       height: 46,
                       background: '#377BF7',
@@ -759,3 +820,4 @@ const Profile = ({ content, role, userId }) => {
 };
 
 export default Profile;
+
