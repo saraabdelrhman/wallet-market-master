@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import defaultImg from "./images/unsplash_xZSEvSlHRv8.png"; // Placeholder image path
 import icon from './images/Icons.png'; // Camera icon for upload
+import config from "../Config"; // Assuming you have a config file for API URL
 
 const Profile = ({ content }) => {
   const [user, setUser] = useState({
@@ -11,6 +12,7 @@ const Profile = ({ content }) => {
   });
 
   const [selectedFile, setSelectedFile] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -30,6 +32,48 @@ const Profile = ({ content }) => {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleSaveProfile = async () => {
+    setIsLoading(true); // Show a loader if necessary
+    try {
+      const formData = new FormData();
+      if (selectedFile) {
+        formData.append("avatar", selectedFile); // Append avatar image
+      }
+      formData.append("name", user.name);
+      formData.append("email", user.email);
+      formData.append("bio", user.bio);
+
+      const response = await fetch(`${config.apiUrl}/profile`, {
+        method: "POST", // or PUT depending on the API method
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+        body: formData, // Using form data because we're sending a file
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update profile");
+      }
+
+      const data = await response.json();
+      alert("Profile updated successfully!");
+
+      // Update the state with the new profile data
+      setUser((prev) => ({
+        ...prev,
+        avatar: data.avatar || prev.avatar,
+        name: data.name,
+        email: data.email,
+        bio: data.bio,
+      }));
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      alert("Error updating profile. Please try again.");
+    } finally {
+      setIsLoading(false); // Hide the loader
+    }
   };
 
   return (
@@ -244,7 +288,9 @@ const Profile = ({ content }) => {
 
           <div className="button-container">
             <button className="edit-profile-button cancel">Cancel</button>
-            <button className="edit-profile-button">Save</button>
+            <button className="edit-profile-button" onClick={handleSaveProfile} disabled={isLoading}>
+              {isLoading ? "Saving..." : "Save"}
+            </button>
           </div>
         </div>
       </div>
