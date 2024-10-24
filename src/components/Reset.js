@@ -8,6 +8,7 @@ import img2 from './images/Ellipse 3.png';
 import img3 from './images/Ellipse 4.png';
 import img4 from './images/Ellipse 5.png';
 import * as Yup from 'yup';
+import config from '../Config'; // Import config for API URL
 
 const ResetPassword = () => {
   const formik = useFormik({
@@ -25,7 +26,6 @@ const ResetPassword = () => {
         .required('Confirm password is required'),
     }),
     onSubmit: (values) => {
-      console.log('Form values:', values);
       handleResetPassword(values);
     },
   });
@@ -33,19 +33,15 @@ const ResetPassword = () => {
   const handleResetPassword = (data) => {
     console.log('Data to be sent:', data);
 
-    fetch('https://wallyt.com/reset-password', {
+    fetch(`${config.apiUrl}/reset`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        Authorization: 'Bearer ' + 'YOUR_BEARER_TOKEN', // Replace with your actual bearer token
       },
       body: JSON.stringify(data),
     })
       .then((res) => {
-        console.log('Response status:', res.status);
-        console.log('Response headers:', res.headers);
-
         if (!res.ok) {
           throw new Error('Network response was not ok');
         }
@@ -68,12 +64,13 @@ const ResetPassword = () => {
         <h2 className="login-header">Reset Password</h2>
         <form onSubmit={formik.handleSubmit}>
           {/* New Password */}
-          <div className="input-box">
+          <div className="form-group">
             <label htmlFor="newPassword" className="form-label">New Password</label>
             <input
               type="password"
               id="newPassword"
               placeholder="Enter your new password"
+              className="form-control"
               {...formik.getFieldProps('newPassword')}
             />
             {formik.touched.newPassword && formik.errors.newPassword ? (
@@ -82,12 +79,13 @@ const ResetPassword = () => {
           </div>
 
           {/* Confirm Password */}
-          <div className="input-box">
+          <div className="form-group">
             <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
             <input
               type="password"
               id="confirmPassword"
               placeholder="Confirm your new password"
+              className="form-control"
               {...formik.getFieldProps('confirmPassword')}
             />
             {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
@@ -95,7 +93,7 @@ const ResetPassword = () => {
             ) : null}
           </div>
 
-          <button type="submit" className="button btn-primary w-100">Reset</button>
+          <button type="submit" className="btn btn-primary w-100 mt-3">Reset</button>
           <div className="link-text text-end mt-3">
             <Link to="/Forgotpass">Forgot Password?</Link>
           </div>
